@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Interactive melody-first acoustic guitar tabs with synchronized playback, position colors, MIDI export, and rich searchable metadata.">
+<title>Music Gallery — Interactive Acoustic Guitar Tabs</title>
+<link rel="stylesheet" href="./assets/css/base.css">
+<link rel="stylesheet" href="./assets/css/catalog.css">
+</head>
+<body>
+<main class="shell">
+  <nav class="topnav">
+    <a class="brand" href="./">Music <span>Gallery</span></a>
+    <div class="navlinks">
+      <a class="button" href="https://github.com/sguzman/music-gallery" target="_blank" rel="noreferrer">GitHub</a>
+      <a class="button" href="./data/catalog.json" target="_blank">Catalog JSON</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Melody-first acoustic guitar studies</div>
+    <h1>Music Gallery</h1>
+    <p class="lede">A searchable library of simplified steel-string acoustic melodies. Every song keeps the same visual language: fret number in the box, color for hand position, spacing for rhythm, synchronized playback, phrase isolation, looping, and MIDI export.</p>
+    <div class="badges">
+      <span class="badge">Standard tuning</span>
+      <span class="badge">Three-finger friendly</span>
+      <span class="badge">Melody only</span>
+      <span class="badge">WebAudio playback</span>
+      <span class="badge">MIDI export</span>
+      <span class="badge">Rich JSON metadata</span>
+    </div>
+  </header>
+
+  <section class="card catalog-tools">
+    <div class="searchrow">
+      <label class="searchbox" aria-label="Search songs">
+        <span>⌕</span>
+        <input id="q" type="search" placeholder="Search title, composer, franchise, mood, genre, technique, era, key…">
+      </label>
+      <select id="sort" aria-label="Sort">
+        <option value="title">Sort: title</option>
+        <option value="composer">Sort: composer</option>
+        <option value="difficulty">Sort: easiest</option>
+        <option value="tempo">Sort: tempo</option>
+        <option value="maxFret">Sort: max fret</option>
+      </select>
+      <button id="clear" type="button">Clear</button>
+    </div>
+
+    <div class="filters">
+      <div class="filter"><label>Category<select id="category"></select></label></div>
+      <div class="filter"><label>Era<select id="era"></select></label></div>
+      <div class="filter"><label>Source<select id="sourceMedium"></select></label></div>
+      <div class="filter"><label>Difficulty<select id="difficulty"></select></label></div>
+      <div class="filter"><label>Meter<select id="meter"></select></label></div>
+      <div class="filter"><label>Composer<select id="composer"></select></label></div>
+      <div class="filter"><label>Timing confidence<select id="timingConfidence"></select></label></div>
+      <div class="filter"><label>Maximum fret<select id="maxFret"><option value="">Any</option><option value="3">≤ 3</option><option value="5">≤ 5</option><option value="8">≤ 8</option><option value="10">≤ 10</option></select></label></div>
+    </div>
+  </section>
+
+  <div class="resultbar"><span id="resultCount">Loading…</span><span>Search indexes the full nested metadata, not just the visible card text.</span></div>
+  <section id="songGrid" class="song-grid" aria-live="polite"></section>
+
+  <footer class="footer">
+    <span>Data-driven static site · each song lives in <code>data/songs/*.json</code>.</span>
+    <span>Designed for easy iteration: add JSON, not another one-off app.</span>
+  </footer>
+</main>
+<script type="module" src="./assets/js/catalog.js"></script>
+</body>
+</html>
