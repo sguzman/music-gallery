@@ -10,9 +10,7 @@ def note_iter(song):
     for section in song.get("sections",[]):
         for measure in section.get("measures",[]):
             for event in measure.get("events",[]):
-                if isinstance(event,list) and event and event[0] != "rest":
-                    yield {"string":event[0],"fret":event[1],"position":event[2],"start":event[3],"duration":event[4],"anchor":bool(event[5])}
-                elif isinstance(event,dict) and event.get("type")=="note":
+                if event.get("type")=="note":
                     yield event
 
 def measure_iter(song):
@@ -27,7 +25,7 @@ def enrich(song):
         "sections":len(song.get("sections",[])),
         "measuresOrPracticeGroups":len(measures),
         "notes":len(notes),
-        "uniqueFrettedPitches":len({(n.get("string"),n.get("fret")) for n in notes}),
+        "uniqueMidiPitches":len({n.get("midi") for n in notes}),
         "minFret":min((n.get("fret",0) for n in notes),default=0),
         "maxFret":max((n.get("fret",0) for n in notes),default=0),
         "openStringNotes":sum(n.get("fret")==0 for n in notes),
@@ -89,12 +87,12 @@ def main():
     catalog=[]
     for path in sorted(SONGS.glob("*.json")):
         song=enrich(json.loads(path.read_text(encoding="utf-8")))
-        path.write_text(json.dumps(song,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
+        path.write_text(json.dumps(song,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         catalog.append(summary(song))
         out=ROOT/"songs"/song["slug"]/"index.html"
         out.parent.mkdir(parents=True,exist_ok=True)
         out.write_text(wrapper(song),encoding="utf-8")
-    (ROOT/"data/catalog.json").write_text(json.dumps({"schemaVersion":"1.0.0","songs":catalog},ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
+    (ROOT/"data/catalog.json").write_text(json.dumps({"schemaVersion":"1.0.0","songs":catalog},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(f"Built {len(catalog)} songs.")
 
 if __name__=="__main__":

@@ -1,1 +1,333 @@
-{"schemaVersion":"1.0.0","songs":[{"slug":"astral-observatory","title":"Astral Observatory","displayTitle":"Astral Observatory","composer":"Koji Kondo","description":"A very forgiving reduction: opening star-climb, main motif, then the simple descending answer.","accent":"#5ad1ff","category":"video game music","era":"Modern","year":2000,"sourceMedium":"video game soundtrack","franchise":"The Legend of Zelda: Majora's Mask","difficulty":{"label":"beginner","rating":1,"scale":5},"meter":"4/4 practice grid","tempoUnit":"quarter note","defaultBpm":72,"arrangedKey":null,"maxFret":5,"moods":["dreamy","celestial","nostalgic","gentle"],"genres":["video game music","soundtrack","ambient"],"tags":["Majora's Mask","Zelda","Nintendo 64","astral","observatory","Koji Kondo","melody-only"],"timingMethod":"ear-guided practice approximation","timingConfidence":"low","noteConfidence":"medium","instrumentOptions":["guitar","piano","both"],"estimatedSeconds":43.3,"searchText":"astral observatory astral observatory koji kondo video game music modern video game soundtrack the legend of zelda: majora's mask beginner 4/4 practice grid astral observatory theme astronomical observatory video game music soundtrack ambient dreamy celestial nostalgic gentle majora's mask zelda nintendo 64 astral observatory koji kondo melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery","href":"songs/astral-observatory/"},{"slug":"canon-in-d","title":"Canon and Gigue in D major, P. 37 — Canon","displayTitle":"Pachelbel — Canon in D","composer":"Johann Pachelbel","description":"A short 12-bar reduction: signature opening, flowing variation, one faster flourish, then a clean D ending.","accent":"#f0b35a","category":"classical","era":"Baroque","year":1680,"sourceMedium":"3 violins and continuo","franchise":null,"difficulty":{"label":"beginner","rating":2,"scale":5},"meter":"4/4","tempoUnit":"quarter note","defaultBpm":72,"arrangedKey":"D major","maxFret":7,"moods":["warm","serene","ceremonial","flowing"],"genres":["classical","baroque","canon"],"tags":["Pachelbel","Canon in D","wedding","baroque","ground bass","public domain","melody-only"],"timingMethod":"score-guided simplified rhythm","timingConfidence":"medium","noteConfidence":"medium","instrumentOptions":["guitar","piano","both"],"estimatedSeconds":40.0,"searchText":"canon and gigue in d major, p. 37 — canon pachelbel — canon in d johann pachelbel classical baroque 3 violins and continuo beginner 4/4 d major pachelbel canon canon in d major classical baroque canon warm serene ceremonial flowing pachelbel canon in d wedding baroque ground bass public domain melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery","href":"songs/canon-in-d/"},{"slug":"chopin-nocturne","title":"Nocturne in E-flat major, Op. 9 No. 2","displayTitle":"Chopin — Nocturne Op. 9 No. 2","composer":"Frédéric Chopin","description":"A compact singing-line reduction of the famous nocturne, keeping the opening melody and characteristic high turn.","accent":"#7c6cff","category":"classical","era":"Romantic","year":1832,"sourceMedium":"solo piano","franchise":null,"difficulty":{"label":"beginner","rating":2,"scale":5},"meter":"12/8","tempoUnit":"eighth-note pulse","defaultBpm":90,"arrangedKey":"E-flat major","maxFret":10,"moods":["lyrical","melancholic","romantic","cantabile"],"genres":["classical","nocturne","romantic"],"tags":["Chopin","Nocturne","Op. 9 No. 2","cantabile","public domain","melody-only"],"timingMethod":"practice-approximation","timingConfidence":"medium","noteConfidence":"medium","instrumentOptions":["guitar","piano","both"],"estimatedSeconds":81.3,"searchText":"nocturne in e-flat major, op. 9 no. 2 chopin — nocturne op. 9 no. 2 frédéric chopin classical romantic solo piano beginner 12/8 e-flat major nocturne op 9 no 2 chopin nocturne nocturne in e flat classical nocturne romantic lyrical melancholic romantic cantabile chopin nocturne op. 9 no. 2 cantabile public domain melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery","href":"songs/chopin-nocturne/"},{"slug":"genshin-main-theme","title":"Genshin Impact Main Theme","displayTitle":"Genshin Impact — Main Theme","composer":"Yu-Peng Chen","description":"A source-timed melodic spine that keeps the opening hook and lift while stripping the orchestration.","accent":"#7ee7c4","category":"video game music","era":"Modern","year":2020,"sourceMedium":"video game soundtrack","franchise":"Genshin Impact","difficulty":{"label":"beginner","rating":2,"scale":5},"meter":"3-beat source-derived phrasing","tempoUnit":"quarter-note reference","defaultBpm":80,"arrangedKey":null,"maxFret":7,"moods":["pastoral","open","hopeful","wistful","adventurous"],"genres":["video game music","orchestral soundtrack","fantasy"],"tags":["Genshin Impact","HOYO-MiX","Yu-Peng Chen","main theme","Mondstadt","open-world","melody-only"],"timingMethod":"timestamp-derived attack timing","timingConfidence":"high","noteConfidence":"medium","instrumentOptions":["guitar","piano","both"],"estimatedSeconds":29.5,"searchText":"genshin impact main theme genshin impact — main theme yu-peng chen video game music modern video game soundtrack genshin impact beginner 3-beat source-derived phrasing genshin main theme genshin impact theme video game music orchestral soundtrack fantasy pastoral open hopeful wistful adventurous genshin impact hoyo-mix yu-peng chen main theme mondstadt open-world melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery","href":"songs/genshin-main-theme/"},{"slug":"schubert-serenade","title":"Ständchen, D.957 No. 4","displayTitle":"Schubert — Serenade (Ständchen)","composer":"Franz Schubert","description":"A short singing-line version retaining the opening triplets, long arrivals, and higher answering phrase.","accent":"#9bb7ff","category":"classical","era":"Romantic","year":1828,"sourceMedium":"voice and piano","franchise":null,"difficulty":{"label":"beginner","rating":3,"scale":5},"meter":"3/4","tempoUnit":"quarter note","defaultBpm":90,"arrangedKey":"D minor","maxFret":6,"moods":["tender","yearning","lyrical","night","intimate"],"genres":["classical","lied","romantic"],"tags":["Schubert","Ständchen","Serenade","Schwanengesang","D.957","triplets","public domain"],"timingMethod":"MusicXML-derived rhythm","timingConfidence":"high","noteConfidence":"medium","instrumentOptions":["guitar","piano","both"],"estimatedSeconds":18.0,"searchText":"ständchen, d.957 no. 4 schubert — serenade (ständchen) franz schubert classical romantic voice and piano beginner 3/4 d minor schubert serenade staendchen ständchen classical lied romantic tender yearning lyrical night intimate schubert ständchen serenade schwanengesang d.957 triplets public domain single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery","href":"songs/schubert-serenade/"},{"slug":"sugar-plum-fairy","title":"Dance of the Sugar Plum Fairy","displayTitle":"Tchaikovsky — Dance of the Sugar Plum Fairy","composer":"Pyotr Ilyich Tchaikovsky","description":"A compact eerie hook, chromatic answer, higher response, and shortened ending.","accent":"#d995ff","category":"classical","era":"Romantic","year":1892,"sourceMedium":"orchestra with celesta","franchise":"The Nutcracker","difficulty":{"label":"beginner","rating":2,"scale":5},"meter":"2/4","tempoUnit":"quarter note","defaultBpm":72,"arrangedKey":null,"maxFret":5,"moods":["eerie","delicate","magical","playful","mysterious"],"genres":["classical","ballet","romantic"],"tags":["Tchaikovsky","Nutcracker","Sugar Plum Fairy","celesta","ballet","Christmas","public domain"],"timingMethod":"score-guided simplified rhythm","timingConfidence":"medium","noteConfidence":"medium","instrumentOptions":["celesta","guitar","piano","guitar-celesta","guitar-piano"],"estimatedSeconds":15.0,"searchText":"dance of the sugar plum fairy tchaikovsky — dance of the sugar plum fairy pyotr ilyich tchaikovsky classical romantic orchestra with celesta the nutcracker beginner 2/4 sugar plum fairy dance of the sugarplum fairy classical ballet romantic eerie delicate magical playful mysterious tchaikovsky nutcracker sugar plum fairy celesta ballet christmas public domain single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery","href":"songs/sugar-plum-fairy/"}]}
+{
+  "schemaVersion": "1.0.0",
+  "songs": [
+    {
+      "slug": "astral-observatory",
+      "title": "Astral Observatory",
+      "displayTitle": "Astral Observatory",
+      "composer": "Koji Kondo",
+      "description": "A very forgiving reduction: opening star-climb, main motif, then the simple descending answer.",
+      "accent": "#5ad1ff",
+      "category": "video game music",
+      "era": "Modern",
+      "year": 2000,
+      "sourceMedium": "video game soundtrack",
+      "franchise": "The Legend of Zelda: Majora's Mask",
+      "difficulty": {
+        "label": "beginner",
+        "rating": 1,
+        "scale": 5
+      },
+      "meter": "4/4 practice grid",
+      "tempoUnit": "quarter note",
+      "defaultBpm": 72,
+      "arrangedKey": null,
+      "maxFret": 5,
+      "moods": [
+        "dreamy",
+        "celestial",
+        "nostalgic",
+        "gentle"
+      ],
+      "genres": [
+        "video game music",
+        "soundtrack",
+        "ambient"
+      ],
+      "tags": [
+        "Majora's Mask",
+        "Zelda",
+        "Nintendo 64",
+        "astral",
+        "observatory",
+        "Koji Kondo",
+        "melody-only"
+      ],
+      "timingMethod": "ear-guided practice approximation",
+      "timingConfidence": "low",
+      "noteConfidence": "medium",
+      "instrumentOptions": [
+        "guitar",
+        "piano",
+        "both"
+      ],
+      "estimatedSeconds": 43.3,
+      "searchText": "astral observatory astral observatory koji kondo video game music modern video game soundtrack the legend of zelda: majora's mask beginner 4/4 practice grid astral observatory theme astronomical observatory video game music soundtrack ambient dreamy celestial nostalgic gentle majora's mask zelda nintendo 64 astral observatory koji kondo melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery",
+      "href": "songs/astral-observatory/"
+    },
+    {
+      "slug": "canon-in-d",
+      "title": "Canon and Gigue in D major, P. 37 — Canon",
+      "displayTitle": "Pachelbel — Canon in D",
+      "composer": "Johann Pachelbel",
+      "description": "A short 12-bar reduction: signature opening, flowing variation, one faster flourish, then a clean D ending.",
+      "accent": "#f0b35a",
+      "category": "classical",
+      "era": "Baroque",
+      "year": 1680,
+      "sourceMedium": "3 violins and continuo",
+      "franchise": null,
+      "difficulty": {
+        "label": "beginner",
+        "rating": 2,
+        "scale": 5
+      },
+      "meter": "4/4",
+      "tempoUnit": "quarter note",
+      "defaultBpm": 72,
+      "arrangedKey": "D major",
+      "maxFret": 7,
+      "moods": [
+        "warm",
+        "serene",
+        "ceremonial",
+        "flowing"
+      ],
+      "genres": [
+        "classical",
+        "baroque",
+        "canon"
+      ],
+      "tags": [
+        "Pachelbel",
+        "Canon in D",
+        "wedding",
+        "baroque",
+        "ground bass",
+        "public domain",
+        "melody-only"
+      ],
+      "timingMethod": "score-guided simplified rhythm",
+      "timingConfidence": "medium",
+      "noteConfidence": "medium",
+      "instrumentOptions": [
+        "guitar",
+        "piano",
+        "both"
+      ],
+      "estimatedSeconds": 40.0,
+      "searchText": "canon and gigue in d major, p. 37 — canon pachelbel — canon in d johann pachelbel classical baroque 3 violins and continuo beginner 4/4 d major pachelbel canon canon in d major classical baroque canon warm serene ceremonial flowing pachelbel canon in d wedding baroque ground bass public domain melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery",
+      "href": "songs/canon-in-d/"
+    },
+    {
+      "slug": "chopin-nocturne",
+      "title": "Nocturne in E-flat major, Op. 9 No. 2",
+      "displayTitle": "Chopin — Nocturne Op. 9 No. 2",
+      "composer": "Frédéric Chopin",
+      "description": "A compact singing-line reduction of the famous nocturne, keeping the opening melody and characteristic high turn.",
+      "accent": "#7c6cff",
+      "category": "classical",
+      "era": "Romantic",
+      "year": 1832,
+      "sourceMedium": "solo piano",
+      "franchise": null,
+      "difficulty": {
+        "label": "beginner",
+        "rating": 2,
+        "scale": 5
+      },
+      "meter": "12/8",
+      "tempoUnit": "eighth-note pulse",
+      "defaultBpm": 90,
+      "arrangedKey": "E-flat major",
+      "maxFret": 10,
+      "moods": [
+        "lyrical",
+        "melancholic",
+        "romantic",
+        "cantabile"
+      ],
+      "genres": [
+        "classical",
+        "nocturne",
+        "romantic"
+      ],
+      "tags": [
+        "Chopin",
+        "Nocturne",
+        "Op. 9 No. 2",
+        "cantabile",
+        "public domain",
+        "melody-only"
+      ],
+      "timingMethod": "practice-approximation",
+      "timingConfidence": "medium",
+      "noteConfidence": "medium",
+      "instrumentOptions": [
+        "guitar",
+        "piano",
+        "both"
+      ],
+      "estimatedSeconds": 81.3,
+      "searchText": "nocturne in e-flat major, op. 9 no. 2 chopin — nocturne op. 9 no. 2 frédéric chopin classical romantic solo piano beginner 12/8 e-flat major nocturne op 9 no 2 chopin nocturne nocturne in e flat classical nocturne romantic lyrical melancholic romantic cantabile chopin nocturne op. 9 no. 2 cantabile public domain melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery",
+      "href": "songs/chopin-nocturne/"
+    },
+    {
+      "slug": "genshin-main-theme",
+      "title": "Genshin Impact Main Theme",
+      "displayTitle": "Genshin Impact — Main Theme",
+      "composer": "Yu-Peng Chen",
+      "description": "A source-timed melodic spine that keeps the opening hook and lift while stripping the orchestration.",
+      "accent": "#7ee7c4",
+      "category": "video game music",
+      "era": "Modern",
+      "year": 2020,
+      "sourceMedium": "video game soundtrack",
+      "franchise": "Genshin Impact",
+      "difficulty": {
+        "label": "beginner",
+        "rating": 2,
+        "scale": 5
+      },
+      "meter": "3-beat source-derived phrasing",
+      "tempoUnit": "quarter-note reference",
+      "defaultBpm": 80,
+      "arrangedKey": null,
+      "maxFret": 7,
+      "moods": [
+        "pastoral",
+        "open",
+        "hopeful",
+        "wistful",
+        "adventurous"
+      ],
+      "genres": [
+        "video game music",
+        "orchestral soundtrack",
+        "fantasy"
+      ],
+      "tags": [
+        "Genshin Impact",
+        "HOYO-MiX",
+        "Yu-Peng Chen",
+        "main theme",
+        "Mondstadt",
+        "open-world",
+        "melody-only"
+      ],
+      "timingMethod": "timestamp-derived attack timing",
+      "timingConfidence": "high",
+      "noteConfidence": "medium",
+      "instrumentOptions": [
+        "guitar",
+        "piano",
+        "both"
+      ],
+      "estimatedSeconds": 29.5,
+      "searchText": "genshin impact main theme genshin impact — main theme yu-peng chen video game music modern video game soundtrack genshin impact beginner 3-beat source-derived phrasing genshin main theme genshin impact theme video game music orchestral soundtrack fantasy pastoral open hopeful wistful adventurous genshin impact hoyo-mix yu-peng chen main theme mondstadt open-world melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery",
+      "href": "songs/genshin-main-theme/"
+    },
+    {
+      "slug": "schubert-serenade",
+      "title": "Ständchen, D.957 No. 4",
+      "displayTitle": "Schubert — Serenade (Ständchen)",
+      "composer": "Franz Schubert",
+      "description": "A short singing-line version retaining the opening triplets, long arrivals, and higher answering phrase.",
+      "accent": "#9bb7ff",
+      "category": "classical",
+      "era": "Romantic",
+      "year": 1828,
+      "sourceMedium": "voice and piano",
+      "franchise": null,
+      "difficulty": {
+        "label": "beginner",
+        "rating": 3,
+        "scale": 5
+      },
+      "meter": "3/4",
+      "tempoUnit": "quarter note",
+      "defaultBpm": 90,
+      "arrangedKey": "D minor",
+      "maxFret": 6,
+      "moods": [
+        "tender",
+        "yearning",
+        "lyrical",
+        "night",
+        "intimate"
+      ],
+      "genres": [
+        "classical",
+        "lied",
+        "romantic"
+      ],
+      "tags": [
+        "Schubert",
+        "Ständchen",
+        "Serenade",
+        "Schwanengesang",
+        "D.957",
+        "triplets",
+        "public domain"
+      ],
+      "timingMethod": "MusicXML-derived rhythm",
+      "timingConfidence": "high",
+      "noteConfidence": "medium",
+      "instrumentOptions": [
+        "guitar",
+        "piano",
+        "both"
+      ],
+      "estimatedSeconds": 18.0,
+      "searchText": "ständchen, d.957 no. 4 schubert — serenade (ständchen) franz schubert classical romantic voice and piano beginner 3/4 d minor schubert serenade staendchen ständchen classical lied romantic tender yearning lyrical night intimate schubert ständchen serenade schwanengesang d.957 triplets public domain single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery",
+      "href": "songs/schubert-serenade/"
+    },
+    {
+      "slug": "sugar-plum-fairy",
+      "title": "Dance of the Sugar Plum Fairy",
+      "displayTitle": "Tchaikovsky — Dance of the Sugar Plum Fairy",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "description": "A compact eerie hook, chromatic answer, higher response, and shortened ending.",
+      "accent": "#d995ff",
+      "category": "classical",
+      "era": "Romantic",
+      "year": 1892,
+      "sourceMedium": "orchestra with celesta",
+      "franchise": "The Nutcracker",
+      "difficulty": {
+        "label": "beginner",
+        "rating": 2,
+        "scale": 5
+      },
+      "meter": "2/4",
+      "tempoUnit": "quarter note",
+      "defaultBpm": 72,
+      "arrangedKey": null,
+      "maxFret": 5,
+      "moods": [
+        "eerie",
+        "delicate",
+        "magical",
+        "playful",
+        "mysterious"
+      ],
+      "genres": [
+        "classical",
+        "ballet",
+        "romantic"
+      ],
+      "tags": [
+        "Tchaikovsky",
+        "Nutcracker",
+        "Sugar Plum Fairy",
+        "celesta",
+        "ballet",
+        "Christmas",
+        "public domain"
+      ],
+      "timingMethod": "score-guided simplified rhythm",
+      "timingConfidence": "medium",
+      "noteConfidence": "medium",
+      "instrumentOptions": [
+        "celesta",
+        "guitar",
+        "piano",
+        "guitar-celesta",
+        "guitar-piano"
+      ],
+      "estimatedSeconds": 15.0,
+      "searchText": "dance of the sugar plum fairy tchaikovsky — dance of the sugar plum fairy pyotr ilyich tchaikovsky classical romantic orchestra with celesta the nutcracker beginner 2/4 sugar plum fairy dance of the sugarplum fairy classical ballet romantic eerie delicate magical playful mysterious tchaikovsky nutcracker sugar plum fairy celesta ballet christmas public domain single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery",
+      "href": "songs/sugar-plum-fairy/"
+    }
+  ]
+}

@@ -1,26 +1,190 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "$id":"https://sguzman.github.io/music-gallery/data/song.schema.json",
-  "title":"Music Gallery Song",
-  "description":"Rich metadata plus compact, lossless practice-note data for an interactive steel-string acoustic melody arrangement.",
-  "type":"object",
-  "required":["schemaVersion","slug","identity","origin","arrangement","musical","playback","taxonomy","search","verification","sources","presentation","eventEncoding","sections","stats"],
-  "properties":{
-    "schemaVersion":{"type":"string"},
-    "slug":{"type":"string","pattern":"^[a-z0-9-]+$"},
-    "identity":{"type":"object","required":["title","displayTitle","composer"]},
-    "origin":{"type":"object","required":["category","era","sourceMedium"]},
-    "arrangement":{"type":"object","required":["type","targetInstrument","tuning","difficulty","handPositions","pinkyRequired"]},
-    "musical":{"type":"object","required":["meter","tempoUnit","unitsPerQuarter","defaultBpm","bpmRange"]},
-    "playback":{"type":"object","required":["instrumentOptions","midiExport","synchronizedHighlighting","sectionLooping","salvageMode"]},
-    "taxonomy":{"type":"object"},
-    "search":{"type":"object"},
-    "verification":{"type":"object"},
-    "sources":{"type":"array"},
-    "rights":{"type":"object"},
-    "presentation":{"type":"object","required":["accent","description"]},
-    "eventEncoding":{"type":"object","description":"Documents compact event arrays. Note=[string,fret,position,start,duration,anchor]. Rest=[rest,start,duration]."},
-    "sections":{"type":"array","items":{"type":"object","required":["id","name","measures"],"properties":{"id":{"type":"string"},"name":{"type":"string"},"description":{"type":"string"},"measures":{"type":"array","items":{"type":"object","required":["label","duration","events"],"properties":{"label":{"type":"string"},"duration":{"type":"number","exclusiveMinimum":0},"events":{"type":"array","items":{"type":"array","minItems":3,"maxItems":6}}}}}}}},
-    "stats":{"type":"object"}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sguzman.github.io/music-gallery/data/song.schema.json",
+  "title": "Music Gallery Song",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "slug",
+    "identity",
+    "origin",
+    "arrangement",
+    "musical",
+    "playback",
+    "taxonomy",
+    "verification",
+    "presentation",
+    "sections"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "title",
+        "displayTitle",
+        "composer"
+      ]
+    },
+    "origin": {
+      "type": "object",
+      "required": [
+        "category",
+        "era",
+        "sourceMedium"
+      ]
+    },
+    "arrangement": {
+      "type": "object",
+      "required": [
+        "type",
+        "targetInstrument",
+        "tuning",
+        "difficulty",
+        "handPositions"
+      ]
+    },
+    "musical": {
+      "type": "object",
+      "required": [
+        "meter",
+        "tempoUnit",
+        "unitsPerQuarter",
+        "defaultBpm",
+        "bpmRange"
+      ]
+    },
+    "playback": {
+      "type": "object",
+      "required": [
+        "instrumentOptions",
+        "midiExport",
+        "synchronizedHighlighting"
+      ]
+    },
+    "taxonomy": {
+      "type": "object"
+    },
+    "verification": {
+      "type": "object"
+    },
+    "presentation": {
+      "type": "object",
+      "required": [
+        "accent",
+        "description"
+      ]
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "measures"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "measures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "label",
+                "duration",
+                "events"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "duration": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "events": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "start",
+                      "duration"
+                    ],
+                    "properties": {
+                      "type": {
+                        "enum": [
+                          "note",
+                          "rest"
+                        ]
+                      },
+                      "start": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "duration": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "string": {
+                        "enum": [
+                          "e",
+                          "B",
+                          "G",
+                          "D",
+                          "A",
+                          "E"
+                        ]
+                      },
+                      "stringIndex": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 5
+                      },
+                      "fret": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "midi": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 127
+                      },
+                      "position": {
+                        "enum": [
+                          "open",
+                          "low",
+                          "mid",
+                          "upper",
+                          "high"
+                        ]
+                      },
+                      "anchor": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
