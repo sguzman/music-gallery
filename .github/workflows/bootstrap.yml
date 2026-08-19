@@ -30,8 +30,8 @@ jobs:
       - name: Materialize source tree
         shell: bash
         run: |
-          base64 -d site.tgz.b64 | tar -xzf -
-          rm -f site.tgz.b64 .github/workflows/bootstrap.yml
+          cat site.tgz.b64.part0 site.tgz.b64.part1 site.tgz.b64.part2 site.tgz.b64.part3 site.tgz.b64.part4 | base64 -d | tar -xzf -
+          rm -f site.tgz.b64 site.tgz.b64.part* .github/workflows/bootstrap.yml
           python3 scripts/build.py
 
       - name: Commit readable site source back to main
