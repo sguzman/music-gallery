@@ -13,11 +13,13 @@ jobs:
       - uses: actions/checkout@v6
       - name: Build generated song data and apply timing audits
         run: python3 scripts/build.py
+      - name: Verify Canon source ensemble generation
+        run: python3 scripts/test-canon-ensemble.py
       - name: Validate generated song data
         run: python3 scripts/validate.py
       - name: Parse player JavaScript
         run: node --check assets/js/song-page-v2.js
       - name: Initialize player against real song JSON
         run: node scripts/smoke-player.mjs
-      - name: Render a real song page in headless Chrome
+      - name: Render real song pages in headless Chrome
         run: bash scripts/smoke-browser.sh
