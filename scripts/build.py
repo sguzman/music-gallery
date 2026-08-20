@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import json, html
+import json, html, re
 
 ROOT=Path(__file__).resolve().parents[1]
 SONGS=ROOT/"data/songs"
 TEMPLATE=(ROOT/"templates/song.html").read_text(encoding="utf-8")
 AUDIT_PATH=ROOT/"data/timing-audit.json"
 AUDIT_DIR=ROOT/"data/timing-audits"
+ENSEMBLE_DIR=ROOT/"data/ensembles"
+
 
 def deep_merge(dst,src):
     for key,value in src.items():
@@ -15,6 +17,7 @@ def deep_merge(dst,src):
         else:
             dst[key]=value
     return dst
+
 
 def load_timing_audits():
     combined=json.loads(AUDIT_PATH.read_text(encoding="utf-8")) if AUDIT_PATH.exists() else {"songs":{}}
@@ -31,7 +34,9 @@ def load_timing_audits():
                     deep_merge(combined["songs"].setdefault(slug,{}),audit)
     return combined
 
+
 TIMING_AUDIT=load_timing_audits()
+
 
 def apply_measure_patches(song, patches):
     """Replace individual measures by section id + measure label.
@@ -57,6 +62,7 @@ def apply_measure_patches(song, patches):
                 )
             measures[matches[0]]=replacement
     return song
+
 
 def apply_timing_audit(song):
     audit=TIMING_AUDIT.get("songs",{}).get(song.get("slug"))
@@ -90,6 +96,146 @@ def apply_timing_audit(song):
             sources.append(source)
     return song
 
+
+NOTE_BASE={"C":0,"D":2,"E":4,"F":5,"G":7,"A":9,"B":11}
+PITCH_RE=re.compile(r"^([A-G])([#b]?)(-?\d+)$")
+
+
+def pitch_to_midi(pitch):
+    match=PITCH_RE.match(str(pitch))
+    if not match:
+        raise ValueError(f"invalid pitch name {pitch!r}; expected e.g. F#5")
+    letter,accidental,octave=match.groups()
+    semitone=NOTE_BASE[letter]+({"#":1,"b":-1}.get(accidental,0))
+    midi=12*(int(octave)+1)+semitone
+    if not 0<=midi<=127:
+        raise ValueError(f"pitch {pitch!r} maps outside MIDI range: {midi}")
+    return midi
+
+
+def pattern_measure_events(notes, measure_duration, context):
+    events=[]
+    start=0.0
+    for item in notes:
+        if not isinstance(item,list) or len(item)!=2:
+            raise ValueError(f"{context}: pattern note must be [pitch,duration], got {item!r}")
+        pitch,duration=item
+        duration=float(duration)
+        if duration<=0:
+            raise ValueError(f"{context}: duration must be positive")
+        events.append({
+            "type":"note",
+            "pitch":str(pitch),
+            "midi":pitch_to_midi(pitch),
+            "start":round(start,6),
+            "duration":round(duration,6),
+        })
+        start+=duration
+    if abs(start-measure_duration)>1e-6:
+        raise ValueError(f"{context}: pattern totals {start:g}, expected {measure_duration:g}")
+    return events
+
+
+def build_ensemble_part(spec, part_spec):
+    total=int(spec["totalMeasures"])
+    measure_duration=float(spec["measureDuration"])
+    delay=int(part_spec.get("delayMeasures",0))
+    pattern_name=part_spec["pattern"]
+    pattern=spec.get("patterns",{}).get(pattern_name)
+    if not pattern:
+        raise ValueError(f"{spec['slug']}: missing ensemble pattern {pattern_name!r}")
+    repeat=bool(part_spec.get("repeatPattern"))
+    measures=[]
+    for i in range(total):
+        pattern_index=i-delay
+        notes=[]
+        if pattern_index>=0:
+            if repeat:
+                notes=pattern[pattern_index%len(pattern)]
+            elif pattern_index<len(pattern):
+                notes=pattern[pattern_index]
+        events=[] if not notes else pattern_measure_events(
+            notes,measure_duration,f"{spec['slug']} {part_spec['id']} source measure {i+1}"
+        )
+        measures.append({
+            "label":str(i+1),
+            "duration":measure_duration,
+            "events":events,
+            "sourceMeasure":i+1,
+        })
+    sections=[]
+    for window in spec.get("sections",[]):
+        start=max(1,int(window["startMeasure"]))
+        end=min(total,int(window["endMeasure"]))
+        sections.append({
+            "id":window["id"],
+            "name":window["name"],
+            "description":window.get("description",""),
+            "measures":measures[start-1:end],
+        })
+    return {
+        "id":part_spec["id"],
+        "name":part_spec["name"],
+        "role":part_spec.get("role","source part"),
+        "defaultInstrument":part_spec.get("defaultInstrument","violin"),
+        "enabled":part_spec.get("enabled",True),
+        "tab":part_spec.get("tab",False),
+        "playbackGroup":spec.get("playbackGroup","ensemble"),
+        "sourceDerived":True,
+        "sections":sections,
+    }
+
+
+def apply_ensemble_spec(song):
+    path=ENSEMBLE_DIR/f"{song.get('slug')}.json"
+    if not path.exists():
+        return song
+    spec=json.loads(path.read_text(encoding="utf-8"))
+    if spec.get("slug")!=song.get("slug"):
+        raise ValueError(f"{path.name}: slug disagrees with song")
+    practice={
+        "id":"practice-melody",
+        "name":"Guitar practice reduction",
+        "role":"independent beginner practice reduction",
+        "defaultInstrument":song.get("playback",{}).get("defaultInstrument","guitar"),
+        "enabled":True,
+        "tab":True,
+        "playbackGroup":"practice",
+        "sourceDerived":False,
+        "sections":song.get("sections",[]),
+    }
+    source_parts=[build_ensemble_part(spec,p) for p in spec.get("parts",[])]
+    song["parts"]=[practice,*source_parts]
+    group=spec.get("playbackGroup","ensemble")
+    song["playbackGroups"]={
+        "practice":{
+            "name":"Guitar practice reduction",
+            "kind":"practice",
+            "tempoBpm":song.get("musical",{}).get("defaultBpm"),
+        },
+        group:{
+            "name":spec.get("name","Source ensemble"),
+            "kind":"source",
+            "tempoBpm":spec.get("sourceTempoBpm"),
+            "source":spec.get("source"),
+        },
+    }
+    song.setdefault("verification",{})["ensembleTiming"]=spec.get("verification",{})
+    source=spec.get("source")
+    if source:
+        sources=song.setdefault("sources",[])
+        if not any(s.get("url")==source.get("url") for s in sources):
+            sources.append(source)
+    quality=song.setdefault("verification",{}).setdefault("notesAboutQuality",[])
+    note=(
+        "The source ensemble is a separate Mutopia-derived excerpt. It shares the 12-bar clock length "
+        "of this practice page but is not claimed to be a bar-for-bar orchestration of the beginner guitar reduction."
+    )
+    if note not in quality:
+        quality.append(note)
+    return song
+
+
 def note_iter(song):
     for section in song.get("sections",[]):
         for measure in section.get("measures",[]):
@@ -97,9 +243,11 @@ def note_iter(song):
                 if event.get("type")=="note":
                     yield event
 
+
 def measure_iter(song):
     for section in song.get("sections",[]):
         yield from section.get("measures",[])
+
 
 def enrich(song):
     notes=list(note_iter(song)); measures=list(measure_iter(song))
@@ -132,6 +280,7 @@ def enrich(song):
     song.setdefault("search",{})["text"]=" ".join(str(x) for x in terms if x).lower()
     return song
 
+
 def summary(song):
     return {
         "slug":song["slug"],"title":song["identity"]["title"],"displayTitle":song["identity"]["displayTitle"],
@@ -152,6 +301,7 @@ def summary(song):
         "searchText":song["search"]["text"],"href":f"songs/{song['slug']}/"
     }
 
+
 def wrapper(song):
     jsonld={
       "@context":"https://schema.org","@type":"MusicComposition","name":song["identity"]["title"],
@@ -171,11 +321,13 @@ def wrapper(song):
       .replace("{{JSON_LD}}",json.dumps(jsonld,ensure_ascii=False,indent=2))
     )
 
+
 def main():
     catalog=[]
     for path in sorted(SONGS.glob("*.json")):
         song=json.loads(path.read_text(encoding="utf-8"))
         song=apply_timing_audit(song)
+        song=apply_ensemble_spec(song)
         song=enrich(song)
         path.write_text(json.dumps(song,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         catalog.append(summary(song))
@@ -183,7 +335,8 @@ def main():
         out.parent.mkdir(parents=True,exist_ok=True)
         out.write_text(wrapper(song),encoding="utf-8")
     (ROOT/"data/catalog.json").write_text(json.dumps({"schemaVersion":"1.0.0","songs":catalog},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print(f"Built {len(catalog)} songs with timing audit overlays.")
+    print(f"Built {len(catalog)} songs with timing audits and ensemble overlays.")
+
 
 if __name__=="__main__":
     main()
