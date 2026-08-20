@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Validate song data
+        run: python3 scripts/validate.py
       - name: Build catalog and song wrappers
         run: python3 scripts/build.py
       - name: Configure Pages
