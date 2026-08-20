@@ -20,9 +20,15 @@ def apply_timing_audit(song):
     audit=TIMING_AUDIT.get("songs",{}).get(song.get("slug"))
     if not audit:
         return song
-    for key in ("musical","verification"):
+    for key in ("musical","verification","playback"):
         if key in audit:
             deep_merge(song.setdefault(key,{}),audit[key])
+    # A verified symbolic transcription may replace the legacy approximate
+    # event grid wholesale. Lists are intentionally replaced, not deep-merged.
+    if "sections" in audit:
+        song["sections"]=audit["sections"]
+    if "parts" in audit:
+        song["parts"]=audit["parts"]
     if audit.get("status"):
         song.setdefault("verification",{})["timingAuditStatus"]=audit["status"]
     if audit.get("notes"):
@@ -31,6 +37,10 @@ def apply_timing_audit(song):
             notes.append(audit["notes"])
     source=audit.get("source")
     if source:
+        sources=song.setdefault("sources",[])
+        if not any(s.get("url")==source.get("url") for s in sources):
+            sources.append(source)
+    for source in audit.get("sources",[]):
         sources=song.setdefault("sources",[])
         if not any(s.get("url")==source.get("url") for s in sources):
             sources.append(source)
