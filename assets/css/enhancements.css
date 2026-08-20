@@ -1,0 +1,12 @@
+.orchestra-panel{margin:16px 0;padding:17px;display:grid;gap:14px}
+.orchestra-head{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.orchestra-head h2{margin:.15rem 0 .2rem;font-size:1.25rem}.orchestra-head p{margin:0;color:var(--muted);font-size:.82rem}
+.orchestra-grid{display:grid;gap:10px}.part-row{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(190px,1fr) minmax(180px,1.1fr);gap:10px;align-items:start;padding:11px;border:1px solid #ffffff10;background:#07090d73;border-radius:14px}
+.part-enable{display:grid;grid-template-columns:auto 1fr;column-gap:9px;align-items:center}.part-enable input{grid-row:1/3;accent-color:var(--accent)}.part-enable small{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
+.part-row details{font-size:.78rem}.part-row summary{cursor:pointer;color:#d9dfeb;font-weight:750;padding:8px 0}.section-orch-row{display:grid;grid-template-columns:minmax(100px,1fr) minmax(140px,1.2fr);gap:8px;align-items:center;margin-top:7px;color:var(--muted)}
+.orchestra-note{color:var(--muted);font-size:.74rem;line-height:1.45;border-top:1px solid #ffffff0c;padding-top:10px}
+.salvage-mode .note:not(.anchor){opacity:.12;filter:saturate(.25) brightness(.7)}.salvage-mode .note.anchor{box-shadow:0 0 0 2px #fff,0 0 18px color-mix(in srgb,var(--accent) 55%,transparent)}
+.meta-item{position:relative;overflow:hidden;border-color:color-mix(in srgb,var(--meta-accent) 28%,#ffffff0e)!important;background:linear-gradient(135deg,color-mix(in srgb,var(--meta-accent) 10%,#ffffff06),#ffffff05)!important}
+.meta-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--meta-accent);opacity:.9}.meta-item small{color:color-mix(in srgb,var(--meta-accent) 74%,#cfd5e1)!important}.meta-item b{color:color-mix(in srgb,var(--meta-accent) 20%,#f4f6fb)}
+@media(max-width:850px){.part-row{grid-template-columns:1fr 1fr}.part-row details{grid-column:1/-1}.orchestra-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.part-row{grid-template-columns:1fr}.part-row details{grid-column:auto}.section-orch-row{grid-template-columns:1fr}.orchestra-head button{width:100%}}
