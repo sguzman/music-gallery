@@ -16,6 +16,31 @@ def deep_merge(dst,src):
             dst[key]=value
     return dst
 
+def apply_measure_patches(song, patches):
+    """Replace individual measures by section id + measure label.
+
+    This is intentionally exact: an audit that names a missing or duplicated
+    measure fails the build rather than silently landing on the wrong bar.
+    """
+    sections={section.get("id"):section for section in song.get("sections",[])}
+    for section_id, measure_map in patches.items():
+        section=sections.get(section_id)
+        if section is None:
+            raise ValueError(f"{song.get('slug')}: timing audit references missing section {section_id!r}")
+        measures=section.get("measures",[])
+        by_label={}
+        for i,measure in enumerate(measures):
+            by_label.setdefault(str(measure.get("label")),[]).append(i)
+        for label,replacement in measure_map.items():
+            matches=by_label.get(str(label),[])
+            if len(matches)!=1:
+                raise ValueError(
+                    f"{song.get('slug')}: timing audit measure {section_id}/{label} "
+                    f"matched {len(matches)} bars (expected exactly 1)"
+                )
+            measures[matches[0]]=replacement
+    return song
+
 def apply_timing_audit(song):
     audit=TIMING_AUDIT.get("songs",{}).get(song.get("slug"))
     if not audit:
@@ -27,6 +52,8 @@ def apply_timing_audit(song):
     # event grid wholesale. Lists are intentionally replaced, not deep-merged.
     if "sections" in audit:
         song["sections"]=audit["sections"]
+    elif "measurePatches" in audit:
+        apply_measure_patches(song,audit["measurePatches"])
     if "parts" in audit:
         song["parts"]=audit["parts"]
     if audit.get("status"):
