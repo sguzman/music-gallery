@@ -1,0 +1,16 @@
+/*
+ * Exact timing display geometry.
+ *
+ * The staff gets a small physical gutter on both sides so a note centered at
+ * score time 0 or at the final boundary can remain fully visible. This changes
+ * only the drawable rectangle; percentages inside that rectangle remain a
+ * strictly linear mapping of musical time.
+ */
+#tabs .tab-grid .staff {
+  margin-left: 47px;
+  margin-right: 13px;
+}
+
+#tabs .note[data-exact-timing="true"] {
+  z-index: 5;
+}
