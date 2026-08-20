@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0.0",
+  "songs": {
+    "astral-observatory": {
+      "status": "duration-audit-required",
+      "musical": {
+        "meter": "4/4",
+        "tempoUnit": "quarter note",
+        "unitsPerQuarter": 1,
+        "defaultBpm": 92,
+        "bpmRange": [55, 120]
+      },
+      "verification": {
+        "timing": {
+          "confidence": "low",
+          "method": "lead-sheet tempo verified; note durations still require bar-by-bar replacement"
+        },
+        "needsReview": true
+      },
+      "source": {
+        "label": "VGLeadSheets — Astral Observatory",
+        "url": "https://www.vgleadsheets.com/assets/sheets/Bb/The%20Legend%20of%20Zelda%20-%20Majora%27s%20Mask%20-%20Astral%20Observatory.pdf",
+        "kind": "lead-sheet score reference"
+      },
+      "notes": "The current arrangement's note-duration grid is not promoted to source-verified merely because the source tempo is known. Re-transcribe attacks and holds from the score/MIDI before raising confidence."
+    },
+    "chopin-nocturne": {
+      "status": "score-crosscheck-required",
+      "musical": {
+        "meter": "12/8",
+        "tempoUnit": "quarter-note equivalent (score marks eighth note = 132)",
+        "unitsPerQuarter": 2,
+        "defaultBpm": 66,
+        "bpmRange": [40, 90]
+      },
+      "verification": {
+        "timing": {
+          "confidence": "medium",
+          "method": "Mutopia engraved score/MIDI cross-check; simplified melody still requires event-by-event verification"
+        },
+        "needsReview": true
+      },
+      "source": {
+        "label": "Mutopia — Chopin Nocturne Op. 9 No. 2",
+        "url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1590",
+        "kind": "engraved score and MIDI reference"
+      },
+      "notes": "The score is 12/8 and marks eighth note = 132. The site normalizes that to quarter-note equivalent 66 while retaining two event units per quarter."
+    },
+    "genshin-main-theme": {
+      "status": "source-timed",
+      "verification": {
+        "timing": {
+          "confidence": "high",
+          "method": "source-derived attack timing cross-checked against 3/4 full-score transcription at quarter note = 80"
+        }
+      },
+      "notes": "Current quarter-note reference of 80 is corroborated by the full-score transcription."
+    },
+    "sugar-plum-fairy": {
+      "status": "score-guided",
+      "musical": {
+        "meter": "2/4",
+        "tempoUnit": "quarter note",
+        "unitsPerQuarter": 1,
+        "defaultBpm": 62,
+        "bpmRange": [45, 100]
+      },
+      "verification": {
+        "timing": {
+          "confidence": "medium",
+          "method": "mfiles orchestral score/MIDI-guided simplified rhythm"
+        }
+      },
+      "source": {
+        "label": "mfiles — Dance of the Sugar Plum Fairy orchestral score",
+        "url": "https://www.mfiles.co.uk/scores/Sugar-Plum-Fairy.htm",
+        "kind": "orchestral score and MIDI reference"
+      },
+      "notes": "The orchestral score marks quarter note = 62 and identifies celesta as the lead timbre."
+    }
+  }
+}
