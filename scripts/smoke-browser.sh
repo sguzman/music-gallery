@@ -3,8 +3,9 @@ set -euo pipefail
 
 PORT="${PORT:-8765}"
 LOG="$(mktemp)"
-DOM="$(mktemp)"
-trap 'kill "${SERVER_PID:-}" 2>/dev/null || true; rm -f "$LOG" "$DOM"' EXIT
+CHOPIN_DOM="$(mktemp)"
+CANON_DOM="$(mktemp)"
+trap 'kill "${SERVER_PID:-}" 2>/dev/null || true; rm -f "$LOG" "$CHOPIN_DOM" "$CANON_DOM"' EXIT
 
 python3 -m http.server "$PORT" --bind 127.0.0.1 >"$LOG" 2>&1 &
 SERVER_PID=$!
@@ -28,33 +29,64 @@ if [[ -z "$CHROME" ]]; then
   exit 1
 fi
 
-"$CHROME" \
-  --headless=new \
-  --no-sandbox \
-  --disable-gpu \
-  --virtual-time-budget=3000 \
-  --dump-dom \
-  "http://127.0.0.1:${PORT}/songs/chopin-nocturne/" >"$DOM"
+dump_page() {
+  local url="$1"
+  local output="$2"
+  "$CHROME" \
+    --headless=new \
+    --no-sandbox \
+    --disable-gpu \
+    --virtual-time-budget=3000 \
+    --dump-dom \
+    "$url" >"$output"
+}
 
-if grep -q '>Loading…<' "$DOM"; then
-  echo "Player remained stuck on Loading…" >&2
+assert_base_player() {
+  local dom="$1"
+  if grep -q '>Loading…<' "$dom"; then
+    echo "Player remained stuck on Loading…" >&2
+    exit 1
+  fi
+  if grep -q '>Could not load song JSON.<' "$dom"; then
+    echo "Player failed to load song JSON" >&2
+    exit 1
+  fi
+  if ! grep -q 'class="section-block"' "$dom"; then
+    echo "Player rendered no section blocks" >&2
+    exit 1
+  fi
+  if ! grep -q 'id="midi"' "$dom"; then
+    echo "MIDI control missing from rendered page" >&2
+    exit 1
+  fi
+  if ! grep -q 'id="orchestraPanel"' "$dom"; then
+    echo "Orchestration panel did not initialize" >&2
+    exit 1
+  fi
+}
+
+dump_page "http://127.0.0.1:${PORT}/songs/chopin-nocturne/" "$CHOPIN_DOM"
+assert_base_player "$CHOPIN_DOM"
+
+dump_page "http://127.0.0.1:${PORT}/songs/canon-in-d/" "$CANON_DOM"
+assert_base_player "$CANON_DOM"
+for part in 'Violin I' 'Violin II' 'Violin III' 'Violoncello'; do
+  if ! grep -q ">$part<" "$CANON_DOM"; then
+    echo "Canon source ensemble is missing $part" >&2
+    exit 1
+  fi
+done
+if ! grep -q '>▶ Play source ensemble<' "$CANON_DOM"; then
+  echo "Canon source-ensemble playback control is missing" >&2
   exit 1
 fi
-if grep -q '>Could not load song JSON.<' "$DOM"; then
-  echo "Player failed to load song JSON" >&2
+if ! grep -q 'data-playback-group="ensemble"' "$CANON_DOM"; then
+  echo "Canon source parts were not isolated into the ensemble playback group" >&2
   exit 1
 fi
-if ! grep -q 'class="section-block"' "$DOM"; then
-  echo "Player rendered no section blocks" >&2
-  exit 1
-fi
-if ! grep -q 'id="midi"' "$DOM"; then
-  echo "MIDI control missing from rendered page" >&2
-  exit 1
-fi
-if ! grep -q 'id="orchestraPanel"' "$DOM"; then
-  echo "Orchestration panel did not initialize" >&2
+if ! grep -q '>4 source parts<' "$CANON_DOM"; then
+  echo "Canon source-part badge is missing or incorrect" >&2
   exit 1
 fi
 
-echo "Browser smoke test passed using $CHROME"
+echo "Browser smoke tests passed using $CHROME (Chopin + Canon ensemble)"
