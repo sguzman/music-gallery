@@ -17,173 +17,103 @@
     "sections"
   ],
   "properties": {
-    "schemaVersion": {
-      "type": "string"
-    },
-    "slug": {
-      "type": "string",
-      "pattern": "^[a-z0-9-]+$"
-    },
+    "schemaVersion": {"type": "string"},
+    "slug": {"type": "string", "pattern": "^[a-z0-9-]+$"},
     "identity": {
       "type": "object",
-      "required": [
-        "title",
-        "displayTitle",
-        "composer"
-      ]
+      "required": ["title", "displayTitle", "composer"]
     },
     "origin": {
       "type": "object",
-      "required": [
-        "category",
-        "era",
-        "sourceMedium"
-      ]
+      "required": ["category", "era", "sourceMedium"]
     },
     "arrangement": {
       "type": "object",
-      "required": [
-        "type",
-        "targetInstrument",
-        "tuning",
-        "difficulty",
-        "handPositions"
-      ]
+      "required": ["type", "targetInstrument", "tuning", "difficulty", "handPositions"]
     },
     "musical": {
       "type": "object",
-      "required": [
-        "meter",
-        "tempoUnit",
-        "unitsPerQuarter",
-        "defaultBpm",
-        "bpmRange"
-      ]
+      "description": "Timing grid. defaultBpm is normalized to a quarter-note equivalent; unitsPerQuarter defines event-grid resolution.",
+      "required": ["meter", "tempoUnit", "unitsPerQuarter", "defaultBpm", "bpmRange"],
+      "properties": {
+        "meter": {"type": "string"},
+        "tempoUnit": {"type": "string", "description": "Human-readable source/original tempo-unit note when useful."},
+        "unitsPerQuarter": {"type": "number", "exclusiveMinimum": 0},
+        "defaultBpm": {"type": "number", "exclusiveMinimum": 0, "description": "Quarter-note-equivalent BPM used by the site clock."},
+        "bpmRange": {
+          "type": "array",
+          "prefixItems": [{"type": "number", "exclusiveMinimum": 0}, {"type": "number", "exclusiveMinimum": 0}],
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
     },
     "playback": {
       "type": "object",
-      "required": [
-        "instrumentOptions",
-        "midiExport",
-        "synchronizedHighlighting"
-      ]
+      "required": ["instrumentOptions", "midiExport", "synchronizedHighlighting"]
     },
-    "taxonomy": {
-      "type": "object"
-    },
-    "verification": {
-      "type": "object"
-    },
+    "taxonomy": {"type": "object"},
+    "verification": {"type": "object"},
     "presentation": {
       "type": "object",
-      "required": [
-        "accent",
-        "description"
-      ]
+      "required": ["accent", "description"]
     },
     "sections": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "measures"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "measures": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "label",
-                "duration",
-                "events"
-              ],
-              "properties": {
-                "label": {
-                  "type": "string"
-                },
-                "duration": {
-                  "type": "number",
-                  "exclusiveMinimum": 0
-                },
-                "events": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "type",
-                      "start",
-                      "duration"
-                    ],
-                    "properties": {
-                      "type": {
-                        "enum": [
-                          "note",
-                          "rest"
-                        ]
-                      },
-                      "start": {
-                        "type": "number",
-                        "minimum": 0
-                      },
-                      "duration": {
-                        "type": "number",
-                        "exclusiveMinimum": 0
-                      },
-                      "string": {
-                        "enum": [
-                          "e",
-                          "B",
-                          "G",
-                          "D",
-                          "A",
-                          "E"
-                        ]
-                      },
-                      "stringIndex": {
-                        "type": "integer",
-                        "minimum": 0,
-                        "maximum": 5
-                      },
-                      "fret": {
-                        "type": "integer",
-                        "minimum": 0
-                      },
-                      "midi": {
-                        "type": "integer",
-                        "minimum": 0,
-                        "maximum": 127
-                      },
-                      "position": {
-                        "enum": [
-                          "open",
-                          "low",
-                          "mid",
-                          "upper",
-                          "high"
-                        ]
-                      },
-                      "anchor": {
-                        "type": "boolean"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+      "items": {"$ref": "#/$defs/section"}
+    },
+    "parts": {
+      "type": "array",
+      "description": "Optional simultaneous musical parts for mini-orchestra playback. Legacy melody-only songs omit this and use top-level sections.",
+      "items": {"$ref": "#/$defs/part"}
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": "object",
+      "required": ["type", "start", "duration"],
+      "properties": {
+        "type": {"enum": ["note", "rest"]},
+        "start": {"type": "number", "minimum": 0},
+        "duration": {"type": "number", "exclusiveMinimum": 0},
+        "string": {"enum": ["e", "B", "G", "D", "A", "E"]},
+        "stringIndex": {"type": "integer", "minimum": 0, "maximum": 5},
+        "fret": {"type": "integer", "minimum": 0},
+        "midi": {"type": "integer", "minimum": 0, "maximum": 127},
+        "position": {"enum": ["open", "low", "mid", "upper", "high"]},
+        "anchor": {"type": "boolean"}
+      }
+    },
+    "measure": {
+      "type": "object",
+      "required": ["label", "duration", "events"],
+      "properties": {
+        "label": {"type": "string"},
+        "duration": {"type": "number", "exclusiveMinimum": 0},
+        "events": {"type": "array", "items": {"$ref": "#/$defs/event"}}
+      }
+    },
+    "section": {
+      "type": "object",
+      "required": ["id", "name", "measures"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "description": {"type": "string"},
+        "measures": {"type": "array", "items": {"$ref": "#/$defs/measure"}}
+      }
+    },
+    "part": {
+      "type": "object",
+      "required": ["id", "name", "sections"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "role": {"type": "string"},
+        "defaultInstrument": {"type": "string"},
+        "enabled": {"type": "boolean"},
+        "tab": {"type": "boolean", "description": "Whether this part drives the visible guitar-tab cursor."},
+        "sections": {"type": "array", "items": {"$ref": "#/$defs/section"}}
       }
     }
   }
