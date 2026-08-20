@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 SONGS=ROOT/"data/songs"
 TEMPLATE=(ROOT/"templates/song.html").read_text(encoding="utf-8")
 AUDIT_PATH=ROOT/"data/timing-audit.json"
-TIMING_AUDIT=json.loads(AUDIT_PATH.read_text(encoding="utf-8")) if AUDIT_PATH.exists() else {"songs":{}}
+AUDIT_DIR=ROOT/"data/timing-audits"
 
 def deep_merge(dst,src):
     for key,value in src.items():
@@ -15,6 +15,23 @@ def deep_merge(dst,src):
         else:
             dst[key]=value
     return dst
+
+def load_timing_audits():
+    combined=json.loads(AUDIT_PATH.read_text(encoding="utf-8")) if AUDIT_PATH.exists() else {"songs":{}}
+    combined.setdefault("songs",{})
+    if AUDIT_DIR.exists():
+        for path in sorted(AUDIT_DIR.glob("*.json")):
+            payload=json.loads(path.read_text(encoding="utf-8"))
+            if "slug" in payload:
+                slug=payload["slug"]
+                audit={k:v for k,v in payload.items() if k not in {"slug","schemaVersion"}}
+                deep_merge(combined["songs"].setdefault(slug,{}),audit)
+            else:
+                for slug,audit in payload.get("songs",{}).items():
+                    deep_merge(combined["songs"].setdefault(slug,{}),audit)
+    return combined
+
+TIMING_AUDIT=load_timing_audits()
 
 def apply_measure_patches(song, patches):
     """Replace individual measures by section id + measure label.
