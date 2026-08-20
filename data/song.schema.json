@@ -52,6 +52,11 @@
       "type": "object",
       "required": ["instrumentOptions", "midiExport", "synchronizedHighlighting"]
     },
+    "playbackGroups": {
+      "type": "object",
+      "description": "Independent playback timelines. Parts in different groups are never implicitly mixed; this keeps practice reductions separate from source-score excerpts.",
+      "additionalProperties": {"$ref": "#/$defs/playbackGroup"}
+    },
     "taxonomy": {"type": "object"},
     "verification": {"type": "object"},
     "presentation": {
@@ -76,6 +81,7 @@
         "type": {"enum": ["note", "rest"]},
         "start": {"type": "number", "minimum": 0},
         "duration": {"type": "number", "exclusiveMinimum": 0},
+        "pitch": {"type": "string", "description": "Optional human-readable concert pitch retained on generated source events."},
         "string": {"enum": ["e", "B", "G", "D", "A", "E"]},
         "stringIndex": {"type": "integer", "minimum": 0, "maximum": 5},
         "fret": {"type": "integer", "minimum": 0},
@@ -90,6 +96,8 @@
       "properties": {
         "label": {"type": "string"},
         "duration": {"type": "number", "exclusiveMinimum": 0},
+        "partial": {"type": "boolean"},
+        "sourceMeasure": {"type": "integer", "minimum": 1},
         "events": {"type": "array", "items": {"$ref": "#/$defs/event"}}
       }
     },
@@ -113,7 +121,18 @@
         "defaultInstrument": {"type": "string"},
         "enabled": {"type": "boolean"},
         "tab": {"type": "boolean", "description": "Whether this part drives the visible guitar-tab cursor."},
+        "playbackGroup": {"type": "string", "description": "Only parts with the same playbackGroup are scheduled together."},
+        "sourceDerived": {"type": "boolean", "description": "True when the part is derived from a cited source score rather than the independent practice reduction."},
         "sections": {"type": "array", "items": {"$ref": "#/$defs/section"}}
+      }
+    },
+    "playbackGroup": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "kind": {"enum": ["practice", "source", "arrangement"]},
+        "tempoBpm": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "source": {"type": ["object", "null"]}
       }
     }
   }
