@@ -9,6 +9,7 @@
 <meta property="og:type" content="music.song">
 <title>{{PAGE_TITLE}}</title>
 <link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/enhancements.css">
 <script type="application/ld+json">
 {{JSON_LD}}
 </script>
@@ -40,8 +41,8 @@
     <button id="pause">Ⅱ Pause</button>
     <button id="stop">■ Stop</button>
     <label class="range">Tempo <input id="tempo" type="range"><b id="tempoOut">—</b></label>
-    <label class="range">Ring <input id="gate" type="range" min="35" max="105" value="86"><b id="gateOut">86%</b></label>
-    <select id="instrument" aria-label="Instrument"></select>
+    <label class="range">Note length <input id="gate" type="range" min="35" max="105" value="100"><b id="gateOut">100%</b></label>
+    <select id="instrument" aria-label="Lead instrument"></select>
     <button id="loop">↻ Loop</button>
     <button id="midi">⇩ MIDI</button>
   </section>
@@ -59,7 +60,7 @@
 
   <div class="card help">
     <b>Practice controls:</b> <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step note-by-note · click any fret box to audition it · click a section name to isolate it.
-    Box color is hand position; box number is fret; horizontal spacing carries the attack timing. Outlined boxes are salvage anchors.
+    Box color is hand position; box number is fret; horizontal spacing carries the attack timing. Outlined boxes are salvage anchors. Orchestration controls can assign a different instrument to every part or section.
   </div>
 
   <details class="card metadata">
@@ -74,6 +75,6 @@
     <span><a href="../../data/song.schema.json" target="_blank">JSON schema</a></span>
   </footer>
 </main>
-<script type="module" src="../../assets/js/song-page.js"></script>
+<script type="module" src="../../assets/js/song-page-v2.js"></script>
 </body>
 </html>
