@@ -21,6 +21,8 @@ def enrich(song):
     notes=list(note_iter(song)); measures=list(measure_iter(song))
     total_units=sum(float(m.get("duration",0)) for m in measures)
     bpm=float(song["musical"]["defaultBpm"])
+    units_per_quarter=float(song["musical"].get("unitsPerQuarter",1) or 1)
+    quarter_notes=total_units/units_per_quarter
     song["stats"]={
         "sections":len(song.get("sections",[])),
         "measuresOrPracticeGroups":len(measures),
@@ -31,7 +33,8 @@ def enrich(song):
         "openStringNotes":sum(n.get("fret")==0 for n in notes),
         "anchorNotes":sum(bool(n.get("anchor")) for n in notes),
         "durationUnits":round(total_units,3),
-        "estimatedSecondsAtDefaultTempo":round(total_units*60/bpm,1)
+        "durationQuarterNotes":round(quarter_notes,3),
+        "estimatedSecondsAtDefaultTempo":round(quarter_notes*60/bpm,1)
     }
     terms=[
         song["identity"]["title"],song["identity"]["displayTitle"],song["identity"]["composer"]["name"],
