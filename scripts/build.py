@@ -5,6 +5,36 @@ import json, html
 ROOT=Path(__file__).resolve().parents[1]
 SONGS=ROOT/"data/songs"
 TEMPLATE=(ROOT/"templates/song.html").read_text(encoding="utf-8")
+AUDIT_PATH=ROOT/"data/timing-audit.json"
+TIMING_AUDIT=json.loads(AUDIT_PATH.read_text(encoding="utf-8")) if AUDIT_PATH.exists() else {"songs":{}}
+
+def deep_merge(dst,src):
+    for key,value in src.items():
+        if isinstance(value,dict) and isinstance(dst.get(key),dict):
+            deep_merge(dst[key],value)
+        else:
+            dst[key]=value
+    return dst
+
+def apply_timing_audit(song):
+    audit=TIMING_AUDIT.get("songs",{}).get(song.get("slug"))
+    if not audit:
+        return song
+    for key in ("musical","verification"):
+        if key in audit:
+            deep_merge(song.setdefault(key,{}),audit[key])
+    if audit.get("status"):
+        song.setdefault("verification",{})["timingAuditStatus"]=audit["status"]
+    if audit.get("notes"):
+        notes=song.setdefault("verification",{}).setdefault("notesAboutQuality",[])
+        if audit["notes"] not in notes:
+            notes.append(audit["notes"])
+    source=audit.get("source")
+    if source:
+        sources=song.setdefault("sources",[])
+        if not any(s.get("url")==source.get("url") for s in sources):
+            sources.append(source)
+    return song
 
 def note_iter(song):
     for section in song.get("sections",[]):
@@ -40,7 +70,7 @@ def enrich(song):
         song["identity"]["title"],song["identity"]["displayTitle"],song["identity"]["composer"]["name"],
         song["origin"].get("category"),song["origin"].get("era"),song["origin"].get("sourceMedium"),
         song["origin"].get("franchise"),song["arrangement"]["difficulty"]["label"],song["musical"]["meter"],
-        song["arrangement"].get("arrangedKey"),
+        song["arrangement"].get("arrangedKey"),song.get("verification",{}).get("timingAuditStatus"),
         *song["identity"].get("aliases",[]),*song["taxonomy"].get("genres",[]),
         *song["taxonomy"].get("moods",[]),*song["taxonomy"].get("tags",[]),
         *song["taxonomy"].get("techniques",[]),*song["taxonomy"].get("learningGoals",[])
@@ -61,6 +91,7 @@ def summary(song):
         "genres":song["taxonomy"].get("genres",[]),"tags":song["taxonomy"].get("tags",[]),
         "timingMethod":song["verification"]["timing"]["method"],
         "timingConfidence":song["verification"]["timing"]["confidence"],
+        "timingAuditStatus":song.get("verification",{}).get("timingAuditStatus"),
         "noteConfidence":song["verification"]["notes"]["confidence"],
         "instrumentOptions":song["playback"]["instrumentOptions"],
         "estimatedSeconds":song["stats"]["estimatedSecondsAtDefaultTempo"],
@@ -89,14 +120,16 @@ def wrapper(song):
 def main():
     catalog=[]
     for path in sorted(SONGS.glob("*.json")):
-        song=enrich(json.loads(path.read_text(encoding="utf-8")))
+        song=json.loads(path.read_text(encoding="utf-8"))
+        song=apply_timing_audit(song)
+        song=enrich(song)
         path.write_text(json.dumps(song,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         catalog.append(summary(song))
         out=ROOT/"songs"/song["slug"]/"index.html"
         out.parent.mkdir(parents=True,exist_ok=True)
         out.write_text(wrapper(song),encoding="utf-8")
     (ROOT/"data/catalog.json").write_text(json.dumps({"schemaVersion":"1.0.0","songs":catalog},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print(f"Built {len(catalog)} songs.")
+    print(f"Built {len(catalog)} songs with timing audit overlays.")
 
 if __name__=="__main__":
     main()
