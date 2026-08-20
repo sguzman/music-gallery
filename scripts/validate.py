@@ -14,10 +14,13 @@ def validate_song(path):
     try: song=json.loads(path.read_text(encoding="utf-8"))
     except Exception as e:
         return [f"{path.name}: invalid JSON: {e}"]
-    upq=float(song.get("musical",{}).get("unitsPerQuarter",0) or 0)
+    musical=song.get("musical",{})
+    upq=float(musical.get("unitsPerQuarter",0) or 0)
     if upq<=0: err(errors,path,"musical.unitsPerQuarter must be > 0")
-    bpm=float(song.get("musical",{}).get("defaultBpm",0) or 0)
+    bpm=float(musical.get("defaultBpm",0) or 0)
     if bpm<=0: err(errors,path,"musical.defaultBpm must be > 0")
+    nominal=float(musical.get("nominalMeasureUnits",0) or 0)
+    if nominal<0: err(errors,path,"musical.nominalMeasureUnits must be >= 0")
     ids=set()
     for si,section in enumerate(song.get("sections",[])):
         sid=section.get("id")
@@ -26,11 +29,18 @@ def validate_song(path):
         ids.add(sid)
         for mi,measure in enumerate(section.get("measures",[])):
             md=float(measure.get("duration",0) or 0)
-            if md<=0: err(errors,path,f"{sid or si} measure {mi} duration must be > 0")
+            label=str(measure.get("label",mi))
+            loc_measure=f"{sid or si} measure {label}"
+            if md<=0: err(errors,path,f"{loc_measure} duration must be > 0")
+            is_partial=bool(measure.get("partial")) or label.strip().lower() in {"pickup","anacrusis"}
+            if nominal>0 and not is_partial and abs(md-nominal)>TOL:
+                err(errors,path,f"{loc_measure} duration {md:g} disagrees with nominal bar length {nominal:g}")
+            if nominal>0 and is_partial and md>nominal+TOL:
+                err(errors,path,f"{loc_measure} partial duration {md:g} exceeds nominal bar length {nominal:g}")
             for ei,event in enumerate(measure.get("events",[])):
                 start=float(event.get("start",-1))
                 dur=float(event.get("duration",0) or 0)
-                loc=f"{sid or si} measure {mi} event {ei}"
+                loc=f"{loc_measure} event {ei}"
                 if start<0: err(errors,path,f"{loc} start must be >= 0")
                 if dur<=0: err(errors,path,f"{loc} duration must be > 0")
                 if start+dur>md+TOL: err(errors,path,f"{loc} ends at {start+dur:g}, past measure duration {md:g}")
