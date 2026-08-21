@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "canon-in-d",
+  "id": "source-ensemble",
+  "name": "Mutopia source ensemble excerpt",
+  "playbackGroup": "ensemble",
+  "sourceTempoBpm": 55,
+  "measureDuration": 4,
+  "totalMeasures": 12,
+  "sections": [
+    {"id": "source-1-4", "name": "Source bars 1–4", "description": "Ground bass begins; violin voices are still entering.", "startMeasure": 1, "endMeasure": 4},
+    {"id": "source-5-8", "name": "Source bars 5–8", "description": "All three canon voices are entering over the ground.", "startMeasure": 5, "endMeasure": 8},
+    {"id": "source-9-12", "name": "Source bars 9–12", "description": "Four-part source texture with increasingly active violin motion.", "startMeasure": 9, "endMeasure": 12}
+  ],
+  "patterns": {
+    "violinCommon": [
+      [["F#5",1],["E5",1],["D5",1],["C#5",1]],
+      [["B4",1],["A4",1],["B4",1],["C#5",1]],
+      [["D5",1],["C#5",1],["B4",1],["A4",1]],
+      [["G4",1],["F#4",1],["G4",1],["E4",1]],
+      [["D4",0.5],["F#4",0.5],["A4",0.5],["G4",0.5],["F#4",0.5],["D4",0.5],["F#4",0.5],["E4",0.5]],
+      [["D4",0.5],["B3",0.5],["D4",0.5],["A4",0.5],["G4",0.5],["B4",0.5],["A4",0.5],["G4",0.5]],
+      [["F#4",0.5],["D4",0.5],["E4",0.5],["C#5",0.5],["D5",0.5],["F#5",0.5],["A5",0.5],["A4",0.5]],
+      [["B4",0.5],["G4",0.5],["A4",0.5],["F#4",0.5],["D4",0.5],["D5",0.5],["D5",0.75],["C#5",0.25]],
+      [["D5",0.25],["C#5",0.25],["D5",0.25],["D4",0.25],["C#4",0.25],["A4",0.25],["E4",0.25],["F#4",0.25],["D4",0.25],["D5",0.25],["C#5",0.25],["B4",0.25],["C#5",0.25],["F#5",0.25],["A5",0.25],["B5",0.25]],
+      [["G5",0.25],["F#5",0.25],["E5",0.25],["G5",0.25],["F#5",0.25],["E5",0.25],["D5",0.25],["C#5",0.25],["B4",0.25],["A4",0.25],["G4",0.25],["F#4",0.25],["E4",0.25],["G4",0.25],["F#4",0.25],["E4",0.25]]
+    ],
+    "ground": [
+      [["D3",1],["A2",1],["B2",1],["F#2",1]],
+      [["G2",1],["D2",1],["G2",1],["A2",1]]
+    ]
+  },
+  "parts": [
+    {"id":"violin-1","name":"Violin I","role":"canon voice · enters after 2 bars","defaultInstrument":"violin","delayMeasures":2,"pattern":"violinCommon","enabled":true,"tab":false},
+    {"id":"violin-2","name":"Violin II","role":"canon voice · enters after 4 bars","defaultInstrument":"violin","delayMeasures":4,"pattern":"violinCommon","enabled":true,"tab":false},
+    {"id":"violin-3","name":"Violin III","role":"canon voice · enters after 6 bars","defaultInstrument":"violin","delayMeasures":6,"pattern":"violinCommon","enabled":true,"tab":false},
+    {"id":"violoncello","name":"Violoncello","role":"repeating ground bass","defaultInstrument":"cello","delayMeasures":0,"pattern":"ground","repeatPattern":true,"enabled":true,"tab":false}
+  ],
+  "source": {
+    "label": "Mutopia — Canon per 3 Violini e Basso",
+    "url": "https://github.com/MutopiaProject/MutopiaProject/tree/2144afd6f52d56c5b6995b8b589ef1268b3139f0/ftp/PachelbelJ/Canon_per_3_Violini_e_Basso/Canon_per_3_Violini_e_Basso-lys",
+    "kind": "public-domain LilyPond score and MIDI source"
+  },
+  "verification": {
+    "confidence": "high",
+    "method": "first 12 source bars transcribed from Mutopia's three delayed violin parts, shared violinCommon source, violoncello ground, and MIDI tempo file",
+    "scope": "source ensemble excerpt only; does not upgrade the independent beginner guitar reduction"
+  }
+}

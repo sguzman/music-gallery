@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "songs": {
     "astral-observatory": {
-      "status": "duration-audit-required",
+      "status": "score-rhythm-transcribed",
       "musical": {
         "meter": "4/4",
         "tempoUnit": "quarter note",
@@ -10,19 +10,132 @@
         "defaultBpm": 92,
         "bpmRange": [55, 120]
       },
+      "playback": {
+        "defaultInstrument": "celesta",
+        "gatePercent": 100
+      },
       "verification": {
         "timing": {
-          "confidence": "low",
-          "method": "lead-sheet tempo verified; note durations still require bar-by-bar replacement"
+          "confidence": "medium",
+          "method": "bar-by-bar symbolic rhythm transcribed from VGLeadSheets; tempo independently cross-checked against NinSheetMusic"
         },
-        "needsReview": true
+        "needsReview": true,
+        "timingDetails": {
+          "attackSource": "VGLeadSheets lead sheet",
+          "durationSource": "VGLeadSheets lead sheet",
+          "tempoSource": "VGLeadSheets quarter note = 92; NinSheetMusic arrangement quarter note = 90",
+          "remainingReview": "final loop-transition sustain/run should still be checked against a sequenced MIDI before timing confidence is promoted to high"
+        }
       },
-      "source": {
-        "label": "VGLeadSheets — Astral Observatory",
-        "url": "https://www.vgleadsheets.com/assets/sheets/Bb/The%20Legend%20of%20Zelda%20-%20Majora%27s%20Mask%20-%20Astral%20Observatory.pdf",
-        "kind": "lead-sheet score reference"
-      },
-      "notes": "The current arrangement's note-duration grid is not promoted to source-verified merely because the source tempo is known. Re-transcribe attacks and holds from the score/MIDI before raising confidence."
+      "sources": [
+        {
+          "label": "VGLeadSheets — Astral Observatory",
+          "url": "https://www.vgleadsheets.com/assets/sheets/Bb/The%20Legend%20of%20Zelda%20-%20Majora%27s%20Mask%20-%20Astral%20Observatory.pdf",
+          "kind": "lead-sheet score reference"
+        },
+        {
+          "label": "NinSheetMusic — Astral Observatory piano score",
+          "url": "https://www.ninsheetmusic.org/download/pdf/2173",
+          "kind": "independent score cross-check"
+        },
+        {
+          "label": "VGMusic — Astral Observatory sequenced MIDI",
+          "url": "https://www.vgmusic.com/file/b5e690074322869d60955fb7ddd34809.html",
+          "kind": "secondary MIDI reference pending event extraction"
+        }
+      ],
+      "notes": "Replaced the old 72-BPM ear-guided block rhythm. The score shows a two-beat ascending sixteenth-note pickup, then 12 bars at quarter note = 92. Most melody bars use a dotted-quarter attack followed by an eighth-note attack tied through the remaining half-note span. The final loop transition is represented musically but remains explicitly pending MIDI-level verification.",
+      "sections": [
+        {
+          "id": "climb",
+          "name": "Opening star-climb",
+          "description": "Two-beat ascending sixteenth-note pickup from the score.",
+          "measures": [
+            {
+              "label": "Pickup",
+              "duration": 2.0,
+              "events": [
+                {"type":"note","string":"G","fret":3,"midi":58,"position":"low","start":0.0,"duration":0.25,"anchor":true},
+                {"type":"note","string":"B","fret":1,"midi":60,"position":"low","start":0.25,"duration":0.25,"anchor":false},
+                {"type":"note","string":"B","fret":3,"midi":62,"position":"low","start":0.5,"duration":0.25,"anchor":false},
+                {"type":"note","string":"e","fret":0,"midi":64,"position":"open","start":0.75,"duration":0.25,"anchor":true},
+                {"type":"note","string":"e","fret":1,"midi":65,"position":"low","start":1.0,"duration":0.25,"anchor":false},
+                {"type":"note","string":"e","fret":3,"midi":67,"position":"mid","start":1.25,"duration":0.25,"anchor":false},
+                {"type":"note","string":"e","fret":4,"midi":68,"position":"mid","start":1.5,"duration":0.25,"anchor":false},
+                {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":1.75,"duration":0.25,"anchor":true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "motif",
+          "name": "Main motif",
+          "description": "Bars 1–6: dotted-quarter attack, eighth-note reattack, then tied sustain.",
+          "measures": [
+            {"label":"1","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":1.5,"duration":2.5,"anchor":false}
+            ]},
+            {"label":"2","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":1.5,"duration":2.5,"anchor":false}
+            ]},
+            {"label":"3","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":1.5,"duration":2.5,"anchor":false}
+            ]},
+            {"label":"4","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":3,"midi":67,"position":"mid","start":1.5,"duration":2.5,"anchor":true}
+            ]},
+            {"label":"5","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":1.5,"duration":2.5,"anchor":false}
+            ]},
+            {"label":"6","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":1.5,"duration":2.5,"anchor":false}
+            ]}
+          ]
+        },
+        {
+          "id": "descent",
+          "name": "Floating answer",
+          "description": "Bars 7–12 and the loop transition, preserving the score's long tied releases.",
+          "measures": [
+            {"label":"7","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":3,"midi":67,"position":"mid","start":1.5,"duration":2.5,"anchor":true}
+            ]},
+            {"label":"8","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":1,"midi":65,"position":"low","start":0.0,"duration":4.0,"anchor":true}
+            ]},
+            {"label":"9","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":3,"midi":67,"position":"mid","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":3,"midi":67,"position":"mid","start":1.5,"duration":2.5,"anchor":false}
+            ]},
+            {"label":"10","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":1,"midi":65,"position":"low","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":1,"midi":65,"position":"low","start":1.5,"duration":2.5,"anchor":false}
+            ]},
+            {"label":"11","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":1,"midi":65,"position":"low","start":0.0,"duration":1.5,"anchor":true},
+              {"type":"note","string":"e","fret":1,"midi":65,"position":"low","start":1.5,"duration":2.5,"anchor":false}
+            ]},
+            {"label":"12 / loop","duration":4.0,"events":[
+              {"type":"note","string":"e","fret":0,"midi":64,"position":"open","start":0.0,"duration":2.0,"anchor":true},
+              {"type":"note","string":"G","fret":3,"midi":58,"position":"low","start":2.0,"duration":0.25,"anchor":true},
+              {"type":"note","string":"B","fret":1,"midi":60,"position":"low","start":2.25,"duration":0.25,"anchor":false},
+              {"type":"note","string":"B","fret":3,"midi":62,"position":"low","start":2.5,"duration":0.25,"anchor":false},
+              {"type":"note","string":"e","fret":0,"midi":64,"position":"open","start":2.75,"duration":0.25,"anchor":true},
+              {"type":"note","string":"e","fret":1,"midi":65,"position":"low","start":3.0,"duration":0.25,"anchor":false},
+              {"type":"note","string":"e","fret":3,"midi":67,"position":"mid","start":3.25,"duration":0.25,"anchor":false},
+              {"type":"note","string":"e","fret":4,"midi":68,"position":"mid","start":3.5,"duration":0.25,"anchor":false},
+              {"type":"note","string":"e","fret":5,"midi":69,"position":"mid","start":3.75,"duration":0.25,"anchor":true}
+            ]}
+          ]
+        }
+      ]
     },
     "chopin-nocturne": {
       "status": "score-crosscheck-required",

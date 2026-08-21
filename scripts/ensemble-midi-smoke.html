@@ -1,0 +1,46 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Ensemble MIDI smoke</title>
+<pre id="result" data-status="running">running</pre>
+<script type="module">
+import {buildEnsembleMidi} from "../assets/js/ensemble-midi.js";
+
+const result=document.querySelector("#result");
+const fail=message=>{result.dataset.status="fail";result.textContent=message;throw new Error(message);};
+
+function inspect(song,expectedNames){
+  const parts=(song.parts||[]).filter(part=>part.sourceDerived);
+  if(parts.length!==expectedNames.length)fail(`${song.slug}: expected ${expectedNames.length} source parts, got ${parts.length}`);
+  const bytes=buildEnsembleMidi(parts,{
+    bpm:song.playbackGroups?.ensemble?.tempoBpm||song.musical.defaultBpm,
+    unitsPerQuarter:song.musical.unitsPerQuarter||1,
+    instrumentFor:part=>part.defaultInstrument
+  });
+  const text=new TextDecoder("latin1").decode(bytes);
+  const trackCount=(text.match(/MTrk/g)||[]).length;
+  const format=(bytes[8]<<8)|bytes[9];
+  const declaredTracks=(bytes[10]<<8)|bytes[11];
+  const ppq=(bytes[12]<<8)|bytes[13];
+  for(const name of expectedNames){if(!text.includes(name))fail(`${song.slug}: missing MIDI track name ${name}`);}
+  if(format!==1)fail(`${song.slug}: expected format 1, got ${format}`);
+  const expectedTracks=expectedNames.length+1;
+  if(trackCount!==expectedTracks||declaredTracks!==expectedTracks)fail(`${song.slug}: expected ${expectedTracks} tracks, got physical=${trackCount} declared=${declaredTracks}`);
+  if(ppq!==480)fail(`${song.slug}: expected PPQ 480, got ${ppq}`);
+  return {format,trackCount,ppq};
+}
+
+try{
+  const [canon,sugar]=await Promise.all([
+    fetch("../data/songs/canon-in-d.json").then(r=>r.json()),
+    fetch("../data/songs/sugar-plum-fairy.json").then(r=>r.json())
+  ]);
+  const canonMidi=inspect(canon,["Violin I","Violin II","Violin III","Violoncello"]);
+  const sugarMidi=inspect(sugar,["Violin I","Violin II","Celesta"]);
+  result.dataset.status="pass";
+  result.dataset.format=String(canonMidi.format);
+  result.dataset.canonTracks=String(canonMidi.trackCount);
+  result.dataset.sugarTracks=String(sugarMidi.trackCount);
+  result.dataset.ppq=String(canonMidi.ppq);
+  result.textContent=`pass · format 1 · Canon ${canonMidi.trackCount} tracks · Sugar Plum ${sugarMidi.trackCount} tracks · PPQ ${canonMidi.ppq}`;
+}catch(error){if(result.dataset.status!=="fail"){result.dataset.status="fail";result.textContent=String(error);}}
+</script>

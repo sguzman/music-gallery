@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sguzman.github.io/music-gallery/data/ensemble.schema.json",
+  "title": "Music Gallery Source Ensemble Declaration",
+  "type": "object",
+  "required": ["schemaVersion","slug","playbackGroup","measureDuration","totalMeasures","sections","patterns","parts","source","verification"],
+  "properties": {
+    "schemaVersion": {"type":"string"},
+    "slug": {"type":"string","pattern":"^[a-z0-9-]+$"},
+    "id": {"type":"string"},
+    "name": {"type":"string"},
+    "playbackGroup": {"type":"string"},
+    "sourceTempoBpm": {"type":"number","exclusiveMinimum":0},
+    "measureDuration": {"type":"number","exclusiveMinimum":0},
+    "totalMeasures": {"type":"integer","minimum":1},
+    "qualityNote": {"type":"string","description":"Optional human-readable provenance/quality note appended to the generated song metadata."},
+    "sections": {
+      "type":"array",
+      "minItems":1,
+      "items": {
+        "type":"object",
+        "required":["id","name","startMeasure","endMeasure"],
+        "properties": {
+          "id":{"type":"string"},
+          "name":{"type":"string"},
+          "description":{"type":"string"},
+          "startMeasure":{"type":"integer","minimum":1},
+          "endMeasure":{"type":"integer","minimum":1}
+        }
+      }
+    },
+    "patterns": {
+      "type":"object",
+      "description":"Named sequences of full measures. A measure uses either sequential [concertPitch,duration] shorthand or explicit {pitch,start,duration} events. Explicit events may leave rests or overlap to form chords.",
+      "additionalProperties": {
+        "type":"array",
+        "minItems":1,
+        "items": {
+          "type":"array",
+          "items": {
+            "oneOf": [
+              {
+                "type":"array",
+                "prefixItems":[{"type":"string","pattern":"^[A-G][#b]?-?[0-9]+$"},{"type":"number","exclusiveMinimum":0}],
+                "minItems":2,
+                "maxItems":2
+              },
+              {
+                "type":"object",
+                "required":["pitch","start","duration"],
+                "properties": {
+                  "pitch":{"type":"string","pattern":"^[A-G][#b]?-?[0-9]+$"},
+                  "start":{"type":"number","minimum":0},
+                  "duration":{"type":"number","exclusiveMinimum":0}
+                },
+                "additionalProperties":false
+              }
+            ]
+          }
+        }
+      }
+    },
+    "parts": {
+      "type":"array",
+      "minItems":1,
+      "items": {
+        "type":"object",
+        "required":["id","name","pattern"],
+        "properties": {
+          "id":{"type":"string"},
+          "name":{"type":"string"},
+          "role":{"type":"string"},
+          "defaultInstrument":{"type":"string"},
+          "delayMeasures":{"type":"integer","minimum":0},
+          "pattern":{"type":"string"},
+          "repeatPattern":{"type":"boolean"},
+          "enabled":{"type":"boolean"},
+          "tab":{"type":"boolean"}
+        }
+      }
+    },
+    "source": {
+      "type":"object",
+      "required":["label","url","kind"],
+      "properties": {
+        "label":{"type":"string"},
+        "url":{"type":"string"},
+        "kind":{"type":"string"}
+      }
+    },
+    "verification": {
+      "type":"object",
+      "required":["confidence","method","scope"],
+      "properties": {
+        "confidence":{"enum":["low","medium","high"]},
+        "method":{"type":"string"},
+        "scope":{"type":"string"}
+      }
+    }
+  }
+}

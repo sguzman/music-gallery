@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "genshin-main-theme",
+  "status": "source-timed",
+  "verification": {
+    "timing": {
+      "confidence": "high",
+      "method": "timestamp-derived melody attacks with independent score cross-check at quarter note = 80"
+    },
+    "timingDetails": {
+      "attackSource": "timestamped melody transcription already stored with sourceOnsetMs per event",
+      "tempoCrossCheck": "theartthatran Genshin Impact Main Theme score and parts, quarter note = 80",
+      "scope": "high confidence applies to the stored attack timeline; note selection remains separately medium confidence"
+    }
+  },
+  "sources": [
+    {
+      "label": "theartthatran — Genshin Impact Main Theme score and parts",
+      "url": "https://theartthatran.wordpress.com/wp-content/uploads/2020/12/genshin-impact-main-theme.pdf",
+      "kind": "independent score transcription and tempo cross-check"
+    }
+  ],
+  "notes": "The stored melody events carry sourceOnsetMs timing. The quarter-note reference of 80 is independently corroborated by the theartthatran score/parts. A separate Josh Yoo full-orchestra transcription uses quarter note = 82, so the audit no longer describes the 80-BPM source as that orchestral transcription."
+}

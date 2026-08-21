@@ -1,0 +1,31 @@
+name: Player v2 CI
+
+on:
+  push:
+    branches: [player-v2]
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build generated song data and apply timing audits
+        run: python3 scripts/build.py
+      - name: Verify Canon source ensemble generation
+        run: python3 scripts/test-canon-ensemble.py
+      - name: Verify Sugar Plum source ensemble generation
+        run: python3 scripts/test-sugar-plum-ensemble.py
+      - name: Validate generated song data
+        run: python3 scripts/validate.py
+      - name: Parse player JavaScript
+        run: |
+          node --check assets/js/song-page-v2.js
+          node --check assets/js/ensemble-model.js
+          node --check assets/js/ensemble-midi.js
+          node --check assets/js/ensemble-visual.js
+      - name: Initialize player against real song JSON
+        run: node scripts/smoke-player.mjs
+      - name: Render real song pages in headless Chrome
+        run: bash scripts/smoke-browser.sh
