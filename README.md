@@ -113,7 +113,7 @@ Orchestral writing immediately needs rests and simultaneous notes. A pattern mea
 
 Here `0.0–0.5` is a real rest and the three events at `0.5` form a chord. Explicit events may leave gaps and overlap, but every event must remain inside its declared measure. A single measure may use either sequential shorthand or explicit events, never a mixture of both.
 
-Dance of the Sugar Plum Fairy is the first A5 proof of this representation: its source excerpt contains pizzicato violin rests plus polyphonic celesta chords, and it renders through the same generic ensemble player used by Canon.
+Dance of the Sugar Plum Fairy is the first A5 proof of this representation: its six-bar source excerpt contains pizzicato Violin I and II rests plus polyphonic Celesta chords, and it renders through the same generic ensemble player used by Canon. The excerpt is intentionally limited to those three individually checked parts; it does not imply that the omitted winds, brass, or remaining string families have already been transcribed.
 
 ## Ensemble authoring contract
 
