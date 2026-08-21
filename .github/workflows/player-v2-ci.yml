@@ -15,6 +15,8 @@ jobs:
         run: python3 scripts/build.py
       - name: Verify Canon source ensemble generation
         run: python3 scripts/test-canon-ensemble.py
+      - name: Verify Sugar Plum source ensemble generation
+        run: python3 scripts/test-sugar-plum-ensemble.py
       - name: Validate generated song data
         run: python3 scripts/validate.py
       - name: Parse player JavaScript
