@@ -13,6 +13,7 @@
     "sourceTempoBpm": {"type":"number","exclusiveMinimum":0},
     "measureDuration": {"type":"number","exclusiveMinimum":0},
     "totalMeasures": {"type":"integer","minimum":1},
+    "qualityNote": {"type":"string"},
     "sections": {
       "type":"array",
       "minItems":1,
