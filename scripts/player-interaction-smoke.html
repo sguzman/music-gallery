@@ -1,0 +1,66 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Player interaction smoke</title>
+<pre id="result" data-status="running">running</pre>
+<iframe id="song" src="../songs/canon-in-d/" style="width:1200px;height:900px"></iframe>
+<script type="module">
+const result=document.querySelector("#result");
+const frame=document.querySelector("#song");
+const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+const waitFor=async(test,label,timeout=5000)=>{
+  const start=performance.now();
+  while(performance.now()-start<timeout){const value=test();if(value)return value;await delay(25);}
+  throw new Error(`timeout waiting for ${label}`);
+};
+const assert=(condition,message)=>{if(!condition)throw new Error(message);};
+try{
+  await new Promise((resolve,reject)=>{frame.onload=resolve;setTimeout(()=>reject(new Error("iframe load timeout")),5000);});
+  const doc=frame.contentDocument;
+  await waitFor(()=>doc.querySelector("#ensembleTimeline"),"ensemble timeline");
+  await waitFor(()=>doc.querySelector("#status")?.textContent!=="Loading…","player init");
+  assert(doc.querySelectorAll(".ensemble-track").length===4,"expected four source timeline lanes");
+  assert(doc.querySelector("#tempo").value==="72","practice tempo should initialize at 72");
+
+  doc.querySelector("#playAllParts").click();
+  await waitFor(()=>doc.querySelector("#status")?.textContent.startsWith("Playing ·"),"source playback");
+  assert(doc.querySelector("#tempo").value==="55","source playback should swap to source tempo 55");
+  assert(doc.querySelector("#ensembleTempo").value==="55","source tempo control should show 55");
+
+  const mute=doc.querySelector('[data-part-enabled="violin-1"]');
+  mute.checked=false;
+  mute.dispatchEvent(new Event("change",{bubbles:true}));
+  await delay(120);
+  assert(doc.querySelector('.ensemble-track[data-part="violin-1"]').classList.contains("muted"),"muting Violin I should dim its timeline lane");
+
+  const violin2=doc.querySelector('[data-part-inst="violin-2"]');
+  violin2.value="flute";
+  violin2.dispatchEvent(new Event("change",{bubbles:true}));
+  await delay(120);
+  assert(violin2.value==="flute","Violin II instrument reassignment did not stick");
+
+  const ensembleTempo=doc.querySelector("#ensembleTempo");
+  ensembleTempo.value="60";
+  ensembleTempo.dispatchEvent(new Event("input",{bubbles:true}));
+  await delay(120);
+  assert(doc.querySelector("#tempo").value==="60","source tempo change did not propagate to the playback clock");
+
+  doc.querySelector("#pause").click();
+  await delay(60);
+  assert(!doc.querySelector("#status").textContent.startsWith("Playing ·"),"pause did not stop source playback state");
+
+  doc.querySelector("#play").click();
+  await waitFor(()=>doc.querySelector("#status")?.textContent.startsWith("Playing ·"),"practice playback");
+  assert(doc.querySelector("#tempo").value==="72","switching back to practice should restore practice tempo 72");
+  assert(doc.querySelector("#ensemblePlayhead").style.left==="0%","practice playback should clear the source playhead");
+  doc.querySelector("#stop").click();
+
+  result.dataset.status="pass";
+  result.dataset.tracks=String(doc.querySelectorAll(".ensemble-track").length);
+  result.dataset.sourceTempo="60";
+  result.dataset.practiceTempo="72";
+  result.textContent="pass · mode switching · mute · reassignment · independent tempos";
+}catch(error){
+  result.dataset.status="fail";
+  result.textContent=String(error?.stack||error);
+}
+</script>
