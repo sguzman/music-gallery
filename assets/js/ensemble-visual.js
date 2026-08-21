@@ -138,6 +138,14 @@ function renderTimeline(panel){
   panel.insertBefore(timeline,grid||panel.querySelector(".orchestra-note"));
   $("#ensembleMidi").onclick=downloadSourceMidi;
 }
+function keepTimelineMounted(panel){
+  const observer=new MutationObserver(()=>{
+    if(!panel.querySelector("#ensembleTimeline"))queueMicrotask(()=>{
+      if(panel.isConnected&&!panel.querySelector("#ensembleTimeline"))renderTimeline(panel);
+    });
+  });
+  observer.observe(panel,{childList:true});
+}
 function sourceIsPlaying(){return activeMode===sourceGroup&&$("#status")?.textContent.startsWith("Playing ·");}
 function restartSourceIfPlaying(target){
   const row=target.closest?.('[data-playback-group]');
@@ -196,6 +204,7 @@ async function init(){
   activeMode=primaryGroup;
   const panel=await waitForPanel();
   renderTimeline(panel);
+  keepTimelineMounted(panel);
   bindInteractionBridge();
 }
 
