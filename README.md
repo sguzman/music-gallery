@@ -115,6 +115,8 @@ Here `0.0–0.5` is a real rest and the three events at `0.5` form a chord. Expl
 
 Dance of the Sugar Plum Fairy is the first A5 proof of this representation: its six-bar source excerpt contains pizzicato Violin I and II rests plus polyphonic Celesta chords, and it renders through the same generic ensemble player used by Canon. The excerpt is intentionally limited to those three individually checked parts; it does not imply that the omitted winds, brass, or remaining string families have already been transcribed.
 
+A5 was completed without changing `song-page-v2.js`, `ensemble-model.js`, `ensemble-midi.js`, `ensemble-visual.js`, the player CSS, or the song-page template. The second composition therefore exercised the existing renderer entirely through ensemble declarations plus generic compiler support for explicit timed events.
+
 ## Ensemble authoring contract
 
 1. Select an identifiable source score/MIDI/MusicXML edition and state the exact excerpt scope.
