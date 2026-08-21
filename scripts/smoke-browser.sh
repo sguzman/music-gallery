@@ -5,9 +5,10 @@ PORT="${PORT:-8765}"
 LOG="$(mktemp)"
 CHOPIN_DOM="$(mktemp)"
 CANON_DOM="$(mktemp)"
+SUGAR_DOM="$(mktemp)"
 MIDI_DOM="$(mktemp)"
 INTERACTION_DOM="$(mktemp)"
-trap 'kill "${SERVER_PID:-}" 2>/dev/null || true; rm -f "$LOG" "$CHOPIN_DOM" "$CANON_DOM" "$MIDI_DOM" "$INTERACTION_DOM"' EXIT
+trap 'kill "${SERVER_PID:-}" 2>/dev/null || true; rm -f "$LOG" "$CHOPIN_DOM" "$CANON_DOM" "$SUGAR_DOM" "$MIDI_DOM" "$INTERACTION_DOM"' EXIT
 
 python3 -m http.server "$PORT" --bind 127.0.0.1 >"$LOG" 2>&1 &
 SERVER_PID=$!
@@ -105,6 +106,35 @@ if ! grep -q 'id="ensembleMidi"' "$CANON_DOM"; then
   exit 1
 fi
 
+dump_page "http://127.0.0.1:${PORT}/songs/sugar-plum-fairy/" "$SUGAR_DOM" 4500
+assert_base_player "$SUGAR_DOM"
+for part in 'Violin I' 'Violin II' 'Celesta'; do
+  if ! grep -q ">$part<" "$SUGAR_DOM"; then
+    echo "Sugar Plum source ensemble is missing $part" >&2
+    exit 1
+  fi
+done
+if ! grep -q '>3 source parts<' "$SUGAR_DOM"; then
+  echo "Sugar Plum source-part badge is missing or incorrect" >&2
+  exit 1
+fi
+if ! grep -q 'id="ensembleTimeline"' "$SUGAR_DOM"; then
+  echo "Sugar Plum source-score timeline did not render" >&2
+  exit 1
+fi
+if [[ "$(grep -o 'class="ensemble-track' "$SUGAR_DOM" | wc -l)" -lt 3 ]]; then
+  echo "Sugar Plum source-score timeline has fewer than three lanes" >&2
+  exit 1
+fi
+if ! grep -q '>62<' "$SUGAR_DOM"; then
+  echo "Sugar Plum source tempo 62 is not visible in the rendered orchestration UI" >&2
+  exit 1
+fi
+if [[ "$(grep -o 'data-part="celesta"' "$SUGAR_DOM" | wc -l)" -lt 10 ]]; then
+  echo "Sugar Plum celesta polyphonic event blocks did not render" >&2
+  exit 1
+fi
+
 dump_page "http://127.0.0.1:${PORT}/scripts/ensemble-midi-smoke.html" "$MIDI_DOM" 4500
 if ! grep -q 'id="result" data-status="pass"' "$MIDI_DOM"; then
   echo "Multitrack MIDI browser smoke failed" >&2
@@ -123,4 +153,4 @@ if ! grep -q 'id="result" data-status="pass"' "$INTERACTION_DOM"; then
   exit 1
 fi
 
-echo "Browser smoke tests passed using $CHROME (Chopin + Canon timeline + interactions + multitrack MIDI)"
+echo "Browser smoke tests passed using $CHROME (Chopin + Canon + Sugar Plum source timelines + interactions + multitrack MIDI)"
