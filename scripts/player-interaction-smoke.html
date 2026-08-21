@@ -21,6 +21,11 @@ try{
   assert(doc.querySelectorAll(".ensemble-track").length===4,"expected four source timeline lanes");
   assert(doc.querySelector("#tempo").value==="72","practice tempo should initialize at 72");
 
+  const practiceInstrument=doc.querySelector("#instrument");
+  practiceInstrument.value="piano";
+  practiceInstrument.dispatchEvent(new Event("change",{bubbles:true}));
+  await waitFor(()=>doc.querySelector("#ensembleTimeline")&&doc.querySelectorAll(".ensemble-track").length===4,"timeline remount after orchestration rerender");
+
   doc.querySelector("#playAllParts").click();
   await waitFor(()=>doc.querySelector("#status")?.textContent.startsWith("Playing ·"),"source playback");
   assert(doc.querySelector("#tempo").value==="55","source playback should swap to source tempo 55");
@@ -58,7 +63,7 @@ try{
   result.dataset.tracks=String(doc.querySelectorAll(".ensemble-track").length);
   result.dataset.sourceTempo="60";
   result.dataset.practiceTempo="72";
-  result.textContent="pass · mode switching · mute · reassignment · independent tempos";
+  result.textContent="pass · timeline persistence · mode switching · mute · reassignment · independent tempos";
 }catch(error){
   result.dataset.status="fail";
   result.textContent=String(error?.stack||error);
