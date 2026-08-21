@@ -141,8 +141,8 @@ if ! grep -q 'id="result" data-status="pass"' "$MIDI_DOM"; then
   cat "$MIDI_DOM" >&2
   exit 1
 fi
-if ! grep -q 'data-format="1"' "$MIDI_DOM" || ! grep -q 'data-tracks="5"' "$MIDI_DOM"; then
-  echo "Canon source MIDI is not format 1 with five tracks" >&2
+if ! grep -q 'data-format="1"' "$MIDI_DOM" || ! grep -q 'data-canon-tracks="5"' "$MIDI_DOM" || ! grep -q 'data-sugar-tracks="4"' "$MIDI_DOM"; then
+  echo "Source MIDI track structure is wrong (expected Canon=5 tracks, Sugar Plum=4 tracks, format 1)" >&2
   exit 1
 fi
 
