@@ -1,10 +1,10 @@
 # Music Gallery
 
-A static, data-driven gallery of simplified steel-string acoustic guitar melodies, with an experimental source-score ensemble player on `player-v2`.
+A static, data-driven gallery of simplified steel-string acoustic guitar melodies, with optional source-derived ensemble playback kept separate from the practice reductions.
 
 ## Design goals
 
-- Melody-first guitar practice arrangements: keep the recognizable melodic spine, remove accompaniment.
+- Melody-first guitar arrangements: keep the recognizable melodic spine, remove accompaniment.
 - Fret number is the primary guitar instruction.
 - Box color encodes left-hand position:
   - blue: frets 1–3
@@ -12,85 +12,50 @@ A static, data-driven gallery of simplified steel-string acoustic guitar melodie
   - purple: frets 6–8
   - orange/red: frets 8–10
   - neutral: open string
-- Uniform note boxes; horizontal position is a linear mapping of exact attack time.
-- Synchronized WebAudio playback with independently assignable instruments.
+- Uniform note boxes; horizontal spacing carries exact attack timing.
+- Synchronized WebAudio playback with a broad General-MIDI-style orchestral palette.
 - Section isolation, looping, note audition, keyboard stepping, salvage anchors, and MIDI export.
 - Rich JSON metadata so the catalog can search/filter across musical, historical, technical, and practice dimensions.
-- Provenance boundaries are explicit: a cited source-score ensemble never silently upgrades or rewrites an independent beginner reduction.
+- Source-score ensembles are provenance-separated from guitar practice reductions rather than silently merged with them.
 
 ## Repository layout
 
 ```text
-index.html                       Searchable catalog
-assets/css/site.css              Shared visual system
-assets/css/enhancements.css      v2 orchestra/metadata UI
-assets/css/exact-timing.css      Edge gutter for exact-time fret boxes
-assets/js/catalog.js             Search, filters, sorting
-assets/js/song-page.js           Stable production player
-assets/js/song-page-v2.js        Experimental grouped multi-part player
-data/catalog.json                Fast index summaries
-data/song.schema.json            Generated/runtime song schema
-data/ensemble.schema.json        Declarative source-ensemble schema
-data/songs/*.json                Canonical practice metadata + note/timing data
-data/timing-audits/*.json        Source-grounded timing patches
-data/ensembles/*.json            Compact source-score ensemble declarations
-scripts/build.py                 Applies audits/ensembles; regenerates catalog/pages
-scripts/validate.py              Timing, guitar, MIDI, and group-sync invariants
-scripts/test-canon-ensemble.py   Deterministic first multi-part source test
-scripts/smoke-player.mjs         Node initialization smoke
-scripts/smoke-browser.sh         Real headless-Chrome page smoke
-templates/song.html              Shared wrapper template
-songs/<slug>/index.html          Thin shareable song pages
-.github/workflows/pages.yml      Stable GitHub Pages deploy workflow
-.github/workflows/player-v2-ci.yml Experimental branch CI
+index.html                         Searchable catalog
+assets/css/site.css                Shared visual system
+assets/css/enhancements.css        Player-v2 orchestration/metadata additions
+assets/js/catalog.js               Search, filters, sorting
+assets/js/song-page-v2.js          Generic guitar renderer + playback controls
+assets/js/ensemble-model.js        Generic source-ensemble timeline model
+assets/js/ensemble-midi.js         SMF format-1 source-ensemble MIDI writer
+assets/js/ensemble-visual.js       Generic source-score lane visualization
+data/catalog.json                  Fast index summaries
+data/song.schema.json              Generated song schema
+data/ensemble.schema.json          Declarative source-ensemble schema
+data/songs/*.json                  Canonical song metadata + practice data
+data/ensembles/*.json              Compact source-derived ensemble declarations
+data/timing-audits/*.json          Per-song timing corrections/provenance
+scripts/build.py                   Applies timing audits + ensemble overlays
+scripts/validate.py                Structural timing/playback validation
+templates/song.html                Shared wrapper template
+songs/<slug>/index.html            Thin shareable song pages
+.github/workflows/player-v2-ci.yml Experimental player CI
+.github/workflows/pages.yml        Production Pages deploy workflow
 ```
 
 ## Adding a practice song
 
 1. Copy an existing `data/songs/<slug>.json`.
 2. Fill in identity/origin/arrangement/musical/taxonomy/search/provenance metadata.
-3. Add sections, measures/practice-groups, and guitar events.
-4. If the rhythm is source-verified independently of the base file, add a focused overlay in `data/timing-audits/<slug>.json` rather than hiding the correction in renderer code.
-5. Run `python3 scripts/build.py`, then `python3 scripts/validate.py`.
+3. Add sections, measures/practice-groups, and events.
+4. Add a timing audit when source verification changes the legacy event grid or confidence.
+5. Run `python scripts/build.py` and `python scripts/validate.py`.
 
 The build script regenerates `data/catalog.json` and the shareable `songs/<slug>/index.html` wrapper automatically.
 
-## Adding a source ensemble
+## Practice event model
 
-A source ensemble is **not** an accompaniment automatically attached to the guitar reduction. It is an independent, cited playback timeline. That distinction matters when the practice arrangement is shortened, transposed, simplified, or otherwise not bar-for-bar identical to the source score.
-
-Create `data/ensembles/<slug>.json` using `data/ensemble.schema.json`. The declaration is deliberately generative:
-
-```json
-{
-  "slug": "example-song",
-  "playbackGroup": "ensemble",
-  "measureDuration": 4,
-  "totalMeasures": 8,
-  "patterns": {
-    "voice": [
-      [["C5", 1], ["D5", 1], ["E5", 2]]
-    ]
-  },
-  "parts": [
-    {
-      "id": "violin-1",
-      "name": "Violin I",
-      "defaultInstrument": "violin",
-      "delayMeasures": 2,
-      "pattern": "voice"
-    }
-  ]
-}
-```
-
-The builder converts concert-pitch names to MIDI, expands measure patterns and delays, and materializes synchronized `song.parts`. Source parts use `sourceDerived: true`; the guitar reduction lives in a separate `practice` playback group. The v2 scheduler only mixes parts within one playback group, and MIDI export follows that same boundary.
-
-Canon in D is the reference implementation: its declaration encodes the Mutopia three-violin canon entries after 2, 4, and 6 bars plus the repeated violoncello ground. The source ensemble has its own high-confidence verification scope; the independent beginner guitar reduction retains its own lower timing/note confidence.
-
-## Event model
-
-A guitar practice note stores both musical and instrument-specific information:
+A guitar note event stores both musical and guitar-specific information:
 
 ```json
 {
@@ -106,49 +71,94 @@ A guitar practice note stores both musical and instrument-specific information:
 }
 ```
 
-A generated source-score note may instead retain concert pitch without pretending to have a guitar fingering:
+`start` and `duration` are measured in the song's declared timing units. `unitsPerQuarter` makes playback and MIDI conversion unambiguous even when the event grid is finer than a quarter note.
+
+## Source ensembles
+
+A source ensemble is a different object from the guitar reduction. It lives in `data/ensembles/<slug>.json`; the builder materializes it as `sourceDerived` parts in a separate playback group.
+
+This prevents two distinct claims from being conflated:
+
+- **practice reduction:** a playable educational guitar simplification;
+- **source ensemble:** independently verified score-derived instrumental parts.
+
+A source ensemble can therefore have high confidence without silently upgrading the guitar reduction's note/timing confidence.
+
+### Sequential shorthand
+
+For a monophonic measure with no rests, a pattern can use compact `[pitch, duration]` entries. The entries are contiguous and must exactly fill the measure:
 
 ```json
-{
-  "type": "note",
-  "pitch": "F#5",
-  "midi": 78,
-  "start": 0,
-  "duration": 1
-}
+[
+  ["F#5", 1],
+  ["E5", 1],
+  ["D5", 1],
+  ["C#5", 1]
+]
 ```
 
-`start` and `duration` are measured in the song's event-grid units. `unitsPerQuarter` maps those units to quarter-note time for playback and MIDI export.
+Canon in D uses this compact form.
 
-## Data quality
+### Explicit timed events
 
-Alternate HTML apps are visual references only unless their musical data is independently verified. Song JSON keeps note and timing confidence separate. Timing-audit overlays record method/provenance, and source ensembles get a separate `verification.ensembleTiming` scope so a trustworthy orchestral source cannot accidentally launder uncertainty in a simplified teaching arrangement.
+Orchestral writing immediately needs rests and simultaneous notes. A pattern measure may instead use explicit events:
 
-## Experimental branch checks
-
-`player-v2` CI currently performs:
-
-```text
-build timing audits + ensemble declarations
-→ Canon 2/4/6-bar entry + ground-bass self-test
-→ structural/timing/group synchronization validation
-→ JavaScript parse check
-→ mock-DOM player initialization
-→ real headless-Chrome smoke for Chopin and Canon
+```json
+[
+  {"pitch":"G7", "start":0.5, "duration":0.125},
+  {"pitch":"B6", "start":0.5, "duration":0.125},
+  {"pitch":"E6", "start":0.5, "duration":0.125}
+]
 ```
 
-The stable `main` branch remains isolated from this experimental player until the branch is intentionally integrated.
+Here `0.0–0.5` is a real rest and the three events at `0.5` form a chord. Explicit events may leave gaps and overlap, but every event must remain inside its declared measure. A single measure may use either sequential shorthand or explicit events, never a mixture of both.
+
+Dance of the Sugar Plum Fairy is the first A5 proof of this representation: its source excerpt contains pizzicato violin rests plus polyphonic celesta chords, and it renders through the same generic ensemble player used by Canon.
+
+## Ensemble authoring contract
+
+1. Select an identifiable source score/MIDI/MusicXML edition and state the exact excerpt scope.
+2. Author only the parts actually verified. Omission is preferable to invented orchestration.
+3. Use concert pitches in ensemble declarations. Transposed source parts must be normalized deliberately rather than copied blindly.
+4. Preserve literal attack times and durations. Do not extend a note merely to fill a rest.
+5. Use explicit events whenever a measure contains rests, chords, or independently timed attacks.
+6. Keep the source ensemble in its own playback group unless a combined arrangement is intentionally authored.
+7. Record confidence, method, and scope. “High” is reserved for event-level verification against an authoritative symbolic source.
+8. Add a deterministic per-piece test for entrances, durations, pitches, polyphony, source tempo, and provenance isolation.
+9. Let the generic browser/MIDI tests prove that the renderer can consume the data without song-specific code.
+
+## MIDI behavior
+
+Practice MIDI and source-ensemble MIDI follow the currently selected playback object. Source ensembles export as SMF format 1: one tempo track plus one named track for every enabled source part, preserving each part's current instrument/program assignment.
+
+## Timing quality
+
+A verified tempo marking is not the same thing as a verified event grid. The repository keeps those claims separate. Timing audits state where attacks, durations, meter, and tempo came from and what still requires review.
+
+The uploaded alternate HTML apps were treated as visual references only. Their note payloads were intentionally not used as canonical musical data.
 
 ## Local preview
 
+Any static HTTP server works:
+
 ```bash
-python3 scripts/build.py
-python3 scripts/validate.py
-python3 -m http.server 8000
+python -m http.server 8000
 ```
 
 Then open `http://localhost:8000`.
 
-## GitHub Pages
+For the experimental player, run the build and checks before previewing:
 
-Production deployment remains on `main`. The experimental `player-v2` workflow validates the branch but does not replace the stable Pages renderer by itself.
+```bash
+python scripts/build.py
+python scripts/test-canon-ensemble.py
+python scripts/test-sugar-plum-ensemble.py
+python scripts/validate.py
+bash scripts/smoke-browser.sh
+```
+
+## Branch policy
+
+`main` is the stable GitHub Pages production branch. Experimental player/orchestration work stays on `player-v2` until its PR-triggered CI is green and the integration is explicitly approved for promotion.
+
+The production Pages workflow remains intentionally simple and does not use the experimental CI as a deployment-time test bench.
