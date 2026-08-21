@@ -1,0 +1,164 @@
+{
+  "$schema": "../ensemble.schema.json",
+  "schemaVersion": "1.1.0",
+  "slug": "sugar-plum-fairy",
+  "id": "sugar-plum-opening-ensemble",
+  "name": "Opening source ensemble — celesta + pizzicato violins",
+  "playbackGroup": "ensemble",
+  "sourceTempoBpm": 62,
+  "measureDuration": 2,
+  "totalMeasures": 6,
+  "sections": [
+    {
+      "id": "pizzicato-frame",
+      "name": "Pizzicato frame",
+      "description": "Bars 1–4: the two violin lines establish the spare pizzicato clock before the celesta enters.",
+      "startMeasure": 1,
+      "endMeasure": 4
+    },
+    {
+      "id": "celesta-entry",
+      "name": "Celesta entry",
+      "description": "Bars 5–6: the celesta enters over the continuing pizzicato strings with rests and simultaneous chord tones preserved literally.",
+      "startMeasure": 5,
+      "endMeasure": 6
+    }
+  ],
+  "patterns": {
+    "violin-1-opening": [
+      [
+        {"pitch":"E4","start":0.5,"duration":0.5},
+        {"pitch":"F#4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"G4","start":0.5,"duration":0.5},
+        {"pitch":"D#4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"E4","start":0.5,"duration":0.5},
+        {"pitch":"F#4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"G4","start":0.5,"duration":0.5},
+        {"pitch":"D#4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"E4","start":0.5,"duration":0.5},
+        {"pitch":"F#4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"G4","start":0.5,"duration":0.5},
+        {"pitch":"G#4","start":1.5,"duration":0.5}
+      ]
+    ],
+    "violin-2-opening": [
+      [
+        {"pitch":"B3","start":0.5,"duration":0.5},
+        {"pitch":"C4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"C#4","start":0.5,"duration":0.5},
+        {"pitch":"C4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"B3","start":0.5,"duration":0.5},
+        {"pitch":"C4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"C#4","start":0.5,"duration":0.5},
+        {"pitch":"C4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"B3","start":0.5,"duration":0.5},
+        {"pitch":"C4","start":1.5,"duration":0.5}
+      ],
+      [
+        {"pitch":"C#4","start":0.5,"duration":0.5},
+        {"pitch":"D4","start":1.5,"duration":0.5}
+      ]
+    ],
+    "celesta-opening": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {"pitch":"G7","start":0.5,"duration":0.125},
+        {"pitch":"B6","start":0.5,"duration":0.125},
+        {"pitch":"E6","start":0.5,"duration":0.125},
+        {"pitch":"E7","start":0.75,"duration":0.125},
+        {"pitch":"G6","start":0.75,"duration":0.125},
+        {"pitch":"B5","start":0.75,"duration":0.125},
+        {"pitch":"G7","start":1.0,"duration":0.25},
+        {"pitch":"B6","start":1.0,"duration":0.25},
+        {"pitch":"E6","start":1.0,"duration":0.25},
+        {"pitch":"F#7","start":1.5,"duration":0.25},
+        {"pitch":"A6","start":1.5,"duration":0.25},
+        {"pitch":"E6","start":1.5,"duration":0.25},
+        {"pitch":"C6","start":1.5,"duration":0.25}
+      ],
+      [
+        {"pitch":"D#7","start":0.0,"duration":0.25},
+        {"pitch":"F#6","start":0.0,"duration":0.25},
+        {"pitch":"C6","start":0.0,"duration":0.25},
+        {"pitch":"A5","start":0.0,"duration":0.25},
+        {"pitch":"E7","start":0.5,"duration":0.25},
+        {"pitch":"G6","start":0.5,"duration":0.25},
+        {"pitch":"C#6","start":0.5,"duration":0.25},
+        {"pitch":"A#5","start":0.5,"duration":0.25},
+        {"pitch":"D7","start":1.0,"duration":0.125},
+        {"pitch":"G#6","start":1.0,"duration":0.125},
+        {"pitch":"F6","start":1.0,"duration":0.125},
+        {"pitch":"B5","start":1.0,"duration":0.125},
+        {"pitch":"D7","start":1.25,"duration":0.125},
+        {"pitch":"G#6","start":1.25,"duration":0.125},
+        {"pitch":"F6","start":1.25,"duration":0.125},
+        {"pitch":"B5","start":1.25,"duration":0.125},
+        {"pitch":"D7","start":1.5,"duration":0.25},
+        {"pitch":"G#6","start":1.5,"duration":0.25},
+        {"pitch":"F6","start":1.5,"duration":0.25},
+        {"pitch":"B5","start":1.5,"duration":0.25}
+      ]
+    ]
+  },
+  "parts": [
+    {
+      "id": "violin-1",
+      "name": "Violin I",
+      "role": "pizzicato upper string line",
+      "defaultInstrument": "pizzicato-strings",
+      "pattern": "violin-1-opening",
+      "enabled": true,
+      "tab": false
+    },
+    {
+      "id": "violin-2",
+      "name": "Violin II",
+      "role": "pizzicato lower violin line",
+      "defaultInstrument": "pizzicato-strings",
+      "pattern": "violin-2-opening",
+      "enabled": true,
+      "tab": false
+    },
+    {
+      "id": "celesta",
+      "name": "Celesta",
+      "role": "source lead and chordal color",
+      "defaultInstrument": "celesta",
+      "pattern": "celesta-opening",
+      "enabled": true,
+      "tab": false
+    }
+  ],
+  "source": {
+    "label": "mfiles — Sugar Plum Fairy full orchestral score",
+    "url": "https://www.mfiles.co.uk/scores/sugar-plum-fairy.pdf",
+    "kind": "engraved orchestral score"
+  },
+  "verification": {
+    "confidence": "medium",
+    "method": "bars 1–6 manually transcribed from the mfiles conductor score at quarter note = 62; note attacks and chord memberships independently cross-checked against named raw DAW/MIDI note-on/off events",
+    "scope": "opening six bars only: Violin I, Violin II, and Celesta; no unverified wind/brass/string-family parts are implied"
+  },
+  "qualityNote": "The source ensemble is a six-bar score-derived opening excerpt, separate from the beginner guitar reduction. It intentionally includes only Violin I, Violin II, and Celesta because those events were individually checked; other orchestral families remain omitted until their note events are verified to the same standard."
+}
