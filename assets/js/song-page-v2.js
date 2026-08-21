@@ -240,7 +240,7 @@ function groupParts(group){return parts.filter(p=>p.playbackGroup===group&&partS
 function allPlaybackEvents(group=primaryGroup){
   const salvage=group===primaryGroup&&$("#salvage").checked;
   if(salvage)return eventsForPart(primaryPart).filter(x=>x.event.anchor).map(x=>({...x,instrument:currentInstrument(primaryPart,x.section)}));
-  return groupParts(group).flatMap(p=>eventsForPart(p).map(x=>({...x,instrument:currentInstrument(p,x.section)}));
+  return groupParts(group).flatMap(p=>eventsForPart(p).map(x=>({...x,instrument:currentInstrument(p,x.section)})));
 }
 function play(group=primaryGroup){
   const isPrimary=group===primaryGroup;
