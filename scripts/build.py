@@ -113,11 +113,52 @@ def pitch_to_midi(pitch):
     return midi
 
 
-def pattern_measure_events(notes, measure_duration, context):
+def pattern_measure_events(items, measure_duration, context):
+    """Compile one declarative source-score measure.
+
+    Two representations are supported, deliberately at the data layer:
+
+    * sequential shorthand: [pitch, duration], where events are contiguous and
+      must fill the whole measure (the original Canon representation);
+    * explicit events: {pitch, start, duration}, where gaps are rests and events
+      may overlap, allowing chords/polyphony without lying about note lengths.
+
+    A measure may use one representation or the other, never both.
+    """
+    if not items:
+        return []
+    modes={"explicit" if isinstance(item,dict) else "sequential" if isinstance(item,list) else "invalid" for item in items}
+    if "invalid" in modes or len(modes)!=1:
+        raise ValueError(f"{context}: measure must use either all [pitch,duration] shorthand or all explicit timed events")
+
     events=[]
+    if "explicit" in modes:
+        for item in items:
+            if not {"pitch","start","duration"}.issubset(item):
+                raise ValueError(f"{context}: explicit event requires pitch/start/duration, got {item!r}")
+            pitch=item["pitch"]
+            start=float(item["start"])
+            duration=float(item["duration"])
+            if start<0:
+                raise ValueError(f"{context}: event start must be non-negative")
+            if duration<=0:
+                raise ValueError(f"{context}: duration must be positive")
+            if start+duration>measure_duration+1e-6:
+                raise ValueError(
+                    f"{context}: event {pitch} ends at {start+duration:g}, beyond measure duration {measure_duration:g}"
+                )
+            events.append({
+                "type":"note",
+                "pitch":str(pitch),
+                "midi":pitch_to_midi(pitch),
+                "start":round(start,6),
+                "duration":round(duration,6),
+            })
+        return sorted(events,key=lambda event:(event["start"],event["midi"],event["duration"]))
+
     start=0.0
-    for item in notes:
-        if not isinstance(item,list) or len(item)!=2:
+    for item in items:
+        if len(item)!=2:
             raise ValueError(f"{context}: pattern note must be [pitch,duration], got {item!r}")
         pitch,duration=item
         duration=float(duration)
@@ -227,9 +268,10 @@ def apply_ensemble_spec(song):
         if not any(s.get("url")==source.get("url") for s in sources):
             sources.append(source)
     quality=song.setdefault("verification",{}).setdefault("notesAboutQuality",[])
-    note=(
-        "The source ensemble is a separate Mutopia-derived excerpt. It shares the 12-bar clock length "
-        "of this practice page but is not claimed to be a bar-for-bar orchestration of the beginner guitar reduction."
+    source_label=(source or {}).get("label","the cited source score")
+    note=spec.get("qualityNote") or (
+        f"The source ensemble is a separate score-derived excerpt from {source_label}. "
+        "It is kept as an independent playback/provenance object from the beginner guitar reduction."
     )
     if note not in quality:
         quality.append(note)
