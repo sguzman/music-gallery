@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "chopin-prelude-op28-no20",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as item 9 of the locked Open Full Rendition Queue."
+  },
+  "identity": {
+    "title": "Prelude in C minor, Op. 28 No. 20",
+    "displayTitle": "Chopin — Prelude, Op. 28 No. 20",
+    "shortTitle": "Prelude Op. 28 No. 20",
+    "composer": {
+      "name": "Frédéric Chopin"
+    },
+    "aliases": [
+      "Prelude in C minor",
+      "Prelude Op. 28 No. 20",
+      "Funeral March Prelude"
+    ],
+    "catalogue": "Op. 28 No. 20"
+  },
+  "source": {
+    "path": "data/sources/chopin-prelude-op28-no20.mid",
+    "format": "midi",
+    "provider": "Mutopia Project",
+    "sourcePage": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=472",
+    "remoteUrl": "https://www.mutopiaproject.org/ftp/ChopinFF/O28/Chop-28-20/Chop-28-20.mid",
+    "attribution": "Magnus Lewis-Smith (typesetter)",
+    "license": "Public Domain",
+    "compositionRights": "Frédéric Chopin composition is public domain.",
+    "evidence": "Mutopia piece 472 identifies Edition Peters, marks the typeset Public Domain, and provides complete LilyPond/MIDI/PDF material."
+  },
+  "ingest": {
+    "fidelity": "source-midi-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      20,
+      160
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.68,
+    "label": "Prelude in C minor, Op. 28 No. 20 — complete public-domain piano rendition",
+    "description": "Complete source-MIDI-derived Full Rendition from Mutopia's public-domain Edition Peters typeset."
+  },
+  "output": "data/ingested/chopin-prelude-op28-no20.full.json"
+}

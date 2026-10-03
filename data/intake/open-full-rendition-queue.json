@@ -63,14 +63,15 @@
       "order": 8,
       "slug": "chopin-prelude-op28-no4",
       "title": "Chopin — Prelude, Op. 28 No. 4",
-      "status": "processing",
-      "note": "Next in locked order; Mutopia public-domain source intake started."
+      "status": "published-awaiting-user-qa",
+      "note": "Complete Mutopia public-domain MIDI ingested (604 note events, two piano tracks, source tempo map preserved) and public song page wired to Full Rendition artifact."
     },
     {
       "order": 9,
       "slug": "chopin-prelude-op28-no20",
       "title": "Chopin — Prelude, Op. 28 No. 20",
-      "status": "queued"
+      "status": "processing",
+      "note": "Next in locked order; Mutopia public-domain source intake started."
     },
     {
       "order": 10,
