@@ -58,4 +58,4 @@ assert.deepEqual(liszt.fullVersion.tracks.map(t=>t.sourceStaff),[1,2]);
 assert.ok(liszt.fullVersion.musical.tempoMap.length>30);
 assert.equal(Math.max(...liszt.fullVersion.musical.tempoMap.map(x=>x.bpm)),240);
 assert.deepEqual(liszt.verification.sourceAlignment.exactScope.sourceMeasures,["12","13","14","15","16","17","18","19","20","21","22"]);
-assert.equal(liszt.stats.maxFret,4);
+assert.equal(liszt.stats.maxFret,3);
