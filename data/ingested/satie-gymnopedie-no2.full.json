@@ -1,0 +1,3754 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "satie-gymnopedie-no2",
+  "status": "available",
+  "label": "Gymnopédie No. 2 — complete public-domain piano rendition",
+  "description": "Complete source-MIDI-derived Full Rendition from Mutopia's public-domain piano edition.",
+  "fidelity": "source-midi-derived",
+  "durationUnits": 195.0,
+  "musical": {
+    "unitsPerQuarter": 1,
+    "defaultBpm": 60.0,
+    "bpmRange": [
+      20,
+      160
+    ],
+    "meter": "3/4",
+    "tempoMap": [
+      {
+        "start": 0.0,
+        "bpm": 60.0
+      }
+    ],
+    "meterMap": [
+      {
+        "start": 0.0,
+        "meter": "3/4"
+      }
+    ],
+    "keyMap": []
+  },
+  "measures": [
+    {
+      "label": "1",
+      "start": 0.0,
+      "duration": 3.0
+    },
+    {
+      "label": "2",
+      "start": 3.0,
+      "duration": 3.0
+    },
+    {
+      "label": "3",
+      "start": 6.0,
+      "duration": 3.0
+    },
+    {
+      "label": "4",
+      "start": 9.0,
+      "duration": 3.0
+    },
+    {
+      "label": "5",
+      "start": 12.0,
+      "duration": 3.0
+    },
+    {
+      "label": "6",
+      "start": 15.0,
+      "duration": 3.0
+    },
+    {
+      "label": "7",
+      "start": 18.0,
+      "duration": 3.0
+    },
+    {
+      "label": "8",
+      "start": 21.0,
+      "duration": 3.0
+    },
+    {
+      "label": "9",
+      "start": 24.0,
+      "duration": 3.0
+    },
+    {
+      "label": "10",
+      "start": 27.0,
+      "duration": 3.0
+    },
+    {
+      "label": "11",
+      "start": 30.0,
+      "duration": 3.0
+    },
+    {
+      "label": "12",
+      "start": 33.0,
+      "duration": 3.0
+    },
+    {
+      "label": "13",
+      "start": 36.0,
+      "duration": 3.0
+    },
+    {
+      "label": "14",
+      "start": 39.0,
+      "duration": 3.0
+    },
+    {
+      "label": "15",
+      "start": 42.0,
+      "duration": 3.0
+    },
+    {
+      "label": "16",
+      "start": 45.0,
+      "duration": 3.0
+    },
+    {
+      "label": "17",
+      "start": 48.0,
+      "duration": 3.0
+    },
+    {
+      "label": "18",
+      "start": 51.0,
+      "duration": 3.0
+    },
+    {
+      "label": "19",
+      "start": 54.0,
+      "duration": 3.0
+    },
+    {
+      "label": "20",
+      "start": 57.0,
+      "duration": 3.0
+    },
+    {
+      "label": "21",
+      "start": 60.0,
+      "duration": 3.0
+    },
+    {
+      "label": "22",
+      "start": 63.0,
+      "duration": 3.0
+    },
+    {
+      "label": "23",
+      "start": 66.0,
+      "duration": 3.0
+    },
+    {
+      "label": "24",
+      "start": 69.0,
+      "duration": 3.0
+    },
+    {
+      "label": "25",
+      "start": 72.0,
+      "duration": 3.0
+    },
+    {
+      "label": "26",
+      "start": 75.0,
+      "duration": 3.0
+    },
+    {
+      "label": "27",
+      "start": 78.0,
+      "duration": 3.0
+    },
+    {
+      "label": "28",
+      "start": 81.0,
+      "duration": 3.0
+    },
+    {
+      "label": "29",
+      "start": 84.0,
+      "duration": 3.0
+    },
+    {
+      "label": "30",
+      "start": 87.0,
+      "duration": 3.0
+    },
+    {
+      "label": "31",
+      "start": 90.0,
+      "duration": 3.0
+    },
+    {
+      "label": "32",
+      "start": 93.0,
+      "duration": 3.0
+    },
+    {
+      "label": "33",
+      "start": 96.0,
+      "duration": 3.0
+    },
+    {
+      "label": "34",
+      "start": 99.0,
+      "duration": 3.0
+    },
+    {
+      "label": "35",
+      "start": 102.0,
+      "duration": 3.0
+    },
+    {
+      "label": "36",
+      "start": 105.0,
+      "duration": 3.0
+    },
+    {
+      "label": "37",
+      "start": 108.0,
+      "duration": 3.0
+    },
+    {
+      "label": "38",
+      "start": 111.0,
+      "duration": 3.0
+    },
+    {
+      "label": "39",
+      "start": 114.0,
+      "duration": 3.0
+    },
+    {
+      "label": "40",
+      "start": 117.0,
+      "duration": 3.0
+    },
+    {
+      "label": "41",
+      "start": 120.0,
+      "duration": 3.0
+    },
+    {
+      "label": "42",
+      "start": 123.0,
+      "duration": 3.0
+    },
+    {
+      "label": "43",
+      "start": 126.0,
+      "duration": 3.0
+    },
+    {
+      "label": "44",
+      "start": 129.0,
+      "duration": 3.0
+    },
+    {
+      "label": "45",
+      "start": 132.0,
+      "duration": 3.0
+    },
+    {
+      "label": "46",
+      "start": 135.0,
+      "duration": 3.0
+    },
+    {
+      "label": "47",
+      "start": 138.0,
+      "duration": 3.0
+    },
+    {
+      "label": "48",
+      "start": 141.0,
+      "duration": 3.0
+    },
+    {
+      "label": "49",
+      "start": 144.0,
+      "duration": 3.0
+    },
+    {
+      "label": "50",
+      "start": 147.0,
+      "duration": 3.0
+    },
+    {
+      "label": "51",
+      "start": 150.0,
+      "duration": 3.0
+    },
+    {
+      "label": "52",
+      "start": 153.0,
+      "duration": 3.0
+    },
+    {
+      "label": "53",
+      "start": 156.0,
+      "duration": 3.0
+    },
+    {
+      "label": "54",
+      "start": 159.0,
+      "duration": 3.0
+    },
+    {
+      "label": "55",
+      "start": 162.0,
+      "duration": 3.0
+    },
+    {
+      "label": "56",
+      "start": 165.0,
+      "duration": 3.0
+    },
+    {
+      "label": "57",
+      "start": 168.0,
+      "duration": 3.0
+    },
+    {
+      "label": "58",
+      "start": 171.0,
+      "duration": 3.0
+    },
+    {
+      "label": "59",
+      "start": 174.0,
+      "duration": 3.0
+    },
+    {
+      "label": "60",
+      "start": 177.0,
+      "duration": 3.0
+    },
+    {
+      "label": "61",
+      "start": 180.0,
+      "duration": 3.0
+    },
+    {
+      "label": "62",
+      "start": 183.0,
+      "duration": 3.0
+    },
+    {
+      "label": "63",
+      "start": 186.0,
+      "duration": 3.0
+    },
+    {
+      "label": "64",
+      "start": 189.0,
+      "duration": 3.0
+    },
+    {
+      "label": "65",
+      "start": 192.0,
+      "duration": 3.0
+    }
+  ],
+  "tracks": [
+    {
+      "id": "piano-rh",
+      "name": "treble:",
+      "role": "source MIDI track 1",
+      "instrumentLabel": "Piano",
+      "defaultInstrument": "piano",
+      "enabled": true,
+      "level": 0.72,
+      "pan": -0.12,
+      "clef": "treble",
+      "sourceTrackIndex": 1,
+      "sourceChannels": [
+        0
+      ],
+      "gmProgram": null,
+      "events": [
+        {
+          "type": "note",
+          "start": 1.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 1.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 1.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 4.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 4.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 4.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 4.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 7.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 7.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 7.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 10.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 10.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 10.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 10.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 12.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 13.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 13.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 13.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 15.0,
+          "duration": 1.0,
+          "midi": 81,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 16.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 16.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 16.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 16.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 16.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 17.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 18.0,
+          "duration": 1.0,
+          "midi": 76,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 19.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 19.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 19.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 19.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 84,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 20.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 21.0,
+          "duration": 3.0,
+          "midi": 74,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 22.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 22.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 22.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 22.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 24.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 25.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 25.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 25.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 27.0,
+          "duration": 1.0,
+          "midi": 81,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 28.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 28.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 28.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 28.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 28.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 29.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 91,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 30.0,
+          "duration": 1.0,
+          "midi": 76,
+          "velocity": 84,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 31.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 31.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 31.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 31.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 76,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 32.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 33.0,
+          "duration": 1.0,
+          "midi": 74,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 34.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 34.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 34.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 34.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 34.0,
+          "duration": 2.0,
+          "midi": 72,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 37.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 37.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 37.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 40.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 40.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 40.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 40.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 42.0,
+          "duration": 3.0,
+          "midi": 84,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 43.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 43.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 43.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 43.0,
+          "duration": 2.0,
+          "midi": 72,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 45.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 116,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 46.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 46.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 46.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 46.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 46.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 47.0,
+          "duration": 1.0,
+          "midi": 81,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 48.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 49.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 49.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 49.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 51.0,
+          "duration": 3.0,
+          "midi": 72,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 52.0,
+          "duration": 2.0,
+          "midi": 55,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 52.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 52.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 52.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 54.0,
+          "duration": 4.0,
+          "midi": 77,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 55.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 55.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 55.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 58.0,
+          "duration": 2.0,
+          "midi": 55,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 58.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 58.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 58.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 58.0,
+          "duration": 1.0,
+          "midi": 75,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 59.0,
+          "duration": 1.0,
+          "midi": 74,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 60.0,
+          "duration": 4.0,
+          "midi": 77,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 61.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 61.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 61.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 64.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 64.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 64.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 64.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 64.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 65.0,
+          "duration": 1.0,
+          "midi": 82,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 66.0,
+          "duration": 1.0,
+          "midi": 81,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 67.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 67.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 67.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 67.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 109,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 68.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 69.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 70.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 70.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 70.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 72.0,
+          "duration": 3.0,
+          "midi": 77,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 73.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 73.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 73.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 73.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 76.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 76.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 76.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 79.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 79.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 79.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 79.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 81.0,
+          "duration": 3.0,
+          "midi": 84,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 82.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 82.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 82.0,
+          "duration": 2.0,
+          "midi": 72,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 84.0,
+          "duration": 1.0,
+          "midi": 80,
+          "velocity": 112,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 85.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 85.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 85.0,
+          "duration": 2.0,
+          "midi": 68,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 85.0,
+          "duration": 2.0,
+          "midi": 72,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 85.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 118,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 86.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 87.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 88.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 88.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 88.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 88.0,
+          "duration": 2.0,
+          "midi": 70,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 90.0,
+          "duration": 4.0,
+          "midi": 77,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 91.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 91.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 91.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 94.0,
+          "duration": 2.0,
+          "midi": 55,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 94.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 94.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 94.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 94.0,
+          "duration": 1.0,
+          "midi": 75,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 95.0,
+          "duration": 1.0,
+          "midi": 74,
+          "velocity": 120,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 96.0,
+          "duration": 3.0,
+          "midi": 77,
+          "velocity": 118,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 97.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 97.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 97.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 99.0,
+          "duration": 4.0,
+          "midi": 74,
+          "velocity": 109,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 100.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 100.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 100.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 100.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 103.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 103.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 103.0,
+          "duration": 2.0,
+          "midi": 68,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 103.0,
+          "duration": 1.0,
+          "midi": 75,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 104.0,
+          "duration": 1.0,
+          "midi": 80,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 105.0,
+          "duration": 3.0,
+          "midi": 82,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 106.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 106.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 106.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 108.0,
+          "duration": 3.0,
+          "midi": 77,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 109.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 109.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 109.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 109.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 112.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 112.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 112.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 115.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 115.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 115.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 115.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 117.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 118.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 118.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 118.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 120.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 121.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 121.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 121.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 121.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 121.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 122.0,
+          "duration": 1.0,
+          "midi": 81,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 123.0,
+          "duration": 1.0,
+          "midi": 76,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 124.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 124.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 124.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 124.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 88,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 125.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 79,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 126.0,
+          "duration": 3.0,
+          "midi": 74,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 127.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 127.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 127.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 127.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 129.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 130.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 130.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 130.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 132.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 91,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 133.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 133.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 133.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 133.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 133.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 134.0,
+          "duration": 1.0,
+          "midi": 81,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 135.0,
+          "duration": 1.0,
+          "midi": 76,
+          "velocity": 98,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 136.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 136.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 136.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 136.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 84,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 137.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 138.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 139.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 139.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 139.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 139.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 139.0,
+          "duration": 2.0,
+          "midi": 72,
+          "velocity": 69,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 142.0,
+          "duration": 2.0,
+          "midi": 59,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 142.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 142.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 145.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 145.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 145.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 145.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 147.0,
+          "duration": 3.0,
+          "midi": 84,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 148.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 148.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 148.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 148.0,
+          "duration": 2.0,
+          "midi": 72,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 150.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 95,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 151.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 151.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 151.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 151.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 151.0,
+          "duration": 1.0,
+          "midi": 79,
+          "velocity": 104,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 152.0,
+          "duration": 1.0,
+          "midi": 81,
+          "velocity": 114,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 153.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 154.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 154.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 154.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 156.0,
+          "duration": 3.0,
+          "midi": 72,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 157.0,
+          "duration": 2.0,
+          "midi": 55,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 157.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 157.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 157.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 159.0,
+          "duration": 3.0,
+          "midi": 77,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 160.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 160.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 160.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 162.0,
+          "duration": 3.0,
+          "midi": 79,
+          "velocity": 123,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 163.0,
+          "duration": 2.0,
+          "midi": 55,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 163.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 163.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 163.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 165.0,
+          "duration": 11.0,
+          "midi": 74,
+          "velocity": 109,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 166.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 166.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 166.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 169.0,
+          "duration": 2.0,
+          "midi": 55,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 169.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 169.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 169.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 172.0,
+          "duration": 2.0,
+          "midi": 55,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 172.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 172.0,
+          "duration": 2.0,
+          "midi": 63,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 172.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 175.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 175.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 175.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 176.0,
+          "duration": 1.0,
+          "midi": 77,
+          "velocity": 66,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 177.0,
+          "duration": 3.0,
+          "midi": 82,
+          "velocity": 66,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 178.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 178.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 178.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 180.0,
+          "duration": 1.0,
+          "midi": 81,
+          "velocity": 66,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 181.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 181.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 181.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 181.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 181.0,
+          "duration": 2.0,
+          "midi": 77,
+          "velocity": 66,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 184.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 184.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 184.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 187.0,
+          "duration": 2.0,
+          "midi": 57,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 187.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 187.0,
+          "duration": 2.0,
+          "midi": 65,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 187.0,
+          "duration": 2.0,
+          "midi": 69,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 190.0,
+          "duration": 2.0,
+          "midi": 58,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 190.0,
+          "duration": 2.0,
+          "midi": 62,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 190.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 193.0,
+          "duration": 2.0,
+          "midi": 60,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 193.0,
+          "duration": 2.0,
+          "midi": 64,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        },
+        {
+          "type": "note",
+          "start": 193.0,
+          "duration": 2.0,
+          "midi": 67,
+          "velocity": 62,
+          "sourceTrack": 1,
+          "sourceChannel": 0
+        }
+      ]
+    },
+    {
+      "id": "piano-lh",
+      "name": "bass:",
+      "role": "source MIDI track 2",
+      "instrumentLabel": "Piano",
+      "defaultInstrument": "piano",
+      "enabled": true,
+      "level": 0.72,
+      "pan": 0.12,
+      "clef": "bass",
+      "sourceTrackIndex": 2,
+      "sourceChannels": [
+        1
+      ],
+      "gmProgram": null,
+      "events": [
+        {
+          "type": "note",
+          "start": 0.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 3.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 6.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 9.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 12.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 15.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 18.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 21.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 24.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 27.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 30.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 33.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 36.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 39.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 42.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 45.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 48.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 51.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 54.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 57.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 60.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 63.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 66.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 69.0,
+          "duration": 3.0,
+          "midi": 34,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 72.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 75.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 78.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 81.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 84.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 87.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 90.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 93.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 96.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 99.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 102.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 105.0,
+          "duration": 3.0,
+          "midi": 34,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 108.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 111.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 114.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 117.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 120.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 123.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 126.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 129.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 132.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 135.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 138.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 141.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 144.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 147.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 150.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 153.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 156.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 159.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 162.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 165.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 168.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 171.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 174.0,
+          "duration": 3.0,
+          "midi": 41,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 177.0,
+          "duration": 3.0,
+          "midi": 34,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 180.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 183.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 186.0,
+          "duration": 3.0,
+          "midi": 38,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 189.0,
+          "duration": 3.0,
+          "midi": 43,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        },
+        {
+          "type": "note",
+          "start": 192.0,
+          "duration": 3.0,
+          "midi": 36,
+          "velocity": 90,
+          "sourceTrack": 2,
+          "sourceChannel": 1
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "provider": "Mutopia Project",
+    "url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=38",
+    "sourceUrl": "https://www.mutopiaproject.org/ftp/SatieE/gymnopedie_2/gymnopedie_2.mid",
+    "license": "Public Domain",
+    "licenseUrl": null,
+    "attribution": "Evin Robertson (typesetter / Mutopia maintainer)",
+    "vendoredPath": "data/sources/satie-gymnopedie-no2.mid",
+    "sha256": "02e8ae8d7e1f6073f12f62a61a63cf07b260a1cf49f4a9008ee4e3f8e1934d30",
+    "bytes": 3613,
+    "midiFormat": 1,
+    "ticksPerQuarter": 384,
+    "sourceTrackCount": 3,
+    "transformation": "Parsed approved local Standard MIDI File; preserved note onset/duration, velocity, source track/channel identity, tempo events and time signatures."
+  },
+  "stats": {
+    "tracks": 2,
+    "events": 371
+  }
+}
