@@ -129,6 +129,9 @@
       "items": {
         "$ref": "#/$defs/part"
       }
+    },
+    "fullVersion": {
+      "$ref": "#/$defs/fullVersion"
     }
   },
   "$defs": {
@@ -271,6 +274,180 @@
           "type": "array",
           "items": {
             "$ref": "#/$defs/section"
+          }
+        }
+      }
+    },
+    "fullEvent": {
+      "type": "object",
+      "required": [
+        "type",
+        "start",
+        "duration",
+        "midi"
+      ],
+      "properties": {
+        "type": {
+          "const": "note"
+        },
+        "start": {
+          "type": "number",
+          "minimum": 0
+        },
+        "duration": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "midi": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "sourceMeasure": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "fullTrack": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "defaultInstrument",
+        "events"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "instrumentLabel": {
+          "type": "string"
+        },
+        "defaultInstrument": {
+          "type": "string"
+        },
+        "gmProgram": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fullEvent"
+          }
+        }
+      }
+    },
+    "fullVersion": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "available",
+            "planned",
+            "source-ready",
+            "source-needed",
+            "blocked-rights"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "fidelity": {
+          "type": "string"
+        },
+        "musical": {
+          "type": "object",
+          "properties": {
+            "meter": {
+              "type": "string"
+            },
+            "tempoUnit": {
+              "type": "string"
+            },
+            "unitsPerQuarter": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "defaultBpm": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "bpmRange": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "tempoStanding": {
+              "type": "string"
+            }
+          }
+        },
+        "durationUnits": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "measures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "label",
+              "start",
+              "duration"
+            ],
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "start": {
+                "type": "number",
+                "minimum": 0
+              },
+              "duration": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        },
+        "provenance": {
+          "type": "object"
+        },
+        "tracks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fullTrack"
           }
         }
       }
