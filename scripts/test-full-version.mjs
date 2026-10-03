@@ -59,3 +59,32 @@ assert.ok(liszt.fullVersion.musical.tempoMap.length>30);
 assert.equal(Math.max(...liszt.fullVersion.musical.tempoMap.map(x=>x.bpm)),240);
 assert.deepEqual(liszt.verification.sourceAlignment.exactScope.sourceMeasures,["12","13","14","15","16","17","18","19","20","21","22"]);
 assert.equal(liszt.stats.maxFret,3);
+
+const sugar=JSON.parse(readFileSync(new URL("../data/songs/sugar-plum-fairy.json",import.meta.url),"utf8"));
+assert.equal(sugar.fullVersion.status,"available");
+assert.equal(sugar.fullVersion.fidelity,"transcription-derived");
+assert.equal(sugar.fullVersion.musical.meter,"2/4");
+assert.deepEqual(sugar.fullVersion.musical.keyMap,[{start:0,fifths:1}]);
+assert.equal(sugar.fullVersion.musical.defaultBpm,62);
+assert.equal(sugar.fullVersion.durationUnits,104);
+assert.equal(sugar.fullVersion.measures.length,52);
+assert.equal(sugar.fullVersion.tracks.length,18);
+assert.equal(sugar.fullVersion.tracks.reduce((n,t)=>n+t.events.length,0),1824);
+assert.equal(new Set(sugar.fullVersion.tracks.map(t=>t.sourcePartId)).size,18);
+const sugarById=Object.fromEntries(sugar.fullVersion.tracks.map(t=>[t.id,t]));
+assert.equal(sugarById.celesta.events.length,852);
+assert.equal(sugarById.celesta.defaultInstrument,"celesta");
+assert.equal(sugarById.celesta.level,.82);
+assert.equal(sugarById.contrabass.defaultInstrument,"cello");
+assert.equal(sugarById.contrabass.level,.5);
+assert.equal(sugarById["english-horn"].defaultInstrument,"oboe");
+assert.equal(sugarById["f-mellophone"].defaultInstrument,"horn");
+assert.deepEqual(
+  new Set(sugar.fullVersion.tracks.map(t=>t.defaultInstrument)),
+  new Set(["flute","oboe","clarinet","bassoon","horn","celesta","violin","strings","cello"])
+);
+for(const track of sugar.fullVersion.tracks){
+  assert.ok(track.events.length>0);
+  assert.ok(track.events.every(e=>e.type==="note"&&e.start>=0&&e.duration>0&&e.start+e.duration<=104.000001&&e.midi>=0&&e.midi<=127));
+  assert.ok(track.events.every(e=>e.sourcePartId===undefined),"event identity stays staff/voice-local; source part identity belongs on the track");
+}
