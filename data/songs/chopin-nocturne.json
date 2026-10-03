@@ -1235,9 +1235,10 @@
   "fullVersion": {
     "status": "source-ready",
     "label": "Full rendition",
-    "description": "The complete Mutopia piano score source is identified and pinned. Full piano/hand event ingestion is the next source-processing step.",
+    "description": "The complete Mutopia piano score and MIDI are identified and pinned. Full two-staff ingestion is an implementation task, not a source-discovery blocker.",
     "provenance": {
       "evidenceState": "See song sources and timing audit; no full event graph has been admitted yet."
-    }
+    },
+    "fidelityTarget": "source-score-derived / source-midi-derived"
   }
 }
