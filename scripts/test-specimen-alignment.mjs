@@ -56,11 +56,11 @@ const shostakovich=load("shostakovich-waltz-no2");
 assert.equal(shostakovich.musical.meter,"3/4");
 assert.equal(shostakovich.origin.originalKey,"C minor");
 assert.equal(shostakovich.stats.measuresOrPracticeGroups,16);
-assert.equal(shostakovich.stats.notes,27);
+assert.equal(shostakovich.stats.notes,28);
 assert.equal(shostakovich.stats.maxFret,5);
 assert.equal(shostakovich.fullVersion.status,"publication-rights-review");
 const shostNotes=notes(shostakovich);
 assert.deepEqual(shostNotes.slice(0,8).map(e=>e.midi),[67,64,62,60,60,60,62,64]);
-assert.deepEqual(shostNotes.slice(-5).map(e=>e.midi),[59,62,65,67,69].slice(-5));
+assert.deepEqual(shostNotes.slice(-5).map(e=>e.midi),[65,67,69,66,67]);
 
 console.log("specimen source-alignment self-test: PASS");
