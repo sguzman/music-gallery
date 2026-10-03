@@ -81,6 +81,10 @@ with TemporaryDirectory() as td:
     assert lh["level"] == 0.5
     assert lh["pan"] == 0.25
     assert lh["name"] == "Low piano"
+    manifest_with_override["ingest"]["keyMapOverride"]=[{"start":0,"fifths":-3}]
+    full4,warnings4=imp.normalize_score(root,manifest_with_override,meta)
+    assert full4["musical"]["keyMap"] == [{"start":0.0,"fifths":-3}]
+    assert warnings4 == []
     assert warnings3 == []
 
 print("symbolic importer self-test: PASS")

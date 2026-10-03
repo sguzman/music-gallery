@@ -492,6 +492,11 @@ def normalize_score(root, manifest, source_meta):
     tempo_map = dedupe_map(sorted(tempo_raw, key=lambda x: (x["start"], x["bpm"])), ("start", "bpm"))
     meter_map = dedupe_map(sorted(meter_raw, key=lambda x: (x["start"], x["meter"])), ("start", "meter"))
     key_map = dedupe_map(sorted(key_raw, key=lambda x: (x["start"], x["fifths"])), ("start", "fifths"))
+    if ingest_cfg.get("keyMapOverride") is not None:
+        key_map = [
+            {"start": round(number(x.get("start"), 0), 9), "fifths": int(number(x.get("fifths"), 0))}
+            for x in ingest_cfg["keyMapOverride"]
+        ]
 
     default_bpm = number(ingest_cfg.get("defaultBpm"), 0)
     if default_bpm <= 0:

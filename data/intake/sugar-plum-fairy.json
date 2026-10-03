@@ -141,7 +141,13 @@
         "pan": 0.34,
         "defaultInstrument": "cello"
       }
-    }
+    },
+    "keyMapOverride": [
+      {
+        "start": 0,
+        "fifths": 1
+      }
+    ]
   },
   "output": "data/ingested/sugar-plum-fairy.full.json"
 }
