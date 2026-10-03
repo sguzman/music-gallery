@@ -175,7 +175,7 @@
       "meter": "4/4",
       "composer": "Johann Pachelbel",
       "maxFret": 7,
-      "timingMethod": "score-guided simplified rhythm",
+      "timingMethod": "event-aligned against Mutopia violin I LilyPond source; prior Gallery durations were uniformly 2× the source for the 48 source-matching notes",
       "pinkyRequired": false,
       "moods": [
         "warm",
@@ -204,30 +204,53 @@
       ],
       "arrangementType": "melody-only",
       "arrangedKey": "D major",
-      "noteConfidence": "medium",
-      "timingConfidence": "medium"
+      "noteConfidence": "high",
+      "timingConfidence": "high"
     },
     "text": "canon and gigue in d major, p. 37 — canon pachelbel — canon in d johann pachelbel classical baroque 3 violins and continuo beginner 4/4 d major pachelbel canon canon in d major classical baroque canon warm serene ceremonial flowing pachelbel canon in d wedding baroque ground bass public domain melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery"
   },
   "verification": {
     "notes": {
-      "confidence": "medium"
+      "confidence": "high"
     },
     "timing": {
-      "confidence": "medium",
-      "method": "score-guided simplified rhythm"
+      "confidence": "high",
+      "method": "event-aligned against Mutopia violin I LilyPond source; prior Gallery durations were uniformly 2× the source for the 48 source-matching notes"
     },
-    "needsReview": true,
+    "needsReview": false,
     "notesAboutQuality": [
       "The attached alternate HTML files were used as a visual design reference only; their note data was not trusted.",
       "This is a simplified educational melody arrangement, not a complete score."
-    ]
+    ],
+    "sourceAlignment": {
+      "status": "source-aligned-excerpt-with-simplified-ending",
+      "provider": "Mutopia Project",
+      "sourceId": "Mutopia-2015/09/02-2047",
+      "sourceRepository": "MutopiaProject/MutopiaProject",
+      "sourceRepositoryCommit": "2144afd6f52d56c5b6995b8b589ef1268b3139f0",
+      "sourcePath": "ftp/PachelbelJ/Canon_per_3_Violini_e_Basso/Canon_per_3_Violini_e_Basso-lys/violin_common.ily",
+      "sourceBlobSha": "a98c87c5c14132edc3ff86d10c4088b5f08298f1",
+      "alignedArrangementNotes": 48,
+      "totalArrangementNotes": 49,
+      "findings": [
+        "Opening: 8/8 pitch classes match the source opening; source quarter notes were encoded as Gallery half notes before this correction.",
+        "Flow: 16/16 pitch classes match the next selected source eighth-note passage; source eighth notes were encoded as Gallery quarter notes before this correction.",
+        "Flourish: 24/24 pitch classes match the selected source sixteenth-note passage; source sixteenth notes were encoded as Gallery eighth notes before this correction.",
+        "Final D is an arrangement cadence/hold and is not asserted as an exact continuation of the source excerpt."
+      ]
+    }
   },
   "sources": [
     {
       "label": "IMSLP — Canon and Gigue in D major, P.37",
       "url": "https://imslp.org/wiki/Canon_and_Gigue_in_D_major,_P.37_(Pachelbel,_Johann)",
       "kind": "public-domain score reference"
+    },
+    {
+      "label": "Mutopia — Canon per 3 Violini e Basso (machine-readable violin I source)",
+      "url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=2047",
+      "kind": "CC BY 4.0 LilyPond score reference",
+      "evidence": "melody and rhythm alignment"
     }
   ],
   "rights": {
@@ -237,7 +260,7 @@
   "presentation": {
     "accent": "#f0b35a",
     "accentDark": "#f0b35a",
-    "description": "A short 12-bar reduction: signature opening, flowing variation, one faster flourish, then a clean D ending."
+    "description": "A compact 12-group reduction: source-aligned opening, flowing variation and flourish, then a simplified D ending."
   },
   "sections": [
     {
@@ -247,7 +270,7 @@
       "measures": [
         {
           "label": "1",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -256,8 +279,8 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -267,15 +290,15 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "2",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -284,8 +307,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -295,15 +318,15 @@
               "fret": 2,
               "midi": 61,
               "position": "low",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "3",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -312,8 +335,8 @@
               "fret": 0,
               "midi": 59,
               "position": "open",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -323,15 +346,15 @@
               "fret": 2,
               "midi": 57,
               "position": "low",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "4",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -340,8 +363,8 @@
               "fret": 0,
               "midi": 59,
               "position": "open",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -351,8 +374,8 @@
               "fret": 2,
               "midi": 61,
               "position": "low",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             }
           ]
@@ -366,7 +389,7 @@
       "measures": [
         {
           "label": "5",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -375,8 +398,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 0.5,
               "anchor": true
             },
             {
@@ -386,8 +409,8 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 0.5,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -397,8 +420,8 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 0.5,
               "anchor": true
             },
             {
@@ -408,15 +431,15 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 1.5,
+              "duration": 0.5,
               "anchor": false
             }
           ]
         },
         {
           "label": "6",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -425,8 +448,8 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 0.5,
               "anchor": true
             },
             {
@@ -436,8 +459,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 0.5,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -447,8 +470,8 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 0.5,
               "anchor": true
             },
             {
@@ -458,15 +481,15 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 1.5,
+              "duration": 0.5,
               "anchor": true
             }
           ]
         },
         {
           "label": "7",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -475,8 +498,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 0.5,
               "anchor": true
             },
             {
@@ -486,8 +509,8 @@
               "fret": 0,
               "midi": 59,
               "position": "open",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 0.5,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -497,8 +520,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 0.5,
               "anchor": true
             },
             {
@@ -508,15 +531,15 @@
               "fret": 2,
               "midi": 57,
               "position": "low",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 1.5,
+              "duration": 0.5,
               "anchor": false
             }
           ]
         },
         {
           "label": "8",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -525,8 +548,8 @@
               "fret": 0,
               "midi": 55,
               "position": "open",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 0.5,
               "anchor": true
             },
             {
@@ -536,8 +559,8 @@
               "fret": 0,
               "midi": 59,
               "position": "open",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 0.5,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -547,8 +570,8 @@
               "fret": 2,
               "midi": 57,
               "position": "low",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 0.5,
               "anchor": true
             },
             {
@@ -558,8 +581,8 @@
               "fret": 0,
               "midi": 55,
               "position": "open",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 1.5,
+              "duration": 0.5,
               "anchor": true
             }
           ]
@@ -573,7 +596,7 @@
       "measures": [
         {
           "label": "9",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -582,8 +605,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
-              "duration": 0.5,
+              "start": 0,
+              "duration": 0.25,
               "anchor": true
             },
             {
@@ -593,8 +616,19 @@
               "fret": 2,
               "midi": 61,
               "position": "low",
+              "start": 0.25,
+              "duration": 0.25,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "midi": 62,
+              "position": "low",
               "start": 0.5,
-              "duration": 0.5,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -604,19 +638,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 1.0,
-              "duration": 0.5,
-              "anchor": false
-            },
-            {
-              "type": "note",
-              "string": "B",
-              "stringIndex": 1,
-              "fret": 3,
-              "midi": 62,
-              "position": "low",
-              "start": 1.5,
-              "duration": 0.5,
+              "start": 0.75,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -626,8 +649,8 @@
               "fret": 2,
               "midi": 61,
               "position": "low",
-              "start": 2.0,
-              "duration": 0.5,
+              "start": 1,
+              "duration": 0.25,
               "anchor": true
             },
             {
@@ -637,8 +660,8 @@
               "fret": 2,
               "midi": 57,
               "position": "low",
-              "start": 2.5,
-              "duration": 0.5,
+              "start": 1.25,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -648,8 +671,8 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 3.0,
-              "duration": 0.5,
+              "start": 1.5,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -659,15 +682,15 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 3.5,
-              "duration": 0.5,
+              "start": 1.75,
+              "duration": 0.25,
               "anchor": true
             }
           ]
         },
         {
           "label": "10",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -676,8 +699,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
-              "duration": 0.5,
+              "start": 0,
+              "duration": 0.25,
               "anchor": true
             },
             {
@@ -687,8 +710,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.5,
-              "duration": 0.5,
+              "start": 0.25,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -698,8 +721,8 @@
               "fret": 2,
               "midi": 61,
               "position": "low",
-              "start": 1.0,
-              "duration": 0.5,
+              "start": 0.5,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -709,8 +732,8 @@
               "fret": 0,
               "midi": 59,
               "position": "open",
-              "start": 1.5,
-              "duration": 0.5,
+              "start": 0.75,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -720,8 +743,8 @@
               "fret": 2,
               "midi": 61,
               "position": "low",
-              "start": 2.0,
-              "duration": 0.5,
+              "start": 1,
+              "duration": 0.25,
               "anchor": true
             },
             {
@@ -731,8 +754,8 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 2.5,
-              "duration": 0.5,
+              "start": 1.25,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -742,8 +765,8 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 3.0,
-              "duration": 0.5,
+              "start": 1.5,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -753,15 +776,15 @@
               "fret": 7,
               "midi": 71,
               "position": "upper",
-              "start": 3.5,
-              "duration": 0.5,
+              "start": 1.75,
+              "duration": 0.25,
               "anchor": true
             }
           ]
         },
         {
           "label": "11",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -770,8 +793,8 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 0.0,
-              "duration": 0.5,
+              "start": 0,
+              "duration": 0.25,
               "anchor": true
             },
             {
@@ -781,8 +804,8 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 0.5,
-              "duration": 0.5,
+              "start": 0.25,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -792,8 +815,8 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 1.0,
-              "duration": 0.5,
+              "start": 0.5,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -803,8 +826,8 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 1.5,
-              "duration": 0.5,
+              "start": 0.75,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -814,8 +837,8 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 2.0,
-              "duration": 0.5,
+              "start": 1,
+              "duration": 0.25,
               "anchor": true
             },
             {
@@ -825,8 +848,8 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 2.5,
-              "duration": 0.5,
+              "start": 1.25,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -836,8 +859,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 3.0,
-              "duration": 0.5,
+              "start": 1.5,
+              "duration": 0.25,
               "anchor": false
             },
             {
@@ -847,15 +870,15 @@
               "fret": 2,
               "midi": 61,
               "position": "low",
-              "start": 3.5,
-              "duration": 0.5,
+              "start": 1.75,
+              "duration": 0.25,
               "anchor": true
             }
           ]
         },
         {
           "label": "12",
-          "duration": 4.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -864,8 +887,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
-              "duration": 4.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             }
           ]
@@ -882,7 +905,8 @@
     "maxFret": 7,
     "openStringNotes": 12,
     "anchorNotes": 28,
-    "durationUnits": 48.0,
-    "estimatedSecondsAtDefaultTempo": 40.0
+    "durationUnits": 24,
+    "estimatedSecondsAtDefaultTempo": 20,
+    "durationQuarterNotes": 24
   }
 }
