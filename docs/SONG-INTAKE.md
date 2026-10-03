@@ -34,6 +34,7 @@ Use the highest available source and retain its URL/provenance in the song JSON.
 - Do not shorten every note by an arbitrary playback gate. The player defaults to 100% of the notated duration; articulation is a user-controlled playback choice.
 - Tuplets, dotted values, ties, pickups, fermatas, tempo changes, and rests must be represented intentionally rather than flattened into a generic step grid.
 - A simplified arrangement may omit notes, but retained notes keep source-grounded attack/duration values unless the simplification is explicitly documented.
+- Preserve source-distinct parts, staves, and semantically meaningful voices in the Full Rendition event graph. A single instrument is not automatically a single render row: piano grand-staff material must not be flattened into one track merely because both staves use the same instrument.
 
 ## Confidence meanings
 

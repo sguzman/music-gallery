@@ -31,9 +31,16 @@ const chopin=JSON.parse(readFileSync(new URL("../data/songs/chopin-nocturne.json
 assert.equal(chopin.fullVersion.status,"available");
 assert.equal(chopin.fullVersion.fidelity,"transcription-derived");
 assert.equal(chopin.fullVersion.musical.meter,"12/8");
-assert.equal(chopin.fullVersion.durationUnits,222.0185);
-assert.equal(chopin.fullVersion.measures.length,37);
-assert.equal(chopin.fullVersion.tracks.length,1);
-assert.equal(chopin.fullVersion.tracks[0].id,"piano");
-assert.equal(chopin.fullVersion.tracks[0].events.length,1085);
-assert.ok(chopin.fullVersion.tracks[0].events.every(e=>e.type==="note"&&e.start>=0&&e.duration>0&&e.start+e.duration<=222.018501&&e.midi>=0&&e.midi<=127));
+assert.equal(chopin.fullVersion.durationUnits,212.5);
+assert.equal(chopin.fullVersion.measures.length,38);
+assert.deepEqual(chopin.fullVersion.measures[0],{label:"0",start:0,duration:.5});
+assert.deepEqual(chopin.fullVersion.tracks.map(t=>t.id),["piano-rh","piano-lh"]);
+assert.deepEqual(chopin.fullVersion.tracks.map(t=>t.name),["Piano — upper staff","Piano — lower staff"]);
+assert.deepEqual(chopin.fullVersion.tracks.map(t=>t.clef),["treble","bass"]);
+assert.deepEqual(chopin.fullVersion.tracks.map(t=>t.events.length),[456,775]);
+assert.equal(chopin.fullVersion.tracks.reduce((n,t)=>n+t.events.length,0),1231);
+assert.ok(chopin.fullVersion.tracks.every(t=>t.instrumentLabel==="Piano"&&t.defaultInstrument==="piano"));
+for(const [i,track] of chopin.fullVersion.tracks.entries()){
+  assert.ok(track.events.every(e=>e.type==="note"&&e.start>=0&&e.duration>0&&e.start+e.duration<=212.500001&&e.midi>=0&&e.midi<=127));
+  assert.ok(track.events.every(e=>e.sourceStaff===i+1),"Chopin grand-staff rows must preserve source staff identity");
+}
