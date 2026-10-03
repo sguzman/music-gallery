@@ -8,7 +8,8 @@ const STRING_Y={e:19,B:57,G:95,D:133,A:171,E:209};
 const GM_PROGRAM={guitar:25,piano:0,celesta:8,violin:40,cello:42,strings:48,flute:73,oboe:68,clarinet:71,bassoon:70};
 
 let song=null, viewMode="practice", selectedSection=-1, flat=[], cursor=0, playing=false, loop=false, audio=null, timers=[], nodes=[], runId=0;
-let trackState=new Map(), trackBuses=new Map();
+let trackState=new Map(), trackBuses=new Map(), masterBus=null;
+let transportUnit=0, transportStartUnit=0, transportAudioStart=0, scheduleIndex=0, schedulerTimer=null, transportFrame=null;
 
 function safe(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
 function fullAvailable(){return song?.fullVersion?.status==="available" && Array.isArray(song.fullVersion.tracks) && song.fullVersion.tracks.length>0;}
@@ -192,25 +193,37 @@ function renderHelp(){
 }
 function renderAll(){stop(false);renderViewSwitch();renderSectionButtons();viewMode==="full"&&fullAvailable()?renderFull():renderPractice();buildFlat();highlight();renderMetadata();renderHelp();}
 
-function ensureAudio(){if(!audio)audio=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==="suspended")audio.resume();}
+function ensureAudio(){
+  if(!audio){
+    audio=new (window.AudioContext||window.webkitAudioContext)();
+    const comp=audio.createDynamicsCompressor();
+    comp.threshold.value=-12;comp.knee.value=18;comp.ratio.value=3;comp.attack.value=.008;comp.release.value=.18;
+    const gain=audio.createGain();gain.gain.value=.9;comp.connect(gain).connect(audio.destination);masterBus={input:comp,gain};
+  }
+  if(audio.state==="suspended")audio.resume();
+}
 function hz(midi){return 440*Math.pow(2,(midi-69)/12);}
-function trackNode(n){nodes.push(n);return n;}
+function trackNode(n){
+  nodes.push(n);
+  if(n.addEventListener)n.addEventListener("ended",()=>{const i=nodes.indexOf(n);if(i>=0)nodes.splice(i,1);},{once:true});
+  return n;
+}
 function trackDestination(track){
   ensureAudio();
   let bus=trackBuses.get(track.id);
   if(!bus){
     const gain=audio.createGain();gain.gain.value=trackEnabled(track)?1:0;
     if(audio.createStereoPanner){
-      const pan=audio.createStereoPanner();pan.pan.value=Math.max(-1,Math.min(1,track.pan??0));gain.connect(pan).connect(audio.destination);bus={gain,pan};
-    }else{gain.connect(audio.destination);bus={gain,pan:null};}
+      const pan=audio.createStereoPanner();pan.pan.value=Math.max(-1,Math.min(1,track.pan??0));gain.connect(pan).connect(masterBus.input);bus={gain,pan};
+    }else{gain.connect(masterBus.input);bus={gain,pan:null};}
     trackBuses.set(track.id,bus);
   }
   return bus.gain;
 }
 function setTrackGain(track,enabled){
   if(!audio)return;
-  const bus=trackDestination(track),now=audio.currentTime;
-  bus.gain.gain.cancelScheduledValues(now);bus.gain.gain.setValueAtTime(bus.gain.gain.value,now);bus.gain.gain.linearRampToValueAtTime(enabled?1:0,now+.035);
+  const node=trackDestination(track),param=node.gain,now=audio.currentTime;
+  param.cancelScheduledValues(now);param.setValueAtTime(param.value,now);param.linearRampToValueAtTime(enabled?1:0,now+.025);
 }
 function setTrackEnabledLive(track,ti,enabled){
   trackState.set(track.id,enabled);setTrackGain(track,enabled);
@@ -220,51 +233,113 @@ function setTrackEnabledLive(track,ti,enabled){
   const footer=document.querySelector(".score-footer");if(footer){const n=song.fullVersion.tracks.filter(trackEnabled).length;footer.textContent=n+"/"+song.fullVersion.tracks.length+" tracks enabled. Mixer changes are live. Click anywhere on the score to seek without leaving the full rendition.";}
 }
 function setAllTracksLive(enabled){song.fullVersion.tracks.forEach((track,ti)=>setTrackEnabledLive(track,ti,enabled));}
-function envelope(start,hold,peak=.18,attack=.006,release=.18,destination=null){
+function envelope(start,hold,peak=.18,attack=.006,release=.24,destination=null){
   const g=audio.createGain(),dest=destination||audio.destination,end=start+Math.max(attack+.02,hold),tail=end+release;
-  g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(peak,start+attack);g.gain.setValueAtTime(Math.max(.0002,peak*.82),end);g.gain.exponentialRampToValueAtTime(.0001,tail);g.connect(dest);return {gain:g,stop:tail+.03};
+  g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(peak,start+attack);
+  g.gain.linearRampToValueAtTime(Math.max(.0002,peak*.72),end);
+  g.gain.exponentialRampToValueAtTime(.0001,tail);g.connect(dest);return {gain:g,stop:tail+.04};
 }
-function piano(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.18*level,.006,.38,destination);[[1,"triangle",1],[2,"sine",.30],[3,"sine",.11]].forEach(([mult,type,amt])=>{const o=trackNode(audio.createOscillator()),g=audio.createGain();o.type=type;o.frequency.setValueAtTime(hz(midi)*mult,start);g.gain.value=amt;o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);});}
-function guitar(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.22*level,.004,.24,destination),body=audio.createBiquadFilter(),o=trackNode(audio.createOscillator()),h=trackNode(audio.createOscillator()),hg=audio.createGain();body.type="lowpass";body.frequency.setValueAtTime(4200,start);body.frequency.exponentialRampToValueAtTime(900,start+Math.max(.12,seconds));o.type="triangle";o.frequency.setValueAtTime(hz(midi),start);h.type="sine";h.frequency.setValueAtTime(hz(midi)*2,start);hg.gain.setValueAtTime(.12,start);hg.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,seconds*.52));o.connect(body);h.connect(hg).connect(body);body.connect(env.gain);o.start(start);h.start(start);o.stop(env.stop);h.stop(env.stop);}
-function celesta(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.16*level,.003,.28,destination);[[1,1],[2,.48],[3,.22],[4,.1],[6,.05]].forEach(([mult,amt])=>{const o=trackNode(audio.createOscillator()),g=audio.createGain();o.type="sine";o.frequency.setValueAtTime(hz(midi)*mult,start);g.gain.setValueAtTime(amt,start);g.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,seconds*(mult===1?1:.55)));o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);});}
-function bowed(midi,start,seconds,level=1,kind="violin",destination=null){const env=envelope(start,seconds,(kind==="cello"?.11:.075)*level,.035,.30,destination),f=audio.createBiquadFilter(),o=trackNode(audio.createOscillator());o.type=kind==="cello"?"triangle":"sawtooth";o.frequency.setValueAtTime(hz(midi),start);f.type="lowpass";f.frequency.value=kind==="cello"?1800:3300;o.connect(f).connect(env.gain);o.start(start);o.stop(env.stop);}
-function generic(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.10*level,.012,.24,destination),o=trackNode(audio.createOscillator());o.type="triangle";o.frequency.value=hz(midi);o.connect(env.gain);o.start(start);o.stop(env.stop);}
-function toneFor(mode,midi,start,seconds,level=1,destination=null){if(mode==="guitar")guitar(midi,start,seconds,level,destination);else if(mode==="piano")piano(midi,start,seconds,level,destination);else if(mode==="celesta")celesta(midi,start,seconds,level,destination);else if(mode==="violin"||mode==="strings"||mode==="voice")bowed(midi,start,seconds,level,"violin",destination);else if(mode==="cello")bowed(midi,start,seconds,level,"cello",destination);else if(mode==="both"||mode==="guitar-piano"){guitar(midi,start,seconds,.68*level,destination);piano(midi,start,seconds,.60*level,destination);}else if(mode==="guitar-celesta"){guitar(midi,start,seconds,.64*level,destination);celesta(midi,start,seconds,.68*level,destination);}else generic(midi,start,seconds,level,destination);}
+function piano(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.17*level,.006,.55,destination);[[1,"triangle",1],[2,"sine",.30],[3,"sine",.11]].forEach(([mult,type,amt])=>{const o=trackNode(audio.createOscillator()),g=audio.createGain();o.type=type;o.frequency.setValueAtTime(hz(midi)*mult,start);g.gain.value=amt;o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);});}
+function guitar(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.21*level,.004,.34,destination),body=audio.createBiquadFilter(),o=trackNode(audio.createOscillator()),h=trackNode(audio.createOscillator()),hg=audio.createGain();body.type="lowpass";body.frequency.setValueAtTime(4200,start);body.frequency.exponentialRampToValueAtTime(900,start+Math.max(.12,seconds));o.type="triangle";o.frequency.setValueAtTime(hz(midi),start);h.type="sine";h.frequency.setValueAtTime(hz(midi)*2,start);hg.gain.setValueAtTime(.12,start);hg.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,seconds*.62));o.connect(body);h.connect(hg).connect(body);body.connect(env.gain);o.start(start);h.start(start);o.stop(env.stop);h.stop(env.stop);}
+function celesta(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.15*level,.003,.38,destination);[[1,1],[2,.48],[3,.22],[4,.1],[6,.05]].forEach(([mult,amt])=>{const o=trackNode(audio.createOscillator()),g=audio.createGain();o.type="sine";o.frequency.setValueAtTime(hz(midi)*mult,start);g.gain.setValueAtTime(amt,start);g.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,seconds*(mult===1?1:.62)));o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);});}
+function bowed(midi,start,seconds,level=1,kind="violin",destination=null){
+  const cello=kind==="cello",env=envelope(start,seconds,(cello?.18:.085)*level,.035,cello?.34:.26,destination),f=audio.createBiquadFilter(),o=trackNode(audio.createOscillator());
+  o.type=cello?"triangle":"sawtooth";o.frequency.setValueAtTime(hz(midi),start);f.type="lowpass";f.frequency.value=cello?2200:3400;o.connect(f).connect(env.gain);o.start(start);o.stop(env.stop);
+}
+function voiceTone(midi,start,seconds,level=1,destination=null){
+  const env=envelope(start,seconds,.115*level,.045,.38,destination),o=trackNode(audio.createOscillator());o.type="sawtooth";o.frequency.setValueAtTime(hz(midi),start);
+  [[700,.50],[1200,.28],[2600,.16]].forEach(([freq,amp])=>{const f=audio.createBiquadFilter(),g=audio.createGain();f.type="bandpass";f.frequency.value=freq;f.Q.value=5;g.gain.value=amp;o.connect(f).connect(g).connect(env.gain);});
+  o.start(start);o.stop(env.stop);
+}
+function generic(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.10*level,.012,.30,destination),o=trackNode(audio.createOscillator());o.type="triangle";o.frequency.value=hz(midi);o.connect(env.gain);o.start(start);o.stop(env.stop);}
+function toneFor(mode,midi,start,seconds,level=1,destination=null){if(mode==="guitar")guitar(midi,start,seconds,level,destination);else if(mode==="piano")piano(midi,start,seconds,level,destination);else if(mode==="celesta")celesta(midi,start,seconds,level,destination);else if(mode==="voice")voiceTone(midi,start,seconds,level,destination);else if(mode==="violin"||mode==="strings")bowed(midi,start,seconds,level,"violin",destination);else if(mode==="cello")bowed(midi,start,seconds,level,"cello",destination);else if(mode==="both"||mode==="guitar-piano"){guitar(midi,start,seconds,.68*level,destination);piano(midi,start,seconds,.60*level,destination);}else if(mode==="guitar-celesta"){guitar(midi,start,seconds,.64*level,destination);celesta(midi,start,seconds,.68*level,destination);}else generic(midi,start,seconds,level,destination);}
 function toneForEntry(x,start,seconds){if(x.mode==="full")toneFor(x.track.defaultInstrument||"strings",x.event.midi,start,seconds,x.track.level??1,trackDestination(x.track));else toneFor($("#instrument").value,x.event.midi,start,seconds,1);}
 
 function clearTimers(){timers.forEach(clearTimeout);timers=[];}
 function later(fn,ms){const id=setTimeout(fn,Math.max(0,ms));timers.push(id);}
-function stopNodes(){nodes.forEach(n=>{try{n.stop();}catch(_){}});nodes=[];}
+function stopNodes(){nodes.slice().forEach(n=>{try{n.stop();}catch(_){}});nodes=[];}
+function clearScheduler(){if(schedulerTimer){clearTimeout(schedulerTimer);schedulerTimer=null;}if(transportFrame){cancelAnimationFrame(transportFrame);transportFrame=null;}}
 function clearHighlights(){document.querySelectorAll(".note.live,.note.next,.note.dimmed,.score-note.live,.score-note.next").forEach(n=>n.classList.remove("live","next","dimmed"));}
-function stop(reset=true){runId++;playing=false;clearTimers();stopNodes();if(reset)cursor=0;clearHighlights();updateButtons();highlight();updateStatus();}
-function pause(){runId++;playing=false;clearTimers();stopNodes();updateButtons();updateStatus();}
+function playbackEndUnit(){
+  if(viewMode==="full"&&fullAvailable())return fullDuration();
+  return flat.reduce((m,x)=>Math.max(m,x.start+x.event.duration),0);
+}
+function currentTransportUnit(){
+  if(!playing||!audio)return transportUnit;
+  const secPerUnit=tempoSecondsPerUnit(),elapsed=Math.max(0,audio.currentTime-transportAudioStart);
+  return Math.min(playbackEndUnit(),transportStartUnit+elapsed/secPerUnit);
+}
+function lowerBoundStart(unit){
+  let lo=0,hi=flat.length;
+  while(lo<hi){const mid=(lo+hi)>>1;if(flat[mid].start<unit)lo=mid+1;else hi=mid;}
+  return lo;
+}
+function lastOnsetIndex(unit){
+  const i=lowerBoundStart(unit+1e-7)-1;return Math.max(0,Math.min(flat.length-1,i));
+}
+function stop(reset=true){
+  const pos=currentTransportUnit();runId++;playing=false;clearScheduler();clearTimers();stopNodes();
+  transportUnit=reset?0:pos;if(reset)cursor=0;else if(flat.length)cursor=lastOnsetIndex(transportUnit);
+  clearHighlights();updateButtons();highlight();updateStatus();
+}
+function pause(){
+  if(!playing)return;
+  const pos=currentTransportUnit();runId++;playing=false;clearScheduler();stopNodes();transportUnit=pos;if(flat.length)cursor=lastOnsetIndex(pos);updateButtons();highlight();updateStatus();
+}
 function activePlayEvents(){if(viewMode==="full")return flat.map((x,i)=>({...x,flatIndex:i}));const anchorsOnly=$("#salvage").checked;return flat.map((x,i)=>({...x,flatIndex:i})).filter(x=>!anchorsOnly||x.event.anchor);}
+function scheduleEntry(x,unitNow,horizonUnit,secPerUnit,gate){
+  const endUnit=x.start+x.event.duration;if(endUnit<=unitNow+1e-8)return;
+  const overlap=Math.max(0,unitNow-x.start),remainingUnits=Math.max(.001,x.event.duration-overlap);
+  const when=overlap>0?audio.currentTime+.018:transportAudioStart+(x.start-transportStartUnit)*secPerUnit;
+  if(when>audio.currentTime+.75)return;
+  toneForEntry(x,Math.max(audio.currentTime+.012,when),Math.max(.045,remainingUnits*secPerUnit*gate));
+}
+function schedulerStep(myRun){
+  if(!playing||myRun!==runId)return;
+  const secPerUnit=tempoSecondsPerUnit(),unitNow=currentTransportUnit(),lookaheadSec=.48,horizonUnit=unitNow+lookaheadSec/secPerUnit,gate=viewMode==="full"?1:Number($("#gate").value)/100,candidates=activePlayEvents();
+  while(scheduleIndex<candidates.length&&candidates[scheduleIndex].start<horizonUnit){
+    scheduleEntry(candidates[scheduleIndex],unitNow,horizonUnit,secPerUnit,gate);scheduleIndex++;
+  }
+  schedulerTimer=setTimeout(()=>schedulerStep(myRun),65);
+}
+function visualStep(myRun){
+  if(!playing||myRun!==runId)return;
+  const unit=currentTransportUnit(),end=playbackEndUnit();
+  if(flat.length){const idx=lastOnsetIndex(unit);if(idx!==cursor){cursor=idx;highlight();}else updatePlayhead(unit);}
+  updateStatus(unit);
+  if(unit>=end-.002){
+    if(loop){transportUnit=0;playing=false;clearScheduler();stopNodes();cursor=0;play();return;}
+    playing=false;transportUnit=end;clearScheduler();stopNodes();updateButtons();highlight();updateStatus(end);return;
+  }
+  transportFrame=requestAnimationFrame(()=>visualStep(myRun));
+}
 function play(){
-  if(!flat.length)return;stopNodes();clearTimers();playing=true;updateButtons();
-  const myRun=++runId,secPerUnit=tempoSecondsPerUnit(),gate=viewMode==="full"?1:Number($("#gate").value)/100,candidates=activePlayEvents(),currentStart=flat[cursor]?.start??0,events=candidates.filter(x=>x.start>=currentStart-1e-6);
+  if(!flat.length)return;
+  clearScheduler();stopNodes();ensureAudio();
+  const end=playbackEndUnit();if(transportUnit>=end-.002)transportUnit=0;
+  if(transportUnit===0&&cursor>0)transportUnit=flat[cursor]?.start??0;
+  playing=true;const myRun=++runId,secPerUnit=tempoSecondsPerUnit();
+  transportStartUnit=transportUnit;transportAudioStart=audio.currentTime+.065;
+  const candidates=activePlayEvents();scheduleIndex=0;
+  while(scheduleIndex<candidates.length&&candidates[scheduleIndex].start+candidates[scheduleIndex].event.duration<=transportStartUnit+1e-8)scheduleIndex++;
   if(viewMode==="practice"&&$("#salvage").checked)document.querySelectorAll(".note:not(.anchor)").forEach(n=>n.classList.add("dimmed"));
-  ensureAudio();const audioStart=audio.currentTime+.10;
-  events.forEach(x=>{const rel=(x.start-currentStart)*secPerUnit,dur=Math.max(.06,x.event.duration*secPerUnit*gate);toneForEntry(x,audioStart+rel,dur);later(()=>{if(myRun!==runId)return;cursor=x.flatIndex;highlight();updateStatus();},100+rel*1000);});
-  const lastEnd=events.reduce((m,x)=>Math.max(m,(x.start-currentStart)+x.event.duration),0)*secPerUnit*1000;
-  later(()=>{if(myRun!==runId)return;if(loop){cursor=0;play();}else{playing=false;updateButtons();updateStatus();}},lastEnd+220);
+  updateButtons();schedulerStep(myRun);visualStep(myRun);
 }
 function seekFullToUnits(units){
   if(viewMode!=="full"||!flat.length)return;
   const wasPlaying=playing,target=Math.max(0,Math.min(fullDuration(),units));
-  let idx=flat.findIndex(x=>x.start>=target-1e-6);if(idx<0)idx=flat.length-1;
-  runId++;clearTimers();stopNodes();playing=false;cursor=idx;highlight();updateButtons();updateStatus();
+  runId++;playing=false;clearScheduler();stopNodes();transportUnit=target;cursor=lastOnsetIndex(target);highlight();updateButtons();updateStatus(target);
   if(wasPlaying)play();
 }
-function updatePlayhead(){
+function updatePlayhead(unit=currentTransportUnit()){
   if(viewMode!=="full"||!fullAvailable())return;
-  const t=flat[cursor]?.start??0,p=Math.max(0,Math.min(100,t/fullDuration()*100));
+  const p=Math.max(0,Math.min(100,unit/fullDuration()*100));
   document.querySelectorAll(".score-playhead").forEach(el=>el.style.left=p+"%");
 }
-
 function findNoteEl(x){return x.mode==="full"?document.querySelector(`.score-note[data-track="${x.ti}"][data-event="${x.ei}"]`):document.querySelector(`.note[data-section="${CSS.escape(x.section.id)}"][data-measure="${x.mi}"][data-event="${x.ei}"]`);}
 function highlight(){document.querySelectorAll(".note.live,.note.next,.score-note.live,.score-note.next").forEach(n=>n.classList.remove("live","next"));if(!flat.length){updatePlayhead();return;}const start=flat[cursor].start;flat.forEach(x=>{if(Math.abs(x.start-start)<1e-8)findNoteEl(x)?.classList.add("live");});const next=flat.find(x=>x.start>start+1e-8);if(next){const ns=next.start;flat.forEach(x=>{if(Math.abs(x.start-ns)<1e-8)findNoteEl(x)?.classList.add("next");});}updatePlayhead();}
 function updateButtons(){$("#play").textContent=playing?"▶ Playing":"▶ Play";$("#loop").classList.toggle("active",loop);}
-function updateStatus(){const total=flat.length,pos=total?cursor+1:0;$("#counter").textContent=`${pos} / ${total}`;$("#progress").style.width=total?`${pos/total*100}%`:"0%";$("#status").textContent=playing?"Playing":(cursor?"Paused / positioned":"Ready");}
+function updateStatus(unit=currentTransportUnit()){const total=flat.length,pos=total?cursor+1:0;$("#counter").textContent=`${pos} / ${total}`;const end=playbackEndUnit(),p=end?Math.max(0,Math.min(1,unit/end)):0;$("#progress").style.width=`${p*100}%`;$("#status").textContent=playing?"Playing":(transportUnit>0?"Paused / positioned":"Ready");}
 function auditionPractice(sectionId,mi,ei,el){pause();ensureAudio();const section=song.sections.find(s=>s.id===sectionId),e=section.measures[mi].events[ei];toneFor($("#instrument").value,e.midi,audio.currentTime+.02,Math.max(.18,e.duration*tempoSecondsPerUnit()*Number($("#gate").value)/100));document.querySelectorAll(".note.live").forEach(n=>n.classList.remove("live"));el.classList.add("live");later(()=>el.classList.remove("live"),500);}
 function auditionFull(ti,ei,el){const e=song.fullVersion.tracks[ti].events[ei];seekFullToUnits(e.start);}
 
@@ -290,7 +365,7 @@ function exportMidi(){viewMode==="full"&&fullAvailable()?exportFullMidi():export
 function bind(){
   $("#play").onclick=()=>playing?pause():play();$("#pause").onclick=pause;$("#stop").onclick=()=>stop(true);$("#loop").onclick=()=>{loop=!loop;updateButtons();};$("#midi").onclick=exportMidi;
   $("#practiceView").onclick=()=>switchView("practice");$("#fullView").onclick=()=>switchView("full");
-  $("#tempo").oninput=e=>{$("#tempoOut").textContent=`${e.target.value} BPM`;if(playing){pause();play();}};$("#gate").oninput=e=>{$("#gateOut").textContent=`${e.target.value}%`;};
+  $("#tempo").oninput=e=>{const wasPlaying=playing;if(wasPlaying)pause();$("#tempoOut").textContent=`${e.target.value} BPM`;if(wasPlaying)play();};$("#gate").oninput=e=>{$("#gateOut").textContent=`${e.target.value}%`;};
   document.addEventListener("keydown",e=>{if(["INPUT","SELECT","TEXTAREA"].includes(e.target.tagName))return;if(e.code==="Space"){e.preventDefault();playing?pause():play();}if(e.code==="ArrowRight"||e.code==="ArrowLeft"){e.preventDefault();pause();cursor=e.code==="ArrowRight"?Math.min(flat.length-1,cursor+1):Math.max(0,cursor-1);highlight();const x=flat[cursor],el=x?findNoteEl(x):null;if(x&&el){if(x.mode==="full")auditionFull(x.ti,x.ei,el);else auditionPractice(x.section.id,x.mi,x.ei,el);}}});
 }
 async function init(){
