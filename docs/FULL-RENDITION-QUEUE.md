@@ -27,3 +27,7 @@ This is a **locked, user-approved corpus** for Musicarium. Every item must end i
 ## Current state
 
 All ten approved specimens now have published Full Renditions. The queue is fully processed and is waiting on user listening/UX QA rather than further ingestion.
+
+### Mozart mix normalization
+
+The final Dies Irae artifact is normalized to readable source-part names and balanced per-track levels: basset horns, bassoons, trumpets, timpani, Violin I, Violin II, viola, SATB voices, and organ/bass. The underlying 3,921-note event graph is unchanged.
