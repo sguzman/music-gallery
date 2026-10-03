@@ -72,7 +72,7 @@ function renderViewSwitch(){
   full.classList.toggle("active",viewMode==="full");full.setAttribute("aria-selected",String(viewMode==="full"));full.disabled=!fullAvailable();
   if(viewMode==="full")note.textContent=song.fullVersion.description||"Source-backed full rendition with simultaneous tracks.";
   else if(fullAvailable())note.textContent="Practice arrangement: segmented, guitar-first, and easy to isolate. Full rendition is available in the other tab.";
-  else{const status=song.fullVersion?.status;note.textContent=status?`Practice arrangement. Full rendition status: ${status.replaceAll("-"," ")}.`:"Practice arrangement. A provenance-backed full rendition has not been loaded yet.";}
+  else{const status=song.fullVersion?.status,desc=song.fullVersion?.description;note.textContent=desc||((status?`Practice arrangement. Full rendition status: ${status.replaceAll("-"," ")}.`:"Practice arrangement. A provenance-backed full rendition has not been loaded yet."));}
 }
 
 function renderSectionButtons(){
