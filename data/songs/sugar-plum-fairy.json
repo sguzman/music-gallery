@@ -22,7 +22,7 @@
     "year": 1892,
     "sourceMedium": "orchestra with celesta",
     "franchise": "The Nutcracker",
-    "originalKey": null,
+    "originalKey": "E minor",
     "originalInstrumentation": "orchestra with celesta"
   },
   "arrangement": {
@@ -40,7 +40,7 @@
         "E4"
       ]
     },
-    "arrangedKey": null,
+    "arrangedKey": "E minor",
     "difficulty": {
       "label": "beginner",
       "rating": 2,
@@ -109,10 +109,10 @@
     "meter": "2/4",
     "tempoUnit": "quarter note",
     "unitsPerQuarter": 1,
-    "defaultBpm": 72,
+    "defaultBpm": 62,
     "bpmRange": [
-      40,
-      120
+      45,
+      100
     ]
   },
   "playback": {
@@ -178,7 +178,7 @@
       "meter": "2/4",
       "composer": "Pyotr Ilyich Tchaikovsky",
       "maxFret": 5,
-      "timingMethod": "score-guided simplified rhythm",
+      "timingMethod": "mfiles orchestral score: 2/4, quarter=62; retained excerpt rhythm remains simplified",
       "pinkyRequired": false,
       "moods": [
         "eerie",
@@ -209,31 +209,65 @@
         "guitar-piano"
       ],
       "arrangementType": "melody-only",
-      "arrangedKey": null,
-      "noteConfidence": "medium",
+      "arrangedKey": "E minor",
+      "noteConfidence": "high",
       "timingConfidence": "medium"
     },
     "text": "dance of the sugar plum fairy tchaikovsky — dance of the sugar plum fairy pyotr ilyich tchaikovsky classical romantic orchestra with celesta the nutcracker beginner 2/4 sugar plum fairy dance of the sugarplum fairy classical ballet romantic eerie delicate magical playful mysterious tchaikovsky nutcracker sugar plum fairy celesta ballet christmas public domain single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery"
   },
   "verification": {
     "notes": {
-      "confidence": "medium"
+      "confidence": "high",
+      "method": "pitch sequence cross-checked against mfiles celesta score plus independent Singing Bell note-name transcription; three pitch-order/value errors corrected"
     },
     "timing": {
       "confidence": "medium",
-      "method": "score-guided simplified rhythm"
+      "method": "mfiles orchestral score fixes meter at 2/4 and quarter=62; retained Gallery excerpt still uses simplified note-value reductions rather than a complete celesta-part transcription"
     },
     "needsReview": true,
     "notesAboutQuality": [
       "The attached alternate HTML files were used as a visual design reference only; their note data was not trusted.",
       "This is a simplified educational melody arrangement, not a complete score."
-    ]
+    ],
+    "sourceAlignment": {
+      "status": "melody-spans-corrected-global-tempo-verified-rhythm-simplified",
+      "primaryScore": {
+        "provider": "mfiles / Music Files Ltd",
+        "part": "Celesta",
+        "meter": "2/4",
+        "tempo": "quarter = 62",
+        "role": "main theme"
+      },
+      "independentPitchWitness": {
+        "provider": "Singing Bell",
+        "observedOpening": "G E G F# D# E D D D C# C# C# C C C B E C E B",
+        "use": "pitch-order corroboration only"
+      },
+      "corrections": [
+        "opening second bar: D# precedes E (previously reversed)",
+        "chromatic-answer selected span ends on D, not D#",
+        "return second bar: D# precedes E (previously reversed)"
+      ],
+      "caveat": "The arrangement intentionally skips source material and compresses rhythm; omission is represented as arrangement structure rather than treated as source-exact continuity."
+    }
   },
   "sources": [
     {
       "label": "IMSLP — The Nutcracker, Op.71",
       "url": "https://imslp.org/wiki/The_Nutcracker_(ballet),_Op.71_(Tchaikovsky,_Pyotr_Ilyich)",
       "kind": "public-domain score reference"
+    },
+    {
+      "label": "mfiles — Sugar Plum Fairy orchestral score and Celesta part",
+      "url": "https://www.mfiles.co.uk/scores/Sugar-Plum-Fairy.htm",
+      "kind": "orchestral score, individual celesta part, MIDI and MP3 reference",
+      "evidence": "2/4, quarter=62, celesta carries the main theme, pitch/rhythm score witness"
+    },
+    {
+      "label": "Singing Bell — Dance of Sugar Plum Fairy note-name score",
+      "url": "https://www.singing-bell.com/wp-content/uploads/2021/11/Sugar-Plum-Fairy_Glockenspiel_Singing-Bell.pdf",
+      "kind": "secondary melody transcription",
+      "evidence": "independent note-name pitch-order corroboration"
     }
   ],
   "rights": {
@@ -253,7 +287,7 @@
       "measures": [
         {
           "label": "1",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -262,7 +296,7 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.5,
               "anchor": true
             },
@@ -295,27 +329,16 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "2",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
-            {
-              "type": "note",
-              "string": "e",
-              "stringIndex": 0,
-              "fret": 0,
-              "midi": 64,
-              "position": "open",
-              "start": 0.0,
-              "duration": 0.5,
-              "anchor": true
-            },
             {
               "type": "note",
               "string": "B",
@@ -323,6 +346,17 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
+              "start": 0,
+              "duration": 0.5,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "midi": 64,
+              "position": "open",
               "start": 0.5,
               "duration": 0.5,
               "anchor": true
@@ -334,7 +368,7 @@
               "fret": 3,
               "midi": 62,
               "position": "mid",
-              "start": 1.0,
+              "start": 1,
               "duration": 0.25,
               "anchor": false
             },
@@ -364,7 +398,7 @@
         },
         {
           "label": "3",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -373,7 +407,7 @@
               "fret": 2,
               "midi": 61,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.25,
               "anchor": true
             },
@@ -406,7 +440,7 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 1.0,
+              "start": 1,
               "duration": 0.25,
               "anchor": true
             },
@@ -443,7 +477,7 @@
       "measures": [
         {
           "label": "4",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -452,7 +486,7 @@
               "fret": 0,
               "midi": 59,
               "position": "open",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.25,
               "anchor": true
             },
@@ -485,7 +519,7 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 1.0,
+              "start": 1,
               "duration": 0.5,
               "anchor": false
             },
@@ -504,7 +538,7 @@
         },
         {
           "label": "5",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -513,7 +547,7 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.25,
               "anchor": true
             },
@@ -546,7 +580,7 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 1.0,
+              "start": 1,
               "duration": 0.25,
               "anchor": true
             },
@@ -576,7 +610,7 @@
         },
         {
           "label": "6",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -585,7 +619,7 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.25,
               "anchor": true
             },
@@ -618,7 +652,7 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 1.0,
+              "start": 1,
               "duration": 0.25,
               "anchor": false
             },
@@ -626,9 +660,9 @@
               "type": "note",
               "string": "B",
               "stringIndex": 1,
-              "fret": 4,
-              "midi": 63,
-              "position": "mid",
+              "fret": 3,
+              "midi": 62,
+              "position": "low",
               "start": 1.25,
               "duration": 0.75,
               "anchor": true
@@ -644,7 +678,7 @@
       "measures": [
         {
           "label": "7",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -653,7 +687,7 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.5,
               "anchor": true
             },
@@ -686,27 +720,16 @@
               "fret": 2,
               "midi": 66,
               "position": "low",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "8",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
-            {
-              "type": "note",
-              "string": "e",
-              "stringIndex": 0,
-              "fret": 0,
-              "midi": 64,
-              "position": "open",
-              "start": 0.0,
-              "duration": 0.5,
-              "anchor": true
-            },
             {
               "type": "note",
               "string": "B",
@@ -714,6 +737,17 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
+              "start": 0,
+              "duration": 0.5,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "midi": 64,
+              "position": "open",
               "start": 0.5,
               "duration": 0.5,
               "anchor": true
@@ -725,7 +759,7 @@
               "fret": 3,
               "midi": 62,
               "position": "mid",
-              "start": 1.0,
+              "start": 1,
               "duration": 0.25,
               "anchor": false
             },
@@ -755,7 +789,7 @@
         },
         {
           "label": "9",
-          "duration": 2.0,
+          "duration": 2,
           "events": [
             {
               "type": "note",
@@ -764,8 +798,8 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             }
           ]
@@ -782,7 +816,7 @@
     "maxFret": 5,
     "openStringNotes": 12,
     "anchorNotes": 29,
-    "durationUnits": 18.0,
-    "estimatedSecondsAtDefaultTempo": 15.0
+    "durationUnits": 18,
+    "estimatedSecondsAtDefaultTempo": 17.4
   }
 }
