@@ -20,7 +20,9 @@ function trackEnabled(track){return trackState.get(track.id)!==false;}
 
 function buildFlat(){
   flat=[];
-  if(viewMode==="full"&&fullAvailable()){
+  if(viewMode==="full"){
+    if(!fullAvailable()){cursor=0;updateStatus();return;}
+
     song.fullVersion.tracks.forEach((track,ti)=>{
       track.events.forEach((event,ei)=>{if(event.type==="note")flat.push({mode:"full",track,ti,event,ei,start:event.start});});
     });
@@ -58,19 +60,21 @@ function renderControls(resetTempo=false){
   const gate=$("#gate"),gateWrap=gate.closest(".range");
   gate.value=viewMode==="full"?100:(song.playback.gatePercent||86);$("#gateOut").textContent=`${gate.value}%`;if(gateWrap)gateWrap.hidden=viewMode==="full";
   const inst=$("#instrument"),labels={guitar:"Steel-string guitar",piano:"Piano",both:"Guitar + piano",celesta:"Celesta","guitar-celesta":"Guitar + celesta","guitar-piano":"Guitar + piano"};
+  const pendingFull=viewMode==="full"&&!fullAvailable();
+  ["play","pause","stop","loop","midi"].forEach(id=>{$("#"+id).disabled=pendingFull;});
+  tempo.disabled=pendingFull;
   if(viewMode==="full"){inst.innerHTML='<option value="score">Score instruments</option>';inst.disabled=true;}
   else{inst.disabled=false;inst.innerHTML=song.playback.instrumentOptions.map(v=>`<option value="${v}" ${v===song.playback.defaultInstrument?"selected":""}>${labels[v]||v}</option>`).join("");}
 }
 
 function switchView(mode){
-  if(mode==="full"&&!fullAvailable())return;
-  stop(true);viewMode=mode;selectedSection=-1;cursor=0;renderControls(true);renderAll();
+  stop(true);viewMode=mode;selectedSection=-1;cursor=0;transportUnit=0;renderControls(true);renderAll();
 }
 
 function renderViewSwitch(){
   const practice=$("#practiceView"),full=$("#fullView"),note=$("#viewDescription");
   practice.classList.toggle("active",viewMode==="practice");practice.setAttribute("aria-selected",String(viewMode==="practice"));
-  full.classList.toggle("active",viewMode==="full");full.setAttribute("aria-selected",String(viewMode==="full"));full.disabled=!fullAvailable();
+  full.classList.toggle("active",viewMode==="full");full.setAttribute("aria-selected",String(viewMode==="full"));full.disabled=false;
   if(viewMode==="full")note.textContent=song.fullVersion.description||"Source-backed full rendition with simultaneous tracks.";
   else if(fullAvailable())note.textContent="Practice arrangement: segmented, guitar-first, and easy to isolate. Full rendition is available in the other tab.";
   else{const status=song.fullVersion?.status,desc=song.fullVersion?.description;note.textContent=desc||((status?`Practice arrangement. Full rendition status: ${status.replaceAll("-"," ")}.`:"Practice arrangement. A provenance-backed full rendition has not been loaded yet."));}
@@ -181,6 +185,24 @@ function renderFull(){
   const footer=document.createElement("div");footer.className="score-footer";footer.textContent=enabled.length+"/"+fv.tracks.length+" tracks enabled. Mixer changes are live. Click anywhere on the score to seek without leaving the full rendition.";host.appendChild(footer);
 }
 
+function renderFullPending(){
+  const host=$("#tabs");host.innerHTML="";host.className="card tab-wrap full-score-view";
+  const fv=song.fullVersion||{},status=fv.status||"not-yet-modeled";
+  const intro=document.createElement("div");intro.className="full-score-intro";
+  intro.innerHTML='<div><span class="full-kicker">Full rendition</span><h2>'+safe(fv.label||"Full rendition")+'</h2><p>'+safe(fv.description||"A complete full-rendition event graph has not been ingested yet.")+'</p><div class="full-score-stats">Status: '+safe(status.replaceAll("-"," "))+'</div></div>';
+  host.appendChild(intro);
+  const panel=document.createElement("div");panel.className="pending-rendition";
+  const prov=fv.provenance||{},items=[];
+  if(prov.evidenceState)items.push(["Evidence state",prov.evidenceState]);
+  if(fv.fidelityTarget)items.push(["Target fidelity",fv.fidelityTarget]);
+  if(Array.isArray(prov.knownInstrumentation))items.push(["Known instrumentation",prov.knownInstrumentation.join(", ")]);
+  if(Array.isArray(prov.witnesses))prov.witnesses.forEach((w,i)=>items.push(["Witness "+(i+1),[w.provider,w.format,w.url].filter(Boolean).join(" · ")]));
+  if(!items.length)items.push(["State","The complete event graph has not yet been admitted."]);
+  panel.innerHTML=items.map(([k,v])=>'<div class="pending-item"><small>'+safe(k)+'</small><b>'+safe(v)+'</b></div>').join("");
+  host.appendChild(panel);
+  const note=document.createElement("div");note.className="score-footer";note.textContent="This is not a source-absence claim. The tab is visible so the exact remaining ingestion/provenance state is inspectable instead of hidden behind a disabled control.";host.appendChild(note);
+}
+
 function renderMetadata(){
   const timing=currentTiming(),meta=[["Composer",song.identity.composer.name],["Category",song.origin.category],["Era",song.origin.era],["Year",song.origin.year??"—"],["Original key",song.origin.originalKey??"—"],["Arranged key",song.arrangement.arrangedKey??"—"],["Meter",timing.meter],["Tempo unit",timing.tempoUnit],["Difficulty",`${song.arrangement.difficulty.label} (${song.arrangement.difficulty.rating}/5)`],["Max fret",song.stats.maxFret],["Practice notes",song.stats.notes],["View",viewMode==="full"?"full rendition":"practice arrangement"],["Note confidence",song.verification.notes.confidence],["Timing confidence",song.verification.timing.confidence],["Timing method",song.verification.timing.method],["Pinky required",song.arrangement.pinkyRequired?"yes":"no"]];
   $("#metaGrid").innerHTML=meta.map(([a,b])=>`<div class="meta-item"><small>${safe(a)}</small><b>${safe(b)}</b></div>`).join("");
@@ -191,7 +213,7 @@ function renderHelp(){
   $("#salvageWrap").hidden=viewMode==="full";
   $("#helpText").innerHTML=viewMode==="full"?'<b>Full rendition:</b> simultaneous source-score tracks · uncheck any track to mute it · horizontal scrolling is synchronized · <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step through score events.':'<b>Practice controls:</b> <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step note-by-note · click any fret box to audition it · click a section name to isolate it. Box color is hand position; box number is fret; horizontal spacing carries attack timing.';
 }
-function renderAll(){stop(false);renderViewSwitch();renderSectionButtons();viewMode==="full"&&fullAvailable()?renderFull():renderPractice();buildFlat();highlight();renderMetadata();renderHelp();}
+function renderAll(){stop(false);renderViewSwitch();renderSectionButtons();if(viewMode==="full"){fullAvailable()?renderFull():renderFullPending();}else renderPractice();buildFlat();highlight();renderMetadata();renderHelp();}
 
 function ensureAudio(){
   if(!audio){
