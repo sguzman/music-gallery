@@ -26,3 +26,14 @@ assert.deepEqual(schubert.fullVersion.tracks.map(t=>t.events.length),[120,464,53
 for(const track of schubert.fullVersion.tracks){
   assert.ok(track.events.every(e=>e.type==="note"&&e.start>=0&&e.duration>0&&e.start+e.duration<=177.000001&&e.midi>=0&&e.midi<=127));
 }
+
+const chopin=JSON.parse(readFileSync(new URL("../data/songs/chopin-nocturne.json",import.meta.url),"utf8"));
+assert.equal(chopin.fullVersion.status,"available");
+assert.equal(chopin.fullVersion.fidelity,"transcription-derived");
+assert.equal(chopin.fullVersion.musical.meter,"12/8");
+assert.equal(chopin.fullVersion.durationUnits,222);
+assert.equal(chopin.fullVersion.measures.length,37);
+assert.equal(chopin.fullVersion.tracks.length,1);
+assert.equal(chopin.fullVersion.tracks[0].id,"piano");
+assert.equal(chopin.fullVersion.tracks[0].events.length,1085);
+assert.ok(chopin.fullVersion.tracks[0].events.every(e=>e.type==="note"&&e.start>=0&&e.duration>0&&e.start+e.duration<=222.000001&&e.midi>=0&&e.midi<=127));
