@@ -363,9 +363,11 @@
         "status": {
           "enum": [
             "available",
-            "planned",
             "source-ready",
-            "source-needed",
+            "transcription-ready",
+            "audio-reconstruction-ready",
+            "publication-rights-review",
+            "planned",
             "blocked-rights"
           ]
         },
