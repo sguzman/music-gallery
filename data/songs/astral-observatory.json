@@ -669,5 +669,13 @@
     "anchorNotes": 17,
     "durationUnits": 52,
     "estimatedSecondsAtDefaultTempo": 33.9
+  },
+  "fullVersion": {
+    "status": "source-needed",
+    "label": "Full rendition",
+    "description": "A full public multi-track rendition is not loaded yet. The current provenance witnesses are sufficient for practice-timing study but not yet a provenance-adequate full symbolic score for publication.",
+    "provenance": {
+      "evidenceState": "See song sources and timing audit; no full event graph has been admitted yet."
+    }
   }
 }
