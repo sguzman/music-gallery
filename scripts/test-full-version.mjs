@@ -44,3 +44,18 @@ for(const [i,track] of chopin.fullVersion.tracks.entries()){
   assert.ok(track.events.every(e=>e.type==="note"&&e.start>=0&&e.duration>0&&e.start+e.duration<=212.500001&&e.midi>=0&&e.midi<=127));
   assert.ok(track.events.every(e=>e.sourceStaff===i+1),"Chopin grand-staff rows must preserve source staff identity");
 }
+
+const liszt=JSON.parse(readFileSync(new URL("../data/songs/liszt-liebestraum-no3.json",import.meta.url),"utf8"));
+assert.equal(liszt.fullVersion.status,"available");
+assert.equal(liszt.fullVersion.fidelity,"transcription-derived");
+assert.equal(liszt.fullVersion.musical.meter,"6/4");
+assert.equal(liszt.fullVersion.durationUnits,589);
+assert.equal(liszt.fullVersion.measures.length,88);
+assert.deepEqual(liszt.fullVersion.tracks.map(t=>t.id),["piano-rh","piano-lh"]);
+assert.deepEqual(liszt.fullVersion.tracks.map(t=>t.events.length),[1143,780]);
+assert.equal(liszt.fullVersion.tracks.reduce((n,t)=>n+t.events.length,0),1923);
+assert.deepEqual(liszt.fullVersion.tracks.map(t=>t.sourceStaff),[1,2]);
+assert.ok(liszt.fullVersion.musical.tempoMap.length>30);
+assert.equal(Math.max(...liszt.fullVersion.musical.tempoMap.map(x=>x.bpm)),240);
+assert.deepEqual(liszt.verification.sourceAlignment.exactScope.sourceMeasures,["12","13","14","15","16","17","18","19","20","21","22"]);
+assert.equal(liszt.stats.maxFret,4);

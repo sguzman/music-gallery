@@ -304,8 +304,37 @@
           "maximum": 127
         },
         "sourceMeasure": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string",
+              "minLength": 1
+            }
+          ],
+          "description": "Source measure label; string form preserves pickups, suffixes, and non-numeric edition labels."
+        },
+        "sourceMeasureIndex": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sourceVoice": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "sourceStaff": {
           "type": "integer",
           "minimum": 1
+        },
+        "grace": {
+          "type": "boolean"
         }
       }
     },
@@ -351,6 +380,21 @@
           "items": {
             "$ref": "#/$defs/fullEvent"
           }
+        },
+        "pan": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "clef": {
+          "type": "string"
+        },
+        "sourcePartId": {
+          "type": "string"
+        },
+        "sourceStaff": {
+          "type": "integer",
+          "minimum": 1
         }
       }
     },
