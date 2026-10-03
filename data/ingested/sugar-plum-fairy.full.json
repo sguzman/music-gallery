@@ -48,10 +48,6 @@
       "keyMap": [
         {
           "start": 0.0,
-          "fifths": 1
-        },
-        {
-          "start": 0.0,
           "fifths": 5
         }
       ]
