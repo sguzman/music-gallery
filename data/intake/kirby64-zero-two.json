@@ -23,10 +23,16 @@
     "providerReportedDeltaTime": 96
   },
   "processing": {
-    "status": "source-profiled",
+    "status": "practice-candidate-extracted",
     "sourceStorage": "transient-fetch-only",
     "analysisOutput": "data/ingested/kirby64-zero-two.midi-analysis.json",
     "fullEventGraphPublication": "publication-rights-review",
-    "next": "identify and cross-check the principal melody track/window, then build a bounded Practice derivative"
+    "next": "cross-check the extracted theme perceptually/against an independent witness, then publish the Practice specimen; keep the complete event graph at publication-rights-review",
+    "practiceCandidate": "data/ingested/kirby64-zero-two.practice-candidate.json",
+    "candidateTrack": 5,
+    "candidateSourceWindowQuarterUnits": [
+      116,
+      147.9375
+    ]
   }
 }
