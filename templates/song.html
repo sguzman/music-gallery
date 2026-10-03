@@ -30,9 +30,7 @@
       <div id="subtitle" class="song-sub">{{COMPOSER}}</div>
       <div id="badges" class="badges"></div>
     </div>
-    <div class="hero-actions">
-      <a class="button" href="../../">← Library</a>
-    </div>
+    <div class="hero-actions"><a class="button" href="../../">← Library</a></div>
   </header>
 
   <section class="card controls">
@@ -46,10 +44,18 @@
     <button id="midi">⇩ MIDI</button>
   </section>
 
+  <section class="version-switch" aria-label="Rendition view">
+    <div class="version-tabs" role="tablist">
+      <button id="practiceView" role="tab" aria-selected="true">Practice sections</button>
+      <button id="fullView" role="tab" aria-selected="false">Full rendition</button>
+    </div>
+    <span id="viewDescription"></span>
+  </section>
+
   <div id="sectionButtons" class="section-buttons"></div>
 
   <div class="statusline">
-    <label class="toggle-control"><input id="salvage" type="checkbox"> ★ Salvage notes only</label>
+    <label id="salvageWrap" class="toggle-control"><input id="salvage" type="checkbox"> ★ Salvage notes only</label>
     <span id="status">Loading…</span>
     <div class="progress"><div id="progress"></div></div>
     <span id="counter">0 / 0</span>
@@ -57,10 +63,7 @@
 
   <section id="tabs" class="card tab-wrap"></section>
 
-  <div class="card help">
-    <b>Practice controls:</b> <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step note-by-note · click any fret box to audition it · click a section name to isolate it.
-    Box color is hand position; box number is fret; horizontal spacing carries the attack timing. Outlined boxes are salvage anchors.
-  </div>
+  <div id="helpText" class="card help"></div>
 
   <details class="card metadata">
     <summary>Rich metadata & provenance</summary>
@@ -70,7 +73,7 @@
   </details>
 
   <footer class="footer">
-    <span>Melody-first practice arrangement for steel-string acoustic guitar.</span>
+    <span>Segmented practice arrangement + provenance-backed full rendition when available.</span>
     <span><a href="../../data/song.schema.json" target="_blank">JSON schema</a></span>
   </footer>
 </main>
