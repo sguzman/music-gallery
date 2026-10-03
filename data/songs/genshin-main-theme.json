@@ -1012,11 +1012,30 @@
     "estimatedSecondsAtDefaultTempo": 29.5
   },
   "fullVersion": {
-    "status": "source-needed",
+    "status": "publication-rights-review",
     "label": "Full rendition",
-    "description": "Official audio is identified, but a provenance-adequate full symbolic score suitable for public multi-track ingestion has not yet been established.",
+    "description": "Complete orchestral transcriptions exist, so the musical-source problem is not absence. The remaining issue is selecting or reconstructing a publication-safe full event source.",
+    "fidelityTarget": "transcription-derived or audio-reconstructed",
     "provenance": {
-      "evidenceState": "See song sources and timing audit; no full event graph has been admitted yet."
+      "evidenceState": "A complete full-orchestra transcription by Josh Yoo is publicly documented at quarter=82 with named orchestral parts, but the surfaced copy is rights-restricted.",
+      "knownInstrumentation": [
+        "Chinese Flute/Dizi",
+        "Flutes",
+        "Oboes",
+        "B-flat Clarinets",
+        "Bassoons",
+        "Horns",
+        "Percussion",
+        "Harp",
+        "Piano",
+        "Soprano",
+        "Alto",
+        "Violins I",
+        "Violins II",
+        "Violas",
+        "Violoncellos",
+        "Contrabasses"
+      ]
     }
   }
 }
