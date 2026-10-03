@@ -13413,7 +13413,7 @@
         "defaultInstrument": "cello",
         "gmProgram": 42,
         "enabled": true,
-        "level": 0.9,
+        "level": 1.18,
         "events": [
           {
             "type": "note",
@@ -14992,7 +14992,8 @@
           }
         ],
         "pan": 0.68,
-        "clef": "bass"
+        "clef": "bass",
+        "mixNote": "Raised relative to the violin voices so the ground-bass line remains audible in the browser synth mix."
       }
     ]
   }
