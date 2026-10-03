@@ -818,5 +818,13 @@
     "anchorNotes": 29,
     "durationUnits": 18,
     "estimatedSecondsAtDefaultTempo": 17.4
+  },
+  "fullVersion": {
+    "status": "source-ready",
+    "label": "Full rendition",
+    "description": "The full orchestral score and parts are identified. Multi-track event ingestion is pending before this tab is enabled.",
+    "provenance": {
+      "evidenceState": "See song sources and timing audit; no full event graph has been admitted yet."
+    }
   }
 }
