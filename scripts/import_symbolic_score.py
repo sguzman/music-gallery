@@ -547,12 +547,22 @@ def normalize_score(root, manifest, source_meta):
     }
     return full, warnings
 
+def is_symbolic_score_manifest(manifest: dict) -> bool:
+    source = manifest.get("source")
+    if not isinstance(source, dict) or not source.get("path"):
+        return False
+    suffix = Path(source["path"]).suffix.lower()
+    return suffix in {".mxl", ".xml", ".musicxml"}
+
 def ingest_manifest(path: Path):
     manifest = json.loads(path.read_text(encoding="utf-8"))
     ingest_cfg = manifest.get("ingest", {})
     if ingest_cfg.get("enabled", True) is False:
         reason = ingest_cfg.get("blockedReason") or ingest_cfg.get("status") or "disabled"
         print(f"{manifest.get('slug', path.stem)}: intake parked ({reason}); no symbolic ingestion performed")
+        return None
+    if not is_symbolic_score_manifest(manifest):
+        print(f"{manifest.get('slug', path.stem)}: intake ignored by MusicXML importer (not a vendored MusicXML/MXL source)")
         return None
     source_path = ROOT / manifest["source"]["path"]
     if not source_path.exists():

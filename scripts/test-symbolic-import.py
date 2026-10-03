@@ -97,4 +97,9 @@ with TemporaryDirectory() as td:
     }),encoding="utf-8")
     assert imp.ingest_manifest(parked) is None
 
+assert imp.is_symbolic_score_manifest({"source":{"path":"data/sources/x.mxl"}})
+assert imp.is_symbolic_score_manifest({"source":{"path":"data/sources/x.musicxml"}})
+assert not imp.is_symbolic_score_manifest({"source":{"url":"https://example.test/x.mid"}})
+assert not imp.is_symbolic_score_manifest({"queue":[]})
+
 print("symbolic importer self-test: PASS")
