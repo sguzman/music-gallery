@@ -56,11 +56,52 @@ jobs:
               raise SystemExit("archive countdown page did not expose filepath")
           direct=urljoin(u2,filepath_match.group(1))
           print("direct archive path",direct)
-          time.sleep(1)
-          uf,hf,payload=get(direct)
-          print("payload",uf,hf.get("content-type"),len(payload),payload[:4])
-          if payload[:2] != b"PK":
-              raise SystemExit("direct archive path did not return an MXL ZIP")
+
+          # The direct file URL deliberately redirects back through the gate.
+          # Discover the site's own countdown JS and reproduce its final request.
+          script_srcs=re.findall(r'''<script[^>]+src=["']([^"']+)["']''',txt2,re.I)
+          print("script srcs",script_srcs)
+          discovered=[]
+          for src in script_srcs:
+              su=urljoin(u2,src.replace("&amp;","&"))
+              try:
+                  _,_,sb=get(su)
+              except Exception as e:
+                  print("script fetch failed",su,repr(e)); continue
+              st=sb.decode("utf-8","replace")
+              if any(k in st for k in ("download-seconds","filepath","download-text")):
+                  print("DOWNLOAD SCRIPT",su)
+                  for match in re.finditer(r'.{0,500}(?:download-seconds|filepath|download-text).{0,1200}',st,re.I|re.S):
+                      snippet=match.group(0).replace("\n"," ")
+                      print(snippet[:2500])
+                  discovered.append((su,st))
+
+          if not discovered:
+              raise SystemExit("could not locate archive download JS")
+
+          # Common implementation: POST filepath after countdown. Try the forms
+          # indicated by the discovered script rather than scraping a protected file.
+          payload=None
+          file_path=filepath_match.group(1)
+          from urllib.parse import urlencode
+          candidates=[]
+          for su,st in discovered:
+              for m in re.finditer(r'''(?:url\s*:\s*|ajax\s*\(|fetch\s*\(|location(?:\.href)?\s*=)\s*["']([^"']+)["']''',st,re.I):
+                  candidates.append(urljoin(su,m.group(1)))
+          print("candidate endpoints",candidates)
+          for endpoint in dict.fromkeys(candidates):
+              try:
+                  data=urlencode({"file":file_path,"filepath":file_path}).encode()
+                  req=Request(endpoint,data=data,headers={**headers,"Content-Type":"application/x-www-form-urlencoded"})
+                  with opener.open(req,timeout=30) as rr:
+                      bf=rr.read(); uf=rr.geturl(); ctype=rr.headers.get("content-type")
+                  print("endpoint",endpoint,"->",uf,ctype,len(bf),bf[:4])
+                  if bf[:2]==b"PK":
+                      payload=bf; break
+              except Exception as e:
+                  print("endpoint failed",endpoint,repr(e))
+          if payload is None:
+              raise SystemExit("site JS located, but MXL payload endpoint was not resolved")
 
           with zipfile.ZipFile(io.BytesIO(payload)) as zf:
               xmls=[n for n in zf.namelist() if n.lower().endswith((".xml",".musicxml")) and not n.startswith("META-INF/")]
