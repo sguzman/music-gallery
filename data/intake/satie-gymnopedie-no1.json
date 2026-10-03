@@ -26,7 +26,8 @@
     "attribution": "Evin Robertson (typesetter / Mutopia maintainer)",
     "license": "Public Domain",
     "compositionRights": "Erik Satie composition is public domain.",
-    "evidence": "Mutopia piece 37 provides complete LilyPond and MIDI and states Public Domain."
+    "evidence": "Mutopia piece 37 provides complete LilyPond and MIDI and states Public Domain.",
+    "expectedSha256": "09ce7337b4bf42ba12e1aa64b4c7dc7fcfa6455f1070cb12f8880a755df97384"
   },
   "ingest": {
     "fidelity": "source-midi-derived",
