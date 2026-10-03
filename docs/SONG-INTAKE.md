@@ -50,6 +50,18 @@ The piece is score/MIDI guided, but the simplified reduction has not yet been ch
 
 Timing is ear-guided, inherited from an old practice grid, or otherwise not sufficiently sourced. Low-confidence timing is considered technical debt and should not be presented as authoritative.
 
+## Selection governance
+
+Music Gallery is user-steered. The ingestion machinery may automate extraction, normalization, provenance capture, validation, and rendering, but it must not autonomously populate the catalog with arbitrary repertoire.
+
+- **Selection is a hard human gate.** A title is ingested only after the user names it or explicitly approves it.
+- Candidate discovery is opt-in and bounded. When asked for ideas, return a small shortlist rather than silently creating a backlog of songs.
+- Do not infer broad repertoire preferences from one approved specimen. Approval means "ingest this song," not "find twenty similar songs."
+- Rejected candidates stay rejected unless the user explicitly reopens them.
+- Rights/provenance dead ends may be parked instead of consuming time. Parking a specimen does not authorize replacing it with an unsolicited alternative.
+- After approval, the pipeline may proceed mechanically through source capture, structural parsing, Full Rendition construction, practice-derivative work, validation, and deployment without requiring the user to micromanage every extraction step.
+- The user controls **what enters the corpus**; the pipeline controls **how an approved specimen is processed faithfully**.
+
 ## New-song workflow
 
 1. Identify the exact composition/version/recording.
