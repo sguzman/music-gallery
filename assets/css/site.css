@@ -196,3 +196,8 @@ code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#dce3f0}
 
 .score-playhead{position:absolute;top:6px;bottom:6px;width:2px;background:#fff8;box-shadow:0 0 9px var(--accent);z-index:6;pointer-events:none;transform:translateX(-1px)}
 .score-staff{cursor:crosshair}
+
+.pending-rendition{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;padding:2px 0 6px}
+.pending-item{display:grid;gap:4px;padding:11px 12px;border:1px solid #ffffff12;border-radius:11px;background:#080a0eb8}
+.pending-item small{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:.58rem}
+.pending-item b{font-size:.76rem;line-height:1.45;overflow-wrap:anywhere}
