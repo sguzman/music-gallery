@@ -1,0 +1,597 @@
+{
+  "$schema": "../song.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "kirby64-zero-two",
+  "slug": "kirby64-zero-two",
+  "identity": {
+    "title": "0² Battle",
+    "displayTitle": "Kirby 64 — 0² / Zero-Two",
+    "shortTitle": "0² / Zero-Two",
+    "composer": {
+      "name": "Jun Ishikawa"
+    },
+    "aliases": [
+      "02 Battle",
+      "Zero-Two Battle",
+      "0²",
+      "Zero Two"
+    ],
+    "catalogue": null
+  },
+  "origin": {
+    "category": "video game music",
+    "era": "Modern",
+    "year": 2000,
+    "sourceMedium": "Nintendo 64 game soundtrack",
+    "franchise": "Kirby 64: The Crystal Shards",
+    "originalKey": "A minor",
+    "originalInstrumentation": "layered Nintendo 64 game sequence / synthesized ensemble"
+  },
+  "arrangement": {
+    "name": "Section A thematic spine",
+    "type": "melody-only",
+    "targetInstrument": "steel-string acoustic guitar",
+    "tuning": {
+      "name": "Standard tuning",
+      "strings": [
+        "E2",
+        "A2",
+        "D3",
+        "G3",
+        "B3",
+        "E4"
+      ]
+    },
+    "arrangedKey": "A minor",
+    "difficulty": {
+      "label": "intermediate-beginner",
+      "rating": 3,
+      "scale": 5
+    },
+    "fretRange": {
+      "min": 0,
+      "max": 10
+    },
+    "stringsUsed": [
+      "e"
+    ],
+    "handPositions": {
+      "low": {
+        "label": "Frets 1–3",
+        "frets": [
+          1,
+          3
+        ],
+        "color": "#4765ff"
+      },
+      "mid": {
+        "label": "Frets 3–5",
+        "frets": [
+          3,
+          5
+        ],
+        "color": "#1fa874"
+      },
+      "upper": {
+        "label": "Frets 6–8",
+        "frets": [
+          6,
+          8
+        ],
+        "color": "#ad6ce7"
+      },
+      "high": {
+        "label": "Frets 8–10",
+        "frets": [
+          8,
+          10
+        ],
+        "color": "#e0704f"
+      },
+      "open": {
+        "label": "Open string",
+        "frets": [
+          0,
+          0
+        ],
+        "color": "#d8dee9"
+      }
+    },
+    "pinkyRequired": false,
+    "simplificationGoals": [
+      "preserve the independently verified opening Section A pitch contour",
+      "preserve the VGMusic attack spacing and note durations",
+      "change register only by exact octaves when needed for guitar playability",
+      "avoid inventing harmony or accompaniment not present in the selected melodic track"
+    ]
+  },
+  "musical": {
+    "meter": "10/8",
+    "tempoUnit": "quarter-note MIDI reference",
+    "unitsPerQuarter": 1,
+    "defaultBpm": 170,
+    "bpmRange": [
+      80,
+      190
+    ]
+  },
+  "playback": {
+    "defaultInstrument": "guitar",
+    "instrumentOptions": [
+      "guitar",
+      "piano",
+      "both"
+    ],
+    "gatePercent": 96,
+    "webAudio": true,
+    "midiExport": true,
+    "sectionLooping": true,
+    "synchronizedHighlighting": true,
+    "salvageMode": true
+  },
+  "taxonomy": {
+    "genres": [
+      "video game music",
+      "boss theme",
+      "synthesized soundtrack"
+    ],
+    "moods": [
+      "melancholic",
+      "ominous",
+      "dramatic",
+      "ethereal"
+    ],
+    "tags": [
+      "Kirby 64",
+      "0²",
+      "Zero-Two",
+      "02 Battle",
+      "Jun Ishikawa",
+      "final boss",
+      "A minor",
+      "10/8"
+    ],
+    "techniques": [
+      "single-note melody",
+      "octave folding",
+      "upper-position shifts",
+      "ornament-like chromatic passing notes"
+    ],
+    "learningGoals": [
+      "melody recognition",
+      "source-timed phrasing",
+      "position shifts",
+      "odd-meter feel"
+    ]
+  },
+  "search": {
+    "aliases": [
+      "02 Battle",
+      "Zero-Two Battle",
+      "0²",
+      "Zero Two"
+    ],
+    "facets": {
+      "category": "video game music",
+      "era": "Modern",
+      "sourceMedium": "Nintendo 64 game soundtrack",
+      "difficulty": "intermediate-beginner",
+      "meter": "10/8",
+      "composer": "Jun Ishikawa",
+      "maxFret": 10,
+      "timingMethod": "VGMusic Type-1 MIDI source timing, independently cross-checked against VGLeadSheets Section A",
+      "pinkyRequired": false,
+      "moods": [
+        "melancholic",
+        "ominous",
+        "dramatic",
+        "ethereal"
+      ],
+      "genres": [
+        "video game music",
+        "boss theme",
+        "synthesized soundtrack"
+      ],
+      "tags": [
+        "Kirby 64",
+        "0²",
+        "Zero-Two",
+        "02 Battle",
+        "Jun Ishikawa",
+        "A minor",
+        "10/8"
+      ],
+      "instrumentOptions": [
+        "guitar",
+        "piano",
+        "both"
+      ],
+      "arrangementType": "melody-only",
+      "arrangedKey": "A minor",
+      "noteConfidence": "high",
+      "timingConfidence": "high"
+    },
+    "text": "kirby 64 crystal shards 0² zero two 02 battle jun ishikawa final boss a minor 10/8 video game music boss theme melancholic ominous dramatic ethereal"
+  },
+  "verification": {
+    "notes": {
+      "confidence": "high",
+      "method": "The 17-note source window from VGMusic MIDI track 5 matches the opening Section A melody visible in the independently transcribed VGLeadSheets 02 Battle lead sheet."
+    },
+    "timing": {
+      "confidence": "high",
+      "method": "Attack spacing and note durations come directly from the verified VGMusic SMF Type-1 file at 96 ticks per quarter and tempo 170.000085 BPM."
+    },
+    "needsReview": false,
+    "notesAboutQuality": [
+      "Practice mode is a bounded melodic derivative, not the complete copyrighted game sequence.",
+      "The three Practice groups are study groupings, not claims about source bar numbers.",
+      "High source pitches are folded downward only by exact octaves; melodic pitch classes and source timing are otherwise preserved."
+    ],
+    "sourceAlignment": {
+      "status": "independent-lead-sheet-cross-check-passed",
+      "midiWitness": {
+        "provider": "VGMusic",
+        "sequencer": "Exor",
+        "md5": "0894aed12e7842a706ab8898b8d16ec8",
+        "format": "SMF Type 1",
+        "tracks": 14,
+        "deltaTime": 96,
+        "tempoBpm": 170.000085,
+        "selectedTrackIndex": 5,
+        "selectedSourceWindowQuarterUnits": [
+          116,
+          147.9375
+        ]
+      },
+      "leadSheetWitness": {
+        "provider": "VGLeadSheets",
+        "transcriber": "Garrett Hoffman",
+        "url": "https://www.vgleadsheets.com/view/kirby-64-the-crystal-shards/02-battle",
+        "meter": "10/8",
+        "key": "A minor",
+        "visibleTempoMarking": 168,
+        "section": "A",
+        "crossCheck": "opening 17-note melodic sequence agrees with the selected VGMusic track/window"
+      }
+    }
+  },
+  "sources": [
+    {
+      "label": "VGMusic — Kirby 64: 0 (Zero-Two)",
+      "url": "https://www.vgmusic.com/file/0894aed12e7842a706ab8898b8d16ec8.html",
+      "kind": "secondary Type-1 MIDI transcription",
+      "evidence": "14 tracks, 96 ticks per quarter; selected melodic source is track 5"
+    },
+    {
+      "label": "VGLeadSheets — Kirby 64: 02 Battle",
+      "url": "https://www.vgleadsheets.com/view/kirby-64-the-crystal-shards/02-battle",
+      "kind": "independent peer-reviewed lead-sheet transcription",
+      "evidence": "A minor, 10/8, Section A opening melody cross-check"
+    }
+  ],
+  "rights": {
+    "composition": "copyright HAL Laboratory / Nintendo",
+    "arrangement": "bounded educational guitar reduction from independently transcribed source material",
+    "fullRendition": "complete note-for-note public event graph remains parked at publication-rights-review"
+  },
+  "presentation": {
+    "accent": "#f3edf8",
+    "accentDark": "#9787a8",
+    "description": "The melancholy opening 0² melody, source-timed from a 14-track MIDI and independently checked against a lead sheet before being octave-folded onto guitar."
+  },
+  "sections": [
+    {
+      "id": "section-a-opening",
+      "name": "Section A — opening",
+      "description": "The first thematic entrance and chromatic turn.",
+      "measures": [
+        {
+          "label": "Theme A1",
+          "duration": 12.104167,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "midi": 69,
+              "position": "mid",
+              "start": 0,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 69,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 0,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "midi": 67,
+              "position": "low",
+              "start": 2,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 79,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 2,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "midi": 64,
+              "position": "open",
+              "start": 4,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 76,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 4,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 8,
+              "midi": 72,
+              "position": "upper",
+              "start": 6,
+              "duration": 1.78125,
+              "anchor": false,
+              "sourceMidi": 72,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 6,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 10,
+              "midi": 74,
+              "position": "high",
+              "start": 7.833333,
+              "duration": 3.760417,
+              "anchor": true,
+              "sourceMidi": 74,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 7.833333,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 9,
+              "midi": 73,
+              "position": "high",
+              "start": 11.645833,
+              "duration": 0.177083,
+              "anchor": false,
+              "sourceMidi": 73,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 11.645833,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 8,
+              "midi": 72,
+              "position": "upper",
+              "start": 11.885417,
+              "duration": 0.15625,
+              "anchor": false,
+              "sourceMidi": 72,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 11.885417,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "section-a-continuation",
+      "name": "Section A — continuation",
+      "description": "The descending answer into the rising upper phrase.",
+      "measures": [
+        {
+          "label": "Theme A2",
+          "duration": 9.895833,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 7,
+              "midi": 71,
+              "position": "upper",
+              "start": 0,
+              "duration": 1.833333,
+              "anchor": true,
+              "sourceMidi": 71,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 12.104167,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "midi": 67,
+              "position": "low",
+              "start": 1.895833,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 67,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 14,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "midi": 69,
+              "position": "mid",
+              "start": 3.895833,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 69,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 16,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 1,
+              "midi": 65,
+              "position": "low",
+              "start": 5.895833,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 77,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 18,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "midi": 64,
+              "position": "open",
+              "start": 7.895833,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 76,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 20,
+              "octaveFoldSemitones": -12
+            }
+          ]
+        },
+        {
+          "label": "Theme A3",
+          "duration": 9.9375,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "midi": 69,
+              "position": "mid",
+              "start": 0,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 81,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 22,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 7,
+              "midi": 71,
+              "position": "upper",
+              "start": 2,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 83,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 24,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 8,
+              "midi": 72,
+              "position": "upper",
+              "start": 4,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 84,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 26,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 10,
+              "midi": 74,
+              "position": "high",
+              "start": 6,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 86,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 28,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 7,
+              "midi": 71,
+              "position": "upper",
+              "start": 8,
+              "duration": 1.9375,
+              "anchor": true,
+              "sourceMidi": 83,
+              "sourceTrackIndex": 5,
+              "sourceStartUnit": 30,
+              "octaveFoldSemitones": -12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "sections": 2,
+    "measuresOrPracticeGroups": 3,
+    "notes": 17,
+    "uniqueMidiPitches": 8,
+    "minFret": 0,
+    "maxFret": 10,
+    "openStringNotes": 2,
+    "anchorNotes": 14,
+    "durationUnits": 31.9375,
+    "estimatedSecondsAtDefaultTempo": 11.3
+  },
+  "fullVersion": {
+    "status": "publication-rights-review",
+    "label": "Full rendition",
+    "description": "A complete 14-track symbolic witness is technically reconstructable and has already been structurally profiled, but Musicarium does not publish the complete copyrighted event graph in the public catalog.",
+    "fidelityTarget": "source-midi-derived / transcription-derived",
+    "provenance": {
+      "evidenceState": "VGMusic Type-1 MIDI verified and structurally profiled; complete sequence is technically available.",
+      "analysisArtifact": "data/ingested/kirby64-zero-two.midi-analysis.json",
+      "sourceTracks": 14,
+      "sourceDurationUnits": 412.0625,
+      "policy": "Keep complete event graph out of the public song file; expose bounded educational derivative only."
+    }
+  }
+}

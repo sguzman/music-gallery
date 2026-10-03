@@ -63,4 +63,20 @@ const shostNotes=notes(shostakovich);
 assert.deepEqual(shostNotes.slice(0,8).map(e=>e.midi),[67,64,62,60,60,60,62,64]);
 assert.deepEqual(shostNotes.slice(-5).map(e=>e.midi),[65,67,69,66,67]);
 
+
+const zeroTwo=load("kirby64-zero-two");
+assert.equal(zeroTwo.musical.meter,"10/8");
+assert.equal(zeroTwo.musical.defaultBpm,170);
+assert.equal(zeroTwo.origin.originalKey,"A minor");
+assert.equal(zeroTwo.stats.notes,17);
+assert.equal(zeroTwo.stats.measuresOrPracticeGroups,3);
+assert.equal(zeroTwo.stats.maxFret,10);
+assert.equal(zeroTwo.verification.notes.confidence,"high");
+assert.equal(zeroTwo.verification.sourceAlignment.status,"independent-lead-sheet-cross-check-passed");
+assert.equal(zeroTwo.fullVersion.status,"publication-rights-review");
+const zeroNotes=notes(zeroTwo);
+assert.deepEqual(zeroNotes.map(e=>e.sourceMidi),[69,79,76,72,74,73,72,71,67,69,77,76,81,83,84,86,83]);
+assert.deepEqual(zeroNotes.map(e=>e.midi),[69,67,64,72,74,73,72,71,67,69,65,64,69,71,72,74,71]);
+assert.ok(zeroNotes.every(e=>e.octaveFoldSemitones%12===0));
+
 console.log("specimen source-alignment self-test: PASS");
