@@ -22,7 +22,7 @@
     "year": 2020,
     "sourceMedium": "video game soundtrack",
     "franchise": "Genshin Impact",
-    "originalKey": null,
+    "originalKey": "D major",
     "originalInstrumentation": "orchestral game soundtrack"
   },
   "arrangement": {
@@ -40,7 +40,7 @@
         "E4"
       ]
     },
-    "arrangedKey": null,
+    "arrangedKey": "D major",
     "difficulty": {
       "label": "beginner",
       "rating": 2,
@@ -106,7 +106,7 @@
     ]
   },
   "musical": {
-    "meter": "3-beat source-derived phrasing",
+    "meter": "3/4",
     "tempoUnit": "quarter-note reference",
     "unitsPerQuarter": 1,
     "defaultBpm": 80,
@@ -173,10 +173,10 @@
       "era": "Modern",
       "sourceMedium": "video game soundtrack",
       "difficulty": "beginner",
-      "meter": "3-beat source-derived phrasing",
+      "meter": "3/4",
       "composer": "Yu-Peng Chen",
       "maxFret": 8,
-      "timingMethod": "timestamp-derived attack timing",
+      "timingMethod": "secondary timestamp transcription normalized at quarter=80; stored group durations reconstruct source milliseconds exactly; official/licensed score alignment pending",
       "pinkyRequired": false,
       "moods": [
         "pastoral",
@@ -205,25 +205,38 @@
         "both"
       ],
       "arrangementType": "melody-only",
-      "arrangedKey": null,
+      "arrangedKey": "D major",
       "noteConfidence": "medium",
-      "timingConfidence": "high"
+      "timingConfidence": "medium"
     },
     "text": "genshin impact main theme genshin impact — main theme yu-peng chen video game music modern video game soundtrack genshin impact beginner 3-beat source-derived phrasing genshin main theme genshin impact theme video game music orchestral soundtrack fantasy pastoral open hopeful wistful adventurous genshin impact hoyo-mix yu-peng chen main theme mondstadt open-world melody-only single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery"
   },
   "verification": {
     "notes": {
-      "confidence": "medium"
+      "confidence": "medium",
+      "method": "current guitar melody remains a simplified transcription; official creator evidence establishes a discrete main melody, but event-by-event symbolic alignment is still pending"
     },
     "timing": {
-      "confidence": "high",
-      "method": "timestamp-derived attack timing"
+      "confidence": "medium",
+      "method": "timestamp-derived attack timing from the original secondary transcription, normalized at quarter=80; this reproduces stored source durationMs, but 80 is not claimed as an official metronome mark"
     },
     "needsReview": true,
     "notesAboutQuality": [
       "The attached alternate HTML files were used as a visual design reference only; their note data was not trusted.",
       "This is a simplified educational melody arrangement, not a complete score."
-    ]
+    ],
+    "sourceAlignment": {
+      "status": "timestamp-reconstruction-verified-symbolic-note-alignment-pending",
+      "normalizationBpm": 80,
+      "timingGroupsChecked": 13,
+      "maximumGroupDurationReconstructionErrorSeconds": 2.5e-7,
+      "interpretation": "event-grid units were derived from timestamp seconds using 80 quarter-note BPM; changing defaultBpm without rescaling events would corrupt those timings",
+      "corroboratingTempoEvidence": [
+        "Musicnotes KimBo Signature Artist arrangement: D major, quarter=82",
+        "independent secondary full-score transcription: 3/4, quarter=80"
+      ],
+      "creatorEvidence": "HoYoverse developer account describes V0 as right-hand piano performing the main-theme melody before harmony was added."
+    }
   },
   "sources": [
     {
@@ -235,6 +248,18 @@
       "label": "Timestamped melody transcription used for practice timing",
       "url": "https://www.scribd.com/document/638180113/Genshin-Impact-Main-Theme-OST-Genshin-Impact-by-DreamFyre",
       "kind": "secondary transcription"
+    },
+    {
+      "label": "HoYoverse — Developer Insight #3: Behind the Music of Genshin Impact",
+      "url": "https://genshin.hoyoverse.com/en/news/detail/5000",
+      "kind": "creator/developer statement",
+      "evidence": "V0 solo-piano right hand performed the main-theme melody before harmony was added"
+    },
+    {
+      "label": "Musicnotes — KimBo Signature Artist Genshin Impact Main Theme",
+      "url": "https://www.musicnotes.com/sheetmusic/kimbo/genshin-impact-main-theme/MN0223117",
+      "kind": "licensed secondary arrangement tied to original recording",
+      "evidence": "D major; quarter=82 corroborative tempo evidence"
     }
   ],
   "rights": {
@@ -263,7 +288,7 @@
               "fret": 0,
               "midi": 55,
               "position": "open",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.733627,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -296,7 +321,7 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.356427,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -341,7 +366,7 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.148693,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -410,7 +435,7 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.39032,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -474,7 +499,7 @@
               "fret": 2,
               "midi": 57,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.38704,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -519,7 +544,7 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.37064,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -576,7 +601,7 @@
               "fret": 0,
               "midi": 55,
               "position": "open",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.399067,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -628,7 +653,7 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.362987,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -673,7 +698,7 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.34768,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -742,7 +767,7 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.76096,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -787,7 +812,7 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.106667,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -856,7 +881,7 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.356427,
               "anchor": true,
               "sourceOnsetMs": 0
@@ -937,7 +962,7 @@
               "fret": 0,
               "midi": 55,
               "position": "open",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.39032,
               "anchor": true,
               "sourceOnsetMs": 0
