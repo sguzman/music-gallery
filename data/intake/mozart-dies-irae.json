@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "mozart-dies-irae",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as item 10 of the locked Open Full Rendition Queue."
+  },
+  "identity": {
+    "title": "Dies Irae from Requiem, K.626",
+    "displayTitle": "Mozart — Dies Irae",
+    "shortTitle": "Dies Irae",
+    "composer": {
+      "name": "Wolfgang Amadeus Mozart"
+    },
+    "aliases": [
+      "Dies Irae",
+      "Requiem Dies Irae",
+      "K.626 Dies Irae"
+    ],
+    "catalogue": "K.626"
+  },
+  "source": {
+    "path": "data/sources/mozart-dies-irae.mid",
+    "format": "midi",
+    "provider": "Mutopia Project",
+    "sourcePage": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=364",
+    "remoteUrl": "https://www.mutopiaproject.org/ftp/MozartWA/KV626/dies_irae/dies_irae.mid",
+    "attribution": "Martin Norbäck (maintainer/typesetter)",
+    "license": "Public Domain",
+    "compositionRights": "Mozart/Requiem composition and the 1877 Breitkopf & Härtel edition are public domain.",
+    "evidence": "Mutopia piece 364 identifies the 1877 Breitkopf & Härtel / Brahms-edited source, marks it Public Domain, and provides the complete SATB + orchestra MIDI and LilyPond source."
+  },
+  "ingest": {
+    "fidelity": "source-midi-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      30,
+      220
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.34,
+    "label": "Dies Irae, K.626 — complete public-domain choral/orchestral rendition",
+    "description": "Complete source-MIDI-derived Full Rendition from Mutopia's public-domain Breitkopf & Härtel edition, preserving all note-bearing MIDI tracks and source tempo/meter data."
+  },
+  "output": "data/ingested/mozart-dies-irae.full.json"
+}

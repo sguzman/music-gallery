@@ -70,14 +70,15 @@
       "order": 9,
       "slug": "chopin-prelude-op28-no20",
       "title": "Chopin — Prelude, Op. 28 No. 20",
-      "status": "processing",
-      "note": "Next in locked order; Mutopia public-domain source intake started."
+      "status": "published-awaiting-user-qa",
+      "note": "Complete Mutopia public-domain MIDI ingested (286 note events, two piano tracks) and public song page wired to Full Rendition artifact."
     },
     {
       "order": 10,
       "slug": "mozart-dies-irae",
       "title": "Mozart — Dies Irae, K.626",
-      "status": "queued"
+      "status": "processing",
+      "note": "Final item in locked order; Mutopia public-domain orchestral/choral source intake started."
     }
   ]
 }
