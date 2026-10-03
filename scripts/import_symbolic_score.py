@@ -161,6 +161,7 @@ def parse_part(part, pdef):
         "divisions": 1.0,
         "transpose": 0,
         "staves": 1,
+        "transpositionSeen": False,
     }
     initial_clefs = {}
     measures = []
@@ -193,6 +194,8 @@ def parse_part(part, pdef):
                     chrom = number(text_child(tr, "chromatic"), 0)
                     octv = number(text_child(tr, "octave-change"), 0)
                     state["transpose"] = int(chrom + 12 * octv)
+                    if state["transpose"] != 0:
+                        state["transpositionSeen"] = True
                 tm = child(node, "time")
                 if tm is not None:
                     beats = text_child(tm, "beats")
@@ -306,6 +309,7 @@ def parse_part(part, pdef):
         "repeats": repeats,
         "initialClefs": initial_clefs,
         "staffCount": max(max_staff_seen, state["staves"]),
+        "isTransposing": bool(state["transpositionSeen"]),
     }
 
 def dedupe_map(items, key_fields):
@@ -473,7 +477,15 @@ def normalize_score(root, manifest, source_meta):
         for m in part["meters"]:
             if m["measureIndex"] < len(starts):
                 meter_raw.append({"start": round(starts[m["measureIndex"]] + m["offset"], 9), "meter": m["meter"]})
-        for k in part["keys"]:
+
+    # Key signatures are written differently for transposing instruments. A
+    # global Full Rendition key map must come from one concert-pitch part, not
+    # from unioning flute/clarinet/horn written keys at the same instant.
+    key_source = next((p for p in parsed_parts if not p.get("isTransposing") and p["keys"]), None)
+    if key_source is None:
+        key_source = next((p for p in parsed_parts if p["keys"]), None)
+    if key_source is not None:
+        for k in key_source["keys"]:
             if k["measureIndex"] < len(starts):
                 key_raw.append({"start": round(starts[k["measureIndex"]] + k["offset"], 9), "fifths": k["fifths"]})
 

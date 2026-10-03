@@ -71,6 +71,7 @@ with TemporaryDirectory() as td:
     assert meta["containerRootfile"] == "score.xml"
     full2,warnings2=imp.normalize_score(root,manifest(mxl),meta)
     assert full2["stats"]["events"] == 4
+    assert full2["musical"]["keyMap"] == []
     assert warnings2 == []
 
     manifest_with_override=manifest(mxl)
