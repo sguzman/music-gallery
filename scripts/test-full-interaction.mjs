@@ -19,5 +19,7 @@ assert.ok(js.includes('note.onclick=ev=>{ev.stopPropagation();seekFullToUnits(e.
 assert.ok(js.includes('gate=viewMode==="full"?1:'),"full score playback must use notated note length rather than practice gate");
 assert.ok(js.includes('function voiceTone'),"vocal source parts must not be rendered with the violin oscillator path");
 assert.ok(js.includes('score-playhead'),"full score must expose a visible playhead");
+assert.ok(js.includes('full.disabled=false'),"non-ingested full-rendition states must remain inspectable rather than disabled");
+assert.ok(js.includes('function renderFullPending'),"non-ingested full-rendition states need an explicit evidence/status surface");
 
 console.log("full interaction contract self-test: PASS");
