@@ -106,12 +106,12 @@
     ]
   },
   "musical": {
-    "meter": "4/4 practice grid",
+    "meter": "4/4",
     "tempoUnit": "quarter note",
     "unitsPerQuarter": 1,
-    "defaultBpm": 72,
+    "defaultBpm": 92,
     "bpmRange": [
-      40,
+      55,
       120
     ]
   },
@@ -172,10 +172,10 @@
       "era": "Modern",
       "sourceMedium": "video game soundtrack",
       "difficulty": "beginner",
-      "meter": "4/4 practice grid",
+      "meter": "4/4",
       "composer": "Koji Kondo",
       "maxFret": 5,
-      "timingMethod": "ear-guided practice approximation",
+      "timingMethod": "VGLeadSheets tempo verified at quarter=92; event durations pending score/MIDI alignment",
       "pinkyRequired": false,
       "moods": [
         "dreamy",
@@ -215,19 +215,40 @@
     },
     "timing": {
       "confidence": "low",
-      "method": "ear-guided practice approximation"
+      "method": "VGLeadSheets tempo verified at quarter=92; event durations still require bar-by-bar score/MIDI alignment"
     },
     "needsReview": true,
     "notesAboutQuality": [
       "The attached alternate HTML files were used as a visual design reference only; their note data was not trusted.",
       "This is a simplified educational melody arrangement, not a complete score."
-    ]
+    ],
+    "sourceAlignment": {
+      "status": "global-tempo-and-meter-verified-event-grid-pending",
+      "primaryCurrentWitness": {
+        "label": "VGLeadSheets — Astral Observatory",
+        "transcriber": "JohnStacy",
+        "composer": "Koji Kondo",
+        "meter": "4/4",
+        "tempo": "quarter = 92"
+      },
+      "independentMidiWitness": {
+        "provider": "VGMusic",
+        "sequencer": "John Harvey",
+        "providerMd5": "b5e690074322869d60955fb7ddd34809"
+      }
+    }
   },
   "sources": [
     {
       "label": "VGMusic — Astral Observatory MIDI metadata",
       "url": "https://www.vgmusic.com/file/b5e690074322869d60955fb7ddd34809.html",
       "kind": "secondary MIDI reference"
+    },
+    {
+      "label": "VGLeadSheets — Astral Observatory",
+      "url": "https://www.vgleadsheets.com/assets/sheets/Eb/The%20Legend%20of%20Zelda%20-%20Majora%27s%20Mask%20-%20Astral%20Observatory.pdf",
+      "kind": "secondary lead-sheet score reference",
+      "evidence": "4/4 meter and quarter-note tempo 92; melody/rhythm witness pending exact event alignment"
     }
   ],
   "rights": {
@@ -247,7 +268,7 @@
       "measures": [
         {
           "label": "Climb",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -256,7 +277,7 @@
               "fret": 3,
               "midi": 58,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.5,
               "anchor": true
             },
@@ -278,7 +299,7 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 1.0,
+              "start": 1,
               "duration": 0.5,
               "anchor": false
             },
@@ -300,7 +321,7 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 2.0,
+              "start": 2,
               "duration": 0.5,
               "anchor": false
             },
@@ -322,7 +343,7 @@
               "fret": 4,
               "midi": 68,
               "position": "mid",
-              "start": 3.0,
+              "start": 3,
               "duration": 0.5,
               "anchor": false
             },
@@ -348,7 +369,7 @@
       "measures": [
         {
           "label": "1",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -357,15 +378,15 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
-              "duration": 4.0,
+              "start": 0,
+              "duration": 4,
               "anchor": true
             }
           ]
         },
         {
           "label": "2",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -374,8 +395,8 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -385,15 +406,15 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 2,
+              "duration": 2,
               "anchor": false
             }
           ]
         },
         {
           "label": "3",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -402,15 +423,15 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
-              "duration": 4.0,
+              "start": 0,
+              "duration": 4,
               "anchor": true
             }
           ]
         },
         {
           "label": "4",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -419,8 +440,8 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -430,15 +451,15 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 2,
+              "duration": 2,
               "anchor": true
             }
           ]
         },
         {
           "label": "5",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -447,8 +468,8 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -458,15 +479,15 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 2,
+              "duration": 2,
               "anchor": false
             }
           ]
         },
         {
           "label": "6",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -475,8 +496,8 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -486,8 +507,8 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 2,
+              "duration": 2,
               "anchor": false
             }
           ]
@@ -501,7 +522,7 @@
       "measures": [
         {
           "label": "7",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -510,8 +531,8 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -521,15 +542,15 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 2,
+              "duration": 2,
               "anchor": true
             }
           ]
         },
         {
           "label": "8",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -538,15 +559,15 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 0.0,
-              "duration": 4.0,
+              "start": 0,
+              "duration": 4,
               "anchor": true
             }
           ]
         },
         {
           "label": "9",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -555,8 +576,8 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -566,15 +587,15 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 2,
+              "duration": 2,
               "anchor": false
             }
           ]
         },
         {
           "label": "10",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -583,8 +604,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -594,15 +615,15 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 2.0,
-              "duration": 2.0,
+              "start": 2,
+              "duration": 2,
               "anchor": false
             }
           ]
         },
         {
           "label": "11",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -611,15 +632,15 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 0.0,
-              "duration": 4.0,
+              "start": 0,
+              "duration": 4,
               "anchor": true
             }
           ]
         },
         {
           "label": "12",
-          "duration": 4.0,
+          "duration": 4,
           "events": [
             {
               "type": "note",
@@ -628,8 +649,8 @@
               "fret": 0,
               "midi": 64,
               "position": "open",
-              "start": 0.0,
-              "duration": 4.0,
+              "start": 0,
+              "duration": 4,
               "anchor": true
             }
           ]
@@ -646,7 +667,7 @@
     "maxFret": 5,
     "openStringNotes": 2,
     "anchorNotes": 17,
-    "durationUnits": 52.0,
-    "estimatedSecondsAtDefaultTempo": 43.3
+    "durationUnits": 52,
+    "estimatedSecondsAtDefaultTempo": 33.9
   }
 }
