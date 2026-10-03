@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "sugar-plum-fairy",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved by the user as the next Musicarium specimen."
+  },
+  "identity": {
+    "title": "Dance of the Sugar Plum Fairy",
+    "displayTitle": "Tchaikovsky — Dance of the Sugar Plum Fairy",
+    "shortTitle": "Dance of the Sugar Plum Fairy",
+    "composer": {
+      "name": "Pyotr Ilyich Tchaikovsky"
+    },
+    "aliases": [
+      "Sugar Plum Fairy",
+      "Dance of the Sugarplum Fairy"
+    ],
+    "catalogue": "The Nutcracker, Op. 71"
+  },
+  "source": {
+    "path": "data/sources/sugar-plum-fairy-orchestra.mxl",
+    "format": "mxl",
+    "provider": "Boris Tarakanov Music Archive",
+    "sourceUrl": "https://notes.tarakanov.net/katalog/kompozitsii/tanets-fei-drazhe-iz-baleta-shchelkynchik/",
+    "archiveFile": "pjotr-iljitsch-tschaikowski-tchaikovsky-dance-of-the-sugar-plum-fairy-qmdyxyesfpgn.mxl",
+    "sourceBlobSha": "e70fbf02354ac003c613a19fe2e0443f10104aa3",
+    "license": "composition public domain; archive transcription license not explicitly stated",
+    "caveat": "Use as a symbolic-score witness. Preserve factual score structure and provenance; do not imply this digital transcription is an autograph or critical edition."
+  },
+  "ingest": {
+    "fidelity": "transcription-derived",
+    "preserveStaffRows": true,
+    "failOnRepeats": true,
+    "defaultBpm": 62,
+    "bpmRange": [
+      40,
+      120
+    ],
+    "trackLevel": 0.55,
+    "label": "Dance of the Sugar Plum Fairy — orchestral score",
+    "description": "Complete orchestral symbolic-score rendition preserving independent source parts, staves, voices, transpositions, and score timing."
+  },
+  "output": "data/ingested/sugar-plum-fairy.full.json"
+}
