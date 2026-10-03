@@ -15,6 +15,40 @@ function safe(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&
 function fullAvailable(){return song?.fullVersion?.status==="available" && Array.isArray(song.fullVersion.tracks) && song.fullVersion.tracks.length>0;}
 function currentTiming(){return viewMode==="full" && fullAvailable()?song.fullVersion.musical:song.musical;}
 function tempoSecondsPerUnit(){const t=currentTiming();return secondsPerUnit(Number($("#tempo").value),t?.unitsPerQuarter||1);}
+function sourceTempoMap(){
+  if(viewMode!=="full"||!fullAvailable())return [];
+  const map=song.fullVersion.musical?.tempoMap;
+  return Array.isArray(map)?map.filter(x=>Number.isFinite(Number(x.start))&&Number(x.bpm)>0).map(x=>({start:Number(x.start),bpm:Number(x.bpm)})).sort((a,b)=>a.start-b.start):[];
+}
+function tempoMapScale(){
+  const t=currentTiming(),base=Number(t?.defaultBpm)||60,chosen=Number($("#tempo").value)||base;
+  return chosen/base;
+}
+function transportSecondsAtUnit(unit){
+  unit=Math.max(0,Number(unit)||0);
+  const t=currentTiming(),upq=Number(t?.unitsPerQuarter)||1,map=sourceTempoMap();
+  if(viewMode!=="full"||!map.length)return unit*secondsPerUnit(Number($("#tempo").value),upq);
+  const scale=tempoMapScale();let sec=0,pos=0,bpm=map[0].start<=0?map[0].bpm:Number(t?.defaultBpm)||60,i=map[0].start<=0?1:0;
+  for(;i<map.length&&map[i].start<unit;i++){
+    const next=Math.max(pos,map[i].start);if(next>pos)sec+=(next-pos)*60/(bpm*scale*upq);
+    pos=next;bpm=map[i].bpm;
+  }
+  if(unit>pos)sec+=(unit-pos)*60/(bpm*scale*upq);
+  return sec;
+}
+function transportUnitAtSeconds(seconds){
+  seconds=Math.max(0,Number(seconds)||0);
+  const t=currentTiming(),upq=Number(t?.unitsPerQuarter)||1,map=sourceTempoMap();
+  if(viewMode!=="full"||!map.length)return seconds/secondsPerUnit(Number($("#tempo").value),upq);
+  const scale=tempoMapScale();let sec=0,pos=0,bpm=map[0].start<=0?map[0].bpm:Number(t?.defaultBpm)||60,i=map[0].start<=0?1:0;
+  for(;i<map.length;i++){
+    const next=Math.max(pos,map[i].start),span=(next-pos)*60/(bpm*scale*upq);
+    if(seconds<=sec+span+1e-9)return pos+(seconds-sec)*(bpm*scale*upq)/60;
+    sec+=span;pos=next;bpm=map[i].bpm;
+  }
+  return pos+(seconds-sec)*(bpm*scale*upq)/60;
+}
+function transportSecondsBetween(a,b){return Math.max(0,transportSecondsAtUnit(b)-transportSecondsAtUnit(a));}
 function activeSections(){return selectedSection===-1?song.sections:[song.sections[selectedSection]];}
 function trackEnabled(track){return trackState.get(track.id)!==false;}
 
@@ -291,7 +325,12 @@ function playbackEndUnit(){
 }
 function currentTransportUnit(){
   if(!playing||!audio)return transportUnit;
-  const secPerUnit=tempoSecondsPerUnit(),elapsed=Math.max(0,audio.currentTime-transportAudioStart);
+  const elapsed=Math.max(0,audio.currentTime-transportAudioStart);
+  if(viewMode==="full"&&sourceTempoMap().length){
+    const startSec=transportSecondsAtUnit(transportStartUnit);
+    return Math.min(playbackEndUnit(),transportUnitAtSeconds(startSec+elapsed));
+  }
+  const secPerUnit=tempoSecondsPerUnit();
   return Math.min(playbackEndUnit(),transportStartUnit+elapsed/secPerUnit);
 }
 function lowerBoundStart(unit){
@@ -312,18 +351,19 @@ function pause(){
   const pos=currentTransportUnit();runId++;playing=false;clearScheduler();stopNodes();transportUnit=pos;if(flat.length)cursor=lastOnsetIndex(pos);updateButtons();highlight();updateStatus();
 }
 function activePlayEvents(){if(viewMode==="full")return flat.map((x,i)=>({...x,flatIndex:i}));const anchorsOnly=$("#salvage").checked;return flat.map((x,i)=>({...x,flatIndex:i})).filter(x=>!anchorsOnly||x.event.anchor);}
-function scheduleEntry(x,unitNow,horizonUnit,secPerUnit,gate){
+function scheduleEntry(x,unitNow,horizonUnit,gate){
   const endUnit=x.start+x.event.duration;if(endUnit<=unitNow+1e-8)return;
-  const overlap=Math.max(0,unitNow-x.start),remainingUnits=Math.max(.001,x.event.duration-overlap);
-  const when=overlap>0?audio.currentTime+.018:transportAudioStart+(x.start-transportStartUnit)*secPerUnit;
+  const overlap=Math.max(0,unitNow-x.start),effectiveStart=Math.max(unitNow,x.start);
+  const when=overlap>0?audio.currentTime+.018:transportAudioStart+transportSecondsBetween(transportStartUnit,x.start);
   if(when>audio.currentTime+.75)return;
-  toneForEntry(x,Math.max(audio.currentTime+.012,when),Math.max(.045,remainingUnits*secPerUnit*gate));
+  const seconds=viewMode==="full"?transportSecondsBetween(effectiveStart,endUnit):Math.max(.001,endUnit-effectiveStart)*tempoSecondsPerUnit();
+  toneForEntry(x,Math.max(audio.currentTime+.012,when),Math.max(.045,seconds*gate));
 }
 function schedulerStep(myRun){
   if(!playing||myRun!==runId)return;
-  const secPerUnit=tempoSecondsPerUnit(),unitNow=currentTransportUnit(),lookaheadSec=.48,horizonUnit=unitNow+lookaheadSec/secPerUnit,gate=viewMode==="full"?1:Number($("#gate").value)/100,candidates=activePlayEvents();
+  const unitNow=currentTransportUnit(),lookaheadSec=.48,nowSec=transportSecondsAtUnit(unitNow),horizonUnit=transportUnitAtSeconds(nowSec+lookaheadSec),gate=viewMode==="full"?1:Number($("#gate").value)/100,candidates=activePlayEvents();
   while(scheduleIndex<candidates.length&&candidates[scheduleIndex].start<horizonUnit){
-    scheduleEntry(candidates[scheduleIndex],unitNow,horizonUnit,secPerUnit,gate);scheduleIndex++;
+    scheduleEntry(candidates[scheduleIndex],unitNow,horizonUnit,gate);scheduleIndex++;
   }
   schedulerTimer=setTimeout(()=>schedulerStep(myRun),65);
 }
@@ -343,7 +383,7 @@ function play(){
   clearScheduler();stopNodes();ensureAudio();
   const end=playbackEndUnit();if(transportUnit>=end-.002)transportUnit=0;
   if(transportUnit===0&&cursor>0)transportUnit=flat[cursor]?.start??0;
-  playing=true;const myRun=++runId,secPerUnit=tempoSecondsPerUnit();
+  playing=true;const myRun=++runId;
   transportStartUnit=transportUnit;transportAudioStart=audio.currentTime+.065;
   const candidates=activePlayEvents();scheduleIndex=0;
   while(scheduleIndex<candidates.length&&candidates[scheduleIndex].start+candidates[scheduleIndex].event.duration<=transportStartUnit+1e-8)scheduleIndex++;
@@ -380,8 +420,12 @@ function exportPracticeMidi(){
   const head=[...Array.from("MThd").map(c=>c.charCodeAt(0)),...u32(6),...u16(0),...u16(1),...u16(ppq)];downloadMidi([...head,...chunk(ev)],`${slug}.mid`);
 }
 function exportFullMidi(){
-  const ppq=480,timing=currentTiming(),units=timing.unitsPerQuarter||1,bpm=Number($("#tempo").value),us=midiMicrosPerQuarter(bpm),tracks=song.fullVersion.tracks.filter(trackEnabled);
-  const tempo=[0,0xFF,0x51,0x03,(us>>16)&255,(us>>8)&255,us&255,0,0xFF,0x2F,0],chunks=[chunk(tempo)];
+  const ppq=480,timing=currentTiming(),units=timing.unitsPerQuarter||1,bpm=Number($("#tempo").value),tracks=song.fullVersion.tracks.filter(trackEnabled),map=sourceTempoMap(),scale=tempoMapScale();
+  const tempoTimeline=(map.length?map:[{start:0,bpm}]).map(x=>({t:unitsToTicks(x.start,units,ppq),bpm:map.length?x.bpm*scale:bpm})).sort((a,b)=>a.t-b.t);
+  if(!tempoTimeline.length||tempoTimeline[0].t>0)tempoTimeline.unshift({t:0,bpm});
+  let tempo=[],lastTempoTick=0;
+  tempoTimeline.forEach(x=>{const us=midiMicrosPerQuarter(x.bpm);tempo.push(...vlq(x.t-lastTempoTick),0xFF,0x51,0x03,(us>>16)&255,(us>>8)&255,us&255);lastTempoTick=x.t;});
+  tempo.push(0,0xFF,0x2F,0);const chunks=[chunk(tempo)];
   tracks.forEach((track,i)=>{const channel=i>=9?i+1:i,name=[...new TextEncoder().encode(track.name)].slice(0,120),program=track.gmProgram??GM_PROGRAM[track.defaultInstrument]??0;let ev=[0,0xFF,0x03,name.length,...name,0,0xC0|(channel&15),program],timeline=[];track.events.forEach(e=>{if(e.type!=="note")return;const t=unitsToTicks(e.start,units,ppq),dur=Math.max(1,unitsToTicks(e.duration,units,ppq));timeline.push({t,on:true,p:e.midi});timeline.push({t:t+dur,on:false,p:e.midi});});timeline.sort((a,b)=>a.t-b.t||(a.on?1:-1));let last=0;timeline.forEach(x=>{ev.push(...vlq(x.t-last),(x.on?0x90:0x80)|(channel&15),x.p,x.on?(track.velocity??84):48);last=x.t;});ev.push(0,0xFF,0x2F,0);chunks.push(chunk(ev));});
   const head=[...Array.from("MThd").map(c=>c.charCodeAt(0)),...u32(6),...u16(1),...u16(chunks.length),...u16(ppq)];downloadMidi([...head,...chunks.flat()],`${slug}-full.mid`);
 }

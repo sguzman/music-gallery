@@ -11,6 +11,10 @@ assert.ok(!js.includes('if(!trackEnabled(track))return'),"muted tracks must rema
 assert.ok(js.includes('function schedulerStep'),"playback must use rolling scheduling");
 assert.ok(js.includes('lookaheadSec=.48'),"rolling scheduler must use bounded lookahead");
 assert.ok(js.includes('audio.currentTime-transportAudioStart'),"transport position must derive from AudioContext clock");
+assert.ok(js.includes('function sourceTempoMap()'),"full renditions must expose source tempo-map timing when available");
+assert.ok(js.includes('function transportSecondsAtUnit(unit)'),"full transport must integrate tempo-map segments");
+assert.ok(js.includes('function transportUnitAtSeconds(seconds)'),"full transport must invert tempo-map timing for the playhead");
+assert.ok(js.includes('tempoTimeline=(map.length?map:'),"full MIDI export must preserve source tempo maps");
 assert.ok(js.includes('requestAnimationFrame(()=>visualStep'),"cursor/playhead must render from the audio clock");
 assert.ok(js.includes('check.onchange=()=>setTrackEnabledLive(track,ti,check.checked)'),"track toggles must use live mixer path");
 assert.ok(js.includes('setAllTracksLive(true)')&&js.includes('setAllTracksLive(false)'),"all-on/all-off must be live");
