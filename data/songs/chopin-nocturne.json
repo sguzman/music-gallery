@@ -1248,7 +1248,7 @@
       ],
       "tempoStanding": "Transcription transport normalization; the underlying score witness uses eighth=132, equivalent to quarter=66."
     },
-    "durationUnits": 222,
+    "durationUnits": 222.0185,
     "measures": [
       {
         "label": "1",
@@ -1433,7 +1433,7 @@
       {
         "label": "37",
         "start": 216.018,
-        "duration": 5.982
+        "duration": 6.0005
       }
     ],
     "provenance": {
