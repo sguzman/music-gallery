@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "songs": {
     "astral-observatory": {
-      "status": "duration-audit-required",
+      "status": "global-tempo-meter-verified-event-alignment-pending",
       "musical": {
         "meter": "4/4",
         "tempoUnit": "quarter note",
@@ -25,10 +25,10 @@
         "url": "https://www.vgleadsheets.com/assets/sheets/Bb/The%20Legend%20of%20Zelda%20-%20Majora%27s%20Mask%20-%20Astral%20Observatory.pdf",
         "kind": "lead-sheet score reference"
       },
-      "notes": "The current arrangement's note-duration grid is not promoted to source-verified merely because the source tempo is known. Re-transcribe attacks and holds from the score/MIDI before raising confidence."
+      "notes": "The public song now uses the verified 4/4 and quarter=92 transport metadata. Its 52-unit event grid remains a deliberately unpromoted practice approximation until score/MIDI event alignment is completed."
     },
     "chopin-nocturne": {
-      "status": "score-crosscheck-required",
+      "status": "opening-source-aligned-later-simplified",
       "musical": {
         "meter": "12/8",
         "tempoUnit": "quarter-note equivalent (score marks eighth note = 132)",
@@ -42,25 +42,44 @@
       "verification": {
         "timing": {
           "confidence": "medium",
-          "method": "Mutopia engraved score/MIDI cross-check; simplified melody still requires event-by-event verification"
+          "method": "Mutopia LilyPond alignment: pickup through measure 4 source-aligned; measure 1 tie and measure 4 subdivisions/rest corrected; later ornamented measures remain simplified"
         },
-        "needsReview": true
+        "needsReview": true,
+        "sourceAlignment": {
+          "repository": "MutopiaProject/MutopiaProject",
+          "commit": "2144afd6f52d56c5b6995b8b589ef1268b3139f0",
+          "path": "ftp/ChopinFF/O9/chopin_nocturne_op9_n2/chopin_nocturne_op9_n2.ly",
+          "blobSha": "2c7730d05dd0c4949abb6a39829fc306c93d2ba4",
+          "exactScope": [
+            "pickup",
+            "measure 1",
+            "measure 2",
+            "measure 3",
+            "measure 4"
+          ]
+        }
       },
       "source": {
         "label": "Mutopia — Chopin Nocturne Op. 9 No. 2",
         "url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1590",
         "kind": "engraved score and MIDI reference"
       },
-      "notes": "The score is 12/8 and marks eighth note = 132. The site normalizes that to quarter-note equivalent 66 while retaining two event units per quarter."
+      "notes": "12/8 with score mark eighth=132 maps to quarter-equivalent BPM 66 at unitsPerQuarter=2. The opening is now source-aligned; later ornament-dense material remains an explicit reduction."
     },
     "genshin-main-theme": {
       "status": "primary-audio-identified-symbolic-crosscheck-pending",
       "verification": {
         "timing": {
           "confidence": "medium",
-          "method": "timestamp-derived attack timing; official audio identity plus independent 3/4 tempo witnesses at quarter=80 and quarter=82; exact event alignment still pending"
+          "method": "secondary timestamp transcription normalized at quarter=80; all 13 stored group durations reconstruct source durationMs within 0.00000025 s; official/licensed symbolic event alignment remains pending"
         },
-        "needsReview": true
+        "needsReview": true,
+        "sourceAlignment": {
+          "status": "timestamp-reconstruction-verified-symbolic-note-alignment-pending",
+          "normalizationBpm": 80,
+          "groupsChecked": 13,
+          "maximumGroupDurationReconstructionErrorSeconds": 2.5e-7
+        }
       },
       "sources": [
         {
@@ -88,10 +107,10 @@
           ]
         }
       ],
-      "notes": "Current 80 BPM remains a defensible source-specific reference but is not treated as an official engraved-score tempo. Do not rewrite event attacks until they are aligned against the official recording or a provenance-adequate symbolic source."
+      "notes": "80 BPM is preserved because it is the normalization that reconstructs the stored timestamp source; it is not promoted as an official metronome mark. Musicnotes Signature Artist arrangements around 82 BPM are corroborative."
     },
     "sugar-plum-fairy": {
-      "status": "score-guided",
+      "status": "melody-spans-corrected-global-tempo-verified-rhythm-simplified",
       "musical": {
         "meter": "2/4",
         "tempoUnit": "quarter note",
@@ -105,15 +124,20 @@
       "verification": {
         "timing": {
           "confidence": "medium",
-          "method": "mfiles orchestral score/MIDI-guided simplified rhythm"
-        }
+          "method": "mfiles orchestral score fixes 2/4 and quarter=62; Gallery note-value reductions remain simplified"
+        },
+        "notes": {
+          "confidence": "high",
+          "method": "mfiles celesta score plus independent Singing Bell note-name pitch sequence; three pitch errors corrected"
+        },
+        "needsReview": true
       },
       "source": {
         "label": "mfiles — Dance of the Sugar Plum Fairy orchestral score",
         "url": "https://www.mfiles.co.uk/scores/Sugar-Plum-Fairy.htm",
         "kind": "orchestral score and MIDI reference"
       },
-      "notes": "The orchestral score marks quarter note = 62 and identifies celesta as the lead timbre."
+      "notes": "Public song now uses quarter=62 and E minor. Known pitch errors were corrected: D#/E order in the opening and return, plus D rather than D# at the selected chromatic-answer close. Rhythm remains explicitly reduced."
     },
     "canon-in-d": {
       "status": "source-aligned-corrected",
@@ -145,36 +169,50 @@
       "notes": "Opening 8 notes, flowing 16-note passage, and 24-note flourish match contiguous source pitch-class sequences. Their prior Gallery durations were exactly 2x the source note values. Final D remains a simplified arrangement cadence."
     },
     "schubert-serenade": {
-      "status": "partial-exact-symbolic-alignment",
+      "status": "retained-excerpt-source-aligned",
+      "musical": {
+        "meter": "3/4",
+        "tempoUnit": "quarter note",
+        "unitsPerQuarter": 1,
+        "defaultBpm": 90,
+        "bpmRange": [
+          45,
+          120
+        ]
+      },
       "verification": {
+        "notes": {
+          "confidence": "high"
+        },
         "timing": {
           "confidence": "high",
-          "method": "MusicXML duration/pitch-class alignment for Gallery groups 1-7; custom ending groups remain arrangement-specific"
+          "method": "OpenScore/Lieder CC0 vocal-staff alignment; all eight retained Gallery groups match source pitch class and duration"
         },
-        "needsReview": true,
+        "needsReview": false,
         "sourceAlignment": {
-          "repository": "MengXiangxi/MelodicaSheetMusic",
-          "commit": "239fe8760cdef035eee269a43fc259009ffea76e",
-          "path": "02_Staendchen/Staendchen.xml",
-          "blobSha": "642db3e4fb005967f7baafd825266ba0cea16bfa",
-          "exactGalleryGroups": [
-            1,
-            2,
-            3,
-            4,
+          "repository": "OpenScore/Lieder",
+          "commit": "38c5db510224d9facdc4b08d741fc788cfb58ea8",
+          "path": "scores/Schubert,_Franz/Schwanengesang,_D.957/04_Ständchen/lc5004835.mscx",
+          "blobSha": "fa6bb74dfa79d0df24ba6e60c9039b53b96dd005",
+          "sourceMeasures": [
             5,
             6,
-            7
+            7,
+            8,
+            11,
+            12,
+            13,
+            14
           ],
-          "caveat": "Secondary melodica adaptation, not autograph."
+          "caveat": "Numeric transport BPM remains an application practice choice; source tempo wording is Mässig."
         }
       },
       "source": {
-        "label": "MelodicaSheetMusic — Ständchen MusicXML",
-        "url": "https://github.com/MengXiangxi/MelodicaSheetMusic/blob/239fe8760cdef035eee269a43fc259009ffea76e/02_Staendchen/Staendchen.xml",
-        "kind": "secondary machine-readable transcription"
+        "label": "OpenScore/Lieder — Ständchen D.957 No.4",
+        "url": "https://github.com/OpenScore/Lieder/tree/38c5db510224d9facdc4b08d741fc788cfb58ea8/scores/Schubert,_Franz/Schwanengesang,_D.957/04_St%C3%A4ndchen",
+        "kind": "CC0 machine-readable score transcribed from IMSLP #60828"
       },
-      "notes": "Groups 1-4 align to source measures 1-4; groups 5-7 align to source measures 7-9. Pitch classes and durations match, with deliberate octave lowering for guitar. Group 8 is a custom ending and group 9 is not uniquely source-identifiable."
+      "notes": "The previous custom cadence was removed. The retained eight-group excerpt is now fully source-aligned in pitch class and notated duration, with octave lowering only for guitar range."
     }
   }
 }
