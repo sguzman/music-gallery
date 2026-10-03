@@ -18,10 +18,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          page='https://scorebase.org/scores/2165'
           url='https://scorebase.org/scores/2165/file/mxl?download=true'
           out='data/sources/shostakovich-waltz-no2-wind-quintet.mxl'
           mkdir -p data/sources
-          curl -fL --retry 3 --retry-delay 2 -A 'Mozilla/5.0' "$url" -o "$out"
+          ua='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/153 Safari/537.36'
+          curl -fsSL -A "$ua" -c /tmp/scorebase.cookies "$page" -o /tmp/scorebase.html
+          curl -fL --retry 3 --retry-delay 2 -A "$ua" -b /tmp/scorebase.cookies -c /tmp/scorebase.cookies \
+            -e "$page" -H 'Accept: application/vnd.recordare.musicxml,application/zip,application/octet-stream,*/*' \
+            "$url" -o "$out"
           python3 - <<'PY'
           from pathlib import Path
           import io, re, zipfile, xml.etree.ElementTree as ET
