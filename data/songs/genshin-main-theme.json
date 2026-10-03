@@ -1010,5 +1010,13 @@
     "anchorNotes": 31,
     "durationUnits": 39.348,
     "estimatedSecondsAtDefaultTempo": 29.5
+  },
+  "fullVersion": {
+    "status": "source-needed",
+    "label": "Full rendition",
+    "description": "Official audio is identified, but a provenance-adequate full symbolic score suitable for public multi-track ingestion has not yet been established.",
+    "provenance": {
+      "evidenceState": "See song sources and timing audit; no full event graph has been admitted yet."
+    }
   }
 }
