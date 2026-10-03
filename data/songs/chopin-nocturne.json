@@ -108,12 +108,12 @@
   },
   "musical": {
     "meter": "12/8",
-    "tempoUnit": "eighth-note pulse",
+    "tempoUnit": "eighth-note event grid (2 units per quarter)",
     "unitsPerQuarter": 2,
-    "defaultBpm": 90,
+    "defaultBpm": 66,
     "bpmRange": [
-      45,
-      150
+      40,
+      90
     ]
   },
   "playback": {
@@ -176,7 +176,7 @@
       "meter": "12/8",
       "composer": "Frédéric Chopin",
       "maxFret": 10,
-      "timingMethod": "practice-approximation",
+      "timingMethod": "Mutopia score alignment: 12/8, eighth=132; pickup through measure 4 source-aligned",
       "pinkyRequired": false,
       "moods": [
         "lyrical",
@@ -215,19 +215,47 @@
     },
     "timing": {
       "confidence": "medium",
-      "method": "practice-approximation"
+      "method": "Mutopia Schirmer-1881-derived LilyPond alignment; pickup through measure 4 corrected to source note values; later ornamented measures remain simplified"
     },
     "needsReview": true,
     "notesAboutQuality": [
       "The attached alternate HTML files were used as a visual design reference only; their note data was not trusted.",
       "This is a simplified educational melody arrangement, not a complete score."
-    ]
+    ],
+    "sourceAlignment": {
+      "status": "opening-exact-later-measures-simplified",
+      "provider": "Mutopia Project",
+      "sourceId": "Mutopia-2014/12/18-1590",
+      "sourceRepository": "MutopiaProject/MutopiaProject",
+      "sourceRepositoryCommit": "2144afd6f52d56c5b6995b8b589ef1268b3139f0",
+      "sourcePath": "ftp/ChopinFF/O9/chopin_nocturne_op9_n2/chopin_nocturne_op9_n2.ly",
+      "sourceBlobSha": "2c7730d05dd0c4949abb6a39829fc306c93d2ba4",
+      "exactScope": [
+        "pickup",
+        "measure 1",
+        "measure 2",
+        "measure 3",
+        "measure 4"
+      ],
+      "sourceFacts": [
+        "E-flat major",
+        "12/8",
+        "eighth note = 132"
+      ],
+      "transportNormalization": "quarter-note-equivalent BPM 66 with unitsPerQuarter=2"
+    }
   },
   "sources": [
     {
       "label": "IMSLP — Nocturnes, Op. 9",
       "url": "https://imslp.org/wiki/Nocturnes,_Op.9_(Chopin,_Fr%C3%A9d%C3%A9ric)",
       "kind": "public-domain score reference"
+    },
+    {
+      "label": "Mutopia — Chopin Nocturne Op. 9 No. 2",
+      "url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1590",
+      "kind": "CC BY-SA 3.0 LilyPond/MIDI score reference",
+      "evidence": "pitch and notated rhythm; source metadata identifies G. Schirmer, New York, 1881 from Library of Congress scans"
     }
   ],
   "rights": {
@@ -237,7 +265,7 @@
   "presentation": {
     "accent": "#7c6cff",
     "accentDark": "#7c6cff",
-    "description": "A compact singing-line reduction of the famous nocturne, keeping the opening melody and characteristic high turn."
+    "description": "A compact singing-line reduction with source-aligned pickup and opening four measures; later ornament-dense material remains deliberately simplified."
   },
   "sections": [
     {
@@ -247,7 +275,7 @@
       "measures": [
         {
           "label": "Pickup",
-          "duration": 1.0,
+          "duration": 1,
           "events": [
             {
               "type": "note",
@@ -256,15 +284,15 @@
               "fret": 3,
               "midi": 58,
               "position": "low",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "1",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -273,30 +301,19 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 0.0,
-              "duration": 3.0,
+              "start": 0,
+              "duration": 4,
               "anchor": true
             },
             {
               "type": "note",
               "string": "e",
               "stringIndex": 0,
-              "fret": 3,
-              "midi": 67,
-              "position": "low",
-              "start": 3.0,
-              "duration": 1.0,
-              "anchor": false
-            },
-            {
-              "type": "note",
-              "string": "e",
-              "stringIndex": 0,
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 4.0,
-              "duration": 1.0,
+              "start": 4,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -306,8 +323,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -317,8 +334,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 6.0,
-              "duration": 3.0,
+              "start": 6,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -328,8 +345,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 9.0,
-              "duration": 2.0,
+              "start": 9,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -339,15 +356,15 @@
               "fret": 3,
               "midi": 58,
               "position": "mid",
-              "start": 11.0,
-              "duration": 1.0,
+              "start": 11,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "2",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -356,8 +373,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -367,8 +384,8 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 2,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -378,8 +395,8 @@
               "fret": 8,
               "midi": 72,
               "position": "upper",
-              "start": 3.0,
-              "duration": 2.0,
+              "start": 3,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -389,8 +406,8 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -400,8 +417,8 @@
               "fret": 6,
               "midi": 70,
               "position": "upper",
-              "start": 6.0,
-              "duration": 3.0,
+              "start": 6,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -411,8 +428,8 @@
               "fret": 4,
               "midi": 68,
               "position": "mid",
-              "start": 9.0,
-              "duration": 2.0,
+              "start": 9,
+              "duration": 2,
               "anchor": false
             },
             {
@@ -422,15 +439,15 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 11.0,
-              "duration": 1.0,
+              "start": 11,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "3",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -439,8 +456,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 0.0,
-              "duration": 3.0,
+              "start": 0,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -450,8 +467,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 3.0,
-              "duration": 2.0,
+              "start": 3,
+              "duration": 2,
               "anchor": false
             },
             {
@@ -461,8 +478,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -472,8 +489,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 6.0,
-              "duration": 3.0,
+              "start": 6,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -483,8 +500,8 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 9.0,
-              "duration": 3.0,
+              "start": 9,
+              "duration": 3,
               "anchor": true
             }
           ]
@@ -498,7 +515,7 @@
       "measures": [
         {
           "label": "4",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -507,8 +524,8 @@
               "fret": 3,
               "midi": 58,
               "position": "low",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -518,8 +535,8 @@
               "fret": 10,
               "midi": 74,
               "position": "high",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -529,8 +546,8 @@
               "fret": 8,
               "midi": 72,
               "position": "high",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 2,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -540,8 +557,8 @@
               "fret": 6,
               "midi": 70,
               "position": "upper",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 3,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -551,8 +568,8 @@
               "fret": 4,
               "midi": 68,
               "position": "mid",
-              "start": 4.0,
-              "duration": 1.0,
+              "start": 3.5,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -562,8 +579,8 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 4,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -573,8 +590,8 @@
               "fret": 4,
               "midi": 68,
               "position": "mid",
-              "start": 6.0,
-              "duration": 1.0,
+              "start": 4.5,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -584,8 +601,8 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 7.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -595,8 +612,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 8.0,
-              "duration": 1.0,
+              "start": 5.5,
+              "duration": 0.5,
               "anchor": false
             },
             {
@@ -606,9 +623,14 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 9.0,
-              "duration": 2.0,
+              "start": 6,
+              "duration": 3,
               "anchor": true
+            },
+            {
+              "type": "rest",
+              "start": 9,
+              "duration": 2
             },
             {
               "type": "note",
@@ -617,15 +639,15 @@
               "fret": 3,
               "midi": 58,
               "position": "mid",
-              "start": 11.0,
-              "duration": 1.0,
+              "start": 11,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "5",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -634,8 +656,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 0.0,
-              "duration": 3.0,
+              "start": 0,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -645,8 +667,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 3,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -656,8 +678,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 4.0,
-              "duration": 1.0,
+              "start": 4,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -667,8 +689,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -678,8 +700,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 6.0,
-              "duration": 3.0,
+              "start": 6,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -689,8 +711,8 @@
               "fret": 3,
               "midi": 62,
               "position": "mid",
-              "start": 9.0,
-              "duration": 1.0,
+              "start": 9,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -700,8 +722,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 10.0,
-              "duration": 1.0,
+              "start": 10,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -711,15 +733,15 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 11.0,
-              "duration": 1.0,
+              "start": 11,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "6",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -728,8 +750,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -739,8 +761,8 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -750,8 +772,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 2,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -761,8 +783,8 @@
               "fret": 4,
               "midi": 68,
               "position": "mid",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 3,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -772,8 +794,8 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 4.0,
-              "duration": 1.0,
+              "start": 4,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -783,8 +805,8 @@
               "fret": 8,
               "midi": 72,
               "position": "upper",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -794,8 +816,8 @@
               "fret": 6,
               "midi": 70,
               "position": "upper",
-              "start": 6.0,
-              "duration": 1.0,
+              "start": 6,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -805,8 +827,8 @@
               "fret": 4,
               "midi": 68,
               "position": "mid",
-              "start": 7.0,
-              "duration": 1.0,
+              "start": 7,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -816,15 +838,15 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 8.0,
-              "duration": 4.0,
+              "start": 8,
+              "duration": 4,
               "anchor": true
             }
           ]
         },
         {
           "label": "7",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -833,8 +855,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 0.0,
-              "duration": 3.0,
+              "start": 0,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -844,8 +866,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 3,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -855,8 +877,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 4.0,
-              "duration": 1.0,
+              "start": 4,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -866,8 +888,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -877,8 +899,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 6.0,
-              "duration": 3.0,
+              "start": 6,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -888,8 +910,8 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 9.0,
-              "duration": 3.0,
+              "start": 9,
+              "duration": 3,
               "anchor": true
             }
           ]
@@ -903,7 +925,7 @@
       "measures": [
         {
           "label": "8",
-          "duration": 13.0,
+          "duration": 13,
           "events": [
             {
               "type": "note",
@@ -912,8 +934,8 @@
               "fret": 3,
               "midi": 58,
               "position": "low",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -923,8 +945,8 @@
               "fret": 10,
               "midi": 74,
               "position": "high",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -934,8 +956,8 @@
               "fret": 8,
               "midi": 72,
               "position": "high",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 2,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -945,8 +967,8 @@
               "fret": 6,
               "midi": 70,
               "position": "upper",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 3,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -956,8 +978,8 @@
               "fret": 4,
               "midi": 68,
               "position": "mid",
-              "start": 4.0,
-              "duration": 1.0,
+              "start": 4,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -967,8 +989,8 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -978,8 +1000,8 @@
               "fret": 4,
               "midi": 68,
               "position": "mid",
-              "start": 6.0,
-              "duration": 1.0,
+              "start": 6,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -989,8 +1011,8 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 7.0,
-              "duration": 1.0,
+              "start": 7,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1000,8 +1022,8 @@
               "fret": 3,
               "midi": 62,
               "position": "mid",
-              "start": 8.0,
-              "duration": 1.0,
+              "start": 8,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1011,8 +1033,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 9.0,
-              "duration": 2.0,
+              "start": 9,
+              "duration": 2,
               "anchor": true
             },
             {
@@ -1022,8 +1044,8 @@
               "fret": 3,
               "midi": 62,
               "position": "mid",
-              "start": 11.0,
-              "duration": 1.0,
+              "start": 11,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1033,15 +1055,15 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 12.0,
-              "duration": 1.0,
+              "start": 12,
+              "duration": 1,
               "anchor": true
             }
           ]
         },
         {
           "label": "9",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -1050,8 +1072,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 0.0,
-              "duration": 3.0,
+              "start": 0,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -1061,8 +1083,8 @@
               "fret": 3,
               "midi": 67,
               "position": "low",
-              "start": 3.0,
-              "duration": 2.0,
+              "start": 3,
+              "duration": 2,
               "anchor": false
             },
             {
@@ -1072,8 +1094,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1083,8 +1105,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 6.0,
-              "duration": 3.0,
+              "start": 6,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -1094,15 +1116,15 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 9.0,
-              "duration": 3.0,
+              "start": 9,
+              "duration": 3,
               "anchor": true
             }
           ]
         },
         {
           "label": "10",
-          "duration": 12.0,
+          "duration": 12,
           "events": [
             {
               "type": "note",
@@ -1111,8 +1133,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 0.0,
-              "duration": 1.0,
+              "start": 0,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -1122,8 +1144,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1133,8 +1155,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 2.0,
-              "duration": 1.0,
+              "start": 2,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1144,8 +1166,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 3.0,
-              "duration": 1.0,
+              "start": 3,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1155,8 +1177,8 @@
               "fret": 3,
               "midi": 62,
               "position": "mid",
-              "start": 4.0,
-              "duration": 1.0,
+              "start": 4,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1166,8 +1188,8 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 5.0,
-              "duration": 1.0,
+              "start": 5,
+              "duration": 1,
               "anchor": false
             },
             {
@@ -1177,8 +1199,8 @@
               "fret": 4,
               "midi": 63,
               "position": "mid",
-              "start": 6.0,
-              "duration": 3.0,
+              "start": 6,
+              "duration": 3,
               "anchor": true
             },
             {
@@ -1188,8 +1210,8 @@
               "fret": 3,
               "midi": 58,
               "position": "mid",
-              "start": 9.0,
-              "duration": 3.0,
+              "start": 9,
+              "duration": 3,
               "anchor": true
             }
           ]
@@ -1200,13 +1222,14 @@
   "stats": {
     "sections": 3,
     "measuresOrPracticeGroups": 11,
-    "notes": 79,
+    "notes": 78,
     "uniqueMidiPitches": 10,
     "minFret": 1,
     "maxFret": 10,
     "openStringNotes": 0,
     "anchorNotes": 35,
-    "durationUnits": 122.0,
-    "estimatedSecondsAtDefaultTempo": 81.3
+    "durationUnits": 122,
+    "estimatedSecondsAtDefaultTempo": 55.5,
+    "explicitRests": 1
   }
 }
