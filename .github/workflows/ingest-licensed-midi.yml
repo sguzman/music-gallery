@@ -1,0 +1,44 @@
+name: Ingest approved licensed MIDI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/intake/**"
+      - "scripts/fetch_approved_midi.py"
+      - "scripts/import_licensed_midi.py"
+      - "scripts/test-licensed-midi-import.py"
+      - ".github/workflows/ingest-licensed-midi.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: licensed-midi-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Importer self-test
+        run: python3 scripts/test-licensed-midi-import.py
+      - name: Fetch approved licensed sources
+        run: python3 scripts/fetch_approved_midi.py --all
+      - name: Normalize complete MIDI event graphs
+        run: python3 scripts/import_licensed_midi.py --all
+      - name: Commit vendored sources and normalized artifacts
+        shell: bash
+        run: |
+          git add data/sources data/ingested
+          if git diff --cached --quiet; then
+            echo "No licensed MIDI artifact changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data(ingest): import approved licensed MIDI full renditions"
+          git push
