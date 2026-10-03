@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "liszt-hungarian-rhapsody-no2",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as item 1 of the locked Open Full Rendition Queue."
+  },
+  "identity": {
+    "title": "Hungarian Rhapsody No. 2",
+    "displayTitle": "Liszt — Hungarian Rhapsody No. 2",
+    "shortTitle": "Hungarian Rhapsody No. 2",
+    "composer": {
+      "name": "Franz Liszt"
+    },
+    "aliases": [
+      "Hungarian Rhapsody No. 2",
+      "Hungarian Rhapsody #2",
+      "Rhapsodie hongroise No. 2"
+    ],
+    "catalogue": "S.244/2"
+  },
+  "source": {
+    "path": "data/sources/liszt-hungarian-rhapsody-no2.mid",
+    "format": "midi",
+    "provider": "Wikimedia Commons / piano-midi.de",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Liszt_-_Hungarian_Rhapsody_No._2.mid",
+    "remoteUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Liszt_-_Hungarian_Rhapsody_No._2.mid",
+    "originalSource": "http://www.piano-midi.de/",
+    "attribution": "Bernd Krueger",
+    "license": "Creative Commons Attribution-ShareAlike 3.0 Germany (CC BY-SA 3.0 DE)",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+    "compositionRights": "Franz Liszt composition is public domain.",
+    "evidence": "Wikimedia Commons identifies the MIDI as Bernd Krueger's work, sourced from piano-midi.de, and licenses the file under CC BY-SA 3.0 Germany. IMSLP separately provides public-domain complete score witnesses for S.244/2."
+  },
+  "ingest": {
+    "fidelity": "source-midi-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      30,
+      260
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.72,
+    "label": "Hungarian Rhapsody No. 2, S.244/2 — complete licensed MIDI rendition",
+    "description": "Complete Full Rendition imported from the user-approved CC BY-SA MIDI witness while preserving MIDI track/channel identity, note timing, tempo changes and time-signature metadata."
+  },
+  "output": "data/ingested/liszt-hungarian-rhapsody-no2.full.json"
+}
