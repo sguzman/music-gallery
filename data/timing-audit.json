@@ -8,7 +8,10 @@
         "tempoUnit": "quarter note",
         "unitsPerQuarter": 1,
         "defaultBpm": 92,
-        "bpmRange": [55, 120]
+        "bpmRange": [
+          55,
+          120
+        ]
       },
       "verification": {
         "timing": {
@@ -31,7 +34,10 @@
         "tempoUnit": "quarter-note equivalent (score marks eighth note = 132)",
         "unitsPerQuarter": 2,
         "defaultBpm": 66,
-        "bpmRange": [40, 90]
+        "bpmRange": [
+          40,
+          90
+        ]
       },
       "verification": {
         "timing": {
@@ -48,14 +54,41 @@
       "notes": "The score is 12/8 and marks eighth note = 132. The site normalizes that to quarter-note equivalent 66 while retaining two event units per quarter."
     },
     "genshin-main-theme": {
-      "status": "source-timed",
+      "status": "primary-audio-identified-symbolic-crosscheck-pending",
       "verification": {
         "timing": {
-          "confidence": "high",
-          "method": "source-derived attack timing cross-checked against 3/4 full-score transcription at quarter note = 80"
-        }
+          "confidence": "medium",
+          "method": "timestamp-derived attack timing; official audio identity plus independent 3/4 tempo witnesses at quarter=80 and quarter=82; exact event alignment still pending"
+        },
+        "needsReview": true
       },
-      "notes": "Current quarter-note reference of 80 is corroborated by the full-score transcription."
+      "sources": [
+        {
+          "label": "Official released recording — Yu-Peng Chen / HOYO-MiX",
+          "url": "https://www.youtube.com/watch?v=EEYMlUVKmyE",
+          "kind": "official audio"
+        },
+        {
+          "label": "theartthatran full-score transcription",
+          "url": "https://theartthatran.wordpress.com/wp-content/uploads/2020/12/genshin-impact-main-theme.pdf",
+          "kind": "secondary full-score transcription",
+          "claims": [
+            "3/4",
+            "quarter note = 80",
+            "two-sharp key signature"
+          ]
+        },
+        {
+          "label": "Musicnotes KimBo Signature Artist arrangement",
+          "url": "https://www.musicnotes.com/sheetmusic/kimbo/genshin-impact-main-theme/MN0223117",
+          "kind": "secondary licensed arrangement",
+          "claims": [
+            "D major",
+            "quarter note = 82"
+          ]
+        }
+      ],
+      "notes": "Current 80 BPM remains a defensible source-specific reference but is not treated as an official engraved-score tempo. Do not rewrite event attacks until they are aligned against the official recording or a provenance-adequate symbolic source."
     },
     "sugar-plum-fairy": {
       "status": "score-guided",
@@ -64,7 +97,10 @@
         "tempoUnit": "quarter note",
         "unitsPerQuarter": 1,
         "defaultBpm": 62,
-        "bpmRange": [45, 100]
+        "bpmRange": [
+          45,
+          100
+        ]
       },
       "verification": {
         "timing": {
@@ -78,6 +114,67 @@
         "kind": "orchestral score and MIDI reference"
       },
       "notes": "The orchestral score marks quarter note = 62 and identifies celesta as the lead timbre."
+    },
+    "canon-in-d": {
+      "status": "source-aligned-corrected",
+      "verification": {
+        "notes": {
+          "confidence": "high"
+        },
+        "timing": {
+          "confidence": "high",
+          "method": "Mutopia violin I LilyPond alignment; 48 source-matching notes corrected from uniform 2x duration inflation"
+        },
+        "needsReview": false,
+        "sourceAlignment": {
+          "provider": "Mutopia Project",
+          "sourceId": "Mutopia-2015/09/02-2047",
+          "repository": "MutopiaProject/MutopiaProject",
+          "commit": "2144afd6f52d56c5b6995b8b589ef1268b3139f0",
+          "path": "ftp/PachelbelJ/Canon_per_3_Violini_e_Basso/Canon_per_3_Violini_e_Basso-lys/violin_common.ily",
+          "blobSha": "a98c87c5c14132edc3ff86d10c4088b5f08298f1",
+          "alignedNotes": 48,
+          "totalArrangementNotes": 49
+        }
+      },
+      "source": {
+        "label": "Mutopia — Canon per 3 Violini e Basso",
+        "url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=2047",
+        "kind": "CC BY 4.0 LilyPond score reference"
+      },
+      "notes": "Opening 8 notes, flowing 16-note passage, and 24-note flourish match contiguous source pitch-class sequences. Their prior Gallery durations were exactly 2x the source note values. Final D remains a simplified arrangement cadence."
+    },
+    "schubert-serenade": {
+      "status": "partial-exact-symbolic-alignment",
+      "verification": {
+        "timing": {
+          "confidence": "high",
+          "method": "MusicXML duration/pitch-class alignment for Gallery groups 1-7; custom ending groups remain arrangement-specific"
+        },
+        "needsReview": true,
+        "sourceAlignment": {
+          "repository": "MengXiangxi/MelodicaSheetMusic",
+          "commit": "239fe8760cdef035eee269a43fc259009ffea76e",
+          "path": "02_Staendchen/Staendchen.xml",
+          "blobSha": "642db3e4fb005967f7baafd825266ba0cea16bfa",
+          "exactGalleryGroups": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "caveat": "Secondary melodica adaptation, not autograph."
+        }
+      },
+      "source": {
+        "label": "MelodicaSheetMusic — Ständchen MusicXML",
+        "url": "https://github.com/MengXiangxi/MelodicaSheetMusic/blob/239fe8760cdef035eee269a43fc259009ffea76e/02_Staendchen/Staendchen.xml",
+        "kind": "secondary machine-readable transcription"
+      },
+      "notes": "Groups 1-4 align to source measures 1-4; groups 5-7 align to source measures 7-9. Pitch classes and durations match, with deliberate octave lowering for guitar. Group 8 is a custom ending and group 9 is not uniquely source-identifiable."
     }
   }
 }
