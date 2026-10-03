@@ -114,30 +114,66 @@ function renderPractice(){
 }
 
 function fullDuration(){return song.fullVersion.durationUnits||Math.max(0,...song.fullVersion.tracks.flatMap(t=>t.events.map(e=>e.start+e.duration)));}
-function renderFull(){
-  const host=$("#tabs");host.innerHTML="";host.className="card tab-wrap full-version-wrap";
-  const fv=song.fullVersion,total=fullDuration(),intro=document.createElement("div");intro.className="full-score-intro";
-  const source=fv.provenance?.url?`<a href="${safe(fv.provenance.url)}" target="_blank" rel="noreferrer">${safe(fv.provenance.provider||"source")}</a>`:safe(fv.provenance?.provider||"");
-  intro.innerHTML=`<div><span class="full-kicker">Full rendition</span><h2>${safe(fv.label||"Full score")}</h2><p>${safe(fv.description||"")}</p></div><div class="full-source">Source: ${source}<br>${safe(fv.provenance?.license||"")}</div>`;host.appendChild(intro);
-  const tools=document.createElement("div");tools.className="track-tools";
-  const all=document.createElement("button");all.textContent="Enable all tracks";all.onclick=()=>{fv.tracks.forEach(t=>trackState.set(t.id,true));cursor=0;renderAll();};
-  const none=document.createElement("button");none.textContent="Mute all";none.onclick=()=>{fv.tracks.forEach(t=>trackState.set(t.id,false));cursor=0;renderAll();};tools.append(all,none);host.appendChild(tools);
-  const scrolls=[];
-  fv.tracks.forEach((track,ti)=>{
-    const block=document.createElement("section");block.className=`full-track-block${trackEnabled(track)?"":" muted-track"}`;
-    const head=document.createElement("div");head.className="full-track-head",check=document.createElement("input");check.type="checkbox";check.checked=trackEnabled(track);check.setAttribute("aria-label",`Enable ${track.name}`);
-    check.onchange=()=>{stop(false);trackState.set(track.id,check.checked);cursor=0;renderAll();};
-    const label=document.createElement("div");label.innerHTML=`<b>${safe(track.name)}</b><small>${safe(track.role||"")} · ${safe(track.instrumentLabel||track.defaultInstrument||"instrument")} · ${track.events.length} notes</small>`;head.append(check,label);block.appendChild(head);
-    const scroll=document.createElement("div");scroll.className="full-track-scroll";scrolls.push(scroll);
-    const roll=document.createElement("div");roll.className="full-track-roll";roll.style.minWidth=`${Math.max(980,total*9)}px`;
-    const mids=track.events.filter(e=>e.type==="note").map(e=>e.midi),lo=Math.min(...mids),hi=Math.max(...mids),span=Math.max(1,hi-lo);
-    (fv.measures||[]).forEach((m,mi)=>{const line=document.createElement("span");line.className="full-measure-line";line.style.left=`${m.start/total*100}%`;roll.appendChild(line);if(mi%4===0){const lab=document.createElement("span");lab.className="full-measure-label";lab.style.left=`${m.start/total*100}%`;lab.textContent=m.label;roll.appendChild(lab);}});
-    track.events.forEach((e,ei)=>{if(e.type!=="note")return;const n=document.createElement("button");n.type="button";n.className="full-note";n.dataset.track=ti;n.dataset.event=ei;n.style.left=`${e.start/total*100}%`;n.style.width=`${Math.max(.08,e.duration/total*100)}%`;n.style.top=`${8+(hi-e.midi)/span*58}px`;n.title=`${track.name} · MIDI ${e.midi} · bar ${e.sourceMeasure??"?"} · ${e.duration} quarter-note units`;n.onclick=()=>auditionFull(ti,ei,n);roll.appendChild(n);});
-    scroll.appendChild(roll);block.appendChild(scroll);host.appendChild(block);
-  });
-  let syncing=false;scrolls.forEach(sc=>sc.addEventListener("scroll",()=>{if(syncing)return;syncing=true;scrolls.forEach(other=>{if(other!==sc)other.scrollLeft=sc.scrollLeft;});syncing=false;}));
-}
 
+function clefProfile(track){
+  const clef=track.clef||(track.defaultInstrument==="cello"||track.defaultInstrument==="bassoon"?"bass":"treble");
+  return clef==="bass"?{name:"Bass",min:34,max:65}:{name:"Treble",min:55,max:91};
+}
+function scoreY(track,midi){
+  const p=clefProfile(track),clamped=Math.max(p.min,Math.min(p.max,midi));
+  return 60-((clamped-p.min)/(p.max-p.min))*48;
+}
+function renderFull(){
+  const host=$("#tabs");host.innerHTML="";host.className="card tab-wrap full-score-view";
+  const fv=song.fullVersion,total=fullDuration(),enabled=fv.tracks.filter(trackEnabled),allNotes=fv.tracks.reduce((n,t)=>n+t.events.filter(e=>e.type==="note").length,0);
+  const intro=document.createElement("div");intro.className="full-score-intro";
+  const source=fv.provenance?.url?'<a href="'+safe(fv.provenance.url)+'" target="_blank" rel="noreferrer">'+safe(fv.provenance.provider||"source")+'</a>':safe(fv.provenance?.provider||"");
+  intro.innerHTML='<div><span class="full-kicker">Full rendition</span><h2>'+safe(fv.label||"Full score")+'</h2><p>'+safe(fv.description||"")+'</p><div class="full-score-stats">'+fv.tracks.length+' tracks · '+allNotes.toLocaleString()+' note events · '+(fv.measures?.length||"?")+' measures</div></div><div class="full-source">Source: '+source+'<br>'+safe(fv.provenance?.license||"")+'<br>'+safe(fv.fidelity||"")+'</div>';
+  host.appendChild(intro);
+
+  const mixer=document.createElement("div");mixer.className="full-mixer";
+  fv.tracks.forEach((track,ti)=>{
+    const label=document.createElement("label");label.className="mixer-track"+(trackEnabled(track)?" active":"");
+    const check=document.createElement("input");check.type="checkbox";check.checked=trackEnabled(track);
+    check.onchange=()=>{stop(false);trackState.set(track.id,check.checked);cursor=0;renderAll();};
+    const swatch=document.createElement("span");swatch.className="track-swatch track-"+(ti%8);
+    const txt=document.createElement("span");txt.innerHTML="<b>"+safe(track.name)+"</b><small>"+safe(track.instrumentLabel||track.defaultInstrument||"instrument")+" · "+safe(track.role||"part")+"</small>";
+    label.append(check,swatch,txt);mixer.appendChild(label);
+  });
+  const actions=document.createElement("div");actions.className="mixer-actions";
+  const all=document.createElement("button");all.textContent="All on";all.onclick=()=>{fv.tracks.forEach(t=>trackState.set(t.id,true));cursor=0;renderAll();};
+  const none=document.createElement("button");none.textContent="All off";none.onclick=()=>{fv.tracks.forEach(t=>trackState.set(t.id,false));cursor=0;renderAll();};
+  actions.append(all,none);mixer.appendChild(actions);host.appendChild(mixer);
+
+  const scroll=document.createElement("div");scroll.className="score-scroll";
+  const score=document.createElement("div");score.className="score-sheet";
+  const measureWidth=112;score.style.width=Math.max(1100,(fv.measures?.length||Math.ceil(total/4))*measureWidth)+"px";
+  fv.tracks.forEach((track,ti)=>{
+    const row=document.createElement("section");row.className="score-row"+(trackEnabled(track)?"":" muted-track");
+    const label=document.createElement("div");label.className="score-track-label";
+    const profile=clefProfile(track);
+    label.innerHTML="<b>"+safe(track.name)+"</b><span>"+safe(track.instrumentLabel||track.defaultInstrument||"instrument")+"</span><small>"+profile.name+" clef · "+track.events.length+" notes</small>";
+    const staff=document.createElement("div");staff.className="score-staff";staff.dataset.track=ti;
+    for(let l=0;l<5;l++){const line=document.createElement("span");line.className="score-staff-line";line.style.top=(20+l*10)+"px";staff.appendChild(line);}
+    const clef=document.createElement("span");clef.className="score-clef";clef.textContent=profile.name==="Bass"?"𝄢":"𝄞";staff.appendChild(clef);
+    (fv.measures||[]).forEach((m,mi)=>{
+      const ml=document.createElement("span");ml.className="score-measure-line";ml.style.left=(m.start/total*100)+"%";staff.appendChild(ml);
+      if(mi%4===0||mi===fv.measures.length-1){const lab=document.createElement("span");lab.className="score-measure-label";lab.style.left=(m.start/total*100)+"%";lab.textContent=m.label;staff.appendChild(lab);}
+    });
+    const endLine=document.createElement("span");endLine.className="score-measure-line score-end-line";endLine.style.left="100%";staff.appendChild(endLine);
+    track.events.forEach((e,ei)=>{
+      if(e.type!=="note")return;
+      const note=document.createElement("button");note.type="button";note.className="score-note track-"+(ti%8);note.dataset.track=ti;note.dataset.event=ei;
+      note.style.left=(e.start/total*100)+"%";note.style.top=scoreY(track,e.midi)+"px";
+      const width=Math.max(9,(e.duration/total)*parseFloat(score.style.width)*.86);note.style.width=Math.min(width,44)+"px";
+      note.title=track.name+" · MIDI "+e.midi+" · measure "+(e.sourceMeasure??"?")+" · duration "+e.duration;
+      note.onclick=()=>auditionFull(ti,ei,note);staff.appendChild(note);
+    });
+    row.append(label,staff);score.appendChild(row);
+  });
+  scroll.appendChild(score);host.appendChild(scroll);
+  const footer=document.createElement("div");footer.className="score-footer";footer.textContent=enabled.length+"/"+fv.tracks.length+" tracks enabled. All tracks share one absolute score timeline; simultaneous events are scheduled together.";host.appendChild(footer);
+}
 function renderMetadata(){
   const timing=currentTiming(),meta=[["Composer",song.identity.composer.name],["Category",song.origin.category],["Era",song.origin.era],["Year",song.origin.year??"—"],["Original key",song.origin.originalKey??"—"],["Arranged key",song.arrangement.arrangedKey??"—"],["Meter",timing.meter],["Tempo unit",timing.tempoUnit],["Difficulty",`${song.arrangement.difficulty.label} (${song.arrangement.difficulty.rating}/5)`],["Max fret",song.stats.maxFret],["Practice notes",song.stats.notes],["View",viewMode==="full"?"full rendition":"practice arrangement"],["Note confidence",song.verification.notes.confidence],["Timing confidence",song.verification.timing.confidence],["Timing method",song.verification.timing.method],["Pinky required",song.arrangement.pinkyRequired?"yes":"no"]];
   $("#metaGrid").innerHTML=meta.map(([a,b])=>`<div class="meta-item"><small>${safe(a)}</small><b>${safe(b)}</b></div>`).join("");
@@ -164,7 +200,7 @@ function toneForEntry(x,start,seconds){if(x.mode==="full")toneFor(x.track.defaul
 function clearTimers(){timers.forEach(clearTimeout);timers=[];}
 function later(fn,ms){const id=setTimeout(fn,Math.max(0,ms));timers.push(id);}
 function stopNodes(){nodes.forEach(n=>{try{n.stop();}catch(_){}});nodes=[];}
-function clearHighlights(){document.querySelectorAll(".note.live,.note.next,.note.dimmed,.full-note.live,.full-note.next").forEach(n=>n.classList.remove("live","next","dimmed"));}
+function clearHighlights(){document.querySelectorAll(".note.live,.note.next,.note.dimmed,.score-note.live,.score-note.next").forEach(n=>n.classList.remove("live","next","dimmed"));}
 function stop(reset=true){runId++;playing=false;clearTimers();stopNodes();if(reset)cursor=0;clearHighlights();updateButtons();highlight();updateStatus();}
 function pause(){runId++;playing=false;clearTimers();stopNodes();updateButtons();updateStatus();}
 function activePlayEvents(){if(viewMode==="full")return flat.map((x,i)=>({...x,flatIndex:i}));const anchorsOnly=$("#salvage").checked;return flat.map((x,i)=>({...x,flatIndex:i})).filter(x=>!anchorsOnly||x.event.anchor);}
@@ -177,12 +213,12 @@ function play(){
   const lastEnd=events.reduce((m,x)=>Math.max(m,(x.start-currentStart)+x.event.duration),0)*secPerUnit*1000;
   later(()=>{if(myRun!==runId)return;if(loop){cursor=0;play();}else{playing=false;updateButtons();updateStatus();}},lastEnd+220);
 }
-function findNoteEl(x){return x.mode==="full"?document.querySelector(`.full-note[data-track="${x.ti}"][data-event="${x.ei}"]`):document.querySelector(`.note[data-section="${CSS.escape(x.section.id)}"][data-measure="${x.mi}"][data-event="${x.ei}"]`);}
-function highlight(){document.querySelectorAll(".note.live,.note.next,.full-note.live,.full-note.next").forEach(n=>n.classList.remove("live","next"));if(!flat.length)return;const start=flat[cursor].start;flat.forEach(x=>{if(Math.abs(x.start-start)<1e-8)findNoteEl(x)?.classList.add("live");});const next=flat.find(x=>x.start>start+1e-8);if(next){const ns=next.start;flat.forEach(x=>{if(Math.abs(x.start-ns)<1e-8)findNoteEl(x)?.classList.add("next");});}}
+function findNoteEl(x){return x.mode==="full"?document.querySelector(`.score-note[data-track="${x.ti}"][data-event="${x.ei}"]`):document.querySelector(`.note[data-section="${CSS.escape(x.section.id)}"][data-measure="${x.mi}"][data-event="${x.ei}"]`);}
+function highlight(){document.querySelectorAll(".note.live,.note.next,.score-note.live,.score-note.next").forEach(n=>n.classList.remove("live","next"));if(!flat.length)return;const start=flat[cursor].start;flat.forEach(x=>{if(Math.abs(x.start-start)<1e-8)findNoteEl(x)?.classList.add("live");});const next=flat.find(x=>x.start>start+1e-8);if(next){const ns=next.start;flat.forEach(x=>{if(Math.abs(x.start-ns)<1e-8)findNoteEl(x)?.classList.add("next");});}}
 function updateButtons(){$("#play").textContent=playing?"▶ Playing":"▶ Play";$("#loop").classList.toggle("active",loop);}
 function updateStatus(){const total=flat.length,pos=total?cursor+1:0;$("#counter").textContent=`${pos} / ${total}`;$("#progress").style.width=total?`${pos/total*100}%`:"0%";$("#status").textContent=playing?"Playing":(cursor?"Paused / positioned":"Ready");}
 function auditionPractice(sectionId,mi,ei,el){pause();ensureAudio();const section=song.sections.find(s=>s.id===sectionId),e=section.measures[mi].events[ei];toneFor($("#instrument").value,e.midi,audio.currentTime+.02,Math.max(.18,e.duration*tempoSecondsPerUnit()*Number($("#gate").value)/100));document.querySelectorAll(".note.live").forEach(n=>n.classList.remove("live"));el.classList.add("live");later(()=>el.classList.remove("live"),500);}
-function auditionFull(ti,ei,el){pause();ensureAudio();const track=song.fullVersion.tracks[ti],e=track.events[ei];toneFor(track.defaultInstrument||"strings",e.midi,audio.currentTime+.02,Math.max(.14,e.duration*tempoSecondsPerUnit()*Number($("#gate").value)/100),track.level??1);document.querySelectorAll(".full-note.live").forEach(n=>n.classList.remove("live"));el.classList.add("live");later(()=>el.classList.remove("live"),500);}
+function auditionFull(ti,ei,el){pause();ensureAudio();const track=song.fullVersion.tracks[ti],e=track.events[ei];toneFor(track.defaultInstrument||"strings",e.midi,audio.currentTime+.02,Math.max(.14,e.duration*tempoSecondsPerUnit()*Number($("#gate").value)/100),track.level??1);document.querySelectorAll(".score-note.live").forEach(n=>n.classList.remove("live"));el.classList.add("live");later(()=>el.classList.remove("live"),500);}
 
 function vlq(n){let b=[n&127];while(n>>=7)b.unshift((n&127)|128);return b;}
 const u32=n=>[(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255],u16=n=>[(n>>>8)&255,n&255];
