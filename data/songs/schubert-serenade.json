@@ -178,7 +178,7 @@
       "meter": "3/4",
       "composer": "Franz Schubert",
       "maxFret": 6,
-      "timingMethod": "MusicXML-derived rhythm",
+      "timingMethod": "OpenScore/IMSLP-derived exact pitch-class and duration alignment for retained excerpt",
       "pinkyRequired": false,
       "moods": [
         "tender",
@@ -208,35 +208,78 @@
       ],
       "arrangementType": "melody-only",
       "arrangedKey": "D minor",
-      "noteConfidence": "medium",
+      "noteConfidence": "high",
       "timingConfidence": "high"
     },
     "text": "ständchen, d.957 no. 4 schubert — serenade (ständchen) franz schubert classical romantic voice and piano beginner 3/4 d minor schubert serenade staendchen ständchen classical lied romantic tender yearning lyrical night intimate schubert ständchen serenade schwanengesang d.957 triplets public domain single-note melody position shifts open strings melody recognition left-hand position awareness timing ear-guided recovery"
   },
   "verification": {
     "notes": {
-      "confidence": "medium"
+      "confidence": "high"
     },
     "timing": {
       "confidence": "high",
-      "method": "MusicXML-derived rhythm"
+      "method": "OpenScore/Lieder CC0 vocal-staff alignment against IMSLP-sourced transcription; all eight retained groups match source pitch class and notated duration"
     },
-    "needsReview": true,
+    "needsReview": false,
     "notesAboutQuality": [
       "The attached alternate HTML files were used as a visual design reference only; their note data was not trusted.",
       "This is a simplified educational melody arrangement, not a complete score."
-    ]
+    ],
+    "sourceAlignment": {
+      "status": "complete-for-retained-excerpt",
+      "provider": "OpenScore/Lieder",
+      "sourceBasis": "Transcribed from IMSLP #60828",
+      "license": "CC0",
+      "repository": "OpenScore/Lieder",
+      "repositoryCommit": "38c5db510224d9facdc4b08d741fc788cfb58ea8",
+      "sourcePath": "scores/Schubert,_Franz/Schwanengesang,_D.957/04_Ständchen/lc5004835.mscx",
+      "sourceBlobSha": "fa6bb74dfa79d0df24ba6e60c9039b53b96dd005",
+      "sourceMeasureMapping": [
+        {
+          "galleryGroups": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "sourceMeasures": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "galleryGroups": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "sourceMeasures": [
+            11,
+            12,
+            13,
+            14
+          ]
+        }
+      ],
+      "transformation": "pitch class and duration preserved; selected high notes lowered by one octave for guitar realization",
+      "tempoStanding": "Original/source wording is Mässig; numeric transport BPM is an application practice setting, not claimed as a Schubert metronome mark."
+    }
   },
   "sources": [
-    {
-      "label": "MusicXML transcription — Ständchen",
-      "url": "https://raw.githubusercontent.com/MengXiangxi/MelodicaSheetMusic/master/02_Staendchen/Staendchen.xml",
-      "kind": "MusicXML rhythm/pitch reference"
-    },
     {
       "label": "IMSLP — Schwanengesang, D.957",
       "url": "https://imslp.org/wiki/Schwanengesang,_D.957_(Schubert,_Franz)",
       "kind": "public-domain score reference"
+    },
+    {
+      "label": "OpenScore/Lieder — Schubert Ständchen D.957 No.4",
+      "url": "https://github.com/OpenScore/Lieder/tree/38c5db510224d9facdc4b08d741fc788cfb58ea8/scores/Schubert,_Franz/Schwanengesang,_D.957/04_St%C3%A4ndchen",
+      "kind": "CC0 machine-readable vocal/piano score derived from IMSLP #60828",
+      "evidence": "exact pitch-class and notated-duration alignment for all retained Gallery groups"
     }
   ],
   "rights": {
@@ -246,7 +289,7 @@
   "presentation": {
     "accent": "#9bb7ff",
     "accentDark": "#9bb7ff",
-    "description": "A short singing-line version retaining the opening triplets, long arrivals, and higher answering phrase."
+    "description": "Two source-aligned vocal phrases from Ständchen, lowered by octave where needed for compact guitar range."
   },
   "sections": [
     {
@@ -256,7 +299,7 @@
       "measures": [
         {
           "label": "1",
-          "duration": 3.0,
+          "duration": 3,
           "events": [
             {
               "type": "note",
@@ -265,7 +308,7 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.333333,
               "anchor": true
             },
@@ -298,7 +341,7 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 1.0,
+              "start": 1,
               "duration": 1.5,
               "anchor": true
             },
@@ -317,7 +360,7 @@
         },
         {
           "label": "2",
-          "duration": 3.0,
+          "duration": 3,
           "events": [
             {
               "type": "note",
@@ -326,7 +369,7 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.333333,
               "anchor": true
             },
@@ -359,8 +402,8 @@
               "fret": 3,
               "midi": 62,
               "position": "low",
-              "start": 1.0,
-              "duration": 1.0,
+              "start": 1,
+              "duration": 1,
               "anchor": true
             },
             {
@@ -370,7 +413,7 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 2.0,
+              "start": 2,
               "duration": 0.5,
               "anchor": true
             },
@@ -383,7 +426,7 @@
         },
         {
           "label": "3",
-          "duration": 3.0,
+          "duration": 3,
           "events": [
             {
               "type": "note",
@@ -392,7 +435,7 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
+              "start": 0,
               "duration": 1.5,
               "anchor": true
             },
@@ -414,7 +457,7 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 2.0,
+              "start": 2,
               "duration": 0.333333,
               "anchor": false
             },
@@ -444,7 +487,7 @@
         },
         {
           "label": "4",
-          "duration": 3.0,
+          "duration": 3,
           "events": [
             {
               "type": "note",
@@ -453,14 +496,14 @@
               "fret": 1,
               "midi": 65,
               "position": "low",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
               "type": "rest",
-              "start": 2.0,
-              "duration": 1.0
+              "start": 2,
+              "duration": 1
             }
           ]
         }
@@ -473,7 +516,7 @@
       "measures": [
         {
           "label": "5",
-          "duration": 3.0,
+          "duration": 3,
           "events": [
             {
               "type": "note",
@@ -482,7 +525,7 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.333333,
               "anchor": true
             },
@@ -515,7 +558,7 @@
               "fret": 6,
               "midi": 65,
               "position": "upper",
-              "start": 1.0,
+              "start": 1,
               "duration": 1.5,
               "anchor": true
             },
@@ -534,7 +577,7 @@
         },
         {
           "label": "6",
-          "duration": 3.0,
+          "duration": 3,
           "events": [
             {
               "type": "note",
@@ -543,7 +586,7 @@
               "fret": 3,
               "midi": 67,
               "position": "mid",
-              "start": 0.0,
+              "start": 0,
               "duration": 0.333333,
               "anchor": true
             },
@@ -576,7 +619,7 @@
               "fret": 5,
               "midi": 64,
               "position": "mid",
-              "start": 1.0,
+              "start": 1,
               "duration": 1.5,
               "anchor": true
             },
@@ -595,7 +638,7 @@
         },
         {
           "label": "7",
-          "duration": 3.0,
+          "duration": 3,
           "events": [
             {
               "type": "note",
@@ -604,7 +647,7 @@
               "fret": 1,
               "midi": 60,
               "position": "low",
-              "start": 0.0,
+              "start": 0,
               "duration": 1.5,
               "anchor": true
             },
@@ -626,7 +669,7 @@
               "fret": 6,
               "midi": 70,
               "position": "upper",
-              "start": 2.0,
+              "start": 2,
               "duration": 0.333333,
               "anchor": false
             },
@@ -658,12 +701,12 @@
     },
     {
       "id": "ending",
-      "name": "Short ending",
-      "description": "Phrase close plus a deliberate compact cadence.",
+      "name": "Second phrase close",
+      "description": "Source-aligned close of the second selected vocal phrase.",
       "measures": [
         {
           "label": "8",
-          "duration": 3.0,
+          "duration": 3,
           "events": [
             {
               "type": "note",
@@ -672,42 +715,14 @@
               "fret": 5,
               "midi": 69,
               "position": "mid",
-              "start": 0.0,
-              "duration": 2.0,
+              "start": 0,
+              "duration": 2,
               "anchor": true
             },
             {
               "type": "rest",
-              "start": 2.0,
-              "duration": 0.5
-            },
-            {
-              "type": "note",
-              "string": "B",
-              "stringIndex": 1,
-              "fret": 3,
-              "midi": 62,
-              "position": "low",
-              "start": 2.5,
-              "duration": 0.5,
-              "anchor": true
-            }
-          ]
-        },
-        {
-          "label": "9",
-          "duration": 3.0,
-          "events": [
-            {
-              "type": "note",
-              "string": "B",
-              "stringIndex": 1,
-              "fret": 3,
-              "midi": 62,
-              "position": "low",
-              "start": 0.0,
-              "duration": 3.0,
-              "anchor": true
+              "start": 2,
+              "duration": 1
             }
           ]
         }
@@ -716,14 +731,15 @@
   ],
   "stats": {
     "sections": 3,
-    "measuresOrPracticeGroups": 9,
-    "notes": 34,
+    "measuresOrPracticeGroups": 8,
+    "notes": 32,
     "uniqueMidiPitches": 7,
     "minFret": 0,
     "maxFret": 6,
     "openStringNotes": 1,
-    "anchorNotes": 26,
-    "durationUnits": 27.0,
-    "estimatedSecondsAtDefaultTempo": 18.0
+    "anchorNotes": 24,
+    "durationUnits": 24,
+    "estimatedSecondsAtDefaultTempo": 16,
+    "explicitRests": 3
   }
 }
