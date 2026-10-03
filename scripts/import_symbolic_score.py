@@ -420,7 +420,8 @@ def normalize_score(root, manifest, source_meta):
         for i in range(measure_count)
     ]
 
-    track_level = number(manifest.get("ingest", {}).get("trackLevel"), 0.82)
+    ingest_cfg = manifest.get("ingest", {})
+    track_level = number(ingest_cfg.get("trackLevel"), 0.82)
     tracks = []
     warnings = []
     used_ids = set()
@@ -480,7 +481,6 @@ def normalize_score(root, manifest, source_meta):
     meter_map = dedupe_map(sorted(meter_raw, key=lambda x: (x["start"], x["meter"])), ("start", "meter"))
     key_map = dedupe_map(sorted(key_raw, key=lambda x: (x["start"], x["fifths"])), ("start", "fifths"))
 
-    ingest_cfg = manifest.get("ingest", {})
     default_bpm = number(ingest_cfg.get("defaultBpm"), 0)
     if default_bpm <= 0:
         default_bpm = next((t["bpm"] for t in tempo_map if t["bpm"] > 0), 60)
