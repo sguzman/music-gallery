@@ -671,11 +671,43 @@
     "estimatedSecondsAtDefaultTempo": 33.9
   },
   "fullVersion": {
-    "status": "source-needed",
+    "status": "transcription-ready",
     "label": "Full rendition",
-    "description": "A full public multi-track rendition is not loaded yet. The current provenance witnesses are sufficient for practice-timing study but not yet a provenance-adequate full symbolic score for publication.",
+    "description": "Complete multi-track Astral Observatory MIDI transcriptions exist. The next step is event ingestion, not source discovery.",
+    "fidelityTarget": "source-midi-derived / transcription-derived",
     "provenance": {
-      "evidenceState": "See song sources and timing audit; no full event graph has been admitted yet."
+      "evidenceState": "VGMusic hosts complete multi-track fan MIDI witnesses.",
+      "witnesses": [
+        {
+          "provider": "VGMusic",
+          "sequencer": "Jarel Jones",
+          "url": "https://www.vgmusic.com/file/db71dc31085ac35eecee1b6e6d19449b.html",
+          "md5": "db71dc31085ac35eecee1b6e6d19449b",
+          "format": "SMF type 1",
+          "tracks": 8,
+          "trackNames": [
+            "Sitar",
+            "Celesta",
+            "Choir Aahs",
+            "String Ensemble",
+            "Bright Piano Treble",
+            "Bright Piano Bass 1",
+            "Bright Piano Bass 2"
+          ]
+        },
+        {
+          "provider": "VGMusic",
+          "sequencer": "John Harvey",
+          "url": "https://www.vgmusic.com/file/b5e690074322869d60955fb7ddd34809.html",
+          "md5": "b5e690074322869d60955fb7ddd34809",
+          "trackNames": [
+            "Guitar",
+            "Choir",
+            "Strings",
+            "Piano"
+          ]
+        }
+      ]
     }
   }
 }
