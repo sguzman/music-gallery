@@ -29,6 +29,8 @@ jobs:
         run: node scripts/test-specimen-alignment.mjs
       - name: Full rendition self-test
         run: node scripts/test-full-version.mjs
+      - name: Browser module syntax check
+        run: node --check assets/js/song-page.js
       - name: Build catalog and song wrappers
         run: python3 scripts/build.py
       - name: Configure Pages
