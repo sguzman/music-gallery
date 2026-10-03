@@ -741,5 +741,13 @@
     "durationUnits": 24,
     "estimatedSecondsAtDefaultTempo": 16,
     "explicitRests": 3
+  },
+  "fullVersion": {
+    "status": "source-ready",
+    "label": "Full rendition",
+    "description": "The complete OpenScore/Lieder CC0 voice-and-piano score is identified and pinned. Full voice/piano event ingestion is ready to build.",
+    "provenance": {
+      "evidenceState": "See song sources and timing audit; no full event graph has been admitted yet."
+    }
   }
 }
