@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "chopin-prelude-op28-no4",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as item 8 of the locked Open Full Rendition Queue."
+  },
+  "identity": {
+    "title": "Prelude in E minor, Op. 28 No. 4",
+    "displayTitle": "Chopin — Prelude, Op. 28 No. 4",
+    "shortTitle": "Prelude Op. 28 No. 4",
+    "composer": {
+      "name": "Frédéric Chopin"
+    },
+    "aliases": [
+      "Prelude in E minor",
+      "Prelude Op. 28 No. 4",
+      "Op. 28 No. 4"
+    ],
+    "catalogue": "Op. 28 No. 4"
+  },
+  "source": {
+    "path": "data/sources/chopin-prelude-op28-no4.mid",
+    "format": "midi",
+    "provider": "Mutopia Project",
+    "sourcePage": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=921",
+    "remoteUrl": "https://www.mutopiaproject.org/ftp/ChopinFF/O28/Chop-28-4a/Chop-28-4a.mid",
+    "attribution": "Roland Goretzki (maintainer/typesetter)",
+    "license": "Public Domain",
+    "compositionRights": "Frédéric Chopin composition is public domain.",
+    "evidence": "Mutopia piece 921 identifies the Peters/Herrmann Scholtz 1900 source, marks the edition Public Domain, and provides complete LilyPond and MIDI downloads."
+  },
+  "ingest": {
+    "fidelity": "source-midi-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      20,
+      160
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.72,
+    "label": "Prelude in E minor, Op. 28 No. 4 — complete public-domain piano rendition",
+    "description": "Complete source-MIDI-derived Full Rendition from Mutopia's public-domain Peters/Herrmann Scholtz edition."
+  },
+  "output": "data/ingested/chopin-prelude-op28-no4.full.json"
+}

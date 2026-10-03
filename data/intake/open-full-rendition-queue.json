@@ -56,14 +56,15 @@
       "order": 7,
       "slug": "satie-gymnopedie-no3",
       "title": "Satie — Gymnopédie No. 3",
-      "status": "processing",
-      "note": "Next in locked order; Mutopia public-domain source intake started."
+      "status": "published-awaiting-user-qa",
+      "note": "Complete Mutopia public-domain MIDI ingested (326 note events, two piano tracks) and public song page wired to Full Rendition artifact."
     },
     {
       "order": 8,
       "slug": "chopin-prelude-op28-no4",
       "title": "Chopin — Prelude, Op. 28 No. 4",
-      "status": "queued"
+      "status": "processing",
+      "note": "Next in locked order; Mutopia public-domain source intake started."
     },
     {
       "order": 9,
