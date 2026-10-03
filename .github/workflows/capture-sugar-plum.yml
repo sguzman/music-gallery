@@ -1,0 +1,114 @@
+name: Capture approved Sugar Plum source
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/capture-sugar-plum.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Resolve archive download and capture source
+        run: |
+          python3 - <<'PY'
+          from urllib.request import build_opener, HTTPCookieProcessor, Request
+          from urllib.parse import urljoin
+          from http.cookiejar import CookieJar
+          from pathlib import Path
+          import re, time, zipfile, io, sys
+
+          initial = "https://notes.tarakanov.net/download/?file=%2Fu%2Fnotes%2Fmxml_p_-chaikovskii%2Fpjotr-iljitsch-tschaikowski-tchaikovsky-dance-of-the-sugar-plum-fairy-qmdyxyesfpgn.mxl"
+          jar = CookieJar()
+          opener = build_opener(HTTPCookieProcessor(jar))
+          headers = {"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/153 Safari/537.36"}
+
+          def get(url):
+              req=Request(url,headers=headers)
+              with opener.open(req,timeout=30) as r:
+                  return r.geturl(), r.headers, r.read()
+
+          u,h,b=get(initial)
+          txt=b.decode("utf-8","replace")
+          print("initial",u,h.get("content-type"),len(b))
+          links=re.findall(r'''href=["']([^"']*uid=[^"']+)["']''',txt,re.I)
+          if not links:
+              print(txt[:8000])
+              raise SystemExit("temporary uid link not found")
+          temp=urljoin(u,links[0].replace("&amp;","&"))
+          print("temporary",temp)
+          u2,h2,b2=get(temp)
+          txt2=b2.decode("utf-8","replace")
+          print("countdown",u2,h2.get("content-type"),len(b2))
+          for line in txt2.splitlines():
+              if any(k in line.lower() for k in ("uid","download","href","location","timeout","form","action",".mxl","ajax","fetch","window")):
+                  print("HTML",line[:1000])
+
+          # The archive's second page arms the server-side temporary token.
+          time.sleep(11)
+          attempts=[
+              temp,
+              temp+"&download=1",
+              temp+"&get=1",
+              temp+"&action=download",
+          ]
+          payload=None
+          for candidate in attempts:
+              try:
+                  uf,hf,bf=get(candidate)
+                  print("attempt",candidate,"->",uf,hf.get("content-type"),len(bf),bf[:4])
+                  if bf[:2]==b"PK":
+                      payload=bf
+                      break
+              except Exception as e:
+                  print("attempt failed",candidate,repr(e))
+          if payload is None:
+              # Look for a direct follow-up URL embedded in the countdown HTML.
+              raw_urls=re.findall(r'''(?:href|src|action)=["']([^"']+)["']''',txt2,re.I)
+              for raw in raw_urls:
+                  if "download" not in raw.lower() and ".mxl" not in raw.lower():
+                      continue
+                  candidate=urljoin(u2,raw.replace("&amp;","&"))
+                  try:
+                      uf,hf,bf=get(candidate)
+                      print("embedded",candidate,"->",uf,hf.get("content-type"),len(bf),bf[:4])
+                      if bf[:2]==b"PK":
+                          payload=bf
+                          break
+                  except Exception as e:
+                      print("embedded failed",candidate,repr(e))
+          if payload is None:
+              raise SystemExit("could not resolve MXL payload")
+
+          with zipfile.ZipFile(io.BytesIO(payload)) as zf:
+              xmls=[n for n in zf.namelist() if n.lower().endswith((".xml",".musicxml")) and not n.startswith("META-INF/")]
+              if not xmls:
+                  raise SystemExit("MXL has no score XML")
+              score=zf.read(xmls[0]).decode("utf-8","replace")
+              parts=len(re.findall(r"<score-part\b",score))
+              measures=max([score.count("<measure"),0])
+              print("captured score XML",xmls[0],"score-parts",parts,"measure tags",measures)
+              if parts < 10:
+                  raise SystemExit(f"candidate is not orchestral enough: {parts} score parts")
+
+          out=Path("data/sources/sugar-plum-fairy-orchestra.mxl")
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_bytes(payload)
+          print("wrote",out,len(payload))
+          PY
+      - name: Commit source
+        run: |
+          git add data/sources/sugar-plum-fairy-orchestra.mxl
+          if git diff --cached --quiet; then
+            echo "Source already captured."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data(source): capture Sugar Plum orchestral score"
+          git push
