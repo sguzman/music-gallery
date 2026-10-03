@@ -745,7 +745,7 @@
   "fullVersion": {
     "status": "available",
     "label": "Ständchen, D.957 No. 4 — complete voice and piano score",
-    "description": "Complete OpenScore/Lieder source-score rendition with the vocal line and both piano staves rendered on one synchronized timeline. This is distinct from the reduced guitar practice excerpt.",
+    "description": "Complete OpenScore/Lieder source-score rendition of Schubert's Lied: original vocal line plus both piano staves on one synchronized timeline. The browser uses a synthesized vowel-like timbre for the voice; this is distinct from the reduced guitar practice excerpt.",
     "fidelity": "source-score-derived",
     "musical": {
       "meter": "3/4",
@@ -1071,8 +1071,8 @@
       {
         "id": "voice",
         "name": "Voice",
-        "role": "vocal melody",
-        "instrumentLabel": "Voice",
+        "role": "original sung melody / vocal line",
+        "instrumentLabel": "Voice (vocal line)",
         "defaultInstrument": "voice",
         "gmProgram": 53,
         "enabled": true,
