@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "satie-gnossienne-no1",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as item 2 of the locked Open Full Rendition Queue."
+  },
+  "identity": {
+    "title": "Gnossienne No. 1",
+    "displayTitle": "Satie — Gnossienne No. 1",
+    "shortTitle": "Gnossienne No. 1",
+    "composer": {
+      "name": "Erik Satie"
+    },
+    "aliases": [
+      "Gnossienne No. 1",
+      "Gnossienne No.1"
+    ],
+    "catalogue": null
+  },
+  "source": {
+    "path": "data/sources/satie-gnossienne-no1.mid",
+    "format": "midi",
+    "provider": "Mutopia Project",
+    "sourcePage": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=2035",
+    "remoteUrl": "https://www.mutopiaproject.org/ftp/SatieE/Gnossienne/no_1/no_1.mid",
+    "attribution": "Knute Snortum (typesetter / Mutopia maintainer)",
+    "license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "compositionRights": "Erik Satie composition is public domain.",
+    "evidence": "Mutopia piece 2035 identifies the complete piano edition, LilyPond source and MIDI download, and licenses the typeset under CC BY-SA 4.0."
+  },
+  "ingest": {
+    "fidelity": "source-midi-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      20,
+      160
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.72,
+    "label": "Gnossienne No. 1 — complete licensed piano rendition",
+    "description": "Complete source-MIDI-derived Full Rendition from Mutopia's CC BY-SA 4.0 piano edition."
+  },
+  "output": "data/ingested/satie-gnossienne-no1.full.json"
+}
