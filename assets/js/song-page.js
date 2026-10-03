@@ -118,7 +118,7 @@ function fullDuration(){return song.fullVersion.durationUnits||Math.max(0,...son
 
 function clefProfile(track){
   const clef=track.clef||(track.defaultInstrument==="cello"||track.defaultInstrument==="bassoon"?"bass":"treble");
-  return clef==="bass"?{name:"Bass",min:34,max:65}:{name:"Treble",min:55,max:91};
+  return clef==="grand"?{name:"Grand",min:21,max:108}:clef==="bass"?{name:"Bass",min:34,max:65}:{name:"Treble",min:55,max:91};
 }
 function scoreY(track,midi){
   const p=clefProfile(track),clamped=Math.max(p.min,Math.min(p.max,midi));
@@ -160,7 +160,7 @@ function renderFull(){
       seekFullToUnits((x/rect.width)*total);
     };
     for(let l=0;l<5;l++){const line=document.createElement("span");line.className="score-staff-line";line.style.top=(20+l*10)+"px";staff.appendChild(line);}
-    const clef=document.createElement("span");clef.className="score-clef";clef.textContent=profile.name==="Bass"?"𝄢":"𝄞";staff.appendChild(clef);
+    const clef=document.createElement("span");clef.className="score-clef";clef.textContent=profile.name==="Bass"?"𝄢":profile.name==="Grand"?"𝄞 𝄢":"𝄞";staff.appendChild(clef);
     const playhead=document.createElement("span");playhead.className="score-playhead";staff.appendChild(playhead);
     (fv.measures||[]).forEach((m,mi)=>{
       const ml=document.createElement("span");ml.className="score-measure-line";ml.style.left=(m.start/total*100)+"%";staff.appendChild(ml);
