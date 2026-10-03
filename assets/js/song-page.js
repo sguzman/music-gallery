@@ -1,3 +1,5 @@
+import {secondsPerUnit,midiMicrosPerQuarter,unitsToTicks,transportTempoBounds} from "./timing.js";
+
 const body=document.body;
 const slug=body.dataset.song;
 const rootPath=body.dataset.root || "../..";
@@ -8,7 +10,7 @@ const GM_PROGRAM={guitar:25,piano:0,celesta:8};
 let song=null, selectedSection=-1, flat=[], cursor=0, playing=false, loop=false, audio=null, timers=[], nodes=[], runId=0;
 
 function safe(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
-function tempoSecondsPerUnit(){ return 60/Number($("#tempo").value); }
+function tempoSecondsPerUnit(){ return secondsPerUnit(Number($("#tempo").value),song?.musical?.unitsPerQuarter||1); }
 function activeSections(){ return selectedSection===-1 ? song.sections : [song.sections[selectedSection]]; }
 
 function buildFlat(){
@@ -218,11 +220,11 @@ function audition(sectionId,mi,ei,el){
 function vlq(n){let b=[n&127];while(n>>=7)b.unshift((n&127)|128);return b;}
 const u32=n=>[(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255],u16=n=>[(n>>>8)&255,n&255];
 function exportMidi(){
-  const ppq=480, unitsPerQuarter=song.musical.unitsPerQuarter||1, bpm=Number($("#tempo").value), quarterBpm=bpm/unitsPerQuarter, us=Math.round(60000000/quarterBpm);
+  const ppq=480, unitsPerQuarter=song.musical.unitsPerQuarter||1, bpm=Number($("#tempo").value), us=midiMicrosPerQuarter(bpm);
   let ev=[0,0xFF,0x51,0x03,(us>>16)&255,(us>>8)&255,us&255,0,0xC0,GM_PROGRAM[$("#instrument").value]??GM_PROGRAM.guitar];
   let timeline=[];
   flat.forEach(x=>{
-    const t=Math.round(x.start/unitsPerQuarter*ppq),dur=Math.max(1,Math.round(x.event.duration/unitsPerQuarter*ppq*Number($("#gate").value)/100));
+    const t=unitsToTicks(x.start,unitsPerQuarter,ppq),dur=Math.max(1,Math.round(unitsToTicks(x.event.duration,unitsPerQuarter,ppq)*Number($("#gate").value)/100));
     timeline.push({t,on:true,p:x.event.midi});timeline.push({t:t+dur,on:false,p:x.event.midi});
   });
   timeline.sort((a,b)=>a.t-b.t||(a.on?1:-1));let last=0;
@@ -236,7 +238,7 @@ function exportMidi(){
 function bind(){
   $("#play").onclick=()=>playing?pause():play();$("#pause").onclick=pause;$("#stop").onclick=()=>stop(true);
   $("#loop").onclick=()=>{loop=!loop;updateButtons();};$("#midi").onclick=exportMidi;
-  $("#tempo").oninput=e=>{$("#tempoOut").textContent=e.target.value;if(playing){pause();play();}}; $("#gate").oninput=e=>{$("#gateOut").textContent=`${e.target.value}%`;};
+  $("#tempo").oninput=e=>{$("#tempoOut").textContent=`${e.target.value} BPM`;if(playing){pause();play();}}; $("#gate").oninput=e=>{$("#gateOut").textContent=`${e.target.value}%`;};
   document.addEventListener("keydown",e=>{
     if(["INPUT","SELECT","TEXTAREA"].includes(e.target.tagName))return;
     if(e.code==="Space"){e.preventDefault();playing?pause():play();}
