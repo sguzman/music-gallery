@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "mozart-requiem-k626-full-rendition-14",
+  "title": "Mozart Requiem, K.626 — Complete Full Rendition Queue",
+  "work": {
+    "composer": "Wolfgang Amadeus Mozart",
+    "completion": "Franz Xaver Süssmayr",
+    "catalogue": "K.626",
+    "editionPolicy": "Traditional Süssmayr completion",
+    "movementModel": "14 independently playable Musicarium movements, preserving work-level order"
+  },
+  "governance": {
+    "status": "locked-by-user",
+    "approvedAt": "2026-10-03",
+    "note": "The user explicitly requested the complete standard Mozart Requiem after approving Dies Irae, and requested all movements be queued in order and processed.",
+    "acceptanceCriterion": "Each movement is complete only when a usable, source-grounded Full Rendition is published in Musicarium.",
+    "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
+    "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. For PDMX, prefer/require a no_license_conflict witness; otherwise use a clean public-domain or explicitly licensed source."
+  },
+  "processingCursor": 1,
+  "queue": [
+    {
+      "order": 1,
+      "slug": "mozart-requiem-introitus",
+      "title": "Introitus — Requiem aeternam",
+      "status": "source-verification-in-progress",
+      "note": "Processing started: authoritative work identity and a 48-measure, 22-part orchestral symbolic candidate have been identified; redistribution metadata is being verified before vendoring."
+    },
+    {
+      "order": 2,
+      "slug": "mozart-requiem-kyrie",
+      "title": "Kyrie",
+      "status": "queued"
+    },
+    {
+      "order": 3,
+      "slug": "mozart-dies-irae",
+      "title": "Dies irae",
+      "status": "published-awaiting-user-qa",
+      "note": "Already published as the original Mozart queue item: 3,921 note events across 12 note-bearing choral/orchestral tracks."
+    },
+    {
+      "order": 4,
+      "slug": "mozart-requiem-tuba-mirum",
+      "title": "Tuba mirum",
+      "status": "queued"
+    },
+    {
+      "order": 5,
+      "slug": "mozart-requiem-rex-tremendae",
+      "title": "Rex tremendae",
+      "status": "queued"
+    },
+    {
+      "order": 6,
+      "slug": "mozart-requiem-recordare",
+      "title": "Recordare",
+      "status": "queued"
+    },
+    {
+      "order": 7,
+      "slug": "mozart-requiem-confutatis",
+      "title": "Confutatis",
+      "status": "queued"
+    },
+    {
+      "order": 8,
+      "slug": "mozart-requiem-lacrimosa",
+      "title": "Lacrimosa",
+      "status": "queued"
+    },
+    {
+      "order": 9,
+      "slug": "mozart-requiem-domine-jesu",
+      "title": "Domine Jesu",
+      "status": "queued"
+    },
+    {
+      "order": 10,
+      "slug": "mozart-requiem-hostias",
+      "title": "Hostias",
+      "status": "queued"
+    },
+    {
+      "order": 11,
+      "slug": "mozart-requiem-sanctus",
+      "title": "Sanctus",
+      "status": "queued"
+    },
+    {
+      "order": 12,
+      "slug": "mozart-requiem-benedictus",
+      "title": "Benedictus",
+      "status": "queued"
+    },
+    {
+      "order": 13,
+      "slug": "mozart-requiem-agnus-dei",
+      "title": "Agnus Dei",
+      "status": "queued"
+    },
+    {
+      "order": 14,
+      "slug": "mozart-requiem-lux-aeterna",
+      "title": "Lux aeterna / Communio",
+      "status": "queued"
+    }
+  ]
+}

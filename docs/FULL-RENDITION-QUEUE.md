@@ -31,3 +31,9 @@ All ten approved specimens now have published Full Renditions. The queue is full
 ### Mozart mix normalization
 
 The final Dies Irae artifact is normalized to readable source-part names and balanced per-track levels: basset horns, bassoons, trumpets, timpani, Violin I, Violin II, viola, SATB voices, and organ/bass. The underlying 3,921-note event graph is unchanged.
+
+## Successor work-level queue
+
+The user subsequently approved the complete Mozart Requiem, K.626 (traditional Süssmayr completion). That expansion is intentionally tracked as a separate 14-movement work-level queue rather than mutating this completed ten-item corpus.
+
+See `data/intake/mozart-requiem-k626-queue.json` and `docs/MOZART-REQUIEM-K626.md`.
