@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "liszt-liebestraum-no3",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly selected by the user as the next Musicarium specimen."
+  },
+  "identity": {
+    "title": "Liebesträume No. 3 in A-flat major",
+    "displayTitle": "Liszt — Liebestraum No. 3",
+    "shortTitle": "Liebestraum No. 3",
+    "composer": {
+      "name": "Franz Liszt"
+    },
+    "aliases": [
+      "Liebestraum No. 3",
+      "Liebesträume No. 3",
+      "Love Dream No. 3",
+      "O lieb, so lang du lieben kannst"
+    ],
+    "catalogue": "S.541/3"
+  },
+  "source": {
+    "path": "data/sources/liszt-liebestraum-no3.mxl",
+    "format": "mxl",
+    "provider": "MuseTrainer public-domain MusicXML library",
+    "sourceRepository": "musetrainer/library",
+    "sourceRepositoryCommit": "9128876f6164d96997c877a2be843349a32bdabb",
+    "sourcePath": "scores/Liebestraum_No._3_in_A_Major.mxl",
+    "sourceBlobSha": "332699a70b57469cb86f450e67ca8fac0ea4346a",
+    "license": "public domain (provider classification)",
+    "caveat": "The upstream filename omits the flat sign, while the provider catalog identifies the work as Liebestraum No. 3 in A-flat major. Treat this as a digital transcription witness, not an autograph or critical edition."
+  },
+  "ingest": {
+    "fidelity": "transcription-derived",
+    "preserveStaffRows": true,
+    "failOnRepeats": true,
+    "defaultBpm": 0,
+    "bpmRange": [
+      30,
+      140
+    ],
+    "trackLevel": 0.82,
+    "label": "Liebesträume No. 3, S.541/3 — complete piano score",
+    "description": "Complete piano symbolic-score rendition preserving the source grand-staff and voice structure."
+  },
+  "output": "data/ingested/liszt-liebestraum-no3.full.json"
+}

@@ -62,6 +62,20 @@ Music Gallery is user-steered. The ingestion machinery may automate extraction, 
 - After approval, the pipeline may proceed mechanically through source capture, structural parsing, Full Rendition construction, practice-derivative work, validation, and deployment without requiring the user to micromanage every extraction step.
 - The user controls **what enters the corpus**; the pipeline controls **how an approved specimen is processed faithfully**.
 
+## Approved-specimen ingestion pipeline
+
+Once the user approves a title, symbolic-source ingestion is mechanical and provenance-preserving:
+
+1. Vendor the chosen MusicXML/MXL source under `data/sources/`; ingestion never performs a network fetch.
+2. Add an approval/source manifest under `data/intake/`.
+3. `scripts/import_symbolic_score.py` normalizes the local source into `data/ingested/<slug>.full.json`.
+4. Preserve MusicXML part, staff, voice, pickup, note/chord/rest, backup/forward, tuplet-duration and tie semantics. Piano grand staves stay separate render rows while remaining one instrument.
+5. Repeat/ending marks are a hard stop until explicit form expansion is implemented; the importer must fail rather than silently linearize them.
+6. The normalized Full Rendition artifact is an intermediate source layer. It does **not** authorize catalog publication by itself.
+7. Human/assistant derivative work then creates the practice arrangement and final `data/songs/<slug>.json`. Only that final song file enters the public catalog.
+
+The GitHub ingestion workflow only responds to approved intake/source changes and commits normalized artifacts. It does not discover or select repertoire.
+
 ## New-song workflow
 
 1. Identify the exact composition/version/recording.
