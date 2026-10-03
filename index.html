@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Interactive melody-first acoustic guitar tabs with synchronized playback, position colors, MIDI export, and rich searchable metadata.">
-<title>Music Gallery — Interactive Acoustic Guitar Tabs</title>
+<meta name="description" content="Interactive source-backed music specimens with complete Full Renditions showcased by default, synchronized playback, score views, practice layers, and MIDI export.">
+<title>Music Gallery — Full Rendition Showcase</title>
 <link rel="stylesheet" href="./assets/css/site.css">
 </head>
 <body>
@@ -18,14 +18,14 @@
   </nav>
 
   <header class="hero">
-    <div class="eyebrow">Melody-first acoustic guitar studies</div>
+    <div class="eyebrow">Full rendition showcase</div>
     <h1>Music Gallery</h1>
-    <p class="lede">A searchable library of simplified steel-string acoustic melodies. Every song keeps the same visual language: fret number in the box, color for hand position, spacing for rhythm, synchronized playback, phrase isolation, looping, and MIDI export.</p>
+    <p class="lede">A searchable library of source-backed interactive music specimens. The showcase hides incomplete and Practice-only entries by default so the main gallery represents songs with complete Full Renditions; uncheck the filter below whenever you want to inspect everything.</p>
     <div class="badges">
-      <span class="badge">Standard tuning</span>
-      <span class="badge">Three-finger friendly</span>
-      <span class="badge">Melody only</span>
-      <span class="badge">WebAudio playback</span>
+      <span class="badge">Complete Full Renditions first</span>
+      <span class="badge">Multitrack score views</span>
+      <span class="badge">Synchronized playback</span>
+      <span class="badge">Practice layers</span>
       <span class="badge">MIDI export</span>
       <span class="badge">Rich JSON metadata</span>
     </div>
@@ -44,7 +44,11 @@
         <option value="tempo">Sort: tempo</option>
         <option value="maxFret">Sort: max fret</option>
       </select>
-      <button id="clear" type="button">Clear</button>
+      <label class="showcase-toggle" title="Hide Practice-only and incomplete specimens">
+        <input id="fullOnly" type="checkbox" checked>
+        <span>Full rendition only</span>
+      </label>
+      <button id="clear" type="button">Show all / clear</button>
     </div>
 
     <div class="filters">
@@ -59,7 +63,7 @@
     </div>
   </section>
 
-  <div class="resultbar"><span id="resultCount">Loading…</span><span>Search indexes the full nested metadata, not just the visible card text.</span></div>
+  <div class="resultbar"><span id="resultCount">Loading…</span><span>Full Rendition filter is on by default; uncheck it or use “Show all / clear” to reveal every specimen.</span></div>
   <section id="songGrid" class="song-grid" aria-live="polite"></section>
 
   <footer class="footer">

@@ -36,10 +36,12 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 .brand span{color:var(--accent)}
 .navlinks{display:flex;gap:8px;align-items:center}
 .catalog-tools{display:grid;gap:12px;padding:16px;position:sticky;top:8px;z-index:20}
-.searchrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px}
+.searchrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:10px}
 .searchbox{display:flex;align-items:center;gap:10px;border:1px solid #ffffff18;background:#080a0ecf;border-radius:14px;padding:0 14px}
 .searchbox input{width:100%;border:0;outline:0;background:transparent;color:var(--text);padding:12px 0;font-size:1rem}
 .searchbox input::placeholder{color:#7f8796}
+.showcase-toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff18;background:#0d1016;border-radius:12px;padding:0 12px;color:#dfe4ef;font-size:.8rem;font-weight:750;white-space:nowrap;cursor:pointer}
+.showcase-toggle input{accent-color:var(--accent);width:16px;height:16px}
 .filters{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:9px}
 .filter label{display:grid;gap:4px;color:var(--muted);font-size:.72rem}
 select{

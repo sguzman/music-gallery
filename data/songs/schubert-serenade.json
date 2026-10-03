@@ -224,7 +224,8 @@
     "needsReview": false,
     "notesAboutQuality": [
       "The attached alternate HTML files were used as a visual design reference only; their note data was not trusted.",
-      "This is a simplified educational melody arrangement, not a complete score."
+      "This is a simplified educational melody arrangement, not a complete score.",
+      "Full Rendition vocal balance normalized: the voice remains clearly present but no longer dominates the two piano staves."
     ],
     "sourceAlignment": {
       "status": "complete-for-retained-excerpt",
@@ -1076,7 +1077,7 @@
         "defaultInstrument": "voice",
         "gmProgram": 53,
         "enabled": true,
-        "level": 1.55,
+        "level": 1.05,
         "pan": 0,
         "clef": "treble",
         "events": [

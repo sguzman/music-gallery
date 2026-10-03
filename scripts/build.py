@@ -95,6 +95,7 @@ def summary(song):
         "noteConfidence":song["verification"]["notes"]["confidence"],
         "instrumentOptions":song["playback"]["instrumentOptions"],
         "estimatedSeconds":song["stats"]["estimatedSecondsAtDefaultTempo"],
+        "hasFullRendition":song.get("fullVersion",{}).get("status")=="available" and bool(song.get("fullVersion",{}).get("tracks")),
         "searchText":song["search"]["text"],"href":f"songs/{song['slug']}/"
     }
 

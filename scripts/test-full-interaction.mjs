@@ -3,14 +3,22 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 
 const js=readFileSync(new URL("../assets/js/song-page.js",import.meta.url),"utf8");
+const catalogJs=readFileSync(new URL("../assets/js/catalog.js",import.meta.url),"utf8");
+const buildPy=readFileSync(new URL("../scripts/build.py",import.meta.url),"utf8");
+const indexHtml=readFileSync(new URL("../index.html",import.meta.url),"utf8");
+const schubert=JSON.parse(readFileSync(new URL("../data/songs/schubert-serenade.json",import.meta.url),"utf8"));
 
 assert.ok(js.includes('trackBuses=new Map()'),"full renderer must have per-track live audio buses");
 assert.ok(js.includes('function setTrackGain(track,enabled)'),"live mixer gain path must exist");
 assert.ok(!js.includes('bus.gain.gain'),"live mixer must address the GainNode AudioParam correctly");
 assert.ok(!js.includes('if(!trackEnabled(track))return'),"muted tracks must remain in the full event graph");
 assert.ok(js.includes('function schedulerStep'),"playback must use rolling scheduling");
-assert.ok(js.includes('lookaheadSec=.48'),"rolling scheduler must use bounded lookahead");
-assert.ok(js.includes('audio.currentTime-transportAudioStart'),"transport position must derive from AudioContext clock");
+assert.ok(js.includes('SCHEDULER_LOOKAHEAD_SEC=.9'),"rolling scheduler must keep enough lookahead to avoid late note scheduling");
+assert.ok(js.includes('SCHEDULER_INTERVAL_MS=40'),"rolling scheduler cadence must be tight enough for stable playback");
+assert.ok(js.includes('function audibleContextTime()'),"visual transport must estimate the audio that is actually reaching the output");
+assert.ok(js.includes('audio.getOutputTimestamp()'),"visual transport should use the browser output timestamp when available");
+assert.ok(js.includes('function schedulerTransportUnit()'),"audio scheduling must stay on the graph clock instead of the delayed audible clock");
+assert.ok(js.includes('AUDIO_START_LEAD=.12'),"playback must reserve a stable scheduling lead before the first audible onset");
 assert.ok(js.includes('function sourceTempoMap()'),"full renditions must expose source tempo-map timing when available");
 assert.ok(js.includes('function pianoRegisterGain(midi)'),"piano synth must compensate low-register perceptual loudness");
 assert.ok(js.includes('function orchestralRegisterGain(midi'),"orchestral synths must compensate low-register perceptual loudness");
@@ -35,5 +43,13 @@ assert.ok(js.includes('const voiceBody=audio.createBiquadFilter()'),"vocal synth
 assert.ok(js.includes('score-playhead'),"full score must expose a visible playhead");
 assert.ok(js.includes('full.disabled=false'),"non-ingested full-rendition states must remain inspectable rather than disabled");
 assert.ok(js.includes('function renderFullPending'),"non-ingested full-rendition states need an explicit evidence/status surface");
+assert.ok(js.includes('const env=envelope(start,seconds,.14*level,.02,.36,destination)'),"voice synth must use normalized output gain rather than overpowering accompaniment");
+assert.equal(schubert.fullVersion.tracks.find(t=>t.id==="voice").level,1.05,"Schubert voice mix must not retain the old 1.55 overboost");
+
+assert.ok(buildPy.includes('"hasFullRendition":song.get("fullVersion",{}).get("status")=="available"'),"catalog summaries must expose Full Rendition availability");
+assert.ok(catalogJs.includes('fullOnly:true'),"main catalog must default to the Full Rendition showcase");
+assert.ok(catalogJs.includes('if(state.fullOnly && !song.hasFullRendition) return false;'),"Practice-only/incomplete songs must be filtered by default");
+assert.ok(indexHtml.includes('id="fullOnly" type="checkbox" checked'),"main page must provide an obvious checked Full Rendition-only toggle");
+assert.ok(indexHtml.includes('Show all / clear'),"main page must provide an easy escape from the default showcase filter");
 
 console.log("full interaction contract self-test: PASS");

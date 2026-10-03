@@ -10,6 +10,7 @@ const GM_PROGRAM={guitar:25,piano:0,celesta:8,violin:40,cello:42,strings:48,flut
 let song=null, viewMode="practice", selectedSection=-1, flat=[], cursor=0, playing=false, loop=false, audio=null, timers=[], nodes=[], runId=0;
 let trackState=new Map(), trackBuses=new Map(), masterBus=null;
 let transportUnit=0, transportStartUnit=0, transportAudioStart=0, scheduleIndex=0, schedulerTimer=null, transportFrame=null;
+const AUDIO_START_LEAD=.12,SCHEDULER_LOOKAHEAD_SEC=.9,SCHEDULER_INTERVAL_MS=40;
 
 function safe(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
 function fullAvailable(){return song?.fullVersion?.status==="available" && Array.isArray(song.fullVersion.tracks) && song.fullVersion.tracks.length>0;}
@@ -320,11 +321,11 @@ function bowed(midi,start,seconds,level=1,kind="violin",destination=null){
   o.start(start);o.stop(env.stop);
 }
 function voiceTone(midi,start,seconds,level=1,destination=null){
-  const env=envelope(start,seconds,.17*level,.035,.42,destination),o=trackNode(audio.createOscillator());o.type="sawtooth";o.frequency.setValueAtTime(hz(midi),start);
+  const env=envelope(start,seconds,.14*level,.02,.36,destination),o=trackNode(audio.createOscillator());o.type="sawtooth";o.frequency.setValueAtTime(hz(midi),start);
   const voiceBody=audio.createBiquadFilter(),bodyGain=audio.createGain();
-  voiceBody.type="lowpass";voiceBody.frequency.value=1900;voiceBody.Q.value=.7;bodyGain.gain.value=.72;
+  voiceBody.type="lowpass";voiceBody.frequency.value=1900;voiceBody.Q.value=.7;bodyGain.gain.value=.68;
   o.connect(voiceBody).connect(bodyGain).connect(env.gain);
-  [[650,.46,3.0],[1200,.30,3.4],[2500,.18,4.0]].forEach(([freq,amp,q])=>{const f=audio.createBiquadFilter(),g=audio.createGain();f.type="bandpass";f.frequency.value=freq;f.Q.value=q;g.gain.value=amp;o.connect(f).connect(g).connect(env.gain);});
+  [[650,.40,3.0],[1200,.25,3.4],[2500,.14,4.0]].forEach(([freq,amp,q])=>{const f=audio.createBiquadFilter(),g=audio.createGain();f.type="bandpass";f.frequency.value=freq;f.Q.value=q;g.gain.value=amp;o.connect(f).connect(g).connect(env.gain);});
   o.start(start);o.stop(env.stop);
 }
 function orchestralRegisterGain(midi,knee=55,maxGain=1.7){
@@ -364,9 +365,9 @@ function playbackEndUnit(){
   if(viewMode==="full"&&fullAvailable())return fullDuration();
   return flat.reduce((m,x)=>Math.max(m,x.start+x.event.duration),0);
 }
-function currentTransportUnit(){
+function transportUnitForAudioTime(contextTime){
   if(!playing||!audio)return transportUnit;
-  const elapsed=Math.max(0,audio.currentTime-transportAudioStart);
+  const elapsed=Math.max(0,Number(contextTime)-transportAudioStart);
   if(viewMode==="full"&&sourceTempoMap().length){
     const startSec=transportSecondsAtUnit(transportStartUnit);
     return Math.min(playbackEndUnit(),transportUnitAtSeconds(startSec+elapsed));
@@ -374,6 +375,19 @@ function currentTransportUnit(){
   const secPerUnit=tempoSecondsPerUnit();
   return Math.min(playbackEndUnit(),transportStartUnit+elapsed/secPerUnit);
 }
+function audibleContextTime(){
+  if(!audio)return 0;
+  if(typeof audio.getOutputTimestamp==="function"){
+    try{
+      const stamp=audio.getOutputTimestamp();
+      if(Number.isFinite(stamp?.contextTime)&&stamp.contextTime>=0)return stamp.contextTime;
+    }catch(_){}
+  }
+  const outputLag=Math.max(Number(audio.outputLatency)||0,Number(audio.baseLatency)||0);
+  return Math.max(0,audio.currentTime-outputLag);
+}
+function currentTransportUnit(){return transportUnitForAudioTime(audibleContextTime());}
+function schedulerTransportUnit(){return transportUnitForAudioTime(audio?.currentTime??0);}
 function lowerBoundStart(unit){
   let lo=0,hi=flat.length;
   while(lo<hi){const mid=(lo+hi)>>1;if(flat[mid].start<unit)lo=mid+1;else hi=mid;}
@@ -402,11 +416,11 @@ function scheduleEntry(x,unitNow,horizonUnit,gate){
 }
 function schedulerStep(myRun){
   if(!playing||myRun!==runId)return;
-  const unitNow=currentTransportUnit(),lookaheadSec=.48,nowSec=transportSecondsAtUnit(unitNow),horizonUnit=transportUnitAtSeconds(nowSec+lookaheadSec),gate=viewMode==="full"?1:Number($("#gate").value)/100,candidates=activePlayEvents();
+  const unitNow=schedulerTransportUnit(),nowSec=transportSecondsAtUnit(unitNow),horizonUnit=transportUnitAtSeconds(nowSec+SCHEDULER_LOOKAHEAD_SEC),gate=viewMode==="full"?1:Number($("#gate").value)/100,candidates=activePlayEvents();
   while(scheduleIndex<candidates.length&&candidates[scheduleIndex].start<horizonUnit){
     scheduleEntry(candidates[scheduleIndex],unitNow,horizonUnit,gate);scheduleIndex++;
   }
-  schedulerTimer=setTimeout(()=>schedulerStep(myRun),65);
+  schedulerTimer=setTimeout(()=>schedulerStep(myRun),SCHEDULER_INTERVAL_MS);
 }
 function visualStep(myRun){
   if(!playing||myRun!==runId)return;
@@ -425,7 +439,7 @@ function play(){
   const end=playbackEndUnit();if(transportUnit>=end-.002)transportUnit=0;
   if(transportUnit===0&&cursor>0)transportUnit=flat[cursor]?.start??0;
   playing=true;const myRun=++runId;
-  transportStartUnit=transportUnit;transportAudioStart=audio.currentTime+.065;
+  transportStartUnit=transportUnit;transportAudioStart=audio.currentTime+AUDIO_START_LEAD;
   const candidates=activePlayEvents();scheduleIndex=0;
   while(scheduleIndex<candidates.length&&candidates[scheduleIndex].start+candidates[scheduleIndex].event.duration<=transportStartUnit+1e-8)scheduleIndex++;
   if(viewMode==="practice"&&$("#salvage").checked)document.querySelectorAll(".note:not(.anchor)").forEach(n=>n.classList.add("dimmed"));

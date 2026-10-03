@@ -1,4 +1,4 @@
-const state = { q:"", category:"", era:"", sourceMedium:"", difficulty:"", meter:"", composer:"", maxFret:"", timingConfidence:"", sort:"title" };
+const state = { q:"", category:"", era:"", sourceMedium:"", difficulty:"", meter:"", composer:"", maxFret:"", timingConfidence:"", sort:"title", fullOnly:true };
 let catalog = [];
 
 const $ = s => document.querySelector(s);
@@ -29,6 +29,7 @@ function passes(song){
     }
   }
   if(state.maxFret && Number(song.maxFret) > Number(state.maxFret)) return false;
+  if(state.fullOnly && !song.hasFullRendition) return false;
   return true;
 }
 function sortSongs(items){
@@ -42,7 +43,8 @@ function sortSongs(items){
 }
 function render(){
   const filtered=sortSongs(catalog.filter(passes));
-  $("#resultCount").textContent=`${filtered.length} of ${catalog.length} songs`;
+  const fullCount=catalog.filter(song=>song.hasFullRendition).length;
+  $("#resultCount").textContent=state.fullOnly?`${filtered.length} shown · ${fullCount} Full Renditions · ${catalog.length} total`:`${filtered.length} of ${catalog.length} songs`;
   const host=$("#songGrid");
   if(!filtered.length){
     host.innerHTML=`<div class="card empty" style="grid-column:1/-1">No songs match those filters. Try clearing one or searching a broader term.</div>`;
@@ -61,6 +63,7 @@ function render(){
         <span class="stat">${song.defaultBpm} BPM</span>
         <span class="stat">max fret ${song.maxFret}</span>
         <span class="stat">timing ${song.timingConfidence}</span>
+        <span class="stat">${song.hasFullRendition?"Full rendition":"Practice only"}</span>
       </div>
       <div class="card-tags">${tags.map(t=>`<span>#${t.replaceAll(" ","-")}</span>`).join("")}</div>
     </a>`;
@@ -68,12 +71,14 @@ function render(){
 }
 function bind(){
   $("#q").addEventListener("input",e=>{state.q=e.target.value;render();});
+  $("#fullOnly").addEventListener("change",e=>{state.fullOnly=e.target.checked;render();});
   ["category","era","sourceMedium","difficulty","meter","composer","timingConfidence","maxFret","sort"].forEach(key=>{
     $("#"+key).addEventListener("change",e=>{state[key]=e.target.value;render();});
   });
   $("#clear").addEventListener("click",()=>{
-    Object.assign(state,{q:"",category:"",era:"",sourceMedium:"",difficulty:"",meter:"",composer:"",maxFret:"",timingConfidence:"",sort:"title"});
+    Object.assign(state,{q:"",category:"",era:"",sourceMedium:"",difficulty:"",meter:"",composer:"",maxFret:"",timingConfidence:"",sort:"title",fullOnly:false});
     $("#q").value="";
+    $("#fullOnly").checked=false;
     document.querySelectorAll(".filters select").forEach(s=>s.value="");
     $("#sort").value="title";
     render();
