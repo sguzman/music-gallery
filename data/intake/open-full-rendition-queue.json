@@ -77,8 +77,8 @@
       "order": 10,
       "slug": "mozart-dies-irae",
       "title": "Mozart — Dies Irae, K.626",
-      "status": "processing",
-      "note": "Final item in locked order; Mutopia public-domain orchestral/choral source intake started."
+      "status": "published-awaiting-user-qa",
+      "note": "Complete Mutopia public-domain Dies Irae MIDI ingested: 3,921 note events across 12 note-bearing choral/orchestral tracks; source identity mix overrides applied and public song page wired to the Full Rendition artifact."
     }
   ]
 }

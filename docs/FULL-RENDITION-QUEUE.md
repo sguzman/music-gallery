@@ -12,8 +12,8 @@ This is a **locked, user-approved corpus** for Musicarium. Every item must end i
 | 6 | Satie — Gymnopédie No. 2 | published — awaiting QA |
 | 7 | Satie — Gymnopédie No. 3 | published — awaiting QA |
 | 8 | Chopin — Prelude, Op. 28 No. 4 | published — awaiting QA |
-| 9 | Chopin — Prelude, Op. 28 No. 20 | **published — awaiting QA** |
-| 10 | Mozart — Dies Irae, K.626 | **processing** |
+| 9 | Chopin — Prelude, Op. 28 No. 20 | published — awaiting QA |
+| 10 | Mozart — Dies Irae, K.626 | **published — awaiting QA** |
 
 ## Governance
 
@@ -26,4 +26,4 @@ This is a **locked, user-approved corpus** for Musicarium. Every item must end i
 
 ## Current state
 
-Items 1–9 now have published Full Renditions. Item 10 is the active intake.
+All ten approved specimens now have published Full Renditions. The queue is fully processed and is waiting on user listening/UX QA rather than further ingestion.

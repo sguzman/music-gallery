@@ -40,7 +40,93 @@
     "meterFallback": "4/4",
     "trackLevel": 0.34,
     "label": "Dies Irae, K.626 — complete public-domain choral/orchestral rendition",
-    "description": "Complete source-MIDI-derived Full Rendition from Mutopia's public-domain Breitkopf & Härtel edition, preserving all note-bearing MIDI tracks and source tempo/meter data."
+    "description": "Complete source-MIDI-derived Full Rendition from Mutopia's public-domain Breitkopf & Härtel edition, preserving all note-bearing MIDI tracks and source tempo/meter data.",
+    "trackOverrides": {
+      "cornidibassetto-one-cornidibassetto": {
+        "name": "Basset Horns in F",
+        "instrumentLabel": "Basset Horns in F",
+        "defaultInstrument": "clarinet",
+        "level": 0.26,
+        "pan": -0.55
+      },
+      "fagotti-one-fagotti": {
+        "name": "Bassoons",
+        "instrumentLabel": "Bassoons",
+        "defaultInstrument": "bassoon",
+        "level": 0.28,
+        "pan": -0.38
+      },
+      "trombe-one-trombe": {
+        "name": "Trumpets in D",
+        "instrumentLabel": "Trumpets in D",
+        "defaultInstrument": "horn",
+        "level": 0.3,
+        "pan": 0.35
+      },
+      "timpani-timpani": {
+        "name": "Timpani",
+        "instrumentLabel": "Timpani",
+        "defaultInstrument": "generic",
+        "level": 0.26,
+        "pan": 0.18
+      },
+      "violinoa-violinoa": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.26,
+        "pan": -0.45
+      },
+      "violinob-violinob": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.24,
+        "pan": -0.25
+      },
+      "viola-viola": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.24,
+        "pan": -0.05
+      },
+      "soprano-soprano": {
+        "name": "Soprano",
+        "instrumentLabel": "Soprano",
+        "defaultInstrument": "voice",
+        "level": 0.26,
+        "pan": 0.1
+      },
+      "alto-alto": {
+        "name": "Alto",
+        "instrumentLabel": "Alto",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.18
+      },
+      "tenore-tenore": {
+        "name": "Tenor",
+        "instrumentLabel": "Tenor",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.24
+      },
+      "basso-basso": {
+        "name": "Bass",
+        "instrumentLabel": "Bass",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.3
+      },
+      "organo-organ": {
+        "name": "Organ / Bass",
+        "instrumentLabel": "Organ / Bass",
+        "defaultInstrument": "piano",
+        "level": 0.22,
+        "pan": 0.04
+      }
+    }
   },
   "output": "data/ingested/mozart-dies-irae.full.json"
 }

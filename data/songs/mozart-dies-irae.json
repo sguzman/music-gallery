@@ -1,0 +1,419 @@
+{
+  "$schema": "../song.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "mozart-dies-irae",
+  "slug": "mozart-dies-irae",
+  "identity": {
+    "title": "Dies Irae from Requiem, K.626",
+    "displayTitle": "Mozart — Dies Irae",
+    "shortTitle": "Dies Irae",
+    "composer": {
+      "name": "Wolfgang Amadeus Mozart"
+    },
+    "aliases": [
+      "Dies Irae",
+      "Requiem Dies Irae",
+      "K.626 Dies Irae"
+    ],
+    "catalogue": "K.626"
+  },
+  "origin": {
+    "category": "classical",
+    "era": "Classical",
+    "year": 1791,
+    "sourceMedium": "SATB choir and orchestra",
+    "franchise": null,
+    "originalKey": "D minor",
+    "originalInstrumentation": "SATB choir, basset horns, bassoons, trumpets, timpani, strings and organ/bass"
+  },
+  "arrangement": {
+    "name": "Opening soprano cry",
+    "type": "melody-only",
+    "targetInstrument": "steel-string acoustic guitar",
+    "tuning": {
+      "name": "Standard tuning",
+      "strings": [
+        "E2",
+        "A2",
+        "D3",
+        "G3",
+        "B3",
+        "E4"
+      ]
+    },
+    "arrangedKey": "D minor",
+    "difficulty": {
+      "label": "intermediate-beginner",
+      "rating": 3,
+      "scale": 5
+    },
+    "fretRange": {
+      "min": 0,
+      "max": 5
+    },
+    "stringsUsed": [
+      "B",
+      "e"
+    ],
+    "handPositions": {
+      "low": {
+        "label": "Frets 1–3",
+        "frets": [
+          1,
+          3
+        ],
+        "color": "#4765ff"
+      },
+      "mid": {
+        "label": "Frets 3–5",
+        "frets": [
+          3,
+          5
+        ],
+        "color": "#1fa874"
+      },
+      "upper": {
+        "label": "Frets 6–8",
+        "frets": [
+          6,
+          8
+        ],
+        "color": "#ad6ce7"
+      },
+      "high": {
+        "label": "Frets 8–10",
+        "frets": [
+          8,
+          10
+        ],
+        "color": "#e0704f"
+      },
+      "open": {
+        "label": "Open string",
+        "frets": [
+          0,
+          0
+        ],
+        "color": "#d8dee9"
+      }
+    },
+    "pinkyRequired": false,
+    "simplificationGoals": [
+      "isolate the opening soprano line as a compact Practice study",
+      "preserve source rhythm",
+      "fold pitches only by exact octaves while leaving the full SATB/orchestral graph untouched"
+    ]
+  },
+  "musical": {
+    "meter": "4/4",
+    "tempoUnit": "quarter note",
+    "unitsPerQuarter": 1,
+    "defaultBpm": 180,
+    "bpmRange": [
+      60,
+      220
+    ]
+  },
+  "playback": {
+    "defaultInstrument": "guitar",
+    "instrumentOptions": [
+      "guitar",
+      "piano",
+      "both"
+    ],
+    "gatePercent": 94,
+    "webAudio": true,
+    "midiExport": true,
+    "sectionLooping": true,
+    "synchronizedHighlighting": true,
+    "salvageMode": true
+  },
+  "taxonomy": {
+    "genres": [
+      "classical",
+      "requiem",
+      "choral",
+      "orchestral"
+    ],
+    "moods": [
+      "apocalyptic",
+      "violent",
+      "dramatic",
+      "dark"
+    ],
+    "tags": [
+      "Mozart",
+      "Dies Irae",
+      "Requiem",
+      "K.626",
+      "public domain",
+      "Full Rendition"
+    ],
+    "techniques": [
+      "single-note melody",
+      "octave folding"
+    ],
+    "learningGoals": [
+      "attack timing",
+      "melodic contour",
+      "choral-line hearing"
+    ]
+  },
+  "verification": {
+    "notes": {
+      "confidence": "high"
+    },
+    "timing": {
+      "confidence": "high",
+      "method": "Practice line taken directly from the soprano source-MIDI track; Full Rendition preserves all 12 note-bearing source tracks and the complete note graph."
+    },
+    "needsReview": true,
+    "notesAboutQuality": [
+      "Practice isolates the opening soprano line across the first 18 quarter-units and folds it down by exact octaves for guitar.",
+      "Full Rendition contains 3,921 note events across 12 note-bearing choral/orchestral tracks from a 17-track Type-1 MIDI source.",
+      "Track display names and synth assignments are normalized from source part names; no note events are removed."
+    ],
+    "sourceAlignment": {
+      "status": "source-midi-derived",
+      "provider": "Mutopia Project",
+      "sourceSha256": "988faf187f2a661bfbfe7d6ef5a53241b96c21394969f23c01d000dc9796a399",
+      "fullArtifact": "data/ingested/mozart-dies-irae.full.json",
+      "sourceFacts": [
+        "MIDI format 1",
+        "384 ticks per quarter",
+        "4/4",
+        "17 source tracks",
+        "12 note-bearing tracks",
+        "3,921 note events",
+        "SATB choir plus orchestra"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "label": "Mutopia Project — Mozart Dies Irae, K.626",
+      "url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=364",
+      "kind": "public-domain LilyPond/MIDI orchestral score",
+      "license": "Public Domain",
+      "evidence": "Breitkopf & Härtel 1877 edition, edited by Johannes Brahms; complete SATB/orchestral LilyPond and MIDI source."
+    }
+  ],
+  "rights": {
+    "composition": "public domain",
+    "source": "Mutopia identifies the 1877 edition/typeset as Public Domain",
+    "arrangement": "educational soprano-line derivative from public-domain source"
+  },
+  "presentation": {
+    "accent": "#a55252",
+    "accentDark": "#642d31",
+    "description": "An apocalyptic opening soprano study backed by the complete public-domain SATB and orchestral Full Rendition."
+  },
+  "sections": [
+    {
+      "id": "opening-soprano",
+      "name": "Opening soprano cry",
+      "description": "Soprano source line from quarter-units 0–18.",
+      "measures": [
+        {
+          "label": "M1",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 0,
+              "duration": 2,
+              "anchor": true,
+              "sourceMidi": 74,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "position": "mid",
+              "midi": 69,
+              "start": 2,
+              "duration": 2,
+              "anchor": true,
+              "sourceMidi": 69,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M2",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "position": "open",
+              "midi": 64,
+              "start": 0,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 76,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "position": "mid",
+              "midi": 69,
+              "start": 1,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 69,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M3",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "position": "open",
+              "midi": 64,
+              "start": 0,
+              "duration": 2,
+              "anchor": true,
+              "sourceMidi": 76,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "position": "mid",
+              "midi": 69,
+              "start": 2,
+              "duration": 2,
+              "anchor": true,
+              "sourceMidi": 69,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M4",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 1,
+              "position": "low",
+              "midi": 65,
+              "start": 0,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 77,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 1,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 74,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 3,
+              "duration": 0.5,
+              "anchor": true,
+              "sourceMidi": 74,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 3.5,
+              "duration": 0.5,
+              "anchor": true,
+              "sourceMidi": 74,
+              "octaveFoldSemitones": -12
+            }
+          ]
+        },
+        {
+          "label": "M5",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 0,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 73,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 1,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 74,
+              "octaveFoldSemitones": -12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {},
+  "fullVersion": {
+    "status": "available",
+    "artifactPath": "data/ingested/mozart-dies-irae.full.json",
+    "label": "Dies Irae, K.626 — complete public-domain choral/orchestral rendition",
+    "description": "Complete source-MIDI-derived SATB/orchestral Full Rendition from Mutopia: 3,921 note events across 12 note-bearing tracks.",
+    "fidelity": "source-midi-derived",
+    "provenance": {
+      "provider": "Mutopia Project",
+      "license": "Public Domain",
+      "attribution": "Martin Norbäck"
+    }
+  }
+}
