@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Timing semantics self-test
+        run: node scripts/test-timing.mjs
       - name: Build catalog and song wrappers
         run: python3 scripts/build.py
       - name: Configure Pages

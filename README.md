@@ -28,6 +28,7 @@ data/catalog.json           Fast index summaries
 data/song.schema.json       JSON Schema for song files
 data/songs/*.json           Canonical song metadata + note/timing data
 scripts/build.py             Regenerates catalog + song wrappers
+scripts/test-timing.mjs       Dependency-free timing semantics regression test
 templates/song.html          Shared wrapper template
 songs/<slug>/index.html     Thin shareable song pages
 .github/workflows/pages.yml GitHub Pages deploy workflow
@@ -60,7 +61,7 @@ A note event stores both musical and guitar-specific information:
 }
 ```
 
-`start` and `duration` are measured in the song's declared tempo unit. `unitsPerQuarter` makes MIDI export unambiguous even when the practice clock is an eighth-note pulse.
+`start` and `duration` are measured in the song's logical event-grid units. `unitsPerQuarter` declares how many of those units equal one quarter note. Playback therefore uses `secondsPerUnit = 60 / quarterBpm / unitsPerQuarter`, and MIDI tick conversion uses `units / unitsPerQuarter * PPQ`. `bpmRange` is a recommended/reference range, not a hard transport ceiling; the player intentionally allows much faster practice playback.
 
 ## Data quality
 
