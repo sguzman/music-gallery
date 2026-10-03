@@ -5,7 +5,9 @@
   "governance": {
     "status": "locked-by-user",
     "note": "The user explicitly approved this exact bounded top-10 corpus and requested processing in this order. Do not reorder, expand, or substitute tracks without explicit user approval.",
-    "approvedAt": "2026-10-03"
+    "approvedAt": "2026-10-03",
+    "acceptanceCriterion": "A Kirby 64 specimen is not complete unless Musicarium has a usable Full Rendition. Practice-only publication does not satisfy the queue.",
+    "freeze": "Freeze advancement after item 1 until Full Rendition viability is resolved. Do not process items 2–10 under a Practice-only interpretation."
   },
   "sourceGame": {
     "title": "Kirby 64: The Crystal Shards",
@@ -17,62 +19,62 @@
       "order": 1,
       "slug": "kirby64-zero-two",
       "title": "0² / Zero-Two",
-      "status": "practice-published-awaiting-qa",
-      "note": "Practice specimen published from VGMusic track 5 source window and independently cross-checked against VGLeadSheets Section A. Awaiting user QA before advancing Factory Inspection."
+      "status": "incomplete-full-rendition-blocked",
+      "note": "Practice derivative exists, but this specimen is NOT complete: Full Rendition is not published. Do not advance the queue until the Full Rendition path is resolved."
     },
     {
       "order": 2,
       "slug": "kirby64-factory-inspection",
       "title": "Factory Inspection",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     },
     {
       "order": 3,
       "slug": "kirby64-miracle-matter",
       "title": "Miracle Matter",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     },
     {
       "order": 4,
       "slug": "kirby64-ripple-star",
       "title": "Ripple Star",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     },
     {
       "order": 5,
       "slug": "kirby64-pop-star",
       "title": "Pop Star",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     },
     {
       "order": 6,
       "slug": "kirby64-aqua-star",
       "title": "Aqua Star",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     },
     {
       "order": 7,
       "slug": "kirby64-boss",
       "title": "Boss",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     },
     {
       "order": 8,
       "slug": "kirby64-shiver-star",
       "title": "Shiver Star",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     },
     {
       "order": 9,
       "slug": "kirby64-neo-star",
       "title": "Neo Star",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     },
     {
       "order": 10,
       "slug": "kirby64-dark-star",
       "title": "Dark Star / Heading for 0²",
-      "status": "queued"
+      "status": "frozen-pending-full-rendition-viability"
     }
   ]
 }

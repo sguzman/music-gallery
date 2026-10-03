@@ -222,8 +222,9 @@
       "confidence": "high",
       "method": "Attack spacing and note durations come directly from the verified VGMusic SMF Type-1 file at 96 ticks per quarter and tempo 170.000085 BPM."
     },
-    "needsReview": false,
+    "needsReview": true,
     "notesAboutQuality": [
+      "CORRECTION: this specimen is incomplete as a Musicarium queue item because Full Rendition is not published; Practice mode alone does not satisfy the Kirby 64 corpus acceptance criterion.",
       "Practice mode is a bounded melodic derivative, not the complete copyrighted game sequence.",
       "The three Practice groups are study groupings, not claims about source bar numbers.",
       "High source pitches are folded downward only by exact octaves; melodic pitch classes and source timing are otherwise preserved."
@@ -584,14 +585,15 @@
   "fullVersion": {
     "status": "publication-rights-review",
     "label": "Full rendition",
-    "description": "A complete 14-track symbolic witness is technically reconstructable and has already been structurally profiled, but Musicarium does not publish the complete copyrighted event graph in the public catalog.",
+    "description": "INCOMPLETE: a complete 14-track symbolic witness is technically reconstructable and structurally profiled, but the Full Rendition is not published. This queue item must not be treated as finished until a usable Full Rendition ships in Musicarium.",
     "fidelityTarget": "source-midi-derived / transcription-derived",
     "provenance": {
       "evidenceState": "VGMusic Type-1 MIDI verified and structurally profiled; complete sequence is technically available.",
       "analysisArtifact": "data/ingested/kirby64-zero-two.midi-analysis.json",
       "sourceTracks": 14,
       "sourceDurationUnits": 412.0625,
-      "policy": "Keep complete event graph out of the public song file; expose bounded educational derivative only."
+      "policy": "Keep complete event graph out of the public song file; expose bounded educational derivative only.",
+      "acceptanceGate": "Full Rendition required for Kirby 64 queue completion; Practice-only is insufficient."
     }
   }
 }
