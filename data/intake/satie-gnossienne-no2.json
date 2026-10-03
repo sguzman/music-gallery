@@ -27,7 +27,8 @@
     "license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "compositionRights": "Erik Satie composition is public domain.",
-    "evidence": "Mutopia piece 2130 identifies the complete piano edition, LilyPond source and MIDI download under CC BY-SA 4.0."
+    "evidence": "Mutopia piece 2130 identifies the complete piano edition, LilyPond source and MIDI download under CC BY-SA 4.0.",
+    "expectedSha256": "31093d734a6c526cc285f8d9cd06cbf6f69d345355e3e7c29a42dc344511b092"
   },
   "ingest": {
     "fidelity": "source-midi-derived",

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "satie-gnossienne-no3",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as item 4 of the locked Open Full Rendition Queue."
+  },
+  "identity": {
+    "title": "Gnossienne No. 3",
+    "displayTitle": "Satie — Gnossienne No. 3",
+    "shortTitle": "Gnossienne No. 3",
+    "composer": {
+      "name": "Erik Satie"
+    },
+    "aliases": [
+      "Gnossienne No. 3",
+      "Gnossienne No.3"
+    ]
+  },
+  "source": {
+    "path": "data/sources/satie-gnossienne-no3.mid",
+    "format": "midi",
+    "provider": "Mutopia Project",
+    "sourcePage": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=2131",
+    "remoteUrl": "https://www.mutopiaproject.org/ftp/SatieE/Gnossienne/no_3/no_3.mid",
+    "attribution": "Frédéric Duperray (typesetter / Mutopia maintainer)",
+    "license": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "compositionRights": "Erik Satie composition is public domain.",
+    "evidence": "Mutopia piece 2131 identifies the complete piano edition, LilyPond source and MIDI under CC BY-SA 4.0."
+  },
+  "ingest": {
+    "fidelity": "source-midi-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      20,
+      180
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.72,
+    "label": "Gnossienne No. 3 — complete licensed piano rendition",
+    "description": "Complete source-MIDI-derived Full Rendition from Mutopia's CC BY-SA 4.0 piano edition."
+  },
+  "output": "data/ingested/satie-gnossienne-no3.full.json"
+}
