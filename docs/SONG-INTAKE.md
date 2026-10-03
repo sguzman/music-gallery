@@ -62,6 +62,16 @@ Music Gallery is user-steered. The ingestion machinery may automate extraction, 
 - After approval, the pipeline may proceed mechanically through source capture, structural parsing, Full Rendition construction, practice-derivative work, validation, and deployment without requiring the user to micromanage every extraction step.
 - The user controls **what enters the corpus**; the pipeline controls **how an approved specimen is processed faithfully**.
 
+## Rights gate
+
+Selection and ingestibility are separate states. A user-approved title may remain in `data/intake/` even when Musicarium cannot legally republish a note-for-note score or event graph.
+
+- `ingest.enabled: false` parks the approved specimen without treating it as rejected.
+- Use `ingest.status: "blocked-rights"` when the composition or usable score/transcription is still protected and Musicarium lacks a redistribution-compatible source.
+- A reference recording may be stored for identification, high-level analysis, and later source matching, but it is not permission to reconstruct and publish the complete score.
+- The importer must skip parked manifests cleanly rather than failing CI or silently substituting another song.
+- If a redistribution-compatible score or explicit permission becomes available later, re-enable the existing approved intake item; do not create a replacement specimen.
+
 ## Approved-specimen ingestion pipeline
 
 Once the user approves a title, symbolic-source ingestion is mechanical and provenance-preserving:

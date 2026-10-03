@@ -549,6 +549,11 @@ def normalize_score(root, manifest, source_meta):
 
 def ingest_manifest(path: Path):
     manifest = json.loads(path.read_text(encoding="utf-8"))
+    ingest_cfg = manifest.get("ingest", {})
+    if ingest_cfg.get("enabled", True) is False:
+        reason = ingest_cfg.get("blockedReason") or ingest_cfg.get("status") or "disabled"
+        print(f"{manifest.get('slug', path.stem)}: intake parked ({reason}); no symbolic ingestion performed")
+        return None
     source_path = ROOT / manifest["source"]["path"]
     if not source_path.exists():
         raise FileNotFoundError(f"{path.name}: missing vendored source {source_path.relative_to(ROOT)}")

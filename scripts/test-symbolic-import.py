@@ -87,4 +87,14 @@ with TemporaryDirectory() as td:
     assert warnings4 == []
     assert warnings3 == []
 
+with TemporaryDirectory() as td:
+    td=Path(td)
+    parked=td/"parked.json"
+    parked.write_text(json.dumps({
+        "slug":"parked-rights-test",
+        "source":{"referenceUrl":"https://example.invalid/reference"},
+        "ingest":{"enabled":False,"status":"blocked-rights","blockedReason":"protected score"}
+    }),encoding="utf-8")
+    assert imp.ingest_manifest(parked) is None
+
 print("symbolic importer self-test: PASS")

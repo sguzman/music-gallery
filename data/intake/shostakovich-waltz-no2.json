@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "shostakovich-waltz-no2",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly selected by the user as the next Musicarium specimen on 2026-10-03."
+  },
+  "identity": {
+    "title": "Second Waltz",
+    "displayTitle": "Dmitri Shostakovich — Waltz No. 2",
+    "shortTitle": "Waltz No. 2",
+    "composer": {
+      "name": "Dmitri Shostakovich"
+    },
+    "aliases": [
+      "Waltz No. 2",
+      "Second Waltz",
+      "Waltz II",
+      "Jazz Suite No. 2: Waltz II"
+    ],
+    "parentWork": "Suite for Variety Orchestra",
+    "compositionEra": "1950s"
+  },
+  "references": {
+    "userRecording": {
+      "provider": "YouTube",
+      "url": "https://www.youtube.com/watch?v=mmCnQDUSO4I",
+      "role": "user-selected listening/reference recording"
+    },
+    "publisherWorkPage": {
+      "provider": "Boosey & Hawkes / Sikorski",
+      "url": "https://www.boosey.com/cr/music/Dmitri-Shostakovich-Suite-for-Jazz-Orchestra-No-2-Suite-for-Variety-Orchestra/51578",
+      "note": "Publisher page identifies the suite, instrumentation, VAAP publisher, and current rental/for-sale availability."
+    },
+    "publisherSecondWaltzPage": {
+      "provider": "Boosey & Hawkes / Sikorski",
+      "url": "https://www.boosey.com/cr/perusals/score?id=38120",
+      "note": "Publisher page for Second Waltz arrangement; confirms current commercial publication context."
+    }
+  },
+  "rights": {
+    "compositionStatus": "protected / not treated as public domain for Musicarium publication",
+    "sourceStatus": "no redistribution-compatible symbolic score approved",
+    "rationale": "The work remains actively represented and sold/rented by its publisher. The user-provided YouTube reference identifies the desired specimen but does not authorize note-for-note score reconstruction or republication."
+  },
+  "ingest": {
+    "enabled": false,
+    "status": "blocked-rights",
+    "blockedReason": "No redistribution-compatible symbolic score or permission is currently available for a full note-for-note Musicarium rendition.",
+    "allowedWork": [
+      "retain specimen identity and provenance",
+      "retain the user-selected recording reference",
+      "perform high-level structural/instrumentation analysis",
+      "resume this same intake item if a redistribution-compatible source or permission becomes available"
+    ],
+    "prohibitedWork": [
+      "reconstruct or publish a complete note-for-note score from the YouTube recording",
+      "vendor an unauthorized community transcription",
+      "silently replace the user-selected specimen with a different song"
+    ]
+  }
+}
