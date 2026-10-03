@@ -269,8 +269,11 @@ function bowed(midi,start,seconds,level=1,kind="violin",destination=null){
   o.type=cello?"triangle":"sawtooth";o.frequency.setValueAtTime(hz(midi),start);f.type="lowpass";f.frequency.value=cello?2200:3400;o.connect(f).connect(env.gain);o.start(start);o.stop(env.stop);
 }
 function voiceTone(midi,start,seconds,level=1,destination=null){
-  const env=envelope(start,seconds,.115*level,.045,.38,destination),o=trackNode(audio.createOscillator());o.type="sawtooth";o.frequency.setValueAtTime(hz(midi),start);
-  [[700,.50],[1200,.28],[2600,.16]].forEach(([freq,amp])=>{const f=audio.createBiquadFilter(),g=audio.createGain();f.type="bandpass";f.frequency.value=freq;f.Q.value=5;g.gain.value=amp;o.connect(f).connect(g).connect(env.gain);});
+  const env=envelope(start,seconds,.17*level,.035,.42,destination),o=trackNode(audio.createOscillator());o.type="sawtooth";o.frequency.setValueAtTime(hz(midi),start);
+  const voiceBody=audio.createBiquadFilter(),bodyGain=audio.createGain();
+  voiceBody.type="lowpass";voiceBody.frequency.value=1900;voiceBody.Q.value=.7;bodyGain.gain.value=.72;
+  o.connect(voiceBody).connect(bodyGain).connect(env.gain);
+  [[650,.46,3.0],[1200,.30,3.4],[2500,.18,4.0]].forEach(([freq,amp,q])=>{const f=audio.createBiquadFilter(),g=audio.createGain();f.type="bandpass";f.frequency.value=freq;f.Q.value=q;g.gain.value=amp;o.connect(f).connect(g).connect(env.gain);});
   o.start(start);o.stop(env.stop);
 }
 function generic(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.10*level,.012,.30,destination),o=trackNode(audio.createOscillator());o.type="triangle";o.frequency.value=hz(midi);o.connect(env.gain);o.start(start);o.stop(env.stop);}

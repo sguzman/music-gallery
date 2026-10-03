@@ -1076,7 +1076,7 @@
         "defaultInstrument": "voice",
         "gmProgram": 53,
         "enabled": true,
-        "level": 1.4,
+        "level": 1.55,
         "pan": 0,
         "clef": "treble",
         "events": [
@@ -1938,7 +1938,7 @@
         "defaultInstrument": "piano",
         "gmProgram": 0,
         "enabled": true,
-        "level": 0.64,
+        "level": 0.58,
         "pan": -0.18,
         "clef": "treble",
         "events": [
@@ -5202,7 +5202,7 @@
         "defaultInstrument": "piano",
         "gmProgram": 0,
         "enabled": true,
-        "level": 0.64,
+        "level": 0.58,
         "pan": 0.18,
         "clef": "bass",
         "events": [

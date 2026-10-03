@@ -18,6 +18,7 @@ assert.ok(js.includes('seekFullToUnits((x/rect.width)*total)'),"staff click must
 assert.ok(js.includes('note.onclick=ev=>{ev.stopPropagation();seekFullToUnits(e.start);'),"note click must seek");
 assert.ok(js.includes('gate=viewMode==="full"?1:'),"full score playback must use notated note length rather than practice gate");
 assert.ok(js.includes('function voiceTone'),"vocal source parts must not be rendered with the violin oscillator path");
+assert.ok(js.includes('const voiceBody=audio.createBiquadFilter()'),"vocal synth must include a broadband body path instead of relying only on narrow formant filters");
 assert.ok(js.includes('score-playhead'),"full score must expose a visible playhead");
 assert.ok(js.includes('full.disabled=false'),"non-ingested full-rendition states must remain inspectable rather than disabled");
 assert.ok(js.includes('function renderFullPending'),"non-ingested full-rendition states need an explicit evidence/status surface");
