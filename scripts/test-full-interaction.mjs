@@ -12,6 +12,9 @@ assert.ok(js.includes('function schedulerStep'),"playback must use rolling sched
 assert.ok(js.includes('lookaheadSec=.48'),"rolling scheduler must use bounded lookahead");
 assert.ok(js.includes('audio.currentTime-transportAudioStart'),"transport position must derive from AudioContext clock");
 assert.ok(js.includes('function sourceTempoMap()'),"full renditions must expose source tempo-map timing when available");
+assert.ok(js.includes('function pianoRegisterGain(midi)'),"piano synth must compensate low-register perceptual loudness");
+assert.ok(js.includes('if(m<=36)return 2'),"deep piano bass must receive explicit low-register gain compensation");
+assert.ok(js.includes('.30+.28*low'),"low piano notes must gain upper harmonics so they remain audible on limited speakers");
 assert.ok(js.includes('function transportSecondsAtUnit(unit)'),"full transport must integrate tempo-map segments");
 assert.ok(js.includes('function transportUnitAtSeconds(seconds)'),"full transport must invert tempo-map timing for the playhead");
 assert.ok(js.includes('tempoTimeline=(map.length?map:'),"full MIDI export must preserve source tempo maps");

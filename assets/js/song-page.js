@@ -295,7 +295,22 @@ function envelope(start,hold,peak=.18,attack=.006,release=.24,destination=null){
   g.gain.linearRampToValueAtTime(Math.max(.0002,peak*.72),end);
   g.gain.exponentialRampToValueAtTime(.0001,tail);g.connect(dest);return {gain:g,stop:tail+.04};
 }
-function piano(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.17*level,.006,.55,destination);[[1,"triangle",1],[2,"sine",.30],[3,"sine",.11]].forEach(([mult,type,amt])=>{const o=trackNode(audio.createOscillator()),g=audio.createGain();o.type=type;o.frequency.setValueAtTime(hz(midi)*mult,start);g.gain.value=amt;o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);});}
+function pianoRegisterGain(midi){
+  const m=Number(midi);
+  if(!Number.isFinite(m)||m>=60)return 1;
+  if(m<=36)return 2;
+  return 1+(60-m)/24;
+}
+function piano(midi,start,seconds,level=1,destination=null){
+  const low=Math.max(0,Math.min(1,(60-Number(midi))/24)),registerGain=pianoRegisterGain(midi);
+  const env=envelope(start,seconds,.17*level*registerGain,.006,.55,destination);
+  [[1,"triangle",1],[2,"sine",.30+.28*low],[3,"sine",.11+.10*low],[4,"sine",.05*low]].forEach(([mult,type,amt])=>{
+    if(amt<=0)return;
+    const o=trackNode(audio.createOscillator()),g=audio.createGain();
+    o.type=type;o.frequency.setValueAtTime(hz(midi)*mult,start);g.gain.value=amt;
+    o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);
+  });
+}
 function guitar(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.21*level,.004,.34,destination),body=audio.createBiquadFilter(),o=trackNode(audio.createOscillator()),h=trackNode(audio.createOscillator()),hg=audio.createGain();body.type="lowpass";body.frequency.setValueAtTime(4200,start);body.frequency.exponentialRampToValueAtTime(900,start+Math.max(.12,seconds));o.type="triangle";o.frequency.setValueAtTime(hz(midi),start);h.type="sine";h.frequency.setValueAtTime(hz(midi)*2,start);hg.gain.setValueAtTime(.12,start);hg.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,seconds*.62));o.connect(body);h.connect(hg).connect(body);body.connect(env.gain);o.start(start);h.start(start);o.stop(env.stop);h.stop(env.stop);}
 function celesta(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.15*level,.003,.38,destination);[[1,1],[2,.48],[3,.22],[4,.1],[6,.05]].forEach(([mult,amt])=>{const o=trackNode(audio.createOscillator()),g=audio.createGain();o.type="sine";o.frequency.setValueAtTime(hz(midi)*mult,start);g.gain.setValueAtTime(amt,start);g.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,seconds*(mult===1?1:.62)));o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);});}
 function bowed(midi,start,seconds,level=1,kind="violin",destination=null){
