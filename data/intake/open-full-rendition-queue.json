@@ -21,14 +21,15 @@
       "order": 2,
       "slug": "satie-gnossienne-no1",
       "title": "Satie — Gnossienne No. 1",
-      "status": "processing",
-      "note": "Mutopia CC BY-SA 4.0 complete piano MIDI source selected; licensed MIDI ingestion started."
+      "status": "published-awaiting-user-qa",
+      "note": "Complete Mutopia CC BY-SA 4.0 MIDI ingested (832 note events, two piano tracks) and public song page wired to external Full Rendition artifact."
     },
     {
       "order": 3,
       "slug": "satie-gnossienne-no2",
       "title": "Satie — Gnossienne No. 2",
-      "status": "queued"
+      "status": "processing",
+      "note": "Next in locked order; source intake begins after item 2 publication."
     },
     {
       "order": 4,
