@@ -49,41 +49,18 @@ jobs:
               if any(k in line.lower() for k in ("uid","download","href","location","timeout","form","action",".mxl","ajax","fetch","window")):
                   print("HTML",line[:1000])
 
-          # The archive's second page arms the server-side temporary token.
-          time.sleep(11)
-          attempts=[
-              temp,
-              temp+"&download=1",
-              temp+"&get=1",
-              temp+"&action=download",
-          ]
-          payload=None
-          for candidate in attempts:
-              try:
-                  uf,hf,bf=get(candidate)
-                  print("attempt",candidate,"->",uf,hf.get("content-type"),len(bf),bf[:4])
-                  if bf[:2]==b"PK":
-                      payload=bf
-                      break
-              except Exception as e:
-                  print("attempt failed",candidate,repr(e))
-          if payload is None:
-              # Look for a direct follow-up URL embedded in the countdown HTML.
-              raw_urls=re.findall(r'''(?:href|src|action)=["']([^"']+)["']''',txt2,re.I)
-              for raw in raw_urls:
-                  if "download" not in raw.lower() and ".mxl" not in raw.lower():
-                      continue
-                  candidate=urljoin(u2,raw.replace("&amp;","&"))
-                  try:
-                      uf,hf,bf=get(candidate)
-                      print("embedded",candidate,"->",uf,hf.get("content-type"),len(bf),bf[:4])
-                      if bf[:2]==b"PK":
-                          payload=bf
-                          break
-                  except Exception as e:
-                      print("embedded failed",candidate,repr(e))
-          if payload is None:
-              raise SystemExit("could not resolve MXL payload")
+          filepath_match=re.search(r'''id=["']filepath["'][^>]*value=["']([^"']+\.mxl)["']''',txt2,re.I)
+          if not filepath_match:
+              filepath_match=re.search(r'''value=["']([^"']+\.mxl)["'][^>]*id=["']filepath["']''',txt2,re.I)
+          if not filepath_match:
+              raise SystemExit("archive countdown page did not expose filepath")
+          direct=urljoin(u2,filepath_match.group(1))
+          print("direct archive path",direct)
+          time.sleep(1)
+          uf,hf,payload=get(direct)
+          print("payload",uf,hf.get("content-type"),len(payload),payload[:4])
+          if payload[:2] != b"PK":
+              raise SystemExit("direct archive path did not return an MXL ZIP")
 
           with zipfile.ZipFile(io.BytesIO(payload)) as zf:
               xmls=[n for n in zf.namelist() if n.lower().endswith((".xml",".musicxml")) and not n.startswith("META-INF/")]
