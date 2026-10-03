@@ -1,0 +1,116 @@
+name: Probe Kirby 64 Zero-Two MIDI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/probe-kirby64-zero-two.yml"
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Download and inspect VGMusic MIDI
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://www.vgmusic.com/music/console/nintendo/n64/02mid.mid'
+          tmp='/tmp/kirby64-zero-two.mid'
+          curl -fL --retry 3 --retry-delay 2 -A 'Mozilla/5.0' "$url" -o "$tmp"
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct, json
+
+          data=Path("/tmp/kirby64-zero-two.mid").read_bytes()
+          if data[:4] != b"MThd":
+              raise SystemExit("not an SMF MIDI")
+          hlen=struct.unpack(">I",data[4:8])[0]
+          fmt,ntrks,division=struct.unpack(">HHH",data[8:14])
+          print("MIDI_HEADER",json.dumps({"format":fmt,"tracks":ntrks,"division":division,"bytes":len(data)}))
+
+          def vlq(buf,pos):
+              v=0
+              while True:
+                  b=buf[pos]; pos+=1
+                  v=(v<<7)|(b&0x7f)
+                  if not (b&0x80): return v,pos
+
+          pos=8+hlen
+          tracks=[]
+          global_tempos=[]
+          global_timesigs=[]
+          for ti in range(ntrks):
+              if data[pos:pos+4] != b"MTrk":
+                  raise SystemExit(f"missing MTrk at {pos}")
+              length=struct.unpack(">I",data[pos+4:pos+8])[0]
+              buf=data[pos+8:pos+8+length]; pos+=8+length
+              p=0; tick=0; running=None; active={}; notes=[]; programs=[]; names=[]; tempos=[]; timesigs=[]; channels=set()
+              while p < len(buf):
+                  delta,p=vlq(buf,p); tick+=delta
+                  status=buf[p]
+                  if status < 0x80:
+                      if running is None: raise SystemExit("running status without status")
+                      status=running
+                  else:
+                      p+=1
+                      if status < 0xF0: running=status
+                  if status==0xFF:
+                      meta=buf[p]; p+=1
+                      ln,p=vlq(buf,p); payload=buf[p:p+ln]; p+=ln
+                      if meta==0x03:
+                          names.append(payload.decode("latin1","replace"))
+                      elif meta==0x51 and ln==3:
+                          us=int.from_bytes(payload,"big"); bpm=60000000/us if us else 0
+                          tempos.append((tick,bpm)); global_tempos.append((tick,bpm))
+                      elif meta==0x58 and ln>=2:
+                          ts=(payload[0],2**payload[1]); timesigs.append((tick,ts)); global_timesigs.append((tick,ts))
+                      continue
+                  if status in (0xF0,0xF7):
+                      ln,p=vlq(buf,p); p+=ln; running=None; continue
+                  kind=status&0xF0; ch=status&0x0F; channels.add(ch)
+                  need=1 if kind in (0xC0,0xD0) else 2
+                  vals=[]
+                  for _ in range(need):
+                      vals.append(buf[p]); p+=1
+                  if kind==0xC0:
+                      programs.append((tick,ch,vals[0]))
+                  elif kind==0x90:
+                      key,vel=vals
+                      if vel:
+                          active.setdefault((ch,key),[]).append((tick,vel))
+                      else:
+                          stack=active.get((ch,key))
+                          if stack:
+                              st,sv=stack.pop(0); notes.append((st,tick,key,sv,ch))
+                  elif kind==0x80:
+                      key,vel=vals
+                      stack=active.get((ch,key))
+                      if stack:
+                          st,sv=stack.pop(0); notes.append((st,tick,key,sv,ch))
+              pitches=[n[2] for n in notes]
+              starts=[n[0] for n in notes]
+              durations=[n[1]-n[0] for n in notes]
+              info={
+                "track":ti,
+                "name":" | ".join(names) if names else None,
+                "notes":len(notes),
+                "channels":sorted(channels),
+                "programs":programs[:20],
+                "minMidi":min(pitches) if pitches else None,
+                "maxMidi":max(pitches) if pitches else None,
+                "firstTick":min(starts) if starts else None,
+                "lastTick":max((n[1] for n in notes),default=None),
+                "medianDurationTicks":sorted(durations)[len(durations)//2] if durations else None,
+                "tempos":tempos[:20],
+                "timeSignatures":timesigs[:20]
+              }
+              tracks.append(info)
+              print("TRACK",json.dumps(info,ensure_ascii=False))
+              if notes:
+                  preview=[{"start":round(st/division,6),"duration":round((en-st)/division,6),"midi":key,"velocity":vel,"channel":ch}
+                           for st,en,key,vel,ch in sorted(notes)[:64]]
+                  print("PREVIEW",ti,json.dumps(preview,separators=(",",":")))
+          print("GLOBAL_TEMPO",json.dumps(global_tempos[:50]))
+          print("GLOBAL_TIMESIG",json.dumps(global_timesigs[:20]))
+          PY

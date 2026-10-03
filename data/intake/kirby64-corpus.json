@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "kirby64-core-10",
+  "title": "Kirby 64: The Crystal Shards — Core 10",
+  "governance": {
+    "status": "locked-by-user",
+    "note": "The user explicitly approved this exact bounded top-10 corpus and requested processing in this order. Do not reorder, expand, or substitute tracks without explicit user approval.",
+    "approvedAt": "2026-10-03"
+  },
+  "sourceGame": {
+    "title": "Kirby 64: The Crystal Shards",
+    "platform": "Nintendo 64",
+    "year": 2000
+  },
+  "queue": [
+    {
+      "order": 1,
+      "slug": "kirby64-zero-two",
+      "title": "0² / Zero-Two",
+      "status": "processing"
+    },
+    {
+      "order": 2,
+      "slug": "kirby64-factory-inspection",
+      "title": "Factory Inspection",
+      "status": "queued"
+    },
+    {
+      "order": 3,
+      "slug": "kirby64-miracle-matter",
+      "title": "Miracle Matter",
+      "status": "queued"
+    },
+    {
+      "order": 4,
+      "slug": "kirby64-ripple-star",
+      "title": "Ripple Star",
+      "status": "queued"
+    },
+    {
+      "order": 5,
+      "slug": "kirby64-pop-star",
+      "title": "Pop Star",
+      "status": "queued"
+    },
+    {
+      "order": 6,
+      "slug": "kirby64-aqua-star",
+      "title": "Aqua Star",
+      "status": "queued"
+    },
+    {
+      "order": 7,
+      "slug": "kirby64-boss",
+      "title": "Boss",
+      "status": "queued"
+    },
+    {
+      "order": 8,
+      "slug": "kirby64-shiver-star",
+      "title": "Shiver Star",
+      "status": "queued"
+    },
+    {
+      "order": 9,
+      "slug": "kirby64-neo-star",
+      "title": "Neo Star",
+      "status": "queued"
+    },
+    {
+      "order": 10,
+      "slug": "kirby64-dark-star",
+      "title": "Dark Star / Heading for 0²",
+      "status": "queued"
+    }
+  ]
+}
