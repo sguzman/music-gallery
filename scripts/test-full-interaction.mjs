@@ -13,6 +13,12 @@ assert.ok(js.includes('lookaheadSec=.48'),"rolling scheduler must use bounded lo
 assert.ok(js.includes('audio.currentTime-transportAudioStart'),"transport position must derive from AudioContext clock");
 assert.ok(js.includes('function sourceTempoMap()'),"full renditions must expose source tempo-map timing when available");
 assert.ok(js.includes('function pianoRegisterGain(midi)'),"piano synth must compensate low-register perceptual loudness");
+assert.ok(js.includes('function orchestralRegisterGain(midi'),"orchestral synths must compensate low-register perceptual loudness");
+assert.ok(js.includes('function fluteTone('),"full renditions must have a dedicated flute timbre");
+assert.ok(js.includes('function oboeTone('),"full renditions must have a dedicated oboe/English-horn timbre");
+assert.ok(js.includes('function clarinetTone('),"full renditions must have a dedicated clarinet timbre");
+assert.ok(js.includes('function bassoonTone('),"full renditions must have a dedicated bassoon timbre");
+assert.ok(js.includes('function hornTone('),"full renditions must have a dedicated horn timbre");
 assert.ok(js.includes('if(m<=36)return 2'),"deep piano bass must receive explicit low-register gain compensation");
 assert.ok(js.includes('.30+.28*low'),"low piano notes must gain upper harmonics so they remain audible on limited speakers");
 assert.ok(js.includes('function transportSecondsAtUnit(unit)'),"full transport must integrate tempo-map segments");

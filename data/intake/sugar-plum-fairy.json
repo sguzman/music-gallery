@@ -39,7 +39,109 @@
     ],
     "trackLevel": 0.55,
     "label": "Dance of the Sugar Plum Fairy — orchestral score",
-    "description": "Complete orchestral symbolic-score rendition preserving independent source parts, staves, voices, transpositions, and score timing."
+    "description": "Complete orchestral symbolic-score rendition preserving independent source parts, staves, voices, transpositions, and score timing.",
+    "trackOverrides": {
+      "flute-1": {
+        "level": 0.38,
+        "pan": -0.42,
+        "defaultInstrument": "flute"
+      },
+      "flute-2": {
+        "level": 0.36,
+        "pan": -0.32,
+        "defaultInstrument": "flute"
+      },
+      "flute": {
+        "level": 0.34,
+        "pan": -0.22,
+        "defaultInstrument": "flute"
+      },
+      "oboe": {
+        "level": 0.42,
+        "pan": -0.12,
+        "defaultInstrument": "oboe"
+      },
+      "english-horn": {
+        "level": 0.43,
+        "pan": -0.02,
+        "defaultInstrument": "oboe",
+        "name": "English Horn"
+      },
+      "a-clarinet": {
+        "level": 0.38,
+        "pan": 0.06,
+        "defaultInstrument": "clarinet"
+      },
+      "a-clarinet-2": {
+        "level": 0.38,
+        "pan": 0.14,
+        "defaultInstrument": "clarinet",
+        "name": "A Clarinet 2"
+      },
+      "baccidentalflat-clarinet": {
+        "level": 0.46,
+        "pan": 0.2,
+        "defaultInstrument": "clarinet",
+        "name": "B♭ Clarinet (low part)"
+      },
+      "bassoon": {
+        "level": 0.44,
+        "pan": 0.24,
+        "defaultInstrument": "bassoon"
+      },
+      "bassoon-2": {
+        "level": 0.48,
+        "pan": 0.32,
+        "defaultInstrument": "bassoon",
+        "name": "Bassoon 2"
+      },
+      "f-mellophone": {
+        "level": 0.36,
+        "pan": 0.38,
+        "defaultInstrument": "horn",
+        "name": "Horn in F 1",
+        "role": "source F-mellophone / horn-family part"
+      },
+      "f-mellophone-2": {
+        "level": 0.36,
+        "pan": 0.46,
+        "defaultInstrument": "horn",
+        "name": "Horn in F 2",
+        "role": "source F-mellophone / horn-family part"
+      },
+      "celesta": {
+        "level": 0.82,
+        "pan": 0.02,
+        "defaultInstrument": "celesta"
+      },
+      "violin": {
+        "level": 0.32,
+        "pan": -0.45,
+        "defaultInstrument": "violin",
+        "name": "Violin I"
+      },
+      "violin-2": {
+        "level": 0.31,
+        "pan": -0.28,
+        "defaultInstrument": "violin",
+        "name": "Violin II"
+      },
+      "viola": {
+        "level": 0.34,
+        "pan": -0.08,
+        "defaultInstrument": "strings"
+      },
+      "violoncello": {
+        "level": 0.43,
+        "pan": 0.18,
+        "defaultInstrument": "cello"
+      },
+      "contrabass": {
+        "level": 0.5,
+        "pan": 0.34,
+        "defaultInstrument": "cello"
+      }
+    }
   },
   "output": "data/ingested/sugar-plum-fairy.full.json"
 }

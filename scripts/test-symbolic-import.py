@@ -73,4 +73,13 @@ with TemporaryDirectory() as td:
     assert full2["stats"]["events"] == 4
     assert warnings2 == []
 
+    manifest_with_override=manifest(mxl)
+    manifest_with_override["ingest"]["trackOverrides"]={"piano-lh":{"level":0.5,"pan":0.25,"name":"Low piano"}}
+    full3,warnings3=imp.normalize_score(root,manifest_with_override,meta)
+    lh=next(t for t in full3["tracks"] if t["id"]=="piano-lh")
+    assert lh["level"] == 0.5
+    assert lh["pan"] == 0.25
+    assert lh["name"] == "Low piano"
+    assert warnings3 == []
+
 print("symbolic importer self-test: PASS")

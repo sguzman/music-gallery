@@ -24,9 +24,16 @@ TOL = 1e-9
 SUPPORTED_SYNTHS = {
     "piano": "piano",
     "celesta": "celesta",
-    "violin": "violin",
+    "english horn": "oboe",
+    "mellophone": "horn",
+    "french horn": "horn",
+    "horn": "horn",
+    "contrabass": "cello",
+    "double bass": "cello",
     "violoncello": "cello",
     "cello": "cello",
+    "viola": "strings",
+    "violin": "violin",
     "string": "strings",
     "flute": "flute",
     "oboe": "oboe",
@@ -449,6 +456,10 @@ def normalize_score(root, manifest, source_meta):
             }
             if pdef.get("gmProgram") is not None:
                 track["gmProgram"] = pdef["gmProgram"]
+            overrides = ingest_cfg.get("trackOverrides", {}).get(tid, {})
+            if overrides:
+                allowed = {"name", "role", "instrumentLabel", "defaultInstrument", "enabled", "level", "pan", "clef", "velocity"}
+                track.update({k: v for k, v in overrides.items() if k in allowed})
             tracks.append(track)
 
     tempo_raw = []

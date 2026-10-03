@@ -314,8 +314,10 @@ function piano(midi,start,seconds,level=1,destination=null){
 function guitar(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.21*level,.004,.34,destination),body=audio.createBiquadFilter(),o=trackNode(audio.createOscillator()),h=trackNode(audio.createOscillator()),hg=audio.createGain();body.type="lowpass";body.frequency.setValueAtTime(4200,start);body.frequency.exponentialRampToValueAtTime(900,start+Math.max(.12,seconds));o.type="triangle";o.frequency.setValueAtTime(hz(midi),start);h.type="sine";h.frequency.setValueAtTime(hz(midi)*2,start);hg.gain.setValueAtTime(.12,start);hg.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,seconds*.62));o.connect(body);h.connect(hg).connect(body);body.connect(env.gain);o.start(start);h.start(start);o.stop(env.stop);h.stop(env.stop);}
 function celesta(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.15*level,.003,.38,destination);[[1,1],[2,.48],[3,.22],[4,.1],[6,.05]].forEach(([mult,amt])=>{const o=trackNode(audio.createOscillator()),g=audio.createGain();o.type="sine";o.frequency.setValueAtTime(hz(midi)*mult,start);g.gain.setValueAtTime(amt,start);g.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,seconds*(mult===1?1:.62)));o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);});}
 function bowed(midi,start,seconds,level=1,kind="violin",destination=null){
-  const cello=kind==="cello",env=envelope(start,seconds,(cello?.18:.085)*level,.035,cello?.34:.26,destination),f=audio.createBiquadFilter(),o=trackNode(audio.createOscillator());
-  o.type=cello?"triangle":"sawtooth";o.frequency.setValueAtTime(hz(midi),start);f.type="lowpass";f.frequency.value=cello?2200:3400;o.connect(f).connect(env.gain);o.start(start);o.stop(env.stop);
+  const cello=kind==="cello",registerGain=cello?orchestralRegisterGain(midi,55,1.7):1,env=envelope(start,seconds,(cello?.18:.085)*level*registerGain,.035,cello?.34:.26,destination),f=audio.createBiquadFilter(),o=trackNode(audio.createOscillator());
+  o.type=cello?"triangle":"sawtooth";o.frequency.setValueAtTime(hz(midi),start);f.type="lowpass";f.frequency.value=cello?2200:3400;o.connect(f).connect(env.gain);
+  if(cello&&midi<48){const h=trackNode(audio.createOscillator()),hg=audio.createGain();h.type="sine";h.frequency.value=hz(midi)*2;hg.gain.value=.24;h.connect(hg).connect(env.gain);h.start(start);h.stop(env.stop);}
+  o.start(start);o.stop(env.stop);
 }
 function voiceTone(midi,start,seconds,level=1,destination=null){
   const env=envelope(start,seconds,.17*level,.035,.42,destination),o=trackNode(audio.createOscillator());o.type="sawtooth";o.frequency.setValueAtTime(hz(midi),start);
@@ -325,8 +327,32 @@ function voiceTone(midi,start,seconds,level=1,destination=null){
   [[650,.46,3.0],[1200,.30,3.4],[2500,.18,4.0]].forEach(([freq,amp,q])=>{const f=audio.createBiquadFilter(),g=audio.createGain();f.type="bandpass";f.frequency.value=freq;f.Q.value=q;g.gain.value=amp;o.connect(f).connect(g).connect(env.gain);});
   o.start(start);o.stop(env.stop);
 }
-function generic(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.10*level,.012,.30,destination),o=trackNode(audio.createOscillator());o.type="triangle";o.frequency.value=hz(midi);o.connect(env.gain);o.start(start);o.stop(env.stop);}
-function toneFor(mode,midi,start,seconds,level=1,destination=null){if(mode==="guitar")guitar(midi,start,seconds,level,destination);else if(mode==="piano")piano(midi,start,seconds,level,destination);else if(mode==="celesta")celesta(midi,start,seconds,level,destination);else if(mode==="voice")voiceTone(midi,start,seconds,level,destination);else if(mode==="violin"||mode==="strings")bowed(midi,start,seconds,level,"violin",destination);else if(mode==="cello")bowed(midi,start,seconds,level,"cello",destination);else if(mode==="both"||mode==="guitar-piano"){guitar(midi,start,seconds,.68*level,destination);piano(midi,start,seconds,.60*level,destination);}else if(mode==="guitar-celesta"){guitar(midi,start,seconds,.64*level,destination);celesta(midi,start,seconds,.68*level,destination);}else generic(midi,start,seconds,level,destination);}
+function orchestralRegisterGain(midi,knee=55,maxGain=1.7){
+  const m=Number(midi);if(!Number.isFinite(m)||m>=knee)return 1;
+  return Math.min(maxGain,1+(knee-m)/24*(maxGain-1));
+}
+function fluteTone(midi,start,seconds,level=1,destination=null){
+  const env=envelope(start,seconds,.12*level,.018,.24,destination),fund=hz(midi);
+  [[1,"sine",1],[2,"sine",.16],[3,"sine",.05]].forEach(([mult,type,amt])=>{if(fund*mult>17000)return;const o=trackNode(audio.createOscillator()),g=audio.createGain();o.type=type;o.frequency.value=fund*mult;g.gain.value=amt;o.connect(g).connect(env.gain);o.start(start);o.stop(env.stop);});
+}
+function oboeTone(midi,start,seconds,level=1,destination=null){
+  const env=envelope(start,seconds,.105*level,.022,.28,destination),o=trackNode(audio.createOscillator()),f=audio.createBiquadFilter();
+  o.type="sawtooth";o.frequency.value=hz(midi);f.type="bandpass";f.frequency.value=1150;f.Q.value=.7;o.connect(f).connect(env.gain);o.start(start);o.stop(env.stop);
+}
+function clarinetTone(midi,start,seconds,level=1,destination=null){
+  const env=envelope(start,seconds,.12*level*orchestralRegisterGain(midi,52,1.35),.018,.30,destination),o=trackNode(audio.createOscillator()),f=audio.createBiquadFilter();
+  o.type="square";o.frequency.value=hz(midi);f.type="lowpass";f.frequency.value=2300;f.Q.value=.5;o.connect(f).connect(env.gain);o.start(start);o.stop(env.stop);
+}
+function bassoonTone(midi,start,seconds,level=1,destination=null){
+  const boost=orchestralRegisterGain(midi,58,1.65),env=envelope(start,seconds,.13*level*boost,.025,.34,destination),o=trackNode(audio.createOscillator()),f=audio.createBiquadFilter();
+  o.type="sawtooth";o.frequency.value=hz(midi);f.type="lowpass";f.frequency.value=1450;f.Q.value=.6;o.connect(f).connect(env.gain);o.start(start);o.stop(env.stop);
+}
+function hornTone(midi,start,seconds,level=1,destination=null){
+  const boost=orchestralRegisterGain(midi,55,1.35),env=envelope(start,seconds,.12*level*boost,.035,.38,destination),o=trackNode(audio.createOscillator()),f=audio.createBiquadFilter();
+  o.type="sawtooth";o.frequency.value=hz(midi);f.type="lowpass";f.frequency.value=1050;f.Q.value=.45;o.connect(f).connect(env.gain);o.start(start);o.stop(env.stop);
+}
+function generic(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.10*level*orchestralRegisterGain(midi,50,1.35),.012,.30,destination),o=trackNode(audio.createOscillator());o.type="triangle";o.frequency.value=hz(midi);o.connect(env.gain);o.start(start);o.stop(env.stop);}
+function toneFor(mode,midi,start,seconds,level=1,destination=null){if(mode==="guitar")guitar(midi,start,seconds,level,destination);else if(mode==="piano")piano(midi,start,seconds,level,destination);else if(mode==="celesta")celesta(midi,start,seconds,level,destination);else if(mode==="voice")voiceTone(midi,start,seconds,level,destination);else if(mode==="flute")fluteTone(midi,start,seconds,level,destination);else if(mode==="oboe")oboeTone(midi,start,seconds,level,destination);else if(mode==="clarinet")clarinetTone(midi,start,seconds,level,destination);else if(mode==="bassoon")bassoonTone(midi,start,seconds,level,destination);else if(mode==="horn")hornTone(midi,start,seconds,level,destination);else if(mode==="violin"||mode==="strings")bowed(midi,start,seconds,level,"violin",destination);else if(mode==="cello")bowed(midi,start,seconds,level,"cello",destination);else if(mode==="both"||mode==="guitar-piano"){guitar(midi,start,seconds,.68*level,destination);piano(midi,start,seconds,.60*level,destination);}else if(mode==="guitar-celesta"){guitar(midi,start,seconds,.64*level,destination);celesta(midi,start,seconds,.68*level,destination);}else generic(midi,start,seconds,level,destination);}
 function toneForEntry(x,start,seconds){if(x.mode==="full")toneFor(x.track.defaultInstrument||"strings",x.event.midi,start,seconds,x.track.level??1,trackDestination(x.track));else toneFor($("#instrument").value,x.event.midi,start,seconds,1);}
 
 function clearTimers(){timers.forEach(clearTimeout);timers=[];}
