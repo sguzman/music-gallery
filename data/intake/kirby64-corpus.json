@@ -17,7 +17,8 @@
       "order": 1,
       "slug": "kirby64-zero-two",
       "title": "0² / Zero-Two",
-      "status": "processing"
+      "status": "source-profiled",
+      "note": "VGMusic Type-1 MIDI verified; structural profiling pipeline active. Next: principal melody selection/cross-check and Practice derivative."
     },
     {
       "order": 2,

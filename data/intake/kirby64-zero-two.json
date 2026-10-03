@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "kirby64-zero-two",
+  "corpus": "kirby64-core-10",
+  "queueOrder": 1,
+  "approval": {
+    "status": "user-approved",
+    "note": "Approved as item 1 of the locked Kirby 64 Core 10 queue."
+  },
+  "identity": {
+    "title": "0² / Zero-Two",
+    "displayTitle": "Kirby 64 — 0² / Zero-Two",
+    "game": "Kirby 64: The Crystal Shards"
+  },
+  "source": {
+    "provider": "VGMusic",
+    "page": "https://www.vgmusic.com/file/0894aed12e7842a706ab8898b8d16ec8.html",
+    "url": "https://www.vgmusic.com/music/console/nintendo/n64/02mid.mid",
+    "format": "SMF Type 1 MIDI",
+    "providerMd5": "0894aed12e7842a706ab8898b8d16ec8",
+    "sequencer": "Exor",
+    "providerReportedTracks": 14,
+    "providerReportedDeltaTime": 96
+  },
+  "processing": {
+    "status": "source-profiled",
+    "sourceStorage": "transient-fetch-only",
+    "analysisOutput": "data/ingested/kirby64-zero-two.midi-analysis.json",
+    "fullEventGraphPublication": "publication-rights-review",
+    "next": "identify and cross-check the principal melody track/window, then build a bounded Practice derivative"
+  }
+}

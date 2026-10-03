@@ -33,6 +33,7 @@ jobs:
         run: node scripts/test-full-interaction.mjs
       - name: Symbolic importer self-test
         run: python3 scripts/test-symbolic-import.py
+          python3 scripts/test-symbolic-midi-profile.py
       - name: Browser module syntax check
         run: node --check assets/js/song-page.js
       - name: Build catalog and song wrappers
