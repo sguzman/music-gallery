@@ -822,9 +822,24 @@
   "fullVersion": {
     "status": "source-ready",
     "label": "Full rendition",
-    "description": "The full orchestral score and parts are identified. Multi-track event ingestion is pending before this tab is enabled.",
+    "description": "Complete orchestral sources are available, including a full score/parts, MIDI, and a 24-part compressed MusicXML witness. Ingestion remains to be done.",
+    "fidelityTarget": "source-score-derived",
     "provenance": {
-      "evidenceState": "See song sources and timing audit; no full event graph has been admitted yet."
+      "evidenceState": "mfiles exposes the full orchestral score and MIDI; ScoreBase exposes PDF, MIDI, and MXL with 24 parts and 84 measures.",
+      "witnesses": [
+        {
+          "provider": "mfiles",
+          "url": "https://www.mfiles.co.uk/scores/Sugar-Plum-Fairy.htm",
+          "format": "full conductor score + individual parts + MIDI"
+        },
+        {
+          "provider": "ScoreBase",
+          "url": "https://scorebase.org/scores/1441",
+          "format": "PDF + MIDI + compressed MusicXML",
+          "parts": 24,
+          "measures": 84
+        }
+      ]
     }
   }
 }
