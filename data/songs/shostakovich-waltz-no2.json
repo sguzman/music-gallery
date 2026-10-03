@@ -1,0 +1,742 @@
+{
+  "$schema": "../song.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "shostakovich-waltz-no2",
+  "slug": "shostakovich-waltz-no2",
+  "identity": {
+    "title": "Waltz No. 2 from Suite for Variety Orchestra",
+    "displayTitle": "Shostakovich — Waltz No. 2",
+    "shortTitle": "Waltz No. 2",
+    "composer": {
+      "name": "Dmitri Shostakovich"
+    },
+    "aliases": [
+      "The Second Waltz",
+      "Second Waltz",
+      "Waltz No. 2",
+      "Suite for Variety Orchestra Waltz No. 2"
+    ],
+    "catalogue": "Suite for Variety Orchestra / The First Echelon material"
+  },
+  "origin": {
+    "category": "classical",
+    "era": "20th Century",
+    "year": 1956,
+    "sourceMedium": "variety orchestra / film-derived orchestral suite",
+    "franchise": "The First Echelon / Suite for Variety Orchestra",
+    "originalKey": "C minor",
+    "originalInstrumentation": "symphony orchestra augmented by saxophones, guitar and accordion"
+  },
+  "arrangement": {
+    "name": "Opening-theme melodic spine",
+    "type": "melody-only",
+    "targetInstrument": "steel-string acoustic guitar",
+    "tuning": {
+      "name": "Standard tuning",
+      "strings": [
+        "E2",
+        "A2",
+        "D3",
+        "G3",
+        "B3",
+        "E4"
+      ]
+    },
+    "arrangedKey": "C minor",
+    "difficulty": {
+      "label": "beginner",
+      "rating": 2,
+      "scale": 5
+    },
+    "fretRange": {
+      "min": 0,
+      "max": 5
+    },
+    "stringsUsed": [
+      "e",
+      "B",
+      "D"
+    ],
+    "handPositions": {
+      "low": {
+        "label": "Frets 1–3",
+        "frets": [
+          1,
+          3
+        ],
+        "color": "#4765ff"
+      },
+      "mid": {
+        "label": "Frets 3–5",
+        "frets": [
+          3,
+          5
+        ],
+        "color": "#1fa874"
+      },
+      "upper": {
+        "label": "Frets 6–8",
+        "frets": [
+          6,
+          8
+        ],
+        "color": "#ad6ce7"
+      },
+      "high": {
+        "label": "Frets 8–10",
+        "frets": [
+          8,
+          10
+        ],
+        "color": "#e0704f"
+      },
+      "open": {
+        "label": "Open string",
+        "frets": [
+          0,
+          0
+        ],
+        "color": "#d8dee9"
+      }
+    },
+    "pinkyRequired": false,
+    "simplificationGoals": [
+      "preserve the opening A-section melody from an independent ABC transcription",
+      "strip accompaniment and orchestration while retaining the source 3/4 quarter-note grid",
+      "keep the phrase inside open and low-position standard-tuning guitar",
+      "represent the cross-bar tie as a study-friendly rearticulation at the barline"
+    ]
+  },
+  "musical": {
+    "meter": "3/4",
+    "tempoUnit": "quarter note",
+    "unitsPerQuarter": 1,
+    "defaultBpm": 88,
+    "bpmRange": [
+      55,
+      178
+    ]
+  },
+  "playback": {
+    "defaultInstrument": "guitar",
+    "instrumentOptions": [
+      "guitar",
+      "piano",
+      "both"
+    ],
+    "gatePercent": 92,
+    "webAudio": true,
+    "midiExport": true,
+    "sectionLooping": true,
+    "synchronizedHighlighting": true,
+    "salvageMode": true
+  },
+  "taxonomy": {
+    "genres": [
+      "classical",
+      "20th-century",
+      "waltz",
+      "film-derived orchestral music"
+    ],
+    "moods": [
+      "dark",
+      "elegant",
+      "haunting",
+      "suave",
+      "melancholic"
+    ],
+    "tags": [
+      "Shostakovich",
+      "Waltz No. 2",
+      "Second Waltz",
+      "Suite for Variety Orchestra",
+      "C minor",
+      "3/4",
+      "melody-only"
+    ],
+    "techniques": [
+      "single-note melody",
+      "sustained notes",
+      "open strings",
+      "low-position shifts"
+    ],
+    "learningGoals": [
+      "melody recognition",
+      "waltz pulse",
+      "phrasing",
+      "sustain",
+      "source-to-guitar reduction"
+    ]
+  },
+  "search": {
+    "aliases": [
+      "The Second Waltz",
+      "Second Waltz",
+      "Waltz No. 2"
+    ],
+    "facets": {
+      "category": "classical",
+      "era": "20th Century",
+      "sourceMedium": "variety orchestra",
+      "difficulty": "beginner",
+      "meter": "3/4",
+      "composer": "Dmitri Shostakovich",
+      "maxFret": 5,
+      "timingMethod": "John Chambers ABC transcription: 3/4, C minor, quarter-note base; practice playback intentionally slowed",
+      "pinkyRequired": false,
+      "moods": [
+        "dark",
+        "elegant",
+        "haunting",
+        "suave",
+        "melancholic"
+      ],
+      "genres": [
+        "classical",
+        "20th-century",
+        "waltz"
+      ],
+      "tags": [
+        "Shostakovich",
+        "Waltz No. 2",
+        "Second Waltz",
+        "C minor",
+        "3/4",
+        "melody-only"
+      ],
+      "instrumentOptions": [
+        "guitar",
+        "piano",
+        "both"
+      ],
+      "arrangementType": "melody-only",
+      "arrangedKey": "C minor",
+      "noteConfidence": "high",
+      "timingConfidence": "high"
+    },
+    "text": "shostakovich waltz no 2 the second waltz dmitri shostakovich suite for variety orchestra c minor 3/4 classical 20th century waltz dark elegant haunting suave melancholic beginner melody-only"
+  },
+  "verification": {
+    "notes": {
+      "confidence": "high",
+      "method": "Opening 16 bars transcribed from John Chambers' complete ABC witness in C minor; pitch spelling converted directly to MIDI."
+    },
+    "timing": {
+      "confidence": "high",
+      "method": "ABC meter 3/4 with L:1/4 gives an explicit quarter-note grid; note multipliers were preserved for the selected 16-bar opening."
+    },
+    "needsReview": true,
+    "notesAboutQuality": [
+      "Practice mode is a short educational melody reduction, not the orchestral score.",
+      "The source tie from bar 3 into bar 4 is represented as a barline rearticulation in Practice mode because the current measure-local practice model does not carry tied events across bar objects.",
+      "The famous original orchestration is intentionally not reconstructed from unrelated chamber or concert-band arrangements."
+    ],
+    "sourceAlignment": {
+      "status": "exact-opening-melody-from-abc-witness",
+      "provider": "John Chambers ABC collection / abcnotation.com mirror",
+      "sourceUrl": "https://abcnotation.com/tunePage?a=trillian.mit.edu%2F~jc%2Fmusic%2Fabc%2Fsession%2Fwaltz%2FWaltz_No2_Shostakovich-Cm-211-9%2F0000",
+      "sourceFacts": {
+        "meter": "3/4",
+        "key": "C minor",
+        "defaultNoteLength": "quarter note",
+        "selectedBars": "opening 16 bars"
+      },
+      "practiceBpmPolicy": "88 BPM study default; source/reference performances commonly use a substantially faster waltz pulse."
+    }
+  },
+  "sources": [
+    {
+      "label": "User-selected YouTube performance — Dmitri Shostakovich - Waltz No. 2",
+      "url": "https://www.youtube.com/watch?v=mmCnQDUSO4I",
+      "kind": "listening/reference performance"
+    },
+    {
+      "label": "John Chambers ABC collection — Waltz No.2",
+      "url": "https://abcnotation.com/tunePage?a=trillian.mit.edu%2F~jc%2Fmusic%2Fabc%2Fsession%2Fwaltz%2FWaltz_No2_Shostakovich-Cm-211-9%2F0000",
+      "kind": "complete secondary ABC transcription",
+      "evidence": "3/4, C minor, explicit opening melody and rhythm used for Practice mode"
+    },
+    {
+      "label": "Boston Symphony Orchestra — Waltz No. 2 from Suite No. 1 for Variety Orchestra",
+      "url": "https://www.bso.org/works/waltz-no-2-from-suite-no-1-for-variety-orchestra",
+      "kind": "institutional work note",
+      "evidence": "1955–56 First Echelon origin, later Suite for Variety Orchestra context, ABA tonal plan, saxophone/guitar/accordion augmentation"
+    },
+    {
+      "label": "ScoreBase PDMX — Waltz no. 2",
+      "url": "https://scorebase.org/scores/26719",
+      "kind": "complete secondary strings transcription candidate",
+      "evidence": "3/4, C minor, four-part strings transcription; useful as a structural witness but not the original orchestration"
+    }
+  ],
+  "rights": {
+    "composition": "copyrighted / jurisdiction-dependent; full public republication requires rights review",
+    "arrangement": "short educational guitar reduction",
+    "fullRendition": "parked at publication-rights-review rather than publishing a complete note-for-note event graph from an unlicensed transcription"
+  },
+  "presentation": {
+    "accent": "#8f5368",
+    "accentDark": "#6f3f51",
+    "description": "The haunted C-minor opening melody reduced to a low-position guitar study, with the orchestral Full Rendition deliberately parked pending a clean publication basis."
+  },
+  "sections": [
+    {
+      "id": "opening-a1",
+      "name": "Opening waltz theme",
+      "description": "Bars 1–8 of the C-minor A section.",
+      "measures": [
+        {
+          "label": "1",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "position": "low",
+              "midi": 67,
+              "start": 0,
+              "duration": 3,
+              "anchor": true
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "position": "open",
+              "midi": 64,
+              "start": 0,
+              "duration": 2,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 2,
+              "duration": 1,
+              "anchor": false
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 1,
+              "position": "low",
+              "midi": 60,
+              "start": 0,
+              "duration": 3,
+              "anchor": true
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 1,
+              "position": "low",
+              "midi": 60,
+              "start": 0,
+              "duration": 1,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 1,
+              "position": "low",
+              "midi": 60,
+              "start": 1,
+              "duration": 1,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 2,
+              "duration": 1,
+              "anchor": false
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "position": "open",
+              "midi": 64,
+              "start": 0,
+              "duration": 1,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 1,
+              "position": "low",
+              "midi": 60,
+              "start": 1,
+              "duration": 1,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "position": "open",
+              "midi": 64,
+              "start": 2,
+              "duration": 1,
+              "anchor": false
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "position": "low",
+              "midi": 67,
+              "start": 0,
+              "duration": 2,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "position": "mid",
+              "midi": 69,
+              "start": 2,
+              "duration": 1,
+              "anchor": false
+            }
+          ]
+        },
+        {
+          "label": "7",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "position": "low",
+              "midi": 67,
+              "start": 0,
+              "duration": 3,
+              "anchor": true
+            }
+          ]
+        },
+        {
+          "label": "8",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 1,
+              "position": "low",
+              "midi": 65,
+              "start": 0,
+              "duration": 3,
+              "anchor": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "opening-a2",
+      "name": "Theme continuation",
+      "description": "Bars 9–16, including the chromatic B-natural and F-sharp pull back to G.",
+      "measures": [
+        {
+          "label": "9",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 1,
+              "position": "low",
+              "midi": 65,
+              "start": 0,
+              "duration": 3,
+              "anchor": true
+            }
+          ]
+        },
+        {
+          "label": "10",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 0,
+              "duration": 2,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 1,
+              "position": "low",
+              "midi": 60,
+              "start": 2,
+              "duration": 1,
+              "anchor": false
+            }
+          ]
+        },
+        {
+          "label": "11",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 0,
+              "position": "open",
+              "midi": 59,
+              "start": 0,
+              "duration": 3,
+              "anchor": true
+            }
+          ]
+        },
+        {
+          "label": "12",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "D",
+              "stringIndex": 3,
+              "fret": 3,
+              "position": "low",
+              "midi": 53,
+              "start": 1,
+              "duration": 1,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 0,
+              "position": "open",
+              "midi": 59,
+              "start": 2,
+              "duration": 1,
+              "anchor": false
+            }
+          ]
+        },
+        {
+          "label": "13",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 0,
+              "duration": 1,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 0,
+              "position": "open",
+              "midi": 59,
+              "start": 1,
+              "duration": 1,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 2,
+              "duration": 1,
+              "anchor": false
+            }
+          ]
+        },
+        {
+          "label": "14",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 1,
+              "position": "low",
+              "midi": 65,
+              "start": 0,
+              "duration": 1,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "position": "low",
+              "midi": 67,
+              "start": 1,
+              "duration": 1,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "position": "mid",
+              "midi": 69,
+              "start": 2,
+              "duration": 1,
+              "anchor": false
+            }
+          ]
+        },
+        {
+          "label": "15",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 2,
+              "position": "low",
+              "midi": 66,
+              "start": 0,
+              "duration": 3,
+              "anchor": true
+            }
+          ]
+        },
+        {
+          "label": "16",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "position": "low",
+              "midi": 67,
+              "start": 0,
+              "duration": 3,
+              "anchor": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "sections": 2,
+    "measuresOrPracticeGroups": 16,
+    "notes": 28,
+    "uniqueMidiPitches": 9,
+    "minFret": 0,
+    "maxFret": 5,
+    "openStringNotes": 6,
+    "anchorNotes": 16,
+    "durationUnits": 48,
+    "estimatedSecondsAtDefaultTempo": 32.7
+  },
+  "fullVersion": {
+    "status": "publication-rights-review",
+    "label": "Full rendition",
+    "description": "Complete symbolic transcriptions and commercial publisher scores exist, but no clean public-republication basis for the complete 1955–56 composition/orchestration has been established. Keep Full Rendition parked rather than silently republishing a full copyrighted score.",
+    "fidelityTarget": "transcription-derived / source-score-derived",
+    "provenance": {
+      "evidenceState": "Complete secondary witnesses exist, including ABC, PDMX chamber/string transcriptions, and MIDI arrangements. The original variety-orchestra work is commercially published.",
+      "witnesses": [
+        {
+          "provider": "John Chambers ABC collection",
+          "format": "ABC lead-sheet transcription",
+          "scope": "complete melody/harmony witness"
+        },
+        {
+          "provider": "ScoreBase / PDMX",
+          "url": "https://scorebase.org/scores/26719",
+          "format": "four-part strings transcription",
+          "meter": "3/4",
+          "key": "C minor"
+        },
+        {
+          "provider": "G. Schirmer / Hal Leonard",
+          "format": "licensed commercial score/parts",
+          "scope": "publisher edition; verification only, not ingested"
+        }
+      ]
+    }
+  }
+}
