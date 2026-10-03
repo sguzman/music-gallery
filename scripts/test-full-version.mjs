@@ -15,3 +15,14 @@ for(const track of canon.fullVersion.tracks){
 assert.deepEqual(canon.fullVersion.tracks.map(t=>t.name),["Violin I","Violin II","Violin III","Violoncello"]);
 assert.equal(canon.fullVersion.provenance.sourceRepositoryCommit,"2144afd6f52d56c5b6995b8b589ef1268b3139f0");
 console.log("full-version self-test: PASS");
+
+const schubert=JSON.parse(readFileSync(new URL("../data/songs/schubert-serenade.json",import.meta.url),"utf8"));
+assert.equal(schubert.fullVersion.status,"available");
+assert.equal(schubert.fullVersion.musical.meter,"3/4");
+assert.equal(schubert.fullVersion.durationUnits,177);
+assert.equal(schubert.fullVersion.measures.length,59);
+assert.deepEqual(schubert.fullVersion.tracks.map(t=>t.id),["voice","piano-rh","piano-lh"]);
+assert.deepEqual(schubert.fullVersion.tracks.map(t=>t.events.length),[120,464,530]);
+for(const track of schubert.fullVersion.tracks){
+  assert.ok(track.events.every(e=>e.type==="note"&&e.start>=0&&e.duration>0&&e.start+e.duration<=177.000001&&e.midi>=0&&e.midi<=127));
+}
