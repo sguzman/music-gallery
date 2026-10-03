@@ -5407,7 +5407,9 @@
             "midi": 69,
             "sourceMeasure": 57
           }
-        ]
+        ],
+        "pan": -0.72,
+        "clef": "treble"
       },
       {
         "id": "violin2",
@@ -9458,7 +9460,9 @@
             "midi": 78,
             "sourceMeasure": 57
           }
-        ]
+        ],
+        "pan": -0.24,
+        "clef": "treble"
       },
       {
         "id": "violin3",
@@ -13397,7 +13401,9 @@
             "midi": 74,
             "sourceMeasure": 57
           }
-        ]
+        ],
+        "pan": 0.32,
+        "clef": "treble"
       },
       {
         "id": "cello",
@@ -14984,7 +14990,9 @@
             "midi": 50,
             "sourceMeasure": 57
           }
-        ]
+        ],
+        "pan": 0.68,
+        "clef": "bass"
       }
     ]
   }
