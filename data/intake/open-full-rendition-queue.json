@@ -14,7 +14,8 @@
       "order": 1,
       "slug": "liszt-hungarian-rhapsody-no2",
       "title": "Liszt — Hungarian Rhapsody No. 2, S.244/2",
-      "status": "processing"
+      "status": "published-awaiting-user-qa",
+      "note": "Complete licensed source MIDI ingested (6,765 note events, two piano hands) and public song page wired to external Full Rendition artifact. Awaiting listening/UX QA before marking complete."
     },
     {
       "order": 2,

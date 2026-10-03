@@ -52,4 +52,12 @@ assert.ok(catalogJs.includes('if(state.fullOnly && !song.hasFullRendition) retur
 assert.ok(indexHtml.includes('id="fullOnly" type="checkbox" checked'),"main page must provide an obvious checked Full Rendition-only toggle");
 assert.ok(indexHtml.includes('Show all / clear'),"main page must provide an easy escape from the default showcase filter");
 
+assert.ok(js.includes('async function loadFullArtifact()'),"song pages must support external normalized Full Rendition artifacts");
+assert.ok(js.includes('await loadFullArtifact();'),"external Full Rendition must load before track-state/render initialization");
+assert.ok(js.includes('SCHEDULER_LOOKAHEAD_SEC+.05'),"scheduler cutoff must not be shorter than its own lookahead window");
+assert.ok(!js.includes('audio.currentTime+.75'),"old mismatched scheduler cutoff must stay removed");
+assert.ok(js.includes('function eventVelocityGain(event)'),"Full Rendition playback must preserve source MIDI dynamics");
+assert.ok(js.includes('(x.track.level??1)*eventVelocityGain(x.event)'),"track balance and source velocity must both affect Full Rendition gain");
+assert.ok(buildPy.includes('get("artifactPath")'),"catalog must count external complete Full Rendition artifacts as available");
+
 console.log("full interaction contract self-test: PASS");

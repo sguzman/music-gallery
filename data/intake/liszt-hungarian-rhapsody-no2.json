@@ -30,7 +30,8 @@
     "license": "Creative Commons Attribution-ShareAlike 3.0 Germany (CC BY-SA 3.0 DE)",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
     "compositionRights": "Franz Liszt composition is public domain.",
-    "evidence": "Wikimedia Commons identifies the MIDI as Bernd Krueger's work, sourced from piano-midi.de, and licenses the file under CC BY-SA 3.0 Germany. IMSLP separately provides public-domain complete score witnesses for S.244/2."
+    "evidence": "Wikimedia Commons identifies the MIDI as Bernd Krueger's work, sourced from piano-midi.de, and licenses the file under CC BY-SA 3.0 Germany. IMSLP separately provides public-domain complete score witnesses for S.244/2.",
+    "expectedSha256": "e924b212d7eff49855cf3fe374e67cd509fd76d9ed6f23043d28f235ee81c5c5"
   },
   "ingest": {
     "fidelity": "source-midi-derived",

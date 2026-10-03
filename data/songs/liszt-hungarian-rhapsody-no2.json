@@ -1,0 +1,427 @@
+{
+  "$schema": "../song.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "liszt-hungarian-rhapsody-no2",
+  "slug": "liszt-hungarian-rhapsody-no2",
+  "identity": {
+    "title": "Hungarian Rhapsody No. 2, S.244/2",
+    "displayTitle": "Liszt — Hungarian Rhapsody No. 2",
+    "shortTitle": "Hungarian Rhapsody No. 2",
+    "composer": {
+      "name": "Franz Liszt"
+    },
+    "aliases": [
+      "Hungarian Rhapsody No. 2",
+      "Hungarian Rhapsody #2",
+      "Rhapsodie hongroise No. 2"
+    ],
+    "catalogue": "S.244/2"
+  },
+  "origin": {
+    "category": "classical",
+    "era": "Romantic",
+    "year": 1847,
+    "sourceMedium": "solo piano",
+    "franchise": null,
+    "originalKey": "C-sharp minor / F-sharp major",
+    "originalInstrumentation": "solo piano"
+  },
+  "arrangement": {
+    "name": "Opening right-hand source study",
+    "type": "melody-only",
+    "targetInstrument": "steel-string acoustic guitar",
+    "tuning": {
+      "name": "Standard tuning",
+      "strings": [
+        "E2",
+        "A2",
+        "D3",
+        "G3",
+        "B3",
+        "E4"
+      ]
+    },
+    "arrangedKey": "C-sharp minor",
+    "difficulty": {
+      "label": "beginner",
+      "rating": 2,
+      "scale": 5
+    },
+    "fretRange": {
+      "min": 0,
+      "max": 3
+    },
+    "stringsUsed": [
+      "B",
+      "e"
+    ],
+    "handPositions": {
+      "low": {
+        "label": "Frets 1–3",
+        "frets": [
+          1,
+          3
+        ],
+        "color": "#4765ff"
+      },
+      "mid": {
+        "label": "Frets 3–5",
+        "frets": [
+          3,
+          5
+        ],
+        "color": "#1fa874"
+      },
+      "upper": {
+        "label": "Frets 6–8",
+        "frets": [
+          6,
+          8
+        ],
+        "color": "#ad6ce7"
+      },
+      "high": {
+        "label": "Frets 8–10",
+        "frets": [
+          8,
+          10
+        ],
+        "color": "#e0704f"
+      },
+      "open": {
+        "label": "Open string",
+        "frets": [
+          0,
+          0
+        ],
+        "color": "#d8dee9"
+      }
+    },
+    "pinkyRequired": false,
+    "simplificationGoals": [
+      "retain the exact pitches and attack/duration values from the opening right-hand MIDI witness",
+      "isolate a small opening study without pretending it represents the complete piano texture",
+      "keep the Full Rendition independent and complete"
+    ]
+  },
+  "musical": {
+    "meter": "2/4",
+    "tempoUnit": "quarter note",
+    "unitsPerQuarter": 1,
+    "defaultBpm": 60,
+    "bpmRange": [
+      30,
+      120
+    ]
+  },
+  "playback": {
+    "defaultInstrument": "guitar",
+    "instrumentOptions": [
+      "guitar",
+      "piano",
+      "both"
+    ],
+    "gatePercent": 92,
+    "webAudio": true,
+    "midiExport": true,
+    "sectionLooping": true,
+    "synchronizedHighlighting": true,
+    "salvageMode": true
+  },
+  "taxonomy": {
+    "genres": [
+      "classical",
+      "romantic",
+      "rhapsody",
+      "virtuoso piano"
+    ],
+    "moods": [
+      "dramatic",
+      "dark",
+      "volatile",
+      "theatrical"
+    ],
+    "tags": [
+      "Liszt",
+      "Hungarian Rhapsody No. 2",
+      "S.244/2",
+      "public domain",
+      "CC BY-SA MIDI",
+      "Full Rendition"
+    ],
+    "techniques": [
+      "single-note melody",
+      "low-position fingering"
+    ],
+    "learningGoals": [
+      "opening contour",
+      "timing",
+      "source-to-guitar reduction"
+    ]
+  },
+  "verification": {
+    "notes": {
+      "confidence": "high"
+    },
+    "timing": {
+      "confidence": "high",
+      "method": "Exact onset and duration extraction from the licensed Bernd Krueger Standard MIDI File for the selected opening right-hand events."
+    },
+    "needsReview": true,
+    "notesAboutQuality": [
+      "The Practice layer is deliberately tiny; the complete 6,765-event source-derived piano performance lives in the external Full Rendition artifact.",
+      "The source MIDI contains extensive expressive tempo changes and per-note velocities, both retained by the Full Rendition pipeline."
+    ],
+    "sourceAlignment": {
+      "status": "exact-source-midi-derived",
+      "provider": "Wikimedia Commons / piano-midi.de",
+      "sourceSha256": "e924b212d7eff49855cf3fe374e67cd509fd76d9ed6f23043d28f235ee81c5c5",
+      "fullArtifact": "data/ingested/liszt-hungarian-rhapsody-no2.full.json",
+      "sourceFacts": [
+        "MIDI format 1",
+        "480 ticks per quarter",
+        "17 source tracks",
+        "2 note-bearing piano tracks",
+        "6,765 note events",
+        "2/4 opening meter",
+        "source tempo map retained",
+        "source note velocities retained"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "label": "Wikimedia Commons — Liszt, Hungarian Rhapsody No. 2 MIDI by Bernd Krueger",
+      "url": "https://commons.wikimedia.org/wiki/File:Liszt_-_Hungarian_Rhapsody_No._2.mid",
+      "kind": "licensed MIDI",
+      "license": "CC BY-SA 3.0 DE",
+      "evidence": "Complete performance MIDI used for Full Rendition ingestion."
+    },
+    {
+      "label": "IMSLP — Hungarian Rhapsody No. 2, S.244/2",
+      "url": "https://imslp.org/wiki/Hungarian_Rhapsody_No.2%2C_S.244/2_(Liszt%2C_Franz)",
+      "kind": "public-domain score reference",
+      "evidence": "Independent complete-score reference for the public-domain composition."
+    }
+  ],
+  "rights": {
+    "composition": "public domain",
+    "source": "Bernd Krueger MIDI: CC BY-SA 3.0 Germany via Wikimedia Commons",
+    "arrangement": "educational guitar derivative from licensed source"
+  },
+  "presentation": {
+    "accent": "#c4516f",
+    "accentDark": "#87344b",
+    "description": "A compact opening guitar study paired with a complete licensed, source-MIDI-derived two-hand piano Full Rendition."
+  },
+  "sections": [
+    {
+      "id": "opening-study",
+      "name": "Opening study",
+      "description": "First recognizable right-hand gestures from the licensed source MIDI.",
+      "measures": [
+        {
+          "label": "opening A",
+          "duration": 5,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 1.75,
+              "duration": 0.25,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 2,
+              "duration": 1.5,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 3.5,
+              "duration": 0.16666666666666666,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 0,
+              "position": "open",
+              "midi": 59,
+              "start": 3.6666666666666665,
+              "duration": 0.16666666666666666,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 3.8333333333333335,
+              "duration": 0.16666666666666666,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 0,
+              "position": "open",
+              "midi": 59,
+              "start": 4,
+              "duration": 1,
+              "anchor": true
+            }
+          ]
+        },
+        {
+          "label": "opening B",
+          "duration": 5,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 0,
+              "position": "open",
+              "midi": 59,
+              "start": 0,
+              "duration": 0.6,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 0.6,
+              "duration": 0.1,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "position": "open",
+              "midi": 64,
+              "start": 0.7,
+              "duration": 0.1,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 0.8,
+              "duration": 0.1,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 0.9,
+              "duration": 0.1,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 1,
+              "duration": 1.6666666666666667,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 2.5,
+              "duration": 0.5,
+              "anchor": true
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 0,
+              "position": "open",
+              "midi": 59,
+              "start": 2.6666666666666665,
+              "duration": 0.16666666666666666,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 2,
+              "position": "low",
+              "midi": 61,
+              "start": 2.8333333333333335,
+              "duration": 0.16666666666666666,
+              "anchor": false
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 0,
+              "position": "open",
+              "midi": 59,
+              "start": 3,
+              "duration": 1.554166667,
+              "anchor": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {},
+  "fullVersion": {
+    "status": "available",
+    "artifactPath": "data/ingested/liszt-hungarian-rhapsody-no2.full.json",
+    "label": "Hungarian Rhapsody No. 2, S.244/2 — complete licensed MIDI rendition",
+    "description": "Complete two-hand piano Full Rendition loaded from the normalized licensed MIDI artifact: 6,765 note events with source tempo changes and velocities.",
+    "fidelity": "source-midi-derived",
+    "provenance": {
+      "provider": "Wikimedia Commons / piano-midi.de",
+      "license": "CC BY-SA 3.0 Germany",
+      "attribution": "Bernd Krueger"
+    }
+  }
+}

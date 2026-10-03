@@ -354,7 +354,8 @@ function hornTone(midi,start,seconds,level=1,destination=null){
 }
 function generic(midi,start,seconds,level=1,destination=null){const env=envelope(start,seconds,.10*level*orchestralRegisterGain(midi,50,1.35),.012,.30,destination),o=trackNode(audio.createOscillator());o.type="triangle";o.frequency.value=hz(midi);o.connect(env.gain);o.start(start);o.stop(env.stop);}
 function toneFor(mode,midi,start,seconds,level=1,destination=null){if(mode==="guitar")guitar(midi,start,seconds,level,destination);else if(mode==="piano")piano(midi,start,seconds,level,destination);else if(mode==="celesta")celesta(midi,start,seconds,level,destination);else if(mode==="voice")voiceTone(midi,start,seconds,level,destination);else if(mode==="flute")fluteTone(midi,start,seconds,level,destination);else if(mode==="oboe")oboeTone(midi,start,seconds,level,destination);else if(mode==="clarinet")clarinetTone(midi,start,seconds,level,destination);else if(mode==="bassoon")bassoonTone(midi,start,seconds,level,destination);else if(mode==="horn")hornTone(midi,start,seconds,level,destination);else if(mode==="violin"||mode==="strings")bowed(midi,start,seconds,level,"violin",destination);else if(mode==="cello")bowed(midi,start,seconds,level,"cello",destination);else if(mode==="both"||mode==="guitar-piano"){guitar(midi,start,seconds,.68*level,destination);piano(midi,start,seconds,.60*level,destination);}else if(mode==="guitar-celesta"){guitar(midi,start,seconds,.64*level,destination);celesta(midi,start,seconds,.68*level,destination);}else generic(midi,start,seconds,level,destination);}
-function toneForEntry(x,start,seconds){if(x.mode==="full")toneFor(x.track.defaultInstrument||"strings",x.event.midi,start,seconds,x.track.level??1,trackDestination(x.track));else toneFor($("#instrument").value,x.event.midi,start,seconds,1);}
+function eventVelocityGain(event){const v=Number(event?.velocity);if(!Number.isFinite(v)||v<=0)return 1;const n=Math.max(1,Math.min(127,v))/127;return .38+.77*Math.sqrt(n);}
+function toneForEntry(x,start,seconds){if(x.mode==="full")toneFor(x.track.defaultInstrument||"strings",x.event.midi,start,seconds,(x.track.level??1)*eventVelocityGain(x.event),trackDestination(x.track));else toneFor($("#instrument").value,x.event.midi,start,seconds,1);}
 
 function clearTimers(){timers.forEach(clearTimeout);timers=[];}
 function later(fn,ms){const id=setTimeout(fn,Math.max(0,ms));timers.push(id);}
@@ -410,7 +411,7 @@ function scheduleEntry(x,unitNow,horizonUnit,gate){
   const endUnit=x.start+x.event.duration;if(endUnit<=unitNow+1e-8)return;
   const overlap=Math.max(0,unitNow-x.start),effectiveStart=Math.max(unitNow,x.start);
   const when=overlap>0?audio.currentTime+.018:transportAudioStart+transportSecondsBetween(transportStartUnit,x.start);
-  if(when>audio.currentTime+.75)return;
+  if(when>audio.currentTime+SCHEDULER_LOOKAHEAD_SEC+.05)return;
   const seconds=viewMode==="full"?transportSecondsBetween(effectiveStart,endUnit):Math.max(.001,endUnit-effectiveStart)*tempoSecondsPerUnit();
   toneForEntry(x,Math.max(audio.currentTime+.012,when),Math.max(.045,seconds*gate));
 }
@@ -492,8 +493,15 @@ function bind(){
   $("#tempo").oninput=e=>{const wasPlaying=playing;if(wasPlaying)pause();$("#tempoOut").textContent=`${e.target.value} BPM`;if(wasPlaying)play();};$("#gate").oninput=e=>{$("#gateOut").textContent=`${e.target.value}%`;};
   document.addEventListener("keydown",e=>{if(["INPUT","SELECT","TEXTAREA"].includes(e.target.tagName))return;if(e.code==="Space"){e.preventDefault();playing?pause():play();}if(e.code==="ArrowRight"||e.code==="ArrowLeft"){e.preventDefault();pause();cursor=e.code==="ArrowRight"?Math.min(flat.length-1,cursor+1):Math.max(0,cursor-1);highlight();const x=flat[cursor],el=x?findNoteEl(x):null;if(x&&el){if(x.mode==="full")auditionFull(x.ti,x.ei,el);else auditionPractice(x.section.id,x.mi,x.ei,el);}}});
 }
+async function loadFullArtifact(){
+  const fv=song?.fullVersion;
+  if(!fv||fv.status!=="available"||Array.isArray(fv.tracks)||!fv.artifactPath)return;
+  const artifact=await fetch(`${rootPath}/${fv.artifactPath}`).then(r=>{if(!r.ok)throw new Error(`Full Rendition artifact ${r.status}`);return r.json();});
+  song.fullVersion={...artifact,...fv,musical:{...(artifact.musical||{}),...(fv.musical||{})},provenance:{...(artifact.provenance||{}),...(fv.provenance||{})},tracks:artifact.tracks,measures:artifact.measures,durationUnits:artifact.durationUnits};
+}
 async function init(){
   song=await fetch(`${rootPath}/data/songs/${slug}.json`).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
+  await loadFullArtifact();
   if(fullAvailable())song.fullVersion.tracks.forEach(t=>trackState.set(t.id,t.enabled!==false));
   renderHero();renderControls(true);bind();renderAll();
 }
