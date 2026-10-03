@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "satie-gymnopedie-no3",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as item 7 of the locked Open Full Rendition Queue."
+  },
+  "identity": {
+    "title": "Gymnopédie No. 3",
+    "displayTitle": "Satie — Gymnopédie No. 3",
+    "shortTitle": "Gymnopédie No. 3",
+    "composer": {
+      "name": "Erik Satie"
+    },
+    "aliases": [
+      "Gymnopédie No. 3",
+      "Gymnopedie No. 3"
+    ]
+  },
+  "source": {
+    "path": "data/sources/satie-gymnopedie-no3.mid",
+    "format": "midi",
+    "provider": "Mutopia Project",
+    "sourcePage": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=39",
+    "remoteUrl": "https://www.mutopiaproject.org/ftp/SatieE/gymnopedie_3/gymnopedie_3.mid",
+    "attribution": "Evin Robertson (typesetter / Mutopia maintainer)",
+    "license": "Public Domain",
+    "compositionRights": "Erik Satie composition is public domain.",
+    "evidence": "Mutopia piece 39 provides complete LilyPond and MIDI and states Public Domain."
+  },
+  "ingest": {
+    "fidelity": "source-midi-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      20,
+      160
+    ],
+    "meterFallback": "3/4",
+    "trackLevel": 0.72,
+    "label": "Gymnopédie No. 3 — complete public-domain piano rendition",
+    "description": "Complete source-MIDI-derived Full Rendition from Mutopia's public-domain piano edition."
+  },
+  "output": "data/ingested/satie-gymnopedie-no3.full.json"
+}

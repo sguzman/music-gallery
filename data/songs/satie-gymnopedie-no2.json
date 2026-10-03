@@ -1,0 +1,355 @@
+{
+  "$schema": "../song.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "satie-gymnopedie-no2",
+  "slug": "satie-gymnopedie-no2",
+  "identity": {
+    "title": "Gymnopédie No. 2",
+    "displayTitle": "Satie — Gymnopédie No. 2",
+    "shortTitle": "Gymnopédie No. 2",
+    "composer": {
+      "name": "Erik Satie"
+    },
+    "aliases": [
+      "Gymnopédie No. 2",
+      "Gymnopedie No. 2"
+    ]
+  },
+  "origin": {
+    "category": "classical",
+    "era": "Modern",
+    "year": 1888,
+    "sourceMedium": "solo piano",
+    "franchise": null,
+    "originalKey": "C major",
+    "originalInstrumentation": "solo piano"
+  },
+  "arrangement": {
+    "name": "First melody phrase",
+    "type": "melody-only",
+    "targetInstrument": "steel-string acoustic guitar",
+    "tuning": {
+      "name": "Standard tuning",
+      "strings": [
+        "E2",
+        "A2",
+        "D3",
+        "G3",
+        "B3",
+        "E4"
+      ]
+    },
+    "arrangedKey": "C major",
+    "difficulty": {
+      "label": "beginner",
+      "rating": 2,
+      "scale": 5
+    },
+    "fretRange": {
+      "min": 0,
+      "max": 5
+    },
+    "stringsUsed": [
+      "B",
+      "e"
+    ],
+    "handPositions": {
+      "low": {
+        "label": "Frets 1–3",
+        "frets": [
+          1,
+          3
+        ],
+        "color": "#4765ff"
+      },
+      "mid": {
+        "label": "Frets 3–5",
+        "frets": [
+          3,
+          5
+        ],
+        "color": "#1fa874"
+      },
+      "upper": {
+        "label": "Frets 6–8",
+        "frets": [
+          6,
+          8
+        ],
+        "color": "#ad6ce7"
+      },
+      "high": {
+        "label": "Frets 8–10",
+        "frets": [
+          8,
+          10
+        ],
+        "color": "#e0704f"
+      },
+      "open": {
+        "label": "Open string",
+        "frets": [
+          0,
+          0
+        ],
+        "color": "#d8dee9"
+      }
+    },
+    "pinkyRequired": false,
+    "simplificationGoals": [
+      "isolate the first clear melodic phrase above the repeating chordal texture",
+      "preserve source timing and contour",
+      "fold pitches only by exact octaves"
+    ]
+  },
+  "musical": {
+    "meter": "3/4",
+    "tempoUnit": "quarter note",
+    "unitsPerQuarter": 1,
+    "defaultBpm": 60,
+    "bpmRange": [
+      30,
+      100
+    ]
+  },
+  "playback": {
+    "defaultInstrument": "guitar",
+    "instrumentOptions": [
+      "guitar",
+      "piano",
+      "both"
+    ],
+    "gatePercent": 96,
+    "webAudio": true,
+    "midiExport": true,
+    "sectionLooping": true,
+    "synchronizedHighlighting": true,
+    "salvageMode": true
+  },
+  "taxonomy": {
+    "genres": [
+      "classical",
+      "modern",
+      "piano miniature"
+    ],
+    "moods": [
+      "melancholic",
+      "sad",
+      "suspended",
+      "introspective"
+    ],
+    "tags": [
+      "Satie",
+      "Gymnopédie",
+      "Gymnopédie No. 2",
+      "public domain",
+      "Full Rendition"
+    ],
+    "techniques": [
+      "single-note melody",
+      "octave folding"
+    ],
+    "learningGoals": [
+      "phrasing",
+      "melodic contour",
+      "timing"
+    ]
+  },
+  "verification": {
+    "notes": {
+      "confidence": "high"
+    },
+    "timing": {
+      "confidence": "high",
+      "method": "First clear top-line phrase selected directly from the upper track of Mutopia's public-domain MIDI."
+    },
+    "needsReview": true,
+    "notesAboutQuality": [
+      "Practice isolates the first melodic phrase beginning at source quarter-unit 12 and preserves source durations.",
+      "Full Rendition contains the complete 371-note two-hand source graph and source velocities."
+    ],
+    "sourceAlignment": {
+      "status": "source-midi-derived",
+      "provider": "Mutopia Project",
+      "sourceSha256": "02e8ae8d7e1f6073f12f62a61a63cf07b260a1cf49f4a9008ee4e3f8e1934d30",
+      "fullArtifact": "data/ingested/satie-gymnopedie-no2.full.json",
+      "sourceFacts": [
+        "MIDI format 1",
+        "384 ticks per quarter",
+        "3/4",
+        "3 source tracks",
+        "2 note-bearing piano tracks",
+        "371 note events"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "label": "Mutopia Project — Gymnopédie No. 2",
+      "url": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=38",
+      "kind": "public-domain LilyPond/MIDI score",
+      "license": "Public Domain",
+      "evidence": "Complete piano edition with LilyPond source and MIDI."
+    }
+  ],
+  "rights": {
+    "composition": "public domain",
+    "source": "Mutopia edition placed in the public domain",
+    "arrangement": "educational guitar derivative from public-domain source"
+  },
+  "presentation": {
+    "accent": "#777b96",
+    "accentDark": "#4d5066",
+    "description": "A slow, sorrowful opening phrase as a compact study, backed by the complete public-domain two-hand piano Full Rendition."
+  },
+  "sections": [
+    {
+      "id": "first-melody",
+      "name": "First melody phrase",
+      "description": "Top-line phrase from source quarter-units 12–24.",
+      "measures": [
+        {
+          "label": "M1",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "position": "low",
+              "midi": 67,
+              "start": 0,
+              "duration": 3,
+              "anchor": true,
+              "sourceMidi": 79,
+              "octaveFoldSemitones": -12
+            }
+          ]
+        },
+        {
+          "label": "M2",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 5,
+              "position": "mid",
+              "midi": 69,
+              "start": 0,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 81,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "position": "low",
+              "midi": 67,
+              "start": 1,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 79,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 1,
+              "position": "low",
+              "midi": 65,
+              "start": 2,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 77,
+              "octaveFoldSemitones": -12
+            }
+          ]
+        },
+        {
+          "label": "M3",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 0,
+              "position": "open",
+              "midi": 64,
+              "start": 0,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 76,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 1,
+              "position": "low",
+              "midi": 65,
+              "start": 1,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 77,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "e",
+              "stringIndex": 0,
+              "fret": 3,
+              "position": "low",
+              "midi": 67,
+              "start": 2,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 79,
+              "octaveFoldSemitones": -12
+            }
+          ]
+        },
+        {
+          "label": "M4",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 0,
+              "duration": 3,
+              "anchor": true,
+              "sourceMidi": 74,
+              "octaveFoldSemitones": -12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {},
+  "fullVersion": {
+    "status": "available",
+    "artifactPath": "data/ingested/satie-gymnopedie-no2.full.json",
+    "label": "Gymnopédie No. 2 — complete public-domain piano rendition",
+    "description": "Complete source-MIDI-derived two-hand piano Full Rendition from Mutopia: 371 note events.",
+    "fidelity": "source-midi-derived",
+    "provenance": {
+      "provider": "Mutopia Project",
+      "license": "Public Domain",
+      "attribution": "Evin Robertson"
+    }
+  }
+}
