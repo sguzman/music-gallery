@@ -193,3 +193,6 @@ code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#dce3f0}
 .score-note:hover{transform:translate(-50%,-50%) scale(1.25);filter:brightness(1.35)}.score-note.live{height:13px;z-index:7;background:#fff;box-shadow:0 0 0 3px var(--accent),0 0 18px var(--accent)}.score-note.next{box-shadow:0 0 0 2px #fff9,0 0 10px var(--accent)}
 .score-footer{font-size:.72rem;color:var(--muted);padding:0 2px}
 .track-0{background:#8fb7ff}.track-1{background:#c2a3ff}.track-2{background:#86d6bd}.track-3{background:#e0a475}.track-4{background:#ffd37b}.track-5{background:#ef9cc8}.track-6{background:#a9d27e}.track-7{background:#8fd5e7}
+
+.score-playhead{position:absolute;top:6px;bottom:6px;width:2px;background:#fff8;box-shadow:0 0 9px var(--accent);z-index:6;pointer-events:none;transform:translateX(-1px)}
+.score-staff{cursor:crosshair}
