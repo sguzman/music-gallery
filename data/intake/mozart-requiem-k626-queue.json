@@ -17,7 +17,7 @@
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
     "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
-  "processingCursor": 5,
+  "processingCursor": 6,
   "queue": [
     {
       "order": 1,
@@ -51,14 +51,15 @@
       "order": 5,
       "slug": "mozart-requiem-rex-tremendae",
       "title": "Rex tremendae",
-      "status": "publication-in-progress",
-      "note": "22-measure slice normalized: 21 tracks, 2,024 events. Applying readable SATB/orchestral labels and publishing the public song wrapper."
+      "status": "published-awaiting-user-qa",
+      "note": "Published and CI-validated: 22 measures, 21 retained source tracks, 2,024 note events; SATB/orchestral labels and mix normalized without changing the source event graph."
     },
     {
       "order": 6,
       "slug": "mozart-requiem-recordare",
       "title": "Recordare",
-      "status": "queued"
+      "status": "ingestion-in-progress",
+      "note": "Processing started from the same conflict-free PDMX opening-Requiem witness. Recordare is extracted as source measures 253-382 inclusive (130 measures)."
     },
     {
       "order": 7,

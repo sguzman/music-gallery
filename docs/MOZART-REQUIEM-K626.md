@@ -12,8 +12,8 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 2 | Kyrie | `mozart-requiem-kyrie` | **published — awaiting QA** |
 | 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
 | 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **published — awaiting QA** |
-| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | **publication in progress** |
-| 6 | Recordare | `mozart-requiem-recordare` | queued |
+| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | **published — awaiting QA** |
+| 6 | Recordare | `mozart-requiem-recordare` | **ingestion in progress** |
 | 7 | Confutatis | `mozart-requiem-confutatis` | queued |
 | 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued |
 | 9 | Domine Jesu | `mozart-requiem-domine-jesu` | queued |
@@ -67,6 +67,8 @@ Movement 2, **Kyrie**, is published and CI-validated: **52 measures, 16 source t
 
 Movement 4, **Tuba mirum**, is published and CI-validated: **62 measures, 19 retained note-bearing tracks, 1,538 note events**. The solo-trombone opening and staggered Bass → Tenor → Alto → Soprano entries confirm the boundary; source alternate clarinet layers are preserved and labeled rather than silently deleted.
 
-Movement 5, **Rex tremendae**, is through source slicing and first normalization. Source measures **231-252** yield the standard **22-measure** movement with **21 retained tracks and 2,024 note events**. SATB identities and orchestral display/mix metadata are being normalized for publication.
+Movement 5, **Rex tremendae**, is published and CI-validated: source measures **231-252**, **22 measures**, **21 retained tracks**, **2,024 note events**.
+
+Movement 6, **Recordare**, is now active. The same conflict-free opening-Requiem witness is sliced at **source measures 253-382**, the standard **130-measure** Recordare span.
 
 Movement 3, **Dies irae**, remains the already-published baseline: 3,921 note events across 12 note-bearing choral/orchestral tracks.

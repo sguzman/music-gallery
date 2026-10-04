@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "mozart-requiem-recordare",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as movement 6 of the complete Mozart Requiem K.626 Full Rendition queue."
+  },
+  "identity": {
+    "title": "Recordare from Requiem, K.626",
+    "displayTitle": "Mozart — Recordare",
+    "shortTitle": "Recordare",
+    "composer": {
+      "name": "Wolfgang Amadeus Mozart"
+    },
+    "completion": {
+      "name": "Franz Xaver Süssmayr"
+    },
+    "catalogue": "K.626"
+  },
+  "source": {
+    "path": "data/sources/mozart-requiem-first-eight.mid",
+    "format": "midi",
+    "provider": "ScoreBase / PDMX",
+    "sourcePage": "https://scorebase.org/scores/74361",
+    "remoteUrl": "https://scorebase.org/scores/74361/file/mid?download=true",
+    "attribution": "PDMX (Long, Novack, McAuley, Berg-Kirkpatrick et al.); source surfaced through ScoreBase",
+    "license": "Public-domain score; PDMX dataset attribution",
+    "licenseUrl": "https://zenodo.org/records/15571083",
+    "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
+    "evidence": "The combined conflict-free opening-Requiem witness covers the Sequence through Lacrimosa. Standard movement counts place Recordare after Rex tremendae at cumulative source measures 253-382 inclusive (130 measures)."
+  },
+  "ingest": {
+    "enabled": true,
+    "status": "ingestion-in-progress",
+    "fidelity": "source-midi-derived",
+    "fidelityTarget": "complete-score-derived",
+    "segmentMeasures": {
+      "start": 253,
+      "end": 382
+    },
+    "defaultBpm": 0,
+    "bpmRange": [
+      20,
+      220
+    ],
+    "meterFallback": "3/4",
+    "trackLevel": 0.24,
+    "label": "Recordare, K.626 — complete movement rendition",
+    "description": "Complete source-MIDI-derived Recordare Full Rendition extracted by exact measure range from the redistribution-cleared PDMX Requiem witness."
+  },
+  "sourceCrossChecks": [
+    {
+      "provider": "New Mozart Edition / Mozarteum",
+      "sourcePage": "https://dme.mozarteum.at/DME/nma/nma_toc.php?l=2&vsep=14",
+      "role": "traditional Süssmayr movement order and scholarly score cross-check"
+    },
+    {
+      "provider": "PDMX",
+      "sourcePage": "https://zenodo.org/records/15571083",
+      "role": "license/subset provenance",
+      "subset": "no_license_conflict"
+    }
+  ],
+  "output": "data/ingested/mozart-requiem-recordare.full.json",
+  "nextAction": "Extract source measures 253-382, inspect retained solo quartet/orchestral tracks, normalize source-part labels/mix, create a compact Practice derivative, publish and validate."
+}
