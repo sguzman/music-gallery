@@ -25,11 +25,11 @@
     "license": "Public-domain score; PDMX dataset attribution",
     "licenseUrl": "https://zenodo.org/records/15571083",
     "compositionRights": "The traditional Süssmayr Benedictus is public domain.",
-    "evidence": "ScoreBase names score 148760 'Mozart Requiem - Benedictus'. Independent Süssmayr-completion analysis gives Benedictus + Hosanna as 76 measures, B-flat major, beginning in 4/4 and returning to the 3/4 Hosanna."
+    "evidence": "ScoreBase/PDMX score 148760 is structurally a complete Benedictus + Hosanna witness, but ingestion proves it contains only six note-bearing tracks: SATB plus two organ staves. That is a vocal/organ reduction, not the full Süssmayr orchestration required by Musicarium's Full Rendition contract."
   },
   "ingest": {
-    "enabled": true,
-    "status": "ingestion-in-progress",
+    "enabled": false,
+    "status": "source-quality-blocked",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "defaultBpm": 0,
@@ -61,5 +61,25 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-benedictus.full.json",
-  "nextAction": "Fetch the named Benedictus witness; verify 76-measure B-flat-major Benedictus + Hosanna structure and full orchestration before publication."
+  "nextAction": "Find or derive a redistribution-clean machine-readable full-orchestral Benedictus witness. Do not publish the six-track SATB/organ reduction as a Full Rendition.",
+  "sourceCandidates": [
+    {
+      "provider": "ScoreBase / PDMX",
+      "sourcePage": "https://scorebase.org/scores/148760",
+      "status": "rejected-for-full-rendition",
+      "reason": "Complete movement, but only SATB + organ reduction (6 note-bearing tracks)."
+    },
+    {
+      "provider": "Classical Archives-derived MIDI mirror",
+      "sourcePage": "https://github.com/AAI-511/AAI-511-final-project/blob/main/music_data/midiclassics/Mozart/K626%20Requiem%2011%20Benedictus.mid",
+      "status": "rights-blocked-reference-only",
+      "reason": "20-track file includes basset horns, bassoon, trumpet, trombones, strings and SATB and is explicitly sequenced by D. Viens (1997), but redistribution/license rights are not established. Do not vendor."
+    },
+    {
+      "provider": "IMSLP / CPDL",
+      "sourcePage": "https://imslp.org/wiki/Requiem_in_D_minor,_K.626_(Mozart,_Wolfgang_Amadeus)",
+      "status": "clean-score-reference",
+      "reason": "Public-domain and CC-licensed complete scores exist and establish the traditional Süssmayr orchestration; a machine-readable redistribution-clean symbolic transcription is still required."
+    }
+  ]
 }
