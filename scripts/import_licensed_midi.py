@@ -386,6 +386,7 @@ def is_manifest(manifest):
         isinstance(source,dict)
         and str(source.get("path","")).lower().endswith((".mid",".midi"))
         and manifest.get("approval",{}).get("status")=="user-approved"
+        and manifest.get("ingest",{}).get("enabled",True) is not False
     )
 
 def ingest_manifest(path: Path):
