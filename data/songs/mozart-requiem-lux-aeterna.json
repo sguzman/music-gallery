@@ -45,8 +45,8 @@
     },
     "arrangedKey": "B-flat major",
     "difficulty": {
-      "label": "beginner",
-      "rating": 2,
+      "label": "intermediate-beginner",
+      "rating": 3,
       "scale": 5
     },
     "fretRange": {
@@ -99,7 +99,7 @@
         "color": "#d8dee9"
       }
     },
-    "pinkyRequired": false,
+    "pinkyRequired": true,
     "simplificationGoals": [
       "isolate the opening Soprano Lux aeterna phrase from source measures 3–4",
       "preserve source rhythm while folding the line down exactly one octave",
@@ -172,7 +172,7 @@
     },
     "timing": {
       "confidence": "high",
-      "method": "Practice line taken directly from the Soprano source track at Communio quarter-units 8–16 and folded down one octave; Full Rendition preserves the complete 82-measure source slice."
+      "method": "Practice line taken directly from the Soprano source track at Communio quarter-units 8–16 and folded down one octave; the sustained D at source q11 crosses the Practice measure boundary exactly as in the source."
     },
     "needsReview": true,
     "notesAboutQuality": [
@@ -299,7 +299,7 @@
               "position": "low",
               "midi": 62,
               "start": 3,
-              "duration": 0.995833333,
+              "duration": 1.495833333,
               "anchor": true,
               "sourceMidi": 74,
               "octaveFoldSemitones": -12
@@ -317,7 +317,7 @@
               "fret": 3,
               "position": "low",
               "midi": 62,
-              "start": 0,
+              "start": 0.5,
               "duration": 0.495833333,
               "anchor": true,
               "sourceMidi": 74,
@@ -330,23 +330,10 @@
               "fret": 4,
               "position": "mid",
               "midi": 63,
-              "start": 0.5,
+              "start": 1,
               "duration": 0.995833333,
               "anchor": true,
               "sourceMidi": 75,
-              "octaveFoldSemitones": -12
-            },
-            {
-              "type": "note",
-              "string": "B",
-              "stringIndex": 1,
-              "fret": 3,
-              "position": "low",
-              "midi": 62,
-              "start": 1.5,
-              "duration": 0.495833333,
-              "anchor": true,
-              "sourceMidi": 74,
               "octaveFoldSemitones": -12
             },
             {
@@ -366,10 +353,23 @@
               "type": "note",
               "string": "B",
               "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 2.5,
+              "duration": 0.495833333,
+              "anchor": true,
+              "sourceMidi": 74,
+              "octaveFoldSemitones": -12
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
               "fret": 1,
               "position": "low",
               "midi": 60,
-              "start": 2.5,
+              "start": 3,
               "duration": 0.745833333,
               "anchor": true,
               "sourceMidi": 72,
@@ -382,23 +382,10 @@
               "fret": 1,
               "position": "low",
               "midi": 60,
-              "start": 3.25,
+              "start": 3.75,
               "duration": 0.245833333,
               "anchor": true,
               "sourceMidi": 72,
-              "octaveFoldSemitones": -12
-            },
-            {
-              "type": "note",
-              "string": "G",
-              "stringIndex": 2,
-              "fret": 3,
-              "position": "low",
-              "midi": 58,
-              "start": 3.5,
-              "duration": 0.495833333,
-              "anchor": true,
-              "sourceMidi": 70,
               "octaveFoldSemitones": -12
             }
           ]
