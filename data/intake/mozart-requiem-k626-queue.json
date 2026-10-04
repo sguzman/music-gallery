@@ -17,7 +17,7 @@
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
     "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
-  "processingCursor": 13,
+  "processingCursor": 14,
   "queue": [
     {
       "order": 1,
@@ -107,15 +107,15 @@
       "order": 13,
       "slug": "mozart-requiem-agnus-dei",
       "title": "Agnus Dei",
-      "status": "normalization-in-progress",
-      "note": "Rights blocker resolved: selected the exact K626 Requiem 12 agnus dei.mid from dominicfanucchi/aai-511_group1, whose README explicitly licenses the dataset CC0 1.0. Fetch/normalization is now running; publication remains gated on confirming the full 51-measure / 17-part traditional Süssmayr structure."
+      "status": "published-awaiting-user-qa",
+      "note": "Published and CI-validated from the CC0 K.626 tail witness: exactly 51 measures of 3/4, 17 full-orchestral tracks, 2,238 note events, source measures 1–51."
     },
     {
       "order": 14,
       "slug": "mozart-requiem-lux-aeterna",
       "title": "Lux aeterna / Communio",
-      "status": "preflight-source-identified",
-      "note": "Preflight only: ScoreBase/PDMX 46608 is D minor, 4/4, 82 measures, 18 full-orchestral parts and is a strong Lux aeterna / Communio candidate. Ingestion remains disabled until Agnus Dei is complete."
+      "status": "normalization-in-progress",
+      "note": "Agnus Dei is complete. Movement 14 now advances using source measures 52–133 of the same CC0 K.626 tail witness: 82 measures of 4/4 Communio / Lux aeterna."
     }
   ]
 }
