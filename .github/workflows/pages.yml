@@ -39,6 +39,8 @@ jobs:
         run: python3 scripts/test-licensed-midi-import.py
       - name: Open Full Rendition queue self-test
         run: node scripts/test-open-full-rendition-queue.mjs
+      - name: Mozart Requiem queue self-test
+        run: node scripts/test-mozart-requiem-queue.mjs
       - name: Browser module syntax check
         run: node --check assets/js/song-page.js
       - name: Build catalog and song wrappers
