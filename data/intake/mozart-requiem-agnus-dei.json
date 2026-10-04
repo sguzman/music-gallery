@@ -16,20 +16,20 @@
     "catalogue": "K.626"
   },
   "source": {
-    "provider": "ScoreBase / PDMX",
-    "sourcePage": "https://scorebase.org/scores/155734",
-    "status": "rejected-for-full-rendition",
-    "observedArtifact": {
-      "tracks": 6,
-      "events": 1324,
-      "durationUnits": 152.997916667,
-      "sha256": "3bd6d965aafc4587a3997de5694706b87c6ad0735d90dd0f3beb6835c4453ef1"
-    },
-    "reason": "The named Agnus Dei witness is only a six-track vocal/organ reduction. Musicarium requires the traditional full-orchestral movement."
+    "path": "data/sources/mozart-requiem-agnus-dei-orchestral.mid",
+    "format": "midi",
+    "provider": "dominicfanucchi/aai-511_group1 — CC0 classical MIDI dataset mirror",
+    "sourcePage": "https://github.com/dominicfanucchi/aai-511_group1/blob/main/midiclassics/Mozart/K626%20Requiem%2012%20agnus%20dei.mid",
+    "remoteUrl": "https://raw.githubusercontent.com/dominicfanucchi/aai-511_group1/main/midiclassics/Mozart/K626%20Requiem%2012%20agnus%20dei.mid",
+    "attribution": "Source dataset mirror maintained by Dominic Fanucchi et al.; repository README explicitly releases the dataset under CC0 1.0.",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+    "compositionRights": "The traditional Süssmayr Agnus Dei is public domain.",
+    "evidence": "The source repository includes the exact K626 Requiem 12 agnus dei.mid file (67,774 bytes; Git blob d7b3c4e869ddb1a4c777d23e071129a50cedb0ef) and its README states that the MIDI dataset is licensed under CC0 1.0. This resolves the redistribution-rights blocker while retaining the previously verified 51-measure / 17-part full-orchestral acceptance target."
   },
   "ingest": {
-    "enabled": false,
-    "status": "source-quality-blocked",
+    "enabled": true,
+    "status": "normalization-in-progress",
     "fidelityTarget": "complete-score-derived",
     "meterFallback": "3/4",
     "acceptanceTarget": {
@@ -54,9 +54,29 @@
         "Double Bass",
         "Organ"
       ]
-    }
+    },
+    "fidelity": "source-midi-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      20,
+      240
+    ],
+    "trackLevel": 0.24,
+    "label": "Agnus Dei, K.626 — complete traditional Süssmayr full-orchestral rendition",
+    "description": "Complete source-MIDI-derived Agnus Dei Full Rendition from a CC0-licensed classical MIDI dataset witness; publication remains gated on 51-measure / full-orchestration structural validation."
   },
   "sourceCandidates": [
+    {
+      "provider": "dominicfanucchi/aai-511_group1 CC0 dataset mirror",
+      "sourcePage": "https://github.com/dominicfanucchi/aai-511_group1/blob/main/midiclassics/Mozart/K626%20Requiem%2012%20agnus%20dei.mid",
+      "status": "selected-clean-machine-readable",
+      "rights": "CC0 1.0 as explicitly stated for the dataset in the repository README",
+      "observedFacts": {
+        "bytes": 67774,
+        "gitBlob": "d7b3c4e869ddb1a4c777d23e071129a50cedb0ef"
+      },
+      "reason": "Exact full Agnus MIDI is present in a repository whose README explicitly releases the dataset under CC0 1.0; selected to clear the rights gate."
+    },
     {
       "provider": "ScoreBase / PDMX",
       "sourcePage": "https://scorebase.org/scores/155734",
@@ -108,5 +128,5 @@
       "reason": "Confirms Süssmayr's Agnus Dei orchestration: strings, two basset horns, two bassoons, two trumpets in D, timpani, three trombones colla parte where indicated, SATB, organ and bass."
     }
   ],
-  "nextAction": "Acquire a redistribution-clean MusicXML/MIDI witness matching the 51-measure traditional Süssmayr full orchestration. Do not publish or regenerate the rejected six-track reduction."
+  "nextAction": "Fetch and normalize the selected CC0 Agnus Dei MIDI, verify the generated movement is the complete 51-measure traditional full orchestration, normalize part labels/mix, then publish and advance to Lux aeterna."
 }
