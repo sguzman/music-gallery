@@ -9,9 +9,9 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | # | Movement | Musicarium slug | Status |
 |---:|---|---|---|
 | 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **published — awaiting QA** |
-| 2 | Kyrie | `mozart-requiem-kyrie` | **publication in progress** |
+| 2 | Kyrie | `mozart-requiem-kyrie` | **published — awaiting QA** |
 | 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
-| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | queued |
+| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **ingestion in progress** |
 | 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | queued |
 | 6 | Recordare | `mozart-requiem-recordare` | queued |
 | 7 | Confutatis | `mozart-requiem-confutatis` | queued |
@@ -63,6 +63,8 @@ IMSLP remains the score/reference authority for the work and provides public-dom
 
 Movement 1, **Introitus — Requiem aeternam**, is published and CI-validated: **48 measures, 22 source tracks, 3,965 note events**. Source-part display names/mix metadata are normalized and a five-measure soprano Practice derivative is paired with the untouched complete Full Rendition.
 
-Movement 2, **Kyrie**, is now through source vendoring and first normalization. The ScoreBase/PDMX witness (score 93746) produced **52 measures, 16 source tracks, 6,461 note events**. Source-part display/mix normalization is being applied, and the opening Basso fugue subject is used as a four-measure Practice derivative without octave folding.
+Movement 2, **Kyrie**, is published and CI-validated: **52 measures, 16 source tracks, 6,461 note events**. Its opening Basso fugue subject is retained as a four-measure Practice derivative without octave folding.
+
+Movement 4, **Tuba mirum**, is now active (movement 3, Dies irae, was already published). A 452-measure ScoreBase/PDMX witness covers the first eight Requiem movements through Lacrimosa. The new measure-sliced MIDI importer extracts **source measures 169-230**, exactly the 62-measure Tuba mirum span, before track/mix normalization.
 
 Movement 3, **Dies irae**, remains the already-published baseline: 3,921 note events across 12 note-bearing choral/orchestral tracks.

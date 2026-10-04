@@ -17,7 +17,7 @@
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
     "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
-  "processingCursor": 2,
+  "processingCursor": 4,
   "queue": [
     {
       "order": 1,
@@ -30,8 +30,8 @@
       "order": 2,
       "slug": "mozart-requiem-kyrie",
       "title": "Kyrie",
-      "status": "publication-in-progress",
-      "note": "Source fetched and normalized: 52 measures, 16 tracks, 6,461 note events. Applying source-part display/mix normalization and publishing the public song wrapper."
+      "status": "published-awaiting-user-qa",
+      "note": "Published and CI-validated: 52 measures, 16 source tracks, 6,461 note events; readable source-part mix metadata applied without changing the note graph."
     },
     {
       "order": 3,
@@ -44,7 +44,8 @@
       "order": 4,
       "slug": "mozart-requiem-tuba-mirum",
       "title": "Tuba mirum",
-      "status": "queued"
+      "status": "ingestion-in-progress",
+      "note": "Processing started from ScoreBase/PDMX score 74361, a 452-measure source covering Introitus through Lacrimosa. Tuba mirum is extracted as source measures 169-230 (62 measures) using the new measure-slicing ingest path."
     },
     {
       "order": 5,
