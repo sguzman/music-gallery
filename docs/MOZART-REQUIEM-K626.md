@@ -17,8 +17,8 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 7 | Confutatis | `mozart-requiem-confutatis` | queued | **published — awaiting QA** |
 | 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued | **published — awaiting QA** |
 | 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **published — awaiting QA** |
-| 10 | Hostias | `mozart-requiem-hostias` | **publication in progress** |
-| 11 | Sanctus | `mozart-requiem-sanctus` | queued |
+| 10 | Hostias | `mozart-requiem-hostias` | **published — awaiting QA** |
+| 11 | Sanctus | `mozart-requiem-sanctus` | **ingestion in progress** |
 | 12 | Benedictus | `mozart-requiem-benedictus` | queued |
 | 13 | Agnus Dei | `mozart-requiem-agnus-dei` | queued |
 | 14 | Lux aeterna / Communio | `mozart-requiem-lux-aeterna` | queued |
@@ -122,3 +122,8 @@ Movement 10, **Hostias**, is now active from PDMX score 149074. The witness is *
 
 
 Hostias ingestion confirms the full movement structure: **89 measures**, 3/4 opening, a source meter change to 4/4 at q162 for the Quam olim reprise, and **14 tracks / 5,356 events**.
+
+
+Movement 10, **Hostias**, is published and CI-validated: **89 measures, 14 tracks, 5,356 events**.
+
+Movement 11, **Sanctus**, is active from a Süssmayr-attributed PDMX witness: **D major, 4/4, 38 measures, 18 full-orchestral parts**.

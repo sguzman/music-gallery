@@ -31,7 +31,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "normalization-and-publication",
+    "status": "published-awaiting-user-qa",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "defaultBpm": 0,
@@ -163,5 +163,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-hostias.full.json",
-  "nextAction": "Publish the normalized 89-measure Full Rendition and run CI; then advance to Sanctus."
+  "nextAction": "Await user listening/UX QA; preserve the complete 89-measure witness unless QA finds a concrete defect."
 }

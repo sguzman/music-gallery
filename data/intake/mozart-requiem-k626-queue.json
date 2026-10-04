@@ -17,7 +17,7 @@
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
     "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
-  "processingCursor": 10,
+  "processingCursor": 11,
   "queue": [
     {
       "order": 1,
@@ -86,14 +86,15 @@
       "order": 10,
       "slug": "mozart-requiem-hostias",
       "title": "Hostias",
-      "status": "publication-in-progress",
-      "note": "Verified 89-measure Hostias witness ingested: 14 tracks, 5,356 events; 3/4 opening changes to 4/4 for Quam olim at q162."
+      "status": "published-awaiting-user-qa",
+      "note": "Published and CI-validated: 89 measures, 14 tracks, 5,356 events; 3/4 Hostias transitions to 4/4 Quam olim."
     },
     {
       "order": 11,
       "slug": "mozart-requiem-sanctus",
       "title": "Sanctus",
-      "status": "queued"
+      "status": "ingestion-in-progress",
+      "note": "Processing started from PDMX score 181306: Süssmayr, D major, 4/4, 38 measures, 18 full-orchestra parts."
     },
     {
       "order": 12,
