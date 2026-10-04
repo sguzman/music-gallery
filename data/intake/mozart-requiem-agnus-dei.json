@@ -29,7 +29,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "normalization-and-publication",
+    "status": "published-awaiting-user-qa",
     "fidelityTarget": "complete-score-derived",
     "meterFallback": "3/4",
     "acceptanceTarget": {
@@ -253,5 +253,5 @@
       "reason": "Confirms Süssmayr's Agnus Dei orchestration: strings, two basset horns, two bassoons, two trumpets in D, timpani, three trombones colla parte where indicated, SATB, organ and bass."
     }
   ],
-  "nextAction": "Regenerate the exact 51-measure Agnus Dei with normalized full-orchestral part labels/mix, publish its public song wrapper, then advance to the following 82-measure Communio."
+  "nextAction": "Published and structurally validated: 51 measures, 17 full-orchestral tracks, 2,238 events. Preserve this source slice unless concrete QA finds a defect."
 }
