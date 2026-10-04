@@ -100,8 +100,8 @@
       "order": 12,
       "slug": "mozart-requiem-benedictus",
       "title": "Benedictus",
-      "status": "ingestion-in-progress",
-      "note": "Processing named ScoreBase/PDMX Benedictus witness 148760; expected 76-measure Benedictus + Hosanna structure."
+      "status": "source-quality-blocked",
+      "note": "Current PDMX witness is complete but only SATB + two organ staves (6 note-bearing tracks), so it fails the full-orchestration Full Rendition contract. A fuller 1997 MIDI exists but has unverified redistribution rights; source search continues."
     },
     {
       "order": 13,
