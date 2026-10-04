@@ -17,20 +17,21 @@
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
     "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
-  "processingCursor": 1,
+  "processingCursor": 2,
   "queue": [
     {
       "order": 1,
       "slug": "mozart-requiem-introitus",
       "title": "Introitus — Requiem aeternam",
-      "status": "publication-in-progress",
-      "note": "Source fetched and normalized: 48 measures, 22 tracks, 3,965 note events. Applying part-name/mix overrides and publishing the public song wrapper."
+      "status": "published-awaiting-user-qa",
+      "note": "Published and CI-validated: 48 measures, 22 source tracks, 3,965 note events; source-part names and mix normalized without changing the note graph."
     },
     {
       "order": 2,
       "slug": "mozart-requiem-kyrie",
       "title": "Kyrie",
-      "status": "queued"
+      "status": "ingestion-in-progress",
+      "note": "Processing started from ScoreBase/PDMX score 93746: D minor, 4/4, 52 measures, 16 parts, SATB + organ + orchestra; this matches the 52-measure Kyrie double fugue."
     },
     {
       "order": 3,

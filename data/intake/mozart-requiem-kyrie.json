@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "mozart-requiem-kyrie",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as movement 2 of the complete Mozart Requiem K.626 Full Rendition queue."
+  },
+  "identity": {
+    "title": "Kyrie from Requiem, K.626",
+    "displayTitle": "Mozart — Kyrie",
+    "shortTitle": "Kyrie",
+    "composer": {
+      "name": "Wolfgang Amadeus Mozart"
+    },
+    "completion": {
+      "name": "Franz Xaver Süssmayr"
+    },
+    "catalogue": "K.626"
+  },
+  "source": {
+    "path": "data/sources/mozart-requiem-kyrie.mid",
+    "format": "midi",
+    "provider": "ScoreBase / PDMX",
+    "sourcePage": "https://scorebase.org/scores/93746",
+    "remoteUrl": "https://scorebase.org/scores/93746/file/mid?download=true",
+    "attribution": "PDMX (Long, Novack, McAuley, Berg-Kirkpatrick et al.); source surfaced through ScoreBase",
+    "license": "Public-domain score; PDMX dataset attribution",
+    "licenseUrl": "https://zenodo.org/records/15571083",
+    "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
+    "evidence": "ScoreBase identifies the witness as PDMX and exposes MIDI/MXL/PDF. It is in D minor, 4/4, 52 measures, with 16 parts and SATB + organ + orchestra. Independent Kyrie analysis identifies Mozart's K.626 Kyrie as a 52-measure double fugue in D minor and 4/4. ScoreBase's PDMX importer defaults to the no_license_conflict subset."
+  },
+  "ingest": {
+    "enabled": true,
+    "status": "ingestion-in-progress",
+    "fidelity": "source-midi-derived",
+    "fidelityTarget": "complete-score-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      30,
+      240
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.24,
+    "label": "Kyrie, K.626 — complete choral/orchestral rendition",
+    "description": "Complete source-MIDI-derived Kyrie Full Rendition from a redistribution-cleared PDMX witness, preserving all note-bearing MIDI tracks and source tempo/meter data."
+  },
+  "sourceCrossChecks": [
+    {
+      "provider": "ScoreBase",
+      "sourcePage": "https://scorebase.org/scores/93746",
+      "role": "symbolic witness structure: D minor, 4/4, 52 measures, SATB + orchestra"
+    },
+    {
+      "provider": "Historia de la Música",
+      "sourcePage": "https://hm.bustena.com/2015/10/01/w-a-mozart-el-kyrie-del-requiem-k-626-analisis/",
+      "role": "movement identity cross-check: K.626 Kyrie is a 52-measure double fugue in D minor, 4/4"
+    },
+    {
+      "provider": "PDMX",
+      "sourcePage": "https://zenodo.org/records/15571083",
+      "role": "license/subset provenance",
+      "subset": "no_license_conflict"
+    }
+  ],
+  "output": "data/ingested/mozart-requiem-kyrie.full.json",
+  "nextAction": "Fetch and normalize the complete MIDI event graph, inspect all source tracks, normalize part names/mix, create a compact Practice derivative, publish and validate."
+}
