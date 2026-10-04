@@ -17,7 +17,7 @@
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
     "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
-  "processingCursor": 6,
+  "processingCursor": 4,
   "queue": [
     {
       "order": 1,
@@ -44,22 +44,22 @@
       "order": 4,
       "slug": "mozart-requiem-tuba-mirum",
       "title": "Tuba mirum",
-      "status": "published-awaiting-user-qa",
-      "note": "Published and CI-validated: 62 measures, 19 retained source tracks, 1,538 note events; solo/vocal identities and mix normalized without changing the event graph."
+      "status": "normalization-in-progress",
+      "note": "Boundary QA found the earlier 169-230 slice started 8 quarter-units too early. Repairing Tuba mirum to source measures 171-233: exact tempo-boundary span q680-q932 (63 source measures)."
     },
     {
       "order": 5,
       "slug": "mozart-requiem-rex-tremendae",
       "title": "Rex tremendae",
-      "status": "published-awaiting-user-qa",
-      "note": "Published and CI-validated: 22 measures, 21 retained source tracks, 2,024 note events; SATB/orchestral labels and mix normalized without changing the source event graph."
+      "status": "queued",
+      "note": "Previous wrapper invalidated by boundary QA. Correct Rex tremendae span is source measures 234-255: q932-q1020, exactly 22 measures."
     },
     {
       "order": 6,
       "slug": "mozart-requiem-recordare",
       "title": "Recordare",
-      "status": "ingestion-in-progress",
-      "note": "Processing started from the same conflict-free PDMX opening-Requiem witness. Recordare is extracted as source measures 253-382 inclusive (130 measures)."
+      "status": "queued",
+      "note": "Recordare boundary corrected before publication: source measures 256-385, q1020-q1410, exactly 130 measures in 3/4."
     },
     {
       "order": 7,

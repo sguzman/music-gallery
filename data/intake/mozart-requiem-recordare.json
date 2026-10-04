@@ -27,16 +27,16 @@
     "license": "Public-domain score; PDMX dataset attribution",
     "licenseUrl": "https://zenodo.org/records/15571083",
     "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
-    "evidence": "The combined conflict-free opening-Requiem witness covers the Sequence through Lacrimosa. Standard movement counts place Recordare after Rex tremendae at cumulative source measures 253-382 inclusive (130 measures)."
+    "evidence": "Boundary QA establishes Recordare directly from source structural markers: it begins at q1020 with the change to 3/4 and tempo 88.000153, and ends at q1410 where the source returns to 4/4 for Confutatis. This is source measures 256-385 inclusive, exactly 130 measures."
   },
   "ingest": {
-    "enabled": true,
-    "status": "ingestion-in-progress",
+    "enabled": false,
+    "status": "queued-after-boundary-correction",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
-      "start": 253,
-      "end": 382
+      "start": 256,
+      "end": 385
     },
     "defaultBpm": 0,
     "bpmRange": [
@@ -62,5 +62,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-recordare.full.json",
-  "nextAction": "Extract source measures 253-382, inspect retained solo quartet/orchestral tracks, normalize source-part labels/mix, create a compact Practice derivative, publish and validate."
+  "nextAction": "After corrected Tuba mirum and Rex tremendae are republished, enable ingestion for source measures 256-385."
 }

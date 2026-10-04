@@ -11,9 +11,9 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **published — awaiting QA** |
 | 2 | Kyrie | `mozart-requiem-kyrie` | **published — awaiting QA** |
 | 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
-| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **published — awaiting QA** |
-| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | **published — awaiting QA** |
-| 6 | Recordare | `mozart-requiem-recordare` | **ingestion in progress** |
+| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **boundary repair in progress** |
+| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | queued for corrected reingest |
+| 6 | Recordare | `mozart-requiem-recordare` | queued with corrected boundary |
 | 7 | Confutatis | `mozart-requiem-confutatis` | queued |
 | 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued |
 | 9 | Domine Jesu | `mozart-requiem-domine-jesu` | queued |
@@ -72,3 +72,16 @@ Movement 5, **Rex tremendae**, is published and CI-validated: source measures **
 Movement 6, **Recordare**, is now active. The same conflict-free opening-Requiem witness is sliced at **source measures 253-382**, the standard **130-measure** Recordare span.
 
 Movement 3, **Dies irae**, remains the already-published baseline: 3,921 note events across 12 note-bearing choral/orchestral tracks.
+
+
+## Boundary QA correction — Sequence source
+
+A structural QA pass on the combined PDMX MIDI found that the first cumulative-measure estimate for Tuba mirum/Rex tremendae was offset. The source itself gives unambiguous movement markers:
+
+- **Tuba mirum:** q680, tempo ≈78 → q932, tempo changes to ≈52. Importer measures **171–233**.
+- **Rex tremendae:** q932 → q1020. Exactly **22 measures** of 4/4, importer measures **234–255**.
+- **Recordare:** q1020 changes to **3/4** and tempo ≈88 → q1410 returns to 4/4. Exactly **130 measures**, importer measures **256–385**.
+- **Confutatis:** q1410 → q1578, where the meter changes to **12/8**.
+- **Lacrimosa:** q1578 → q1758, exactly **30 measures of 12/8**.
+
+The earlier Tuba and Rex public wrappers are therefore temporarily de-published in the queue contract until their source slices are regenerated and their metadata/counts are revalidated. This is a source-boundary repair, not a change to the underlying witness or rights status.

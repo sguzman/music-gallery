@@ -27,16 +27,16 @@
     "license": "Public-domain score; PDMX dataset attribution",
     "licenseUrl": "https://zenodo.org/records/15571083",
     "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
-    "evidence": "The conflict-free combined Requiem witness yields an exact 22-measure, 88-quarter-unit slice at source measures 231-252. The retained SATB/tutti orchestration and the characteristic opening choral attack confirm Rex tremendae."
+    "evidence": "Boundary QA supersedes the earlier 231-252 estimate. Rex tremendae begins exactly at source q932 (tempo 52.000007) and ends at q1020 where Recordare changes to 3/4 and tempo 88.000153. This is source measures 234-255 inclusive, exactly 22 4/4 measures."
   },
   "ingest": {
     "enabled": true,
-    "status": "published-awaiting-user-qa",
+    "status": "source-boundary-correction",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
-      "start": 231,
-      "end": 252
+      "start": 234,
+      "end": 255
     },
     "defaultBpm": 0,
     "bpmRange": [
@@ -216,5 +216,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-rex-tremendae.full.json",
-  "nextAction": "Await user listening/UX QA; retain the exact 22-measure source slice unless QA finds a concrete boundary or mix defect."
+  "nextAction": "Wait for Tuba mirum repair to validate, then reingest source measures 234-255 and republish with corrected counts."
 }

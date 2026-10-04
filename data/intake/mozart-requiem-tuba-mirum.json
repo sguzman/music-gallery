@@ -27,16 +27,16 @@
     "license": "Public-domain score; PDMX dataset attribution",
     "licenseUrl": "https://zenodo.org/records/15571083",
     "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
-    "evidence": "ScoreBase exposes a PDMX witness catalogued as 452 measures for the opening Requiem through Lacrimosa. Independent measure counts place Tuba mirum at measures 169-230 inclusive (62 measures). The MIDI slice yields the expected solo-trombone opening and staggered Bass → Tenor → Alto → Soprano solo entries, confirming the movement boundary."
+    "evidence": "Boundary QA against the source tempo map supersedes the earlier cumulative-count estimate. Tuba mirum begins at source q680 (tempo 77.999977) and Rex tremendae begins at q932 (tempo 52.000007). In the importer's generated measure map this is source measures 171-233 inclusive: 63 source measures, q680-q932."
   },
   "ingest": {
     "enabled": true,
-    "status": "published-awaiting-user-qa",
+    "status": "normalization-in-progress",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
-      "start": 169,
-      "end": 230
+      "start": 171,
+      "end": 233
     },
     "defaultBpm": 0,
     "bpmRange": [
@@ -202,5 +202,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-tuba-mirum.full.json",
-  "nextAction": "Await user listening/UX QA; retain the exact 62-measure source slice unless QA finds a concrete boundary or mix defect."
+  "nextAction": "Reingest corrected source measures 171-233, inspect event/track counts and movement identities, then update the public wrapper before restoring published status."
 }
