@@ -51,8 +51,8 @@
       "order": 5,
       "slug": "mozart-requiem-rex-tremendae",
       "title": "Rex tremendae",
-      "status": "ingestion-in-progress",
-      "note": "Processing started from the same conflict-free PDMX opening-Requiem witness. Rex tremendae is extracted as source measures 231-252 inclusive (22 measures)."
+      "status": "publication-in-progress",
+      "note": "22-measure slice normalized: 21 tracks, 2,024 events. Applying readable SATB/orchestral labels and publishing the public song wrapper."
     },
     {
       "order": 6,
