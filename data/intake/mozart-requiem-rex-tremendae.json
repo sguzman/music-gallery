@@ -31,7 +31,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "source-boundary-correction",
+    "status": "normalization-and-publication",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
@@ -216,5 +216,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-rex-tremendae.full.json",
-  "nextAction": "Wait for Tuba mirum repair to validate, then reingest source measures 234-255 and republish with corrected counts."
+  "nextAction": "Publish corrected 22-measure wrapper, run CI, then restore published status."
 }
