@@ -1,0 +1,359 @@
+{
+  "$schema": "../song.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "mozart-requiem-recordare",
+  "slug": "mozart-requiem-recordare",
+  "identity": {
+    "title": "Recordare from Requiem, K.626",
+    "displayTitle": "Mozart — Recordare",
+    "shortTitle": "Recordare",
+    "composer": {
+      "name": "Wolfgang Amadeus Mozart"
+    },
+    "aliases": [
+      "Recordare Jesu pie",
+      "Requiem Recordare",
+      "K.626 Recordare"
+    ],
+    "catalogue": "K.626"
+  },
+  "origin": {
+    "category": "classical",
+    "era": "Classical",
+    "year": 1791,
+    "sourceMedium": "vocal quartet and orchestra",
+    "franchise": null,
+    "originalKey": "F major",
+    "originalInstrumentation": "Soprano, alto, tenor and bass soloists; basset horns, bassoons and strings"
+  },
+  "arrangement": {
+    "name": "Opening bass-solo phrase",
+    "type": "melody-only",
+    "targetInstrument": "steel-string acoustic guitar",
+    "tuning": {
+      "name": "Standard tuning",
+      "strings": [
+        "E2",
+        "A2",
+        "D3",
+        "G3",
+        "B3",
+        "E4"
+      ]
+    },
+    "arrangedKey": "F major",
+    "difficulty": {
+      "label": "beginner",
+      "rating": 2,
+      "scale": 5
+    },
+    "fretRange": {
+      "min": 0,
+      "max": 3
+    },
+    "stringsUsed": [
+      "D",
+      "G",
+      "B"
+    ],
+    "handPositions": {
+      "low": {
+        "label": "Frets 1–3",
+        "frets": [
+          1,
+          3
+        ],
+        "color": "#4765ff"
+      },
+      "mid": {
+        "label": "Frets 3–5",
+        "frets": [
+          3,
+          5
+        ],
+        "color": "#1fa874"
+      },
+      "upper": {
+        "label": "Frets 6–8",
+        "frets": [
+          6,
+          8
+        ],
+        "color": "#ad6ce7"
+      },
+      "high": {
+        "label": "Frets 8–10",
+        "frets": [
+          8,
+          10
+        ],
+        "color": "#e0704f"
+      },
+      "open": {
+        "label": "Open string",
+        "frets": [
+          0,
+          0
+        ],
+        "color": "#d8dee9"
+      }
+    },
+    "pinkyRequired": false,
+    "simplificationGoals": [
+      "isolate an early Bass solo phrase",
+      "preserve source pitch and rhythm exactly",
+      "leave the complete quartet/orchestral Full Rendition untouched"
+    ]
+  },
+  "musical": {
+    "meter": "3/4",
+    "tempoUnit": "quarter note",
+    "unitsPerQuarter": 1,
+    "defaultBpm": 88,
+    "bpmRange": [
+      20,
+      220
+    ]
+  },
+  "playback": {
+    "defaultInstrument": "guitar",
+    "instrumentOptions": [
+      "guitar",
+      "piano",
+      "both"
+    ],
+    "gatePercent": 94,
+    "webAudio": true,
+    "midiExport": true,
+    "sectionLooping": true,
+    "synchronizedHighlighting": true,
+    "salvageMode": true
+  },
+  "taxonomy": {
+    "genres": [
+      "classical",
+      "requiem",
+      "sacred",
+      "orchestral",
+      "vocal-quartet"
+    ],
+    "moods": [
+      "tender",
+      "supplicatory",
+      "reflective",
+      "lyrical"
+    ],
+    "tags": [
+      "Mozart",
+      "Recordare",
+      "Requiem",
+      "K.626",
+      "vocal quartet",
+      "public domain",
+      "Full Rendition"
+    ],
+    "techniques": [
+      "single-note melody",
+      "sustained phrasing"
+    ],
+    "learningGoals": [
+      "lyrical phrasing",
+      "3/4 pulse",
+      "melodic contour"
+    ]
+  },
+  "verification": {
+    "notes": {
+      "confidence": "high"
+    },
+    "timing": {
+      "confidence": "high",
+      "method": "Practice line taken directly from the Bass Solo source track at movement quarter-units 42-54; Full Rendition is the exact q1020-q1410 / source-measure 256-385 slice."
+    },
+    "needsReview": true,
+    "notesAboutQuality": [
+      "Boundary is structurally exact: Recordare starts with the 3/4 + tempo-88 source change at q1020 and ends with the return to 4/4 at q1410.",
+      "Full Rendition contains 4,052 note events across 15 retained note-bearing source tracks.",
+      "Four generic Piano source tracks align by range with the solo quartet and are relabeled Soprano, Alto, Tenor and Bass without changing notes.",
+      "Source alternate B-flat clarinet layers are retained and labeled."
+    ],
+    "sourceAlignment": {
+      "status": "source-midi-derived-measure-slice",
+      "provider": "ScoreBase / PDMX",
+      "sourceSha256": "1038607471605b6efac999226c723f5f85804034345df2911380cbcb756f2f9b",
+      "fullArtifact": "data/ingested/mozart-requiem-recordare.full.json",
+      "sourceFacts": [
+        "MIDI format 1",
+        "480 ticks per quarter",
+        "source measures 256-385 inclusive",
+        "130 measures of 3/4",
+        "15 retained note-bearing tracks",
+        "4,052 note events",
+        "four vocal soloists plus winds and strings"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "label": "ScoreBase / PDMX — Mozart Requiem opening movements",
+      "url": "https://scorebase.org/scores/74361",
+      "kind": "complete public-domain symbolic score (MIDI/MXL/PDF)",
+      "license": "Public-domain score; PDMX dataset attribution",
+      "evidence": "Recordare extracted at the exact 3/4 structural span q1020-q1410."
+    },
+    {
+      "label": "New Mozart Edition — Requiem, traditional Süssmayr completion",
+      "url": "https://dme.mozarteum.at/DME/nma/nma_toc.php?l=2&vsep=14",
+      "kind": "scholarly score reference",
+      "license": "reference",
+      "evidence": "Movement-order cross-check."
+    }
+  ],
+  "rights": {
+    "composition": "public domain",
+    "source": "PDMX conflict-free public-domain score witness with dataset attribution retained",
+    "arrangement": "educational bass-solo derivative from public-domain source"
+  },
+  "presentation": {
+    "accent": "#7b6652",
+    "accentDark": "#46382e",
+    "description": "The lyrical quartet movement Recordare, paired with the complete 130-measure 3/4 orchestral Full Rendition."
+  },
+  "sections": [
+    {
+      "id": "opening-bass-solo",
+      "name": "Opening bass-solo phrase",
+      "description": "Bass Solo source phrase from movement quarter-units 42-54, shifted to Practice start 0.",
+      "measures": [
+        {
+          "label": "M1",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 0,
+              "position": "open",
+              "midi": 55,
+              "start": 0,
+              "duration": 3.797916667,
+              "anchor": true,
+              "sourceMidi": 55,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M2",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "D",
+              "stringIndex": 3,
+              "fret": 3,
+              "position": "low",
+              "midi": 53,
+              "start": 1,
+              "duration": 0.947916667,
+              "anchor": true,
+              "sourceMidi": 53,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 1,
+              "position": "low",
+              "midi": 60,
+              "start": 2,
+              "duration": 0.947916667,
+              "anchor": true,
+              "sourceMidi": 60,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M3",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 3,
+              "position": "low",
+              "midi": 58,
+              "start": 0,
+              "duration": 1.897916667,
+              "anchor": true,
+              "sourceMidi": 58,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 3,
+              "position": "low",
+              "midi": 58,
+              "start": 2,
+              "duration": 0.947916667,
+              "anchor": true,
+              "sourceMidi": 58,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M4",
+          "duration": 3,
+          "events": [
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 3,
+              "position": "low",
+              "midi": 58,
+              "start": 0,
+              "duration": 0.947916667,
+              "anchor": true,
+              "sourceMidi": 58,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 2,
+              "position": "low",
+              "midi": 57,
+              "start": 1,
+              "duration": 1.897916667,
+              "anchor": true,
+              "sourceMidi": 57,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {},
+  "fullVersion": {
+    "status": "available",
+    "artifactPath": "data/ingested/mozart-requiem-recordare.full.json",
+    "label": "Recordare, K.626 — complete 130-measure movement rendition",
+    "description": "Complete source-MIDI-derived Recordare Full Rendition: 4,052 note events across 15 retained source tracks.",
+    "fidelity": "source-midi-derived-measure-slice",
+    "provenance": {
+      "provider": "ScoreBase / PDMX",
+      "license": "Public-domain score; PDMX dataset attribution",
+      "attribution": "PDMX (Long, Novack, McAuley, Berg-Kirkpatrick et al.)"
+    }
+  }
+}
