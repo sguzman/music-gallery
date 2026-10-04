@@ -27,11 +27,11 @@
     "license": "Public-domain score; PDMX dataset attribution",
     "licenseUrl": "https://zenodo.org/records/15571083",
     "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
-    "evidence": "ScoreBase exposes a 452-measure PDMX witness tagged for the Requiem sections through Lacrimosa. The standard first eight movement counts sum exactly to 452 measures. Tuba mirum is the fourth movement: cumulative source measures 169-230, 62 measures."
+    "evidence": "ScoreBase exposes a PDMX witness catalogued as 452 measures for the opening Requiem through Lacrimosa. Independent measure counts place Tuba mirum at measures 169-230 inclusive (62 measures). The MIDI slice yields the expected solo-trombone opening and staggered Bass → Tenor → Alto → Soprano solo entries, confirming the movement boundary."
   },
   "ingest": {
     "enabled": true,
-    "status": "ingestion-in-progress",
+    "status": "normalization-and-publication",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
@@ -46,7 +46,142 @@
     "meterFallback": "4/4",
     "trackLevel": 0.24,
     "label": "Tuba mirum, K.626 — complete movement rendition",
-    "description": "Complete source-MIDI-derived Tuba mirum Full Rendition extracted by exact measure range from a redistribution-cleared PDMX Requiem witness, preserving every note-bearing track inside the movement."
+    "description": "Complete source-MIDI-derived Tuba mirum Full Rendition extracted by exact measure range from a redistribution-cleared PDMX Requiem witness, preserving every note-bearing track inside the movement.",
+    "trackOverrides": {
+      "b-clarinet": {
+        "name": "B♭ Clarinet I (source alternate)",
+        "instrumentLabel": "B♭ Clarinet I",
+        "defaultInstrument": "clarinet",
+        "level": 0.12,
+        "pan": -0.68
+      },
+      "b-clarinet-2": {
+        "name": "B♭ Clarinet II (source alternate)",
+        "instrumentLabel": "B♭ Clarinet II",
+        "defaultInstrument": "clarinet",
+        "level": 0.12,
+        "pan": -0.58
+      },
+      "basset-horn": {
+        "name": "Basset Horn I",
+        "instrumentLabel": "Basset Horn I",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.48
+      },
+      "basset-horn-2": {
+        "name": "Basset Horn II",
+        "instrumentLabel": "Basset Horn II",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.38
+      },
+      "bassoon": {
+        "name": "Bassoon I",
+        "instrumentLabel": "Bassoon I",
+        "defaultInstrument": "bassoon",
+        "level": 0.22,
+        "pan": -0.28
+      },
+      "bassoon-2": {
+        "name": "Bassoon II",
+        "instrumentLabel": "Bassoon II",
+        "defaultInstrument": "bassoon",
+        "level": 0.22,
+        "pan": -0.18
+      },
+      "d-trumpet": {
+        "name": "Trumpet in D I",
+        "instrumentLabel": "Trumpet in D I",
+        "defaultInstrument": "horn",
+        "level": 0.16,
+        "pan": 0.44
+      },
+      "d-trumpet-2": {
+        "name": "Trumpet in D II",
+        "instrumentLabel": "Trumpet in D II",
+        "defaultInstrument": "horn",
+        "level": 0.16,
+        "pan": 0.54
+      },
+      "tenor-trombone": {
+        "name": "Solo Trombone",
+        "instrumentLabel": "Solo Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.3,
+        "pan": 0.08
+      },
+      "timpani": {
+        "name": "Timpani",
+        "instrumentLabel": "Timpani",
+        "defaultInstrument": "generic",
+        "level": 0.15,
+        "pan": 0.32
+      },
+      "piano": {
+        "name": "Soprano Solo",
+        "instrumentLabel": "Soprano Solo",
+        "defaultInstrument": "voice",
+        "level": 0.27,
+        "pan": 0.16
+      },
+      "piano-2": {
+        "name": "Alto Solo",
+        "instrumentLabel": "Alto Solo",
+        "defaultInstrument": "voice",
+        "level": 0.26,
+        "pan": 0.12
+      },
+      "piano-3": {
+        "name": "Tenor Solo",
+        "instrumentLabel": "Tenor Solo",
+        "defaultInstrument": "voice",
+        "level": 0.26,
+        "pan": 0.08
+      },
+      "piano-4": {
+        "name": "Bass Solo",
+        "instrumentLabel": "Bass Solo",
+        "defaultInstrument": "voice",
+        "level": 0.27,
+        "pan": 0.04
+      },
+      "violins": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.21,
+        "pan": -0.42
+      },
+      "violins-2": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.2,
+        "pan": -0.25
+      },
+      "violas": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": -0.08
+      },
+      "violoncellos": {
+        "name": "Cellos",
+        "instrumentLabel": "Cellos",
+        "defaultInstrument": "cello",
+        "level": 0.21,
+        "pan": 0.08
+      },
+      "contrabasses": {
+        "name": "Double Basses",
+        "instrumentLabel": "Double Basses",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": 0.18
+      }
+    }
   },
   "sourceCrossChecks": [
     {
@@ -67,5 +202,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-tuba-mirum.full.json",
-  "nextAction": "Fetch the combined witness, extract source measures 169-230, inspect the retained track/instrument set for standard Tuba mirum fidelity, then normalize mix and publish."
+  "nextAction": "Reingest with normalized source-part labels/mix, publish the public song wrapper, run CI, then advance to Rex tremendae."
 }

@@ -44,8 +44,8 @@
       "order": 4,
       "slug": "mozart-requiem-tuba-mirum",
       "title": "Tuba mirum",
-      "status": "ingestion-in-progress",
-      "note": "Processing started from ScoreBase/PDMX score 74361, a 452-measure source covering Introitus through Lacrimosa. Tuba mirum is extracted as source measures 169-230 (62 measures) using the new measure-slicing ingest path."
+      "status": "publication-in-progress",
+      "note": "62-measure slice verified structurally and normalized: 19 tracks, 1,538 events. Publishing readable source-part/vocal-solo labels and a trombone Practice derivative."
     },
     {
       "order": 5,

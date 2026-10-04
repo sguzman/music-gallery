@@ -1,0 +1,354 @@
+{
+  "$schema": "../song.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "mozart-requiem-tuba-mirum",
+  "slug": "mozart-requiem-tuba-mirum",
+  "identity": {
+    "title": "Tuba mirum from Requiem, K.626",
+    "displayTitle": "Mozart — Tuba mirum",
+    "shortTitle": "Tuba mirum",
+    "composer": {
+      "name": "Wolfgang Amadeus Mozart"
+    },
+    "aliases": [
+      "Tuba mirum spargens sonum",
+      "Requiem Tuba mirum",
+      "K.626 Tuba mirum"
+    ],
+    "catalogue": "K.626"
+  },
+  "origin": {
+    "category": "classical",
+    "era": "Classical",
+    "year": 1791,
+    "sourceMedium": "four vocal soloists and orchestra",
+    "franchise": null,
+    "originalKey": "B-flat major",
+    "originalInstrumentation": "Bass, tenor, alto and soprano soloists; solo trombone; basset horns, bassoons, trumpets, timpani and strings"
+  },
+  "arrangement": {
+    "name": "Opening trombone call",
+    "type": "melody-only",
+    "targetInstrument": "steel-string acoustic guitar",
+    "tuning": {
+      "name": "Standard tuning",
+      "strings": [
+        "E2",
+        "A2",
+        "D3",
+        "G3",
+        "B3",
+        "E4"
+      ]
+    },
+    "arrangedKey": "B-flat major",
+    "difficulty": {
+      "label": "intermediate-beginner",
+      "rating": 3,
+      "scale": 5
+    },
+    "fretRange": {
+      "min": 0,
+      "max": 3
+    },
+    "stringsUsed": [
+      "A",
+      "D",
+      "G",
+      "B"
+    ],
+    "handPositions": {
+      "low": {
+        "label": "Frets 1–3",
+        "frets": [
+          1,
+          3
+        ],
+        "color": "#4765ff"
+      },
+      "mid": {
+        "label": "Frets 3–5",
+        "frets": [
+          3,
+          5
+        ],
+        "color": "#1fa874"
+      },
+      "upper": {
+        "label": "Frets 6–8",
+        "frets": [
+          6,
+          8
+        ],
+        "color": "#ad6ce7"
+      },
+      "high": {
+        "label": "Frets 8–10",
+        "frets": [
+          8,
+          10
+        ],
+        "color": "#e0704f"
+      },
+      "open": {
+        "label": "Open string",
+        "frets": [
+          0,
+          0
+        ],
+        "color": "#d8dee9"
+      }
+    },
+    "pinkyRequired": false,
+    "simplificationGoals": [
+      "isolate the iconic opening solo-trombone call as a compact Practice study",
+      "preserve source pitch and rhythm exactly",
+      "leave the complete multi-soloist orchestral Full Rendition untouched"
+    ]
+  },
+  "musical": {
+    "meter": "4/4",
+    "tempoUnit": "quarter note",
+    "unitsPerQuarter": 1,
+    "defaultBpm": 78,
+    "bpmRange": [
+      20,
+      220
+    ]
+  },
+  "playback": {
+    "defaultInstrument": "guitar",
+    "instrumentOptions": [
+      "guitar",
+      "piano",
+      "both"
+    ],
+    "gatePercent": 94,
+    "webAudio": true,
+    "midiExport": true,
+    "sectionLooping": true,
+    "synchronizedHighlighting": true,
+    "salvageMode": true
+  },
+  "taxonomy": {
+    "genres": [
+      "classical",
+      "requiem",
+      "sacred",
+      "orchestral",
+      "vocal-solo"
+    ],
+    "moods": [
+      "solemn",
+      "prophetic",
+      "dramatic",
+      "luminous"
+    ],
+    "tags": [
+      "Mozart",
+      "Tuba mirum",
+      "Requiem",
+      "K.626",
+      "solo trombone",
+      "public domain",
+      "Full Rendition"
+    ],
+    "techniques": [
+      "single-note melody",
+      "sustained phrasing"
+    ],
+    "learningGoals": [
+      "phrase contour",
+      "sustain control",
+      "recognition of the trombone motive"
+    ]
+  },
+  "verification": {
+    "notes": {
+      "confidence": "high"
+    },
+    "timing": {
+      "confidence": "high",
+      "method": "Practice line taken directly from the retained Tenor Trombone source track at movement quarter-units 8-20; Full Rendition is an exact 62-measure source slice."
+    },
+    "needsReview": true,
+    "notesAboutQuality": [
+      "The selected 62-measure slice matches the standard Süssmayr Tuba mirum length.",
+      "Full Rendition contains 1,538 note events across 19 retained source tracks.",
+      "The source encodes four vocal solo staves as generic Piano tracks; entry order and ranges identify them as Bass (q16), Tenor (q80), Alto (q144), Soprano (q168), and Musicarium relabels them without altering notes.",
+      "Two B-flat clarinet tracks in the source duplicate/alternate the basset-horn layer; they are retained and explicitly marked as source alternates rather than silently deleted."
+    ],
+    "sourceAlignment": {
+      "status": "source-midi-derived-measure-slice",
+      "provider": "ScoreBase / PDMX",
+      "sourceSha256": "1038607471605b6efac999226c723f5f85804034345df2911380cbcb756f2f9b",
+      "fullArtifact": "data/ingested/mozart-requiem-tuba-mirum.full.json",
+      "sourceFacts": [
+        "MIDI format 1",
+        "480 ticks per quarter",
+        "source measures 169-230 inclusive",
+        "62 movement measures",
+        "19 retained note-bearing tracks",
+        "1,538 note events",
+        "solo trombone and four staggered vocal solo entries"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "label": "ScoreBase / PDMX — Mozart Requiem opening movements",
+      "url": "https://scorebase.org/scores/74361",
+      "kind": "complete public-domain symbolic score (MIDI/MXL/PDF)",
+      "license": "Public-domain score; PDMX dataset attribution",
+      "evidence": "Tuba mirum extracted as measures 169-230 from the combined witness and structurally confirmed by the solo-trombone and vocal-entry pattern."
+    },
+    {
+      "label": "New Mozart Edition — Requiem, traditional Süssmayr completion",
+      "url": "https://dme.mozarteum.at/DME/nma/nma_toc.php?l=2&vsep=14",
+      "kind": "scholarly score reference",
+      "license": "reference",
+      "evidence": "Used to cross-check movement order and traditional completion."
+    }
+  ],
+  "rights": {
+    "composition": "public domain",
+    "source": "PDMX conflict-free public-domain score witness with dataset attribution retained",
+    "arrangement": "educational trombone-line derivative from public-domain source"
+  },
+  "presentation": {
+    "accent": "#825c49",
+    "accentDark": "#4b342b",
+    "description": "The famous solo-trombone summons of Tuba mirum, paired with the complete 62-measure four-soloist orchestral movement."
+  },
+  "sections": [
+    {
+      "id": "opening-trombone-call",
+      "name": "Opening trombone call",
+      "description": "Solo Trombone source line from movement quarter-units 8-20, shifted to Practice start 0.",
+      "measures": [
+        {
+          "label": "M1",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 3,
+              "position": "low",
+              "midi": 58,
+              "start": 0,
+              "duration": 2,
+              "anchor": true,
+              "sourceMidi": 58,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "D",
+              "stringIndex": 3,
+              "fret": 3,
+              "position": "low",
+              "midi": 53,
+              "start": 2,
+              "duration": 2,
+              "anchor": true,
+              "sourceMidi": 53,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M2",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 0,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 62,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 3,
+              "position": "low",
+              "midi": 58,
+              "start": 1,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 58,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "D",
+              "stringIndex": 3,
+              "fret": 3,
+              "position": "low",
+              "midi": 53,
+              "start": 2,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 53,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "D",
+              "stringIndex": 3,
+              "fret": 0,
+              "position": "open",
+              "midi": 50,
+              "start": 3,
+              "duration": 1,
+              "anchor": true,
+              "sourceMidi": 50,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M3",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "A",
+              "stringIndex": 4,
+              "fret": 1,
+              "position": "low",
+              "midi": 46,
+              "start": 0,
+              "duration": 4,
+              "anchor": true,
+              "sourceMidi": 46,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {},
+  "fullVersion": {
+    "status": "available",
+    "artifactPath": "data/ingested/mozart-requiem-tuba-mirum.full.json",
+    "label": "Tuba mirum, K.626 — complete 62-measure movement rendition",
+    "description": "Complete source-MIDI-derived Tuba mirum Full Rendition: 1,538 note events across 19 retained source tracks.",
+    "fidelity": "source-midi-derived-measure-slice",
+    "provenance": {
+      "provider": "ScoreBase / PDMX",
+      "license": "Public-domain score; PDMX dataset attribution",
+      "attribution": "PDMX (Long, Novack, McAuley, Berg-Kirkpatrick et al.)"
+    }
+  }
+}
