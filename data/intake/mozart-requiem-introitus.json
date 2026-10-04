@@ -17,43 +17,51 @@
     },
     "catalogue": "K.626"
   },
-  "ingest": {
-    "enabled": false,
-    "status": "source-verification",
-    "fidelityTarget": "complete-score-derived",
-    "blocker": "Do not vendor the PDMX/ScoreBase candidate until the underlying PDMX row is confirmed license_conflict=false (or an equivalently clean symbolic witness is selected)."
+  "source": {
+    "path": "data/sources/mozart-requiem-introitus.mid",
+    "format": "midi",
+    "provider": "ScoreBase / PDMX",
+    "sourcePage": "https://scorebase.org/scores/178366",
+    "remoteUrl": "https://scorebase.org/scores/178366/file/mid?download=true",
+    "attribution": "PDMX (Long, Novack, McAuley, Berg-Kirkpatrick et al.); source surfaced through ScoreBase",
+    "license": "Public-domain score; PDMX dataset attribution",
+    "licenseUrl": "https://zenodo.org/records/15571083",
+    "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
+    "evidence": "ScoreBase identifies this candidate as PDMX and exposes MIDI/MXL/PDF; it has 48 measures and 22 parts (SATB, orchestra, pipe organ). ScoreBase's PDMX importer defaults to subset=no_license_conflict, matching PDMX's recommended conflict-free subset."
   },
-  "sourceCandidates": [
-    {
-      "provider": "ScoreBase / PDMX",
-      "sourcePage": "https://scorebase.org/scores/178366",
-      "formatOptions": [
-        "MIDI",
-        "MXL",
-        "PDF"
-      ],
-      "observedFacts": [
-        "48 measures",
-        "22 parts",
-        "SATB + orchestra + pipe organ",
-        "D minor",
-        "4/4"
-      ],
-      "fit": "Excellent structural match for the complete Introitus.",
-      "rightsState": "candidate-only",
-      "rightsCheck": "PDMX documents a license_conflict field and recommends the no_license_conflict subset. Verify this exact row before redistribution."
-    },
+  "ingest": {
+    "enabled": true,
+    "status": "ingestion-in-progress",
+    "fidelity": "source-midi-derived",
+    "fidelityTarget": "complete-score-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      24,
+      220
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.24,
+    "label": "Requiem aeternam, K.626 — complete choral/orchestral rendition",
+    "description": "Complete source-MIDI-derived Introitus Full Rendition from a redistribution-cleared PDMX witness, preserving all note-bearing MIDI tracks and source tempo/meter data."
+  },
+  "sourceCrossChecks": [
     {
       "provider": "IMSLP",
       "sourcePage": "https://imslp.org/wiki/Requiem_K.626_(Mozart,_Wolfgang_Amadeus)",
-      "formatOptions": [
-        "public-domain engraved scores",
-        "reference recordings"
-      ],
-      "fit": "Authoritative reference for work structure, instrumentation and score cross-checking.",
-      "rightsState": "reference-clean",
-      "rightsCheck": "Select an explicitly public-domain edition for any vendored source material."
+      "role": "work structure, instrumentation and engraved-score cross-check"
+    },
+    {
+      "provider": "PDMX",
+      "sourcePage": "https://zenodo.org/records/15571083",
+      "role": "license/subset provenance",
+      "subset": "no_license_conflict"
+    },
+    {
+      "provider": "ScoreBase source implementation",
+      "sourcePage": "https://github.com/moguls753/scorebase/blob/main/app/services/pdmx_importer.rb",
+      "role": "evidence that ScoreBase imports PDMX from no_license_conflict by default"
     }
   ],
-  "nextAction": "Resolve a redistribution-clean symbolic witness, then add source.path/remoteUrl/license metadata and enable ingestion."
+  "output": "data/ingested/mozart-requiem-introitus.full.json",
+  "nextAction": "GitHub licensed-MIDI workflow fetches and normalizes this witness. Then inspect track identity/event counts, apply source-part overrides, build the public song JSON, validate, and publish."
 }

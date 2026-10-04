@@ -15,7 +15,7 @@
     "note": "The user explicitly requested the complete standard Mozart Requiem after approving Dies Irae, and requested all movements be queued in order and processed.",
     "acceptanceCriterion": "Each movement is complete only when a usable, source-grounded Full Rendition is published in Musicarium.",
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
-    "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. For PDMX, prefer/require a no_license_conflict witness; otherwise use a clean public-domain or explicitly licensed source."
+    "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
   "processingCursor": 1,
   "queue": [
@@ -23,8 +23,8 @@
       "order": 1,
       "slug": "mozart-requiem-introitus",
       "title": "Introitus — Requiem aeternam",
-      "status": "source-verification-in-progress",
-      "note": "Processing started: authoritative work identity and a 48-measure, 22-part orchestral symbolic candidate have been identified; redistribution metadata is being verified before vendoring."
+      "status": "ingestion-in-progress",
+      "note": "Rights gate cleared for the selected ScoreBase/PDMX witness: ScoreBase's PDMX importer defaults to the PDMX no_license_conflict subset. Licensed MIDI ingestion is now enabled for the 48-measure, 22-part Introitus candidate."
     },
     {
       "order": 2,

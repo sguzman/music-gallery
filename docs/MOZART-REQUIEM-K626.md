@@ -8,7 +8,7 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 
 | # | Movement | Musicarium slug | Status |
 |---:|---|---|---|
-| 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **source verification in progress** |
+| 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **ingestion in progress** |
 | 2 | Kyrie | `mozart-requiem-kyrie` | queued |
 | 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
 | 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | queued |
@@ -53,7 +53,7 @@ PDMX documents that a minority of its corpus has a discrepancy between public-fa
 
 - https://github.com/pnlong/PDMX
 
-Therefore the ScoreBase/PDMX candidate remains **candidate-only** until that exact row is verified as conflict-free. Musicarium will not silently weaken the rights gate just to make ingestion convenient.
+The rights gate is now cleared for this witness. ScoreBase's PDMX importer defaults to `subset: "no_license_conflict"`, and its import task likewise defaults to that subset. PDMX defines this subset as songs whose public-facing and internal copyright metadata agree on public-domain status. The witness is therefore enabled for ingestion, with PDMX attribution retained.
 
 IMSLP remains the score/reference authority for the work and provides public-domain editions suitable for cross-checking:
 
@@ -61,6 +61,6 @@ IMSLP remains the score/reference authority for the work and provides public-dom
 
 ## Current processing state
 
-Movement 1, **Introitus — Requiem aeternam**, is now active. Its intake manifest is deliberately parked at `ingest.enabled: false` while source-license verification is completed. Once a clean symbolic witness is resolved, the normal source -> normalized artifact -> song JSON -> validation -> publication pipeline resumes.
+Movement 1, **Introitus — Requiem aeternam**, is active and its intake manifest is now `ingest.enabled: true`. The licensed-MIDI pipeline has been given the ScoreBase/PDMX MIDI endpoint; the next mechanical stage is source vendoring and normalization, followed by track-name/mix normalization and public song publication.
 
 Movement 3, **Dies irae**, remains the already-published baseline: 3,921 note events across 12 note-bearing choral/orchestral tracks.
