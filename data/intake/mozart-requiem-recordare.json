@@ -27,11 +27,11 @@
     "license": "Public-domain score; PDMX dataset attribution",
     "licenseUrl": "https://zenodo.org/records/15571083",
     "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
-    "evidence": "Boundary QA establishes Recordare directly from source structural markers: it begins at q1020 with the change to 3/4 and tempo 88.000153, and ends at q1410 where the source returns to 4/4 for Confutatis. This is source measures 256-385 inclusive, exactly 130 measures."
+    "evidence": "Source structural markers make the boundary exact: Recordare begins at q1020 with a change to 3/4 and tempo 88.000153, and ends at q1410 where Confutatis returns to 4/4. The extracted source measures 256-385 are exactly 130 3/4 measures and retain the expected solo quartet plus winds and strings."
   },
   "ingest": {
-    "enabled": false,
-    "status": "queued-after-boundary-correction",
+    "enabled": true,
+    "status": "normalization-and-publication",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
@@ -46,7 +46,114 @@
     "meterFallback": "3/4",
     "trackLevel": 0.24,
     "label": "Recordare, K.626 — complete movement rendition",
-    "description": "Complete source-MIDI-derived Recordare Full Rendition extracted by exact measure range from the redistribution-cleared PDMX Requiem witness."
+    "description": "Complete source-MIDI-derived Recordare Full Rendition extracted by exact measure range from the redistribution-cleared PDMX Requiem witness.",
+    "trackOverrides": {
+      "b-clarinet": {
+        "name": "B♭ Clarinet I (source alternate)",
+        "instrumentLabel": "B♭ Clarinet I",
+        "defaultInstrument": "clarinet",
+        "level": 0.1,
+        "pan": -0.68
+      },
+      "b-clarinet-2": {
+        "name": "B♭ Clarinet II (source alternate)",
+        "instrumentLabel": "B♭ Clarinet II",
+        "defaultInstrument": "clarinet",
+        "level": 0.1,
+        "pan": -0.58
+      },
+      "basset-horn": {
+        "name": "Basset Horn I",
+        "instrumentLabel": "Basset Horn I",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.48
+      },
+      "basset-horn-2": {
+        "name": "Basset Horn II",
+        "instrumentLabel": "Basset Horn II",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.38
+      },
+      "bassoon": {
+        "name": "Bassoon I",
+        "instrumentLabel": "Bassoon I",
+        "defaultInstrument": "bassoon",
+        "level": 0.22,
+        "pan": -0.28
+      },
+      "bassoon-2": {
+        "name": "Bassoon II",
+        "instrumentLabel": "Bassoon II",
+        "defaultInstrument": "bassoon",
+        "level": 0.22,
+        "pan": -0.18
+      },
+      "piano": {
+        "name": "Soprano Solo",
+        "instrumentLabel": "Soprano Solo",
+        "defaultInstrument": "voice",
+        "level": 0.27,
+        "pan": 0.16
+      },
+      "piano-2": {
+        "name": "Alto Solo",
+        "instrumentLabel": "Alto Solo",
+        "defaultInstrument": "voice",
+        "level": 0.26,
+        "pan": 0.12
+      },
+      "piano-3": {
+        "name": "Tenor Solo",
+        "instrumentLabel": "Tenor Solo",
+        "defaultInstrument": "voice",
+        "level": 0.26,
+        "pan": 0.08
+      },
+      "piano-4": {
+        "name": "Bass Solo",
+        "instrumentLabel": "Bass Solo",
+        "defaultInstrument": "voice",
+        "level": 0.27,
+        "pan": 0.04
+      },
+      "violins": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.21,
+        "pan": -0.42
+      },
+      "violins-2": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.2,
+        "pan": -0.25
+      },
+      "violas": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": -0.08
+      },
+      "violoncellos": {
+        "name": "Cellos",
+        "instrumentLabel": "Cellos",
+        "defaultInstrument": "cello",
+        "level": 0.21,
+        "pan": 0.08
+      },
+      "contrabasses": {
+        "name": "Double Basses",
+        "instrumentLabel": "Double Basses",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": 0.18
+      }
+    }
   },
   "sourceCrossChecks": [
     {
@@ -62,5 +169,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-recordare.full.json",
-  "nextAction": "After corrected Tuba mirum and Rex tremendae are republished, enable ingestion for source measures 256-385."
+  "nextAction": "Reingest with readable 15-part labels/mix, publish the public song wrapper, validate, then advance to Confutatis."
 }
