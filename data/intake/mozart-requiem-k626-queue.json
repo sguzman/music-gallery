@@ -100,8 +100,8 @@
       "order": 12,
       "slug": "mozart-requiem-benedictus",
       "title": "Benedictus",
-      "status": "source-quality-blocked",
-      "note": "Current PDMX witness is complete but only SATB + two organ staves (6 note-bearing tracks), so it fails the full-orchestration Full Rendition contract. A fuller 1997 MIDI exists but has unverified redistribution rights; source search continues."
+      "status": "ingestion-in-progress",
+      "note": "Blocker resolved: selected ScoreBase/PDMX 94634, an exact 76-measure B-flat-major full-orchestral witness with 17 parts. Ingestion restarted."
     },
     {
       "order": 13,
