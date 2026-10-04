@@ -16,8 +16,8 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 6 | Recordare | `mozart-requiem-recordare` | **publication in progress** | **published — awaiting QA** |
 | 7 | Confutatis | `mozart-requiem-confutatis` | queued | **published — awaiting QA** |
 | 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued | **published — awaiting QA** |
-| 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **publication in progress** |
-| 10 | Hostias | `mozart-requiem-hostias` | queued |
+| 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **published — awaiting QA** |
+| 10 | Hostias | `mozart-requiem-hostias` | **ingestion in progress** |
 | 11 | Sanctus | `mozart-requiem-sanctus` | queued |
 | 12 | Benedictus | `mozart-requiem-benedictus` | queued |
 | 13 | Agnus Dei | `mozart-requiem-agnus-dei` | queued |
@@ -114,3 +114,8 @@ The work cursor now advances to **Domine Jesu**.
 ## Offertorium — Domine Jesu
 
 Movement 9 source identity is verified from the witness itself: **G minor, 4/4, 78 measures, 14 parts**, matching the complete Domine Jesu. Ingestion produced **14 tracks / 7,230 note events**. Part labels and mix are normalized without changing the event graph.
+
+
+Movement 9, **Domine Jesu**, is published and CI-validated: **78 measures, 14 tracks, 7,230 events**.
+
+Movement 10, **Hostias**, is now active from PDMX score 149074. The witness is **89 measures in 3/4**, matching the complete Hostias including the Quam olim reprise.
