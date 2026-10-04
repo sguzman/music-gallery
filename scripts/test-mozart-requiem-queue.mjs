@@ -89,4 +89,19 @@ if(existsSync(agnusArtifactPath)){
   console.log("Agnus Dei track inventory:",agnus.tracks.map(t=>`${t.id}=${t.name}`).join(" | "));
 }
 
+
+const luxArtifactPath=resolve(ROOT,"data/ingested/mozart-requiem-lux-aeterna.full.json");
+if(existsSync(luxArtifactPath)){
+  const lux=JSON.parse(readFileSync(luxArtifactPath,"utf8"));
+  assert.equal(lux.measures?.length,82,"Lux aeterna: expected exactly 82 measures");
+  assert.equal(lux.tracks?.length,17,"Lux aeterna: expected 17 note-bearing full-orchestral tracks");
+  assert.ok(Math.abs(lux.durationUnits-328)<0.01,"Lux aeterna: expected approximately 328 quarter units");
+  assert.equal(lux.provenance?.segmentMeasures?.startMeasure,52,"Lux aeterna: wrong source segment start");
+  assert.equal(lux.provenance?.segmentMeasures?.endMeasure,133,"Lux aeterna: wrong source segment end");
+  assert.ok((lux.stats?.events||0)>8000,"Lux aeterna: event graph unexpectedly sparse");
+  console.log("Lux aeterna track inventory:",lux.tracks.map(t=>`${t.id}=${t.name}`).join(" | "));
+  const soprano=lux.tracks.find(t=>t.id==="soprano");
+  console.log("Lux aeterna soprano opening:",JSON.stringify(soprano?.events?.slice(0,20)||[]));
+}
+
 console.log("Mozart Requiem K.626 queue contract self-test: PASS");
