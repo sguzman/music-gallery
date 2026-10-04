@@ -15,6 +15,7 @@ def eligible(manifest):
         and source.get("remoteUrl")
         and str(source.get("path","")).lower().endswith((".mid",".midi"))
         and source.get("license")
+        and manifest.get("ingest",{}).get("enabled",True) is not False
     )
 
 def fetch_manifest(path: Path, force=False):
