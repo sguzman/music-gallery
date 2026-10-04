@@ -31,7 +31,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "normalization-in-progress",
+    "status": "normalization-and-publication",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
@@ -202,5 +202,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-tuba-mirum.full.json",
-  "nextAction": "Reingest corrected source measures 171-233, inspect event/track counts and movement identities, then update the public wrapper before restoring published status."
+  "nextAction": "Publish corrected 63-measure wrapper, run CI, then restore published status."
 }
