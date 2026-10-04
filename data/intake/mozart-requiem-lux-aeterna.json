@@ -29,7 +29,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "normalization-in-progress",
+    "status": "published-awaiting-user-qa",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
@@ -168,7 +168,7 @@
     }
   },
   "output": "data/ingested/mozart-requiem-lux-aeterna.full.json",
-  "nextAction": "Fetch and normalize source measures 52–133; require exactly 82 measures of 4/4 and a complete full-orchestral event graph before publication.",
+  "nextAction": "Published and structurally validated: 82 measures of 4/4, 17 full-orchestral tracks, 8,482 events. Preserve this source slice unless concrete QA finds a defect.",
   "sourceCandidates": [
     {
       "provider": "dominicfanucchi/aai-511_group1 CC0 dataset mirror",
