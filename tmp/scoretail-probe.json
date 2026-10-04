@@ -1,0 +1,21 @@
+{
+  "pages": [
+    {
+      "url": "https://scoretail.com/en/sheet-music/requiem-in-d-minor-k-626-vii-agnus-dei-by-w-a-mozart-wolfgang-amadeus-mozart-qmrnujxd",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://scoretail.com/embed/qmrnujxd",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://scoretail.com/en/scores/qmrnujxd",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://scoretail.com/scores/qmrnujxd",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    }
+  ],
+  "assets": []
+}
