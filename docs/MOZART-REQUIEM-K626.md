@@ -11,8 +11,8 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **published — awaiting QA** |
 | 2 | Kyrie | `mozart-requiem-kyrie` | **published — awaiting QA** |
 | 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
-| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **publication in progress** |
-| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | queued |
+| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **published — awaiting QA** |
+| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | **ingestion in progress** |
 | 6 | Recordare | `mozart-requiem-recordare` | queued |
 | 7 | Confutatis | `mozart-requiem-confutatis` | queued |
 | 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued |
@@ -65,6 +65,8 @@ Movement 1, **Introitus — Requiem aeternam**, is published and CI-validated: *
 
 Movement 2, **Kyrie**, is published and CI-validated: **52 measures, 16 source tracks, 6,461 note events**. Its opening Basso fugue subject is retained as a four-measure Practice derivative without octave folding.
 
-Movement 4, **Tuba mirum**, is through source slicing and first normalization. The catalogued combined ScoreBase/PDMX witness is sliced at **source measures 169-230**, the standard **62-measure** Tuba mirum span. The result contains **19 retained note-bearing tracks and 1,538 note events**. Its solo-trombone opening and staggered Bass → Tenor → Alto → Soprano entries independently confirm the boundary; publication/mix normalization is now active.
+Movement 4, **Tuba mirum**, is published and CI-validated: **62 measures, 19 retained note-bearing tracks, 1,538 note events**. The solo-trombone opening and staggered Bass → Tenor → Alto → Soprano entries confirm the boundary; source alternate clarinet layers are preserved and labeled rather than silently deleted.
+
+Movement 5, **Rex tremendae**, is now active. The same conflict-free opening-Requiem witness is sliced at **source measures 231-252**, the standard **22-measure** Rex tremendae span.
 
 Movement 3, **Dies irae**, remains the already-published baseline: 3,921 note events across 12 note-bearing choral/orchestral tracks.
