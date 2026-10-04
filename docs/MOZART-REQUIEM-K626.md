@@ -16,7 +16,7 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 6 | Recordare | `mozart-requiem-recordare` | **publication in progress** | **published — awaiting QA** |
 | 7 | Confutatis | `mozart-requiem-confutatis` | queued | **published — awaiting QA** |
 | 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued | **published — awaiting QA** |
-| 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **source verification in progress** |
+| 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **publication in progress** |
 | 10 | Hostias | `mozart-requiem-hostias` | queued |
 | 11 | Sanctus | `mozart-requiem-sanctus` | queued |
 | 12 | Benedictus | `mozart-requiem-benedictus` | queued |
@@ -109,3 +109,8 @@ The combined Sequence witness has now been segmented and published through **Lac
 - Lacrimosa: q1578–end — 30 measures of 12/8 — 21 tracks / 2,102 events.
 
 The work cursor now advances to **Domine Jesu**.
+
+
+## Offertorium — Domine Jesu
+
+Movement 9 source identity is verified from the witness itself: **G minor, 4/4, 78 measures, 14 parts**, matching the complete Domine Jesu. Ingestion produced **14 tracks / 7,230 note events**. Part labels and mix are normalized without changing the event graph.
