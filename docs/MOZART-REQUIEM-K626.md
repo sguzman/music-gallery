@@ -8,7 +8,7 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 
 | # | Movement | Musicarium slug | Status |
 |---:|---|---|---|
-| 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **ingestion in progress** |
+| 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **publication in progress** |
 | 2 | Kyrie | `mozart-requiem-kyrie` | queued |
 | 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
 | 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | queued |
@@ -61,6 +61,6 @@ IMSLP remains the score/reference authority for the work and provides public-dom
 
 ## Current processing state
 
-Movement 1, **Introitus — Requiem aeternam**, is active and its intake manifest is now `ingest.enabled: true`. The licensed-MIDI pipeline has been given the ScoreBase/PDMX MIDI endpoint; the next mechanical stage is source vendoring and normalization, followed by track-name/mix normalization and public song publication.
+Movement 1, **Introitus — Requiem aeternam**, has passed source vendoring and first normalization: **48 measures, 22 source tracks, 3,965 note events**. Publication work is active: source-part display names/mix metadata are normalized and a five-measure soprano Practice derivative is paired with the untouched complete Full Rendition.
 
 Movement 3, **Dies irae**, remains the already-published baseline: 3,921 note events across 12 note-bearing choral/orchestral tracks.

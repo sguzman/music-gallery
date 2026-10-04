@@ -23,8 +23,8 @@
       "order": 1,
       "slug": "mozart-requiem-introitus",
       "title": "Introitus — Requiem aeternam",
-      "status": "ingestion-in-progress",
-      "note": "Rights gate cleared for the selected ScoreBase/PDMX witness: ScoreBase's PDMX importer defaults to the PDMX no_license_conflict subset. Licensed MIDI ingestion is now enabled for the 48-measure, 22-part Introitus candidate."
+      "status": "publication-in-progress",
+      "note": "Source fetched and normalized: 48 measures, 22 tracks, 3,965 note events. Applying part-name/mix overrides and publishing the public song wrapper."
     },
     {
       "order": 2,

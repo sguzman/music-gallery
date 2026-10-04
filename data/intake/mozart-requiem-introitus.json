@@ -31,7 +31,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "ingestion-in-progress",
+    "status": "normalization-and-publication",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "defaultBpm": 0,
@@ -42,7 +42,163 @@
     "meterFallback": "4/4",
     "trackLevel": 0.24,
     "label": "Requiem aeternam, K.626 — complete choral/orchestral rendition",
-    "description": "Complete source-MIDI-derived Introitus Full Rendition from a redistribution-cleared PDMX witness, preserving all note-bearing MIDI tracks and source tempo/meter data."
+    "description": "Complete source-MIDI-derived Introitus Full Rendition from a redistribution-cleared PDMX witness, preserving all note-bearing MIDI tracks and source tempo/meter data.",
+    "trackOverrides": {
+      "basset-horn-i": {
+        "name": "Basset Horn I",
+        "instrumentLabel": "Basset Horn I",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.62
+      },
+      "basset-horn-ii": {
+        "name": "Basset Horn II",
+        "instrumentLabel": "Basset Horn II",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.5
+      },
+      "bassoon-i": {
+        "name": "Bassoon I",
+        "instrumentLabel": "Bassoon I",
+        "defaultInstrument": "bassoon",
+        "level": 0.23,
+        "pan": -0.38
+      },
+      "bassoon-ii": {
+        "name": "Bassoon II",
+        "instrumentLabel": "Bassoon II",
+        "defaultInstrument": "bassoon",
+        "level": 0.23,
+        "pan": -0.26
+      },
+      "d-trumpet-i": {
+        "name": "Trumpet in D I",
+        "instrumentLabel": "Trumpet in D I",
+        "defaultInstrument": "horn",
+        "level": 0.2,
+        "pan": 0.42
+      },
+      "d-trumpet-ii": {
+        "name": "Trumpet in D II",
+        "instrumentLabel": "Trumpet in D II",
+        "defaultInstrument": "horn",
+        "level": 0.2,
+        "pan": 0.54
+      },
+      "timpani": {
+        "name": "Timpani",
+        "instrumentLabel": "Timpani",
+        "defaultInstrument": "generic",
+        "level": 0.2,
+        "pan": 0.28
+      },
+      "alto-trombone": {
+        "name": "Alto Trombone",
+        "instrumentLabel": "Alto Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.2
+      },
+      "tenor-trombone": {
+        "name": "Tenor Trombone",
+        "instrumentLabel": "Tenor Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.3
+      },
+      "bass-trombone": {
+        "name": "Bass Trombone",
+        "instrumentLabel": "Bass Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.4
+      },
+      "violins-i": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.23,
+        "pan": -0.46
+      },
+      "violins-ii": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.22,
+        "pan": -0.28
+      },
+      "violas": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.22,
+        "pan": -0.08
+      },
+      "soprano": {
+        "name": "Soprano",
+        "instrumentLabel": "Soprano",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.08
+      },
+      "alto": {
+        "name": "Alto",
+        "instrumentLabel": "Alto",
+        "defaultInstrument": "voice",
+        "level": 0.23,
+        "pan": 0.15
+      },
+      "tenor": {
+        "name": "Tenor",
+        "instrumentLabel": "Tenor",
+        "defaultInstrument": "voice",
+        "level": 0.23,
+        "pan": 0.22
+      },
+      "bass": {
+        "name": "Bass",
+        "instrumentLabel": "Bass",
+        "defaultInstrument": "voice",
+        "level": 0.23,
+        "pan": 0.29
+      },
+      "violoncellos": {
+        "name": "Cellos",
+        "instrumentLabel": "Cellos",
+        "defaultInstrument": "cello",
+        "level": 0.22,
+        "pan": 0.02
+      },
+      "contrabasses": {
+        "name": "Double Basses",
+        "instrumentLabel": "Double Basses",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": 0.12
+      },
+      "pipe-organ": {
+        "name": "Organ — upper",
+        "instrumentLabel": "Organ upper",
+        "defaultInstrument": "piano",
+        "level": 0.13,
+        "pan": -0.05
+      },
+      "pipe-organ-2": {
+        "name": "Organ — middle",
+        "instrumentLabel": "Organ middle",
+        "defaultInstrument": "piano",
+        "level": 0.11,
+        "pan": 0.02
+      },
+      "pipe-organ-3": {
+        "name": "Organ — bass",
+        "instrumentLabel": "Organ bass",
+        "defaultInstrument": "piano",
+        "level": 0.12,
+        "pan": 0.08
+      }
+    }
   },
   "sourceCrossChecks": [
     {
@@ -63,5 +219,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-introitus.full.json",
-  "nextAction": "GitHub licensed-MIDI workflow fetches and normalizes this witness. Then inspect track identity/event counts, apply source-part overrides, build the public song JSON, validate, and publish."
+  "nextAction": "Reingest with normalized 22-part display/mix metadata, publish the public song JSON, run corpus/page regressions, then advance the work cursor to Kyrie."
 }
