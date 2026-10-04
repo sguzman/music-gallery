@@ -107,8 +107,8 @@
       "order": 13,
       "slug": "mozart-requiem-agnus-dei",
       "title": "Agnus Dei",
-      "status": "source-quality-blocked",
-      "note": "Named PDMX 155734 was rejected after ingestion: only 6 note-bearing tracks / 1,324 events (vocal + organ reduction). Full target is 51 measures / 17 traditional Süssmayr parts; ScoreTail exposes an exact public-domain full-score reference, but machine-readable export acquisition remains pending."
+      "status": "normalization-in-progress",
+      "note": "Rights blocker resolved: selected the exact K626 Requiem 12 agnus dei.mid from dominicfanucchi/aai-511_group1, whose README explicitly licenses the dataset CC0 1.0. Fetch/normalization is now running; publication remains gated on confirming the full 51-measure / 17-part traditional Süssmayr structure."
     },
     {
       "order": 14,
