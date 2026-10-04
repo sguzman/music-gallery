@@ -18,7 +18,7 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued | **published — awaiting QA** |
 | 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **published — awaiting QA** |
 | 10 | Hostias | `mozart-requiem-hostias` | **published — awaiting QA** |
-| 11 | Sanctus | `mozart-requiem-sanctus` | **ingestion in progress** |
+| 11 | Sanctus | `mozart-requiem-sanctus` | **publication in progress** |
 | 12 | Benedictus | `mozart-requiem-benedictus` | queued |
 | 13 | Agnus Dei | `mozart-requiem-agnus-dei` | queued |
 | 14 | Lux aeterna / Communio | `mozart-requiem-lux-aeterna` | queued |
@@ -127,3 +127,6 @@ Hostias ingestion confirms the full movement structure: **89 measures**, 3/4 ope
 Movement 10, **Hostias**, is published and CI-validated: **89 measures, 14 tracks, 5,356 events**.
 
 Movement 11, **Sanctus**, is active from a Süssmayr-attributed PDMX witness: **D major, 4/4, 38 measures, 18 full-orchestral parts**.
+
+
+Sanctus ingestion confirms **38 measures, 18 tracks, 2,253 events**, with the expected **4/4 → 3/4** transition at q40 for Hosanna.

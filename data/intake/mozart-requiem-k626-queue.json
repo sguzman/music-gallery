@@ -93,8 +93,8 @@
       "order": 11,
       "slug": "mozart-requiem-sanctus",
       "title": "Sanctus",
-      "status": "ingestion-in-progress",
-      "note": "Processing started from PDMX score 181306: Süssmayr, D major, 4/4, 38 measures, 18 full-orchestra parts."
+      "status": "publication-in-progress",
+      "note": "Verified 38-measure D-major Süssmayr witness ingested: 18 tracks, 2,253 events; 4/4 Sanctus changes to 3/4 Hosanna at q40."
     },
     {
       "order": 12,

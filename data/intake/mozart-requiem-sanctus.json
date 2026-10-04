@@ -29,7 +29,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "ingestion-in-progress",
+    "status": "normalization-and-publication",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "defaultBpm": 0,
@@ -40,7 +40,135 @@
     "meterFallback": "4/4",
     "trackLevel": 0.24,
     "label": "Sanctus, K.626 — complete Sanctus + Hosanna rendition",
-    "description": "Complete source-MIDI-derived Süssmayr Sanctus Full Rendition from a redistribution-cleared PDMX witness."
+    "description": "Complete source-MIDI-derived Süssmayr Sanctus Full Rendition from a redistribution-cleared PDMX witness.",
+    "trackOverrides": {
+      "basset-horn": {
+        "name": "Basset Horns",
+        "instrumentLabel": "Basset Horns",
+        "defaultInstrument": "clarinet",
+        "level": 0.21,
+        "pan": -0.5
+      },
+      "bassoon": {
+        "name": "Bassoons",
+        "instrumentLabel": "Bassoons",
+        "defaultInstrument": "bassoon",
+        "level": 0.21,
+        "pan": -0.32
+      },
+      "d-trumpet": {
+        "name": "Trumpets in D",
+        "instrumentLabel": "Trumpets in D",
+        "defaultInstrument": "horn",
+        "level": 0.22,
+        "pan": 0.5
+      },
+      "timpani": {
+        "name": "Timpani",
+        "instrumentLabel": "Timpani",
+        "defaultInstrument": "generic",
+        "level": 0.19,
+        "pan": 0.34
+      },
+      "alto-trombone": {
+        "name": "Alto Trombone",
+        "instrumentLabel": "Alto Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.14
+      },
+      "tenor-trombone": {
+        "name": "Tenor Trombone",
+        "instrumentLabel": "Tenor Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.24
+      },
+      "bass-trombone": {
+        "name": "Bass Trombone",
+        "instrumentLabel": "Bass Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.34
+      },
+      "violins": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.22,
+        "pan": -0.44
+      },
+      "violins-2": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.21,
+        "pan": -0.27
+      },
+      "violas": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.21,
+        "pan": -0.08
+      },
+      "soprano": {
+        "name": "Soprano",
+        "instrumentLabel": "Soprano",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.08
+      },
+      "alto": {
+        "name": "Alto",
+        "instrumentLabel": "Alto",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.15
+      },
+      "tenor": {
+        "name": "Tenor",
+        "instrumentLabel": "Tenor",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.22
+      },
+      "bass": {
+        "name": "Bass",
+        "instrumentLabel": "Bass",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.3
+      },
+      "violoncellos": {
+        "name": "Cellos",
+        "instrumentLabel": "Cellos",
+        "defaultInstrument": "cello",
+        "level": 0.21,
+        "pan": 0.06
+      },
+      "contrabasses": {
+        "name": "Double Basses",
+        "instrumentLabel": "Double Basses",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": 0.16
+      },
+      "organ": {
+        "name": "Organ — upper",
+        "instrumentLabel": "Organ upper",
+        "defaultInstrument": "piano",
+        "level": 0.12,
+        "pan": 0.04
+      },
+      "organ-2": {
+        "name": "Organ — lower",
+        "instrumentLabel": "Organ lower",
+        "defaultInstrument": "piano",
+        "level": 0.12,
+        "pan": 0.1
+      }
+    }
   },
   "sourceCrossChecks": [
     {
@@ -61,5 +189,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-sanctus.full.json",
-  "nextAction": "Fetch and normalize the 38-measure Sanctus + Hosanna witness, inspect its meter transition and 18-part orchestration, publish and validate."
+  "nextAction": "Publish normalized Sanctus + Hosanna and run CI; then advance to Benedictus."
 }
