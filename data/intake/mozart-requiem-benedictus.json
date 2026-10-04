@@ -29,7 +29,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "ingestion-in-progress",
+    "status": "normalization-and-publication",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "defaultBpm": 0,
@@ -40,7 +40,128 @@
     "meterFallback": "4/4",
     "trackLevel": 0.24,
     "label": "Benedictus, K.626 — complete Benedictus + Hosanna full-orchestral rendition",
-    "description": "Complete source-MIDI-derived Süssmayr Benedictus Full Rendition from the 76-measure, 17-part conflict-free PDMX witness."
+    "description": "Complete source-MIDI-derived Süssmayr Benedictus Full Rendition from the 76-measure, 17-part conflict-free PDMX witness.",
+    "trackOverrides": {
+      "basset-horn": {
+        "name": "Basset Horns in F",
+        "instrumentLabel": "Basset Horns in F",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.5
+      },
+      "bassoon": {
+        "name": "Bassoons",
+        "instrumentLabel": "Bassoons",
+        "defaultInstrument": "bassoon",
+        "level": 0.22,
+        "pan": -0.32
+      },
+      "b-trumpet": {
+        "name": "Trumpets in B♭",
+        "instrumentLabel": "Trumpets in B♭",
+        "defaultInstrument": "horn",
+        "level": 0.2,
+        "pan": 0.48
+      },
+      "alto-trombone": {
+        "name": "Alto Trombone",
+        "instrumentLabel": "Alto Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.12
+      },
+      "tenor-trombone": {
+        "name": "Tenor Trombone",
+        "instrumentLabel": "Tenor Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.22
+      },
+      "bass-trombone": {
+        "name": "Bass Trombone",
+        "instrumentLabel": "Bass Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.32
+      },
+      "violins": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.22,
+        "pan": -0.44
+      },
+      "violins-2": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.21,
+        "pan": -0.27
+      },
+      "violas": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.21,
+        "pan": -0.08
+      },
+      "soprano": {
+        "name": "Soprano Solo / Choir",
+        "instrumentLabel": "Soprano",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.08
+      },
+      "contralto": {
+        "name": "Alto Solo / Choir",
+        "instrumentLabel": "Alto",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.15
+      },
+      "tenor": {
+        "name": "Tenor Solo / Choir",
+        "instrumentLabel": "Tenor",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.22
+      },
+      "bass": {
+        "name": "Bass Solo / Choir",
+        "instrumentLabel": "Bass",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.3
+      },
+      "violoncellos": {
+        "name": "Cellos",
+        "instrumentLabel": "Cellos",
+        "defaultInstrument": "cello",
+        "level": 0.21,
+        "pan": 0.06
+      },
+      "contrabasses": {
+        "name": "Double Basses",
+        "instrumentLabel": "Double Basses",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": 0.16
+      },
+      "organ": {
+        "name": "Organ — upper",
+        "instrumentLabel": "Organ upper",
+        "defaultInstrument": "piano",
+        "level": 0.12,
+        "pan": -0.02
+      },
+      "organ-2": {
+        "name": "Organ — bass",
+        "instrumentLabel": "Organ bass",
+        "defaultInstrument": "piano",
+        "level": 0.12,
+        "pan": 0.06
+      }
+    }
   },
   "sourceCrossChecks": [
     {
@@ -66,7 +187,7 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-benedictus.full.json",
-  "nextAction": "Fetch the new orchestral source path from ScoreBase/PDMX 94634, normalize the full event graph, verify 76 measures / 17 parts, then publish.",
+  "nextAction": "Reingest with normalized 17-part orchestral labels/mix, then publish the public Benedictus song wrapper and validate.",
   "sourceCandidates": [
     {
       "provider": "ScoreBase / PDMX",
