@@ -19,8 +19,8 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **published — awaiting QA** |
 | 10 | Hostias | `mozart-requiem-hostias` | **published — awaiting QA** |
 | 11 | Sanctus | `mozart-requiem-sanctus` | **published — awaiting QA** |
-| 12 | Benedictus | `mozart-requiem-benedictus` | **ingestion in progress** |
-| 13 | Agnus Dei | `mozart-requiem-agnus-dei` | queued |
+| 12 | Benedictus | `mozart-requiem-benedictus` | **published — awaiting QA** |
+| 13 | Agnus Dei | `mozart-requiem-agnus-dei` | **ingestion in progress** |
 | 14 | Lux aeterna / Communio | `mozart-requiem-lux-aeterna` | queued |
 
 Machine-readable queue: `data/intake/mozart-requiem-k626-queue.json`.
@@ -144,3 +144,10 @@ IMSLP/CPDL provide clean public-domain/CC score references for the traditional c
 ### Benedictus blocker resolved
 
 A second ScoreBase/PDMX witness was found: **score 94634**. Unlike the rejected SATB/organ reduction, this one is an exact **76-measure, B-flat-major, 17-part** Benedictus + Hosanna score with SATB, basset horns, bassoons, B-flat trumpets, three trombones, strings, organ and bass. It is selected as the clean full-orchestral source and ingestion has restarted.
+
+
+## Benedictus publication
+
+The blocker is resolved. ScoreBase/PDMX **94634** ingested as the complete traditional Süssmayr Benedictus + Hosanna: **76 measures, 17 note-bearing tracks, 5,489 note events**, with a source meter change from 4/4 to 3/4 at q212. The earlier six-track SATB/organ reduction remains rejected.
+
+Movement 13, **Agnus Dei**, is now active from named ScoreBase/PDMX witness **155734**. It will not be published until its measure and orchestration inventory passes the same Full Rendition gate.

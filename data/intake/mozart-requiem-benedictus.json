@@ -29,7 +29,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "normalization-and-publication",
+    "status": "published-awaiting-user-qa",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "defaultBpm": 0,
@@ -187,7 +187,7 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-benedictus.full.json",
-  "nextAction": "Reingest with normalized 17-part orchestral labels/mix, then publish the public Benedictus song wrapper and validate.",
+  "nextAction": "Await user listening/UX QA; preserve the 76-measure full-orchestral witness unless QA finds a concrete source or mix defect.",
   "sourceCandidates": [
     {
       "provider": "ScoreBase / PDMX",
