@@ -18,8 +18,8 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued | **published — awaiting QA** |
 | 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **published — awaiting QA** |
 | 10 | Hostias | `mozart-requiem-hostias` | **published — awaiting QA** |
-| 11 | Sanctus | `mozart-requiem-sanctus` | **publication in progress** |
-| 12 | Benedictus | `mozart-requiem-benedictus` | queued |
+| 11 | Sanctus | `mozart-requiem-sanctus` | **published — awaiting QA** |
+| 12 | Benedictus | `mozart-requiem-benedictus` | **ingestion in progress** |
 | 13 | Agnus Dei | `mozart-requiem-agnus-dei` | queued |
 | 14 | Lux aeterna / Communio | `mozart-requiem-lux-aeterna` | queued |
 

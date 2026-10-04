@@ -17,7 +17,7 @@
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
     "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
-  "processingCursor": 11,
+  "processingCursor": 12,
   "queue": [
     {
       "order": 1,
@@ -93,14 +93,15 @@
       "order": 11,
       "slug": "mozart-requiem-sanctus",
       "title": "Sanctus",
-      "status": "publication-in-progress",
-      "note": "Verified 38-measure D-major Süssmayr witness ingested: 18 tracks, 2,253 events; 4/4 Sanctus changes to 3/4 Hosanna at q40."
+      "status": "published-awaiting-user-qa",
+      "note": "Published and CI-validated: D major, 38 measures, 18 tracks, 2,253 events; 4/4 Sanctus → 3/4 Hosanna."
     },
     {
       "order": 12,
       "slug": "mozart-requiem-benedictus",
       "title": "Benedictus",
-      "status": "queued"
+      "status": "ingestion-in-progress",
+      "note": "Processing named ScoreBase/PDMX Benedictus witness 148760; expected 76-measure Benedictus + Hosanna structure."
     },
     {
       "order": 13,

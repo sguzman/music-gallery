@@ -29,7 +29,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "normalization-and-publication",
+    "status": "published-awaiting-user-qa",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "defaultBpm": 0,
@@ -189,5 +189,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-sanctus.full.json",
-  "nextAction": "Publish normalized Sanctus + Hosanna and run CI; then advance to Benedictus."
+  "nextAction": "Await user listening/UX QA."
 }
