@@ -19,7 +19,7 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **published — awaiting QA** |
 | 10 | Hostias | `mozart-requiem-hostias` | **published — awaiting QA** |
 | 11 | Sanctus | `mozart-requiem-sanctus` | **published — awaiting QA** |
-| 12 | Benedictus | `mozart-requiem-benedictus` | **source-quality blocked** |
+| 12 | Benedictus | `mozart-requiem-benedictus` | **ingestion in progress** |
 | 13 | Agnus Dei | `mozart-requiem-agnus-dei` | queued |
 | 14 | Lux aeterna / Communio | `mozart-requiem-lux-aeterna` | queued |
 
@@ -139,3 +139,8 @@ The first Benedictus intake candidate (ScoreBase/PDMX 148760) is **not sufficien
 A separate 20-track MIDI circulating from the older Classical Archives corpus was inspected only as a reference. Its embedded metadata says **"Sequenced by D. Viens 9-27-97"** and it contains basset horns, bassoon, trumpet, three trombones, strings, and SATB, but its redistribution rights are not established. It is therefore **rights-blocked and must not be vendored**.
 
 IMSLP/CPDL provide clean public-domain/CC score references for the traditional completion. Processing remains stopped at Benedictus until a redistribution-clean **machine-readable full-orchestral** witness is found or derived. Agnus Dei and Lux aeterna stay queued behind it.
+
+
+### Benedictus blocker resolved
+
+A second ScoreBase/PDMX witness was found: **score 94634**. Unlike the rejected SATB/organ reduction, this one is an exact **76-measure, B-flat-major, 17-part** Benedictus + Hosanna score with SATB, basset horns, bassoons, B-flat trumpets, three trombones, strings, organ and bass. It is selected as the clean full-orchestral source and ingestion has restarted.
