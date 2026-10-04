@@ -114,8 +114,13 @@
       "order": 14,
       "slug": "mozart-requiem-lux-aeterna",
       "title": "Lux aeterna / Communio",
-      "status": "normalization-in-progress",
-      "note": "Agnus Dei is complete. Movement 14 now advances using source measures 52–133 of the same CC0 K.626 tail witness: 82 measures of 4/4 Communio / Lux aeterna."
+      "status": "published-awaiting-user-qa",
+      "note": "Published and CI-validated from the CC0 K.626 tail witness: source measures 52–133, exactly 82 measures of 4/4, 17 full-orchestral tracks, 8,482 note events."
     }
-  ]
+  ],
+  "completion": {
+    "status": "complete",
+    "completedAt": "2026-10-04",
+    "note": "All fourteen traditional Süssmayr Requiem movements have published source-grounded Full Renditions. Movements remain marked published-awaiting-user-qa for optional listening/UX review."
+  }
 }
