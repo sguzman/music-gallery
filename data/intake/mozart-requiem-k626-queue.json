@@ -44,22 +44,22 @@
       "order": 4,
       "slug": "mozart-requiem-tuba-mirum",
       "title": "Tuba mirum",
-      "status": "normalization-in-progress",
-      "note": "Boundary QA found the earlier 169-230 slice started 8 quarter-units too early. Repairing Tuba mirum to source measures 171-233: exact tempo-boundary span q680-q932 (63 source measures)."
+      "status": "publication-in-progress",
+      "note": "Corrected boundary regenerated successfully: source q680-q932, 63 measures, 16 retained tracks, 1,525 events. Public wrapper metadata repaired."
     },
     {
       "order": 5,
       "slug": "mozart-requiem-rex-tremendae",
       "title": "Rex tremendae",
-      "status": "queued",
-      "note": "Previous wrapper invalidated by boundary QA. Correct Rex tremendae span is source measures 234-255: q932-q1020, exactly 22 measures."
+      "status": "publication-in-progress",
+      "note": "Corrected boundary regenerated successfully: source q932-q1020, exactly 22 measures, 21 tracks, 2,040 events. Public wrapper and Practice phrase repaired."
     },
     {
       "order": 6,
       "slug": "mozart-requiem-recordare",
       "title": "Recordare",
-      "status": "queued",
-      "note": "Recordare boundary corrected before publication: source measures 256-385, q1020-q1410, exactly 130 measures in 3/4."
+      "status": "publication-in-progress",
+      "note": "Corrected 3/4 boundary generated successfully: source q1020-q1410, exactly 130 measures, 15 tracks, 4,052 events. Recordare wrapper published for CI."
     },
     {
       "order": 7,
