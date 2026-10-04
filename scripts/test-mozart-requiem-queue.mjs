@@ -32,28 +32,38 @@ const expected=[
 ];
 assert.deepEqual(queue.queue.map(x=>x.slug),expected);
 
-assert.equal(queue.processingCursor,1);
-assert.equal(queue.queue[0].status,"source-verification-in-progress");
+assert.ok(Number.isInteger(queue.processingCursor));
+assert.ok(queue.processingCursor>=1 && queue.processingCursor<=14);
 
-const intake=JSON.parse(readFileSync(resolve(ROOT,"data/intake/mozart-requiem-introitus.json"),"utf8"));
-assert.equal(intake.approval.status,"user-approved");
-assert.equal(intake.ingest.enabled,false);
-assert.equal(intake.ingest.status,"source-verification");
-assert.ok(Array.isArray(intake.sourceCandidates)&&intake.sourceCandidates.length>0);
+const allowedStatuses=new Set([
+  "queued",
+  "source-verification-in-progress",
+  "ingestion-in-progress",
+  "normalization-in-progress",
+  "normalization-and-publication",
+  "publication-in-progress",
+  "published-awaiting-user-qa"
+]);
+for(const item of queue.queue){
+  assert.ok(allowedStatuses.has(item.status),`${item.order} ${item.slug}: invalid status ${item.status}`);
+}
 
 const dies=queue.queue[2];
 assert.equal(dies.slug,"mozart-dies-irae");
 assert.equal(dies.status,"published-awaiting-user-qa");
-const songPath=resolve(ROOT,"data/songs/mozart-dies-irae.json");
-assert.ok(existsSync(songPath),"existing Dies irae public song JSON missing");
-const song=JSON.parse(readFileSync(songPath,"utf8"));
-assert.equal(song.fullVersion?.status,"available");
-assert.ok(song.fullVersion?.artifactPath);
-assert.ok(existsSync(resolve(ROOT,song.fullVersion.artifactPath)),"existing Dies irae Full Rendition artifact missing");
 
 for(const item of queue.queue){
-  if(item.order===1 || item.order===3) continue;
-  assert.equal(item.status,"queued",`${item.order} ${item.slug}: unexpected initial state`);
+  if(item.status!=="published-awaiting-user-qa") continue;
+  const songPath=resolve(ROOT,"data/songs",`${item.slug}.json`);
+  assert.ok(existsSync(songPath),`${item.slug}: published item missing public song JSON`);
+  const song=JSON.parse(readFileSync(songPath,"utf8"));
+  assert.equal(song.fullVersion?.status,"available",`${item.slug}: published item Full Rendition unavailable`);
+  assert.ok(song.fullVersion?.artifactPath,`${item.slug}: published item missing artifactPath`);
+  assert.ok(existsSync(resolve(ROOT,song.fullVersion.artifactPath)),`${item.slug}: published item artifact missing`);
 }
+
+const introitus=JSON.parse(readFileSync(resolve(ROOT,"data/intake/mozart-requiem-introitus.json"),"utf8"));
+assert.equal(introitus.approval.status,"user-approved");
+assert.ok(introitus.sourceCandidates?.length>0 || introitus.source?.sourcePage);
 
 console.log("Mozart Requiem K.626 queue contract self-test: PASS");
