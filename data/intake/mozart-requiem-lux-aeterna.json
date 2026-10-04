@@ -18,28 +18,176 @@
   "source": {
     "path": "data/sources/mozart-requiem-lux-aeterna.mid",
     "format": "midi",
-    "provider": "ScoreBase / PDMX",
-    "sourcePage": "https://scorebase.org/scores/46608",
-    "remoteUrl": "https://scorebase.org/scores/46608/file/mid?download=true",
-    "attribution": "PDMX (Long, Novack, McAuley, Berg-Kirkpatrick et al.); source surfaced through ScoreBase",
-    "license": "Public-domain score; PDMX dataset attribution",
-    "licenseUrl": "https://zenodo.org/records/15571083",
-    "evidence": "Preflight candidate: D minor, 4/4, 82 measures, 18 parts, SATB plus basset horns, bassoons, D trumpets, three trombones, timpani, strings and organ. This strongly matches the complete Communio/Lux aeterna structure but remains disabled until Agnus Dei is complete and movement identity is verified from the source."
+    "provider": "dominicfanucchi/aai-511_group1 — CC0 classical MIDI dataset mirror",
+    "sourcePage": "https://github.com/dominicfanucchi/aai-511_group1/blob/main/midiclassics/Mozart/K626%20Requiem%2012%20agnus%20dei.mid",
+    "remoteUrl": "https://raw.githubusercontent.com/dominicfanucchi/aai-511_group1/main/midiclassics/Mozart/K626%20Requiem%2012%20agnus%20dei.mid",
+    "attribution": "Source dataset mirror maintained by Dominic Fanucchi et al.; repository README explicitly releases the dataset under CC0 1.0.",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+    "compositionRights": "Mozart's Requiem K.626 and the traditional Süssmayr completion are public domain.",
+    "evidence": "The CC0 K626 Requiem 12 agnus dei.mid witness is a combined tail score. Its ~481-quarter duration resolves exactly as 51 measures of 3/4 Agnus Dei (153 quarters) followed by 82 measures of 4/4 Communio / Lux aeterna (328 quarters). Musicarium extracts source measures 52–133 for this movement."
   },
   "ingest": {
-    "enabled": false,
-    "status": "preflight-source-identified",
+    "enabled": true,
+    "status": "normalization-in-progress",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
+    "segmentMeasures": {
+      "start": 52,
+      "end": 133
+    },
     "defaultBpm": 0,
     "bpmRange": [
       20,
       240
     ],
-    "meterFallback": "4/4",
+    "meterFallback": "3/4",
     "trackLevel": 0.24,
-    "label": "Lux aeterna / Communio, K.626 — candidate complete movement rendition"
+    "label": "Lux aeterna / Communio, K.626 — complete movement rendition",
+    "description": "Complete source-MIDI-derived Communio / Lux aeterna extracted from measures 52–133 of the CC0 K.626 tail witness.",
+    "trackOverrides": {
+      "corni-di-bassetto-in-f": {
+        "name": "Basset Horns in F",
+        "instrumentLabel": "Basset Horns in F",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.5
+      },
+      "bassoon": {
+        "name": "Bassoons",
+        "instrumentLabel": "Bassoons",
+        "defaultInstrument": "bassoon",
+        "level": 0.22,
+        "pan": -0.32
+      },
+      "trumpet-in-d": {
+        "name": "Trumpets in D",
+        "instrumentLabel": "Trumpets in D",
+        "defaultInstrument": "horn",
+        "level": 0.2,
+        "pan": 0.46
+      },
+      "alto-trombone": {
+        "name": "Alto Trombone",
+        "instrumentLabel": "Alto Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.12
+      },
+      "tenor-trombone": {
+        "name": "Tenor Trombone",
+        "instrumentLabel": "Tenor Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.22
+      },
+      "baritone-trombone": {
+        "name": "Bass Trombone",
+        "instrumentLabel": "Bass Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.32
+      },
+      "violin-i": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.22,
+        "pan": -0.44
+      },
+      "violin-ii": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.21,
+        "pan": -0.27
+      },
+      "viola": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.21,
+        "pan": -0.08
+      },
+      "cello": {
+        "name": "Cellos",
+        "instrumentLabel": "Cellos",
+        "defaultInstrument": "cello",
+        "level": 0.21,
+        "pan": 0.06
+      },
+      "contrabass": {
+        "name": "Double Basses",
+        "instrumentLabel": "Double Basses",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": 0.16
+      },
+      "soprano": {
+        "name": "Soprano",
+        "instrumentLabel": "Soprano",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.08
+      },
+      "alto": {
+        "name": "Alto",
+        "instrumentLabel": "Alto",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.15
+      },
+      "tenor": {
+        "name": "Tenor",
+        "instrumentLabel": "Tenor",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.22
+      },
+      "bass": {
+        "name": "Bass",
+        "instrumentLabel": "Bass",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.3
+      },
+      "timpani": {
+        "name": "Timpani",
+        "instrumentLabel": "Timpani",
+        "defaultInstrument": "generic",
+        "level": 0.19,
+        "pan": 0.28
+      },
+      "organ": {
+        "name": "Organ",
+        "instrumentLabel": "Organ",
+        "defaultInstrument": "piano",
+        "level": 0.12,
+        "pan": 0.03
+      }
+    }
   },
   "output": "data/ingested/mozart-requiem-lux-aeterna.full.json",
-  "nextAction": "Keep disabled until Agnus Dei passes the Full Rendition gate; then ingest and verify that the 82-measure witness is the complete Lux aeterna / Cum sanctis tuis Communio."
+  "nextAction": "Fetch and normalize source measures 52–133; require exactly 82 measures of 4/4 and a complete full-orchestral event graph before publication.",
+  "sourceCandidates": [
+    {
+      "provider": "dominicfanucchi/aai-511_group1 CC0 dataset mirror",
+      "sourcePage": "https://github.com/dominicfanucchi/aai-511_group1/blob/main/midiclassics/Mozart/K626%20Requiem%2012%20agnus%20dei.mid",
+      "status": "selected-clean-machine-readable",
+      "rights": "CC0 1.0 as explicitly stated for the dataset in the repository README",
+      "reason": "The same clean combined K.626 tail witness that passed the Agnus gate continues directly into the complete 82-measure Communio."
+    },
+    {
+      "provider": "ScoreBase / PDMX",
+      "sourcePage": "https://scorebase.org/scores/46608",
+      "status": "verified-alternate-full-score",
+      "reason": "Independent preflight candidate: D minor, 4/4, 82 measures, 18 full-orchestral parts; retained as structural cross-check rather than primary source."
+    },
+    {
+      "provider": "Neue Mozart-Ausgabe / Mozarteum",
+      "sourcePage": "https://dme.mozarteum.at/DME/nma/nma_toc.php?l=2&vsep=14",
+      "status": "scholarly-reference",
+      "reason": "Traditional completion and Communio structure cross-check."
+    }
+  ]
 }
