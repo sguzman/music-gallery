@@ -1,153 +1,62 @@
 # Mozart — Requiem in D minor, K.626
 
-This document tracks the complete **traditional Süssmayr completion** as a work-level Musicarium corpus.
-
-The user explicitly approved the entire Requiem after the successful `Dies irae` Full Rendition and requested that every movement be queued and processed in score order.
+Musicarium tracks the traditional **Süssmayr completion** as one parent work with fourteen ordered, independently playable Full Renditions.
 
 ## Locked movement order
 
-| # | Movement | Musicarium slug | Status |
+| # | Movement | Status | Full Rendition facts |
 |---:|---|---|---|
-| 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **published — awaiting QA** |
-| 2 | Kyrie | `mozart-requiem-kyrie` | **published — awaiting QA** |
-| 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
-| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **corrected publication in progress** | **published — awaiting QA** |
-| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | **corrected publication in progress** | **published — awaiting QA** |
-| 6 | Recordare | `mozart-requiem-recordare` | **publication in progress** | **published — awaiting QA** |
-| 7 | Confutatis | `mozart-requiem-confutatis` | queued | **published — awaiting QA** |
-| 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued | **published — awaiting QA** |
-| 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **published — awaiting QA** |
-| 10 | Hostias | `mozart-requiem-hostias` | **published — awaiting QA** |
-| 11 | Sanctus | `mozart-requiem-sanctus` | **published — awaiting QA** |
-| 12 | Benedictus | `mozart-requiem-benedictus` | **published — awaiting QA** |
-| 13 | Agnus Dei | `mozart-requiem-agnus-dei` | **ingestion in progress** |
-| 14 | Lux aeterna / Communio | `mozart-requiem-lux-aeterna` | queued |
+| 1 | Introitus — Requiem aeternam | published — awaiting QA | 48 measures · 22 tracks · 3,965 events |
+| 2 | Kyrie | published — awaiting QA | 52 measures · 16 tracks · 6,461 events |
+| 3 | Dies irae | published — awaiting QA | 12 tracks · 3,921 events |
+| 4 | Tuba mirum | published — awaiting QA | corrected q680–q932 · 63 source measures · 16 tracks · 1,525 events |
+| 5 | Rex tremendae | published — awaiting QA | corrected q932–q1020 · 22 measures · 21 tracks · 2,040 events |
+| 6 | Recordare | published — awaiting QA | q1020–q1410 · 130 measures of 3/4 · 15 tracks · 4,052 events |
+| 7 | Confutatis | published — awaiting QA | q1410–q1578 · 42 measures of 4/4 · 21 tracks · 2,827 events |
+| 8 | Lacrimosa | published — awaiting QA | q1578–end · 30 measures of 12/8 · 21 tracks · 2,102 events |
+| 9 | Domine Jesu | published — awaiting QA | 78 measures · 14 tracks · 7,230 events |
+| 10 | Hostias | published — awaiting QA | 89 measures · 14 tracks · 5,356 events · 3/4 → 4/4 Quam olim |
+| 11 | Sanctus | published — awaiting QA | 38 measures · 18 tracks · 2,253 events · 4/4 → 3/4 Hosanna |
+| 12 | Benedictus | published — awaiting QA | 76 measures · 17 tracks · 5,489 events · 4/4 → 3/4 Hosanna |
+| 13 | Agnus Dei | **source-quality blocked** | rejected reduction: 6 tracks / 1,324 events; target: 51 measures / 17 full-orchestral parts |
+| 14 | Lux aeterna / Communio | preflight source identified | candidate PDMX 46608: 82 measures / 18 parts; disabled pending movement 13 |
 
 Machine-readable queue: `data/intake/mozart-requiem-k626-queue.json`.
 
-## Work model
+## Corpus contract
 
-The Requiem is represented simultaneously as:
+A movement is complete only when it has a redistribution-clean symbolic witness, a normalized nonempty event graph, public song JSON with `fullVersion.status === "available"`, and the actual Full Rendition artifact. Piano, choir/piano, or choir/organ reductions do **not** satisfy the contract when the target work is orchestral.
 
-- one work: Mozart/Süssmayr, Requiem in D minor, K.626;
-- fourteen ordered, independently playable Musicarium movement specimens;
-- one existing published movement, `Dies irae`, reused in-place rather than duplicated.
+Processing is strict-order. Later sources may be preflighted, but movement 14 cannot enter ingestion while movement 13 is blocked.
 
-This preserves work-level identity without sacrificing the existing per-song Full Rendition model.
+## Source and rights policy
 
-## Processing policy
+The Mozart/Süssmayr composition is public domain. Modern symbolic witnesses are still provenance-gated. PDMX sources must be from its `no_license_conflict` corpus; otherwise the source must carry an independently clean public-domain or explicit redistribution license.
 
-Processing is strictly sequential. A later movement may have source candidates identified, but the active cursor does not advance until the current movement has a redistribution-clean symbolic source and a validated Full Rendition.
+## Sequence boundary repair
 
-A movement is not complete merely because a PDF, MIDI, MusicXML, or recording exists. It must reach the same publication contract as the previous Full Rendition queue: public song JSON, `fullVersion.status === "available"`, real artifact, and a nonempty source-grounded event graph.
+The original cumulative-measure estimate for part of the Sequence was corrected using the source MIDI's own meter/tempo boundaries:
 
-## Source and rights gate
+- Tuba mirum: q680–q932.
+- Rex tremendae: q932–q1020.
+- Recordare: q1020–q1410 (3/4).
+- Confutatis: q1410–q1578 (4/4).
+- Lacrimosa: q1578–end (12/8).
 
-The composition itself is safely public domain. The remaining risk is the **specific modern symbolic witness**.
+The corrected artifacts are the published ones.
 
-For Introitus, source discovery has already started. ScoreBase exposes a PDMX-derived candidate with 48 measures, 22 parts, SATB, orchestra and pipe organ, which structurally matches the complete movement:
+## Benedictus source-quality repair
 
-- https://scorebase.org/scores/178366
+The first Benedictus witness, ScoreBase/PDMX 148760, proved to be only SATB + two organ staves and was rejected. ScoreBase/PDMX **94634** resolved the blocker with the complete 76-measure, 17-track traditional Süssmayr orchestration. That full witness is now published.
 
-PDMX documents that a minority of its corpus has a discrepancy between public-facing and internal license metadata and explicitly recommends its `no_license_conflict` subset:
+## Active blocker — Agnus Dei
 
-- https://github.com/pnlong/PDMX
+ScoreBase/PDMX **155734**, despite being named “Mozart Requiem - Agnus Dei,” produced only **6 note-bearing tracks and 1,324 events**. It is a vocal/organ reduction and has been removed from `data/ingested/`; it must not be published as a Full Rendition.
 
-The rights gate is now cleared for this witness. ScoreBase's PDMX importer defaults to `subset: "no_license_conflict"`, and its import task likewise defaults to that subset. PDMX defines this subset as songs whose public-facing and internal copyright metadata agree on public-domain status. The witness is therefore enabled for ingestion, with PDMX attribution retained.
+The verified target signature is the traditional Süssmayr Agnus Dei: **51 measures in 3/4** with **17 parts** — basset horns, bassoons, trumpets in D, timpani, three trombones, strings, SATB, cello, double bass and organ. ScoreTail exposes exactly that public-domain score (2,423 notes), while IMSLP and the Neue Mozart-Ausgabe provide clean engraved/scholarly orchestration references.
 
-IMSLP remains the score/reference authority for the work and provides public-domain editions suitable for cross-checking:
+The remaining task is source acquisition, not musical identification: obtain a redistribution-clean machine-readable MusicXML/MIDI export of that 51-measure full score.
 
-- https://imslp.org/wiki/Requiem_K.626_(Mozart,_Wolfgang_Amadeus)
+## Movement 14 preflight
 
-## Current processing state
-
-Movement 1, **Introitus — Requiem aeternam**, is published and CI-validated: **48 measures, 22 source tracks, 3,965 note events**. Source-part display names/mix metadata are normalized and a five-measure soprano Practice derivative is paired with the untouched complete Full Rendition.
-
-Movement 2, **Kyrie**, is published and CI-validated: **52 measures, 16 source tracks, 6,461 note events**. Its opening Basso fugue subject is retained as a four-measure Practice derivative without octave folding.
-
-Movement 4, **Tuba mirum**, is published and CI-validated: **62 measures, 19 retained note-bearing tracks, 1,538 note events**. The solo-trombone opening and staggered Bass → Tenor → Alto → Soprano entries confirm the boundary; source alternate clarinet layers are preserved and labeled rather than silently deleted.
-
-Movement 5, **Rex tremendae**, is published and CI-validated: source measures **231-252**, **22 measures**, **21 retained tracks**, **2,024 note events**.
-
-Movement 6, **Recordare**, is now active. The same conflict-free opening-Requiem witness is sliced at **source measures 253-382**, the standard **130-measure** Recordare span.
-
-Movement 3, **Dies irae**, remains the already-published baseline: 3,921 note events across 12 note-bearing choral/orchestral tracks.
-
-
-## Boundary QA correction — Sequence source
-
-A structural QA pass on the combined PDMX MIDI found that the first cumulative-measure estimate for Tuba mirum/Rex tremendae was offset. The source itself gives unambiguous movement markers:
-
-- **Tuba mirum:** q680, tempo ≈78 → q932, tempo changes to ≈52. Importer measures **171–233**.
-- **Rex tremendae:** q932 → q1020. Exactly **22 measures** of 4/4, importer measures **234–255**.
-- **Recordare:** q1020 changes to **3/4** and tempo ≈88 → q1410 returns to 4/4. Exactly **130 measures**, importer measures **256–385**.
-- **Confutatis:** q1410 → q1578, where the meter changes to **12/8**.
-- **Lacrimosa:** q1578 → q1758, exactly **30 measures of 12/8**.
-
-The earlier Tuba and Rex public wrappers are therefore temporarily de-published in the queue contract until their source slices are regenerated and their metadata/counts are revalidated. This is a source-boundary repair, not a change to the underlying witness or rights status.
-
-
-### Corrected regeneration results
-
-The repaired boundaries regenerated cleanly:
-
-- **Tuba mirum:** q680–q932; 63 source measures; **16 tracks / 1,525 events**.
-- **Rex tremendae:** q932–q1020; exactly 22 measures; **21 tracks / 2,040 events**.
-- **Recordare:** q1020–q1410; exactly 130 measures of 3/4; **15 tracks / 4,052 events**.
-
-The ingestion scripts now also honor `ingest.enabled: false`, so queued manifests can no longer be fetched/normalized prematurely merely because they contain an approved source URL.
-
-
-## Sequence publication completion
-
-The combined Sequence witness has now been segmented and published through **Lacrimosa** using source structural markers rather than cumulative-count guesses:
-
-- Tuba mirum: q680–q932 — 63 source measures — 16 tracks / 1,525 events.
-- Rex tremendae: q932–q1020 — 22 measures — 21 tracks / 2,040 events.
-- Recordare: q1020–q1410 — 130 measures of 3/4 — 15 tracks / 4,052 events.
-- Confutatis: q1410–q1578 — 42 measures of 4/4 — 21 tracks / 2,827 events.
-- Lacrimosa: q1578–end — 30 measures of 12/8 — 21 tracks / 2,102 events.
-
-The work cursor now advances to **Domine Jesu**.
-
-
-## Offertorium — Domine Jesu
-
-Movement 9 source identity is verified from the witness itself: **G minor, 4/4, 78 measures, 14 parts**, matching the complete Domine Jesu. Ingestion produced **14 tracks / 7,230 note events**. Part labels and mix are normalized without changing the event graph.
-
-
-Movement 9, **Domine Jesu**, is published and CI-validated: **78 measures, 14 tracks, 7,230 events**.
-
-Movement 10, **Hostias**, is now active from PDMX score 149074. The witness is **89 measures in 3/4**, matching the complete Hostias including the Quam olim reprise.
-
-
-Hostias ingestion confirms the full movement structure: **89 measures**, 3/4 opening, a source meter change to 4/4 at q162 for the Quam olim reprise, and **14 tracks / 5,356 events**.
-
-
-Movement 10, **Hostias**, is published and CI-validated: **89 measures, 14 tracks, 5,356 events**.
-
-Movement 11, **Sanctus**, is active from a Süssmayr-attributed PDMX witness: **D major, 4/4, 38 measures, 18 full-orchestral parts**.
-
-
-Sanctus ingestion confirms **38 measures, 18 tracks, 2,253 events**, with the expected **4/4 → 3/4** transition at q40 for Hosanna.
-
-
-## Benedictus source-quality gate
-
-The first Benedictus intake candidate (ScoreBase/PDMX 148760) is **not sufficient for Full Rendition publication**. The generated artifact is complete in form but contains only **6 note-bearing tracks: SATB + two organ staves**. It is a reduction, not the traditional full Süssmayr orchestration.
-
-A separate 20-track MIDI circulating from the older Classical Archives corpus was inspected only as a reference. Its embedded metadata says **"Sequenced by D. Viens 9-27-97"** and it contains basset horns, bassoon, trumpet, three trombones, strings, and SATB, but its redistribution rights are not established. It is therefore **rights-blocked and must not be vendored**.
-
-IMSLP/CPDL provide clean public-domain/CC score references for the traditional completion. Processing remains stopped at Benedictus until a redistribution-clean **machine-readable full-orchestral** witness is found or derived. Agnus Dei and Lux aeterna stay queued behind it.
-
-
-### Benedictus blocker resolved
-
-A second ScoreBase/PDMX witness was found: **score 94634**. Unlike the rejected SATB/organ reduction, this one is an exact **76-measure, B-flat-major, 17-part** Benedictus + Hosanna score with SATB, basset horns, bassoons, B-flat trumpets, three trombones, strings, organ and bass. It is selected as the clean full-orchestral source and ingestion has restarted.
-
-
-## Benedictus publication
-
-The blocker is resolved. ScoreBase/PDMX **94634** ingested as the complete traditional Süssmayr Benedictus + Hosanna: **76 measures, 17 note-bearing tracks, 5,489 note events**, with a source meter change from 4/4 to 3/4 at q212. The earlier six-track SATB/organ reduction remains rejected.
-
-Movement 13, **Agnus Dei**, is now active from named ScoreBase/PDMX witness **155734**. It will not be published until its measure and orchestration inventory passes the same Full Rendition gate.
+ScoreBase/PDMX **46608** is already recorded as a disabled preflight candidate for Lux aeterna / Communio: D minor, 4/4, **82 measures, 18 parts**, with complete SATB/orchestral forces. Its manifest intentionally has `ingest.enabled: false` until Agnus Dei is complete.

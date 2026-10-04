@@ -107,14 +107,15 @@
       "order": 13,
       "slug": "mozart-requiem-agnus-dei",
       "title": "Agnus Dei",
-      "status": "ingestion-in-progress",
-      "note": "Processing named ScoreBase/PDMX Agnus Dei witness 155734; full-orchestration structure is being verified before publication."
+      "status": "source-quality-blocked",
+      "note": "Named PDMX 155734 was rejected after ingestion: only 6 note-bearing tracks / 1,324 events (vocal + organ reduction). Full target is 51 measures / 17 traditional Süssmayr parts; ScoreTail exposes an exact public-domain full-score reference, but machine-readable export acquisition remains pending."
     },
     {
       "order": 14,
       "slug": "mozart-requiem-lux-aeterna",
       "title": "Lux aeterna / Communio",
-      "status": "queued"
+      "status": "preflight-source-identified",
+      "note": "Preflight only: ScoreBase/PDMX 46608 is D minor, 4/4, 82 measures, 18 full-orchestral parts and is a strong Lux aeterna / Communio candidate. Ingestion remains disabled until Agnus Dei is complete."
     }
   ]
 }

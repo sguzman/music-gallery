@@ -16,50 +16,97 @@
     "catalogue": "K.626"
   },
   "source": {
-    "path": "data/sources/mozart-requiem-agnus-dei.mid",
-    "format": "midi",
     "provider": "ScoreBase / PDMX",
     "sourcePage": "https://scorebase.org/scores/155734",
-    "remoteUrl": "https://scorebase.org/scores/155734/file/mid?download=true",
-    "attribution": "PDMX (Long, Novack, McAuley, Berg-Kirkpatrick et al.); source surfaced through ScoreBase",
-    "license": "Public-domain score; PDMX dataset attribution",
-    "licenseUrl": "https://zenodo.org/records/15571083",
-    "compositionRights": "The traditional Süssmayr Agnus Dei is public domain.",
-    "evidence": "ScoreBase's Mozart organ catalogue exposes score 155734 as 'Mozart Requiem - Agnus Dei'. Exact measure/part structure will be verified from the vendored PDMX MIDI before publication."
+    "status": "rejected-for-full-rendition",
+    "observedArtifact": {
+      "tracks": 6,
+      "events": 1324,
+      "durationUnits": 152.997916667,
+      "sha256": "3bd6d965aafc4587a3997de5694706b87c6ad0735d90dd0f3beb6835c4453ef1"
+    },
+    "reason": "The named Agnus Dei witness is only a six-track vocal/organ reduction. Musicarium requires the traditional full-orchestral movement."
   },
   "ingest": {
-    "enabled": true,
-    "status": "ingestion-in-progress",
-    "fidelity": "source-midi-derived",
+    "enabled": false,
+    "status": "source-quality-blocked",
     "fidelityTarget": "complete-score-derived",
-    "defaultBpm": 0,
-    "bpmRange": [
-      20,
-      240
-    ],
     "meterFallback": "3/4",
-    "trackLevel": 0.24,
-    "label": "Agnus Dei, K.626 — complete movement rendition",
-    "description": "Source-MIDI-derived Süssmayr Agnus Dei candidate from the conflict-free PDMX corpus; publication requires full-orchestration verification."
+    "acceptanceTarget": {
+      "movementMeasures": 51,
+      "minimumPartModel": "traditional Süssmayr full orchestra + SATB",
+      "expectedParts": [
+        "Basset Horns",
+        "Bassoons",
+        "Trumpets in D",
+        "Timpani",
+        "Alto Trombone",
+        "Tenor Trombone",
+        "Bass Trombone",
+        "Violin I",
+        "Violin II",
+        "Viola",
+        "Soprano",
+        "Alto",
+        "Tenor",
+        "Bass",
+        "Cello",
+        "Double Bass",
+        "Organ"
+      ]
+    }
   },
-  "sourceCrossChecks": [
+  "sourceCandidates": [
     {
-      "provider": "ScoreBase",
+      "provider": "ScoreBase / PDMX",
       "sourcePage": "https://scorebase.org/scores/155734",
-      "role": "named Agnus Dei symbolic witness"
+      "status": "rejected-for-full-rendition",
+      "reason": "Ingested candidate produced only 6 note-bearing tracks / 1,324 events: a vocal-organ reduction."
     },
     {
-      "provider": "New Mozart Edition / Mozarteum",
+      "provider": "ScoreTail",
+      "sourcePage": "https://scoretail.com/en/sheet-music/requiem-in-d-minor-k-626-vii-agnus-dei-by-w-a-mozart-wolfgang-amadeus-mozart-qmrnujxd",
+      "status": "clean-full-score-reference-export-pending",
+      "rights": "Public Domain (as published by ScoreTail)",
+      "observedFacts": {
+        "measures": 51,
+        "parts": 17,
+        "notes": 2423,
+        "meter": "3/4",
+        "partsList": [
+          "Corni di Bassetto",
+          "Fagotti",
+          "Trombe in D",
+          "Timpani in D",
+          "Trombone alto",
+          "Trombone tenore",
+          "Trombone basso",
+          "Violino I",
+          "Violino II",
+          "Viola",
+          "Soprano",
+          "Alto",
+          "Tenore",
+          "Basso",
+          "Violoncello",
+          "Contrabasso",
+          "Organo"
+        ]
+      },
+      "reason": "Exact Full Rendition target signature; ScoreTail supports MusicXML/MIDI export, but a direct redistribution-clean machine-readable export URL has not yet been acquired."
+    },
+    {
+      "provider": "IMSLP",
+      "sourcePage": "https://imslp.org/wiki/Requiem_K.626_(Mozart,_Wolfgang_Amadeus)",
+      "status": "clean-engraved-score-reference",
+      "reason": "Public-domain full score confirms the traditional orchestration; not yet a machine-readable symbolic witness."
+    },
+    {
+      "provider": "Neue Mozart-Ausgabe / Mozarteum",
       "sourcePage": "https://dme.mozarteum.at/DME/nma/nma_toc.php?l=2&vsep=14",
-      "role": "traditional completion order and orchestration cross-check"
-    },
-    {
-      "provider": "PDMX",
-      "sourcePage": "https://zenodo.org/records/15571083",
-      "role": "license/subset provenance",
-      "subset": "no_license_conflict"
+      "status": "scholarly-reference",
+      "reason": "Confirms Süssmayr's Agnus Dei orchestration: strings, two basset horns, two bassoons, two trumpets in D, timpani, three trombones colla parte where indicated, SATB, organ and bass."
     }
   ],
-  "output": "data/ingested/mozart-requiem-agnus-dei.full.json",
-  "nextAction": "Fetch the named Agnus Dei witness, inspect measure count/part inventory and reject it if it is only a reduction; otherwise normalize and publish."
+  "nextAction": "Acquire a redistribution-clean MusicXML/MIDI witness matching the 51-measure traditional Süssmayr full orchestration. Do not publish or regenerate the rejected six-track reduction."
 }

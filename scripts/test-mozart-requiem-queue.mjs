@@ -42,6 +42,8 @@ const allowedStatuses=new Set([
   "normalization-in-progress",
   "normalization-and-publication",
   "publication-in-progress",
+  "source-quality-blocked",
+  "preflight-source-identified",
   "published-awaiting-user-qa"
 ]);
 for(const item of queue.queue){
@@ -60,6 +62,14 @@ for(const item of queue.queue){
   assert.equal(song.fullVersion?.status,"available",`${item.slug}: published item Full Rendition unavailable`);
   assert.ok(song.fullVersion?.artifactPath,`${item.slug}: published item missing artifactPath`);
   assert.ok(existsSync(resolve(ROOT,song.fullVersion.artifactPath)),`${item.slug}: published item artifact missing`);
+}
+
+for(const item of queue.queue){
+  if(!["source-quality-blocked","preflight-source-identified"].includes(item.status)) continue;
+  const intakePath=resolve(ROOT,"data/intake",`${item.slug}.json`);
+  assert.ok(existsSync(intakePath),`${item.slug}: gated item missing intake manifest`);
+  const intake=JSON.parse(readFileSync(intakePath,"utf8"));
+  assert.equal(intake.ingest?.enabled,false,`${item.slug}: gated item must have ingest.enabled=false`);
 }
 
 const introitus=JSON.parse(readFileSync(resolve(ROOT,"data/intake/mozart-requiem-introitus.json"),"utf8"));

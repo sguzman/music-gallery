@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "mozart-requiem-lux-aeterna",
+  "approval": {
+    "status": "user-approved",
+    "note": "Explicitly approved as movement 14 of the complete Mozart Requiem K.626 Full Rendition queue."
+  },
+  "identity": {
+    "title": "Lux aeterna / Communio from Requiem, K.626",
+    "displayTitle": "Mozart/Süssmayr — Lux aeterna / Communio",
+    "shortTitle": "Lux aeterna",
+    "composer": {
+      "name": "Wolfgang Amadeus Mozart",
+      "completion": "Franz Xaver Süssmayr"
+    },
+    "catalogue": "K.626"
+  },
+  "source": {
+    "path": "data/sources/mozart-requiem-lux-aeterna.mid",
+    "format": "midi",
+    "provider": "ScoreBase / PDMX",
+    "sourcePage": "https://scorebase.org/scores/46608",
+    "remoteUrl": "https://scorebase.org/scores/46608/file/mid?download=true",
+    "attribution": "PDMX (Long, Novack, McAuley, Berg-Kirkpatrick et al.); source surfaced through ScoreBase",
+    "license": "Public-domain score; PDMX dataset attribution",
+    "licenseUrl": "https://zenodo.org/records/15571083",
+    "evidence": "Preflight candidate: D minor, 4/4, 82 measures, 18 parts, SATB plus basset horns, bassoons, D trumpets, three trombones, timpani, strings and organ. This strongly matches the complete Communio/Lux aeterna structure but remains disabled until Agnus Dei is complete and movement identity is verified from the source."
+  },
+  "ingest": {
+    "enabled": false,
+    "status": "preflight-source-identified",
+    "fidelity": "source-midi-derived",
+    "fidelityTarget": "complete-score-derived",
+    "defaultBpm": 0,
+    "bpmRange": [
+      20,
+      240
+    ],
+    "meterFallback": "4/4",
+    "trackLevel": 0.24,
+    "label": "Lux aeterna / Communio, K.626 — candidate complete movement rendition"
+  },
+  "output": "data/ingested/mozart-requiem-lux-aeterna.full.json",
+  "nextAction": "Keep disabled until Agnus Dei passes the Full Rendition gate; then ingest and verify that the 82-measure witness is the complete Lux aeterna / Cum sanctis tuis Communio."
+}
