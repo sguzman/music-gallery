@@ -74676,6 +74676,8 @@
     "midiFormat": 1,
     "ticksPerQuarter": 480,
     "sourceTrackCount": 17,
+    "sourceDurationUnits": 922.75,
+    "segmentMeasures": null,
     "transformation": "Parsed approved local Standard MIDI File; preserved note onset/duration, velocity, source track/channel identity, tempo events and time signatures."
   },
   "stats": {
