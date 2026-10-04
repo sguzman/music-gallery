@@ -27,7 +27,7 @@
     "originalInstrumentation": "SATB choir, basset horns, bassoons, trumpets in D, trombones, timpani and strings"
   },
   "arrangement": {
-    "name": "Opening soprano proclamation",
+    "name": "Opening bass proclamation",
     "type": "melody-only",
     "targetInstrument": "steel-string acoustic guitar",
     "tuning": {
@@ -48,8 +48,8 @@
       "scale": 5
     },
     "fretRange": {
-      "min": 1,
-      "max": 3
+      "min": 0,
+      "max": 4
     },
     "stringsUsed": [
       "G",
@@ -97,11 +97,11 @@
         "color": "#d8dee9"
       }
     },
-    "pinkyRequired": false,
+    "pinkyRequired": true,
     "simplificationGoals": [
-      "isolate the opening soprano proclamation",
-      "preserve source rhythm",
-      "fold the vocal line down by exactly one octave while leaving the Full Rendition untouched"
+      "isolate the opening Bass proclamation from the corrected movement boundary",
+      "preserve source pitch and rhythm exactly",
+      "leave the complete SATB/orchestral Full Rendition untouched"
     ]
   },
   "musical": {
@@ -167,12 +167,12 @@
     },
     "timing": {
       "confidence": "high",
-      "method": "Practice line taken directly from the opening Soprano source track; Full Rendition is the exact source-measure 231-252 slice."
+      "method": "Practice line taken directly from the corrected Bass source track at movement quarter-units 9-25; Full Rendition is the exact q932-q1020 / source-measure 234-255 slice."
     },
     "needsReview": true,
     "notesAboutQuality": [
-      "The 22-measure slice matches the standard Süssmayr Rex tremendae length.",
-      "Full Rendition contains 2,024 note events across all 21 retained source tracks.",
+      "Boundary QA corrected the earlier wrapper: Rex tremendae begins at q932 and ends at q1020, exactly 22 measures of 4/4.",
+      "Full Rendition contains 2,040 note events across all 21 retained source tracks.",
       "Four generic Piano source tracks align by range with SATB and are relabeled Soprano, Alto, Tenor and Bass without changing notes.",
       "Source alternate B-flat clarinet layers are preserved and explicitly labeled."
     ],
@@ -184,10 +184,10 @@
       "sourceFacts": [
         "MIDI format 1",
         "480 ticks per quarter",
-        "source measures 231-252 inclusive",
+        "source measures 234-255 inclusive",
         "22 movement measures",
         "21 retained note-bearing tracks",
-        "2,024 note events",
+        "2,040 note events",
         "SATB plus full tutti orchestra"
       ]
     }
@@ -220,9 +220,9 @@
   },
   "sections": [
     {
-      "id": "opening-soprano-proclamation",
-      "name": "Opening soprano proclamation",
-      "description": "Opening Soprano source phrase, folded down one octave for guitar.",
+      "id": "opening-bass-proclamation",
+      "name": "Opening bass proclamation",
+      "description": "Opening Bass source phrase from corrected movement quarter-units 9-25, shifted to Practice start 0.",
       "measures": [
         {
           "label": "M1",
@@ -232,14 +232,136 @@
               "type": "note",
               "string": "G",
               "stringIndex": 2,
+              "fret": 0,
+              "position": "open",
+              "midi": 55,
+              "start": 0,
+              "duration": 0.947916667,
+              "anchor": true,
+              "sourceMidi": 55,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M2",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 4,
+              "position": "mid",
+              "midi": 63,
+              "start": 0,
+              "duration": 0.947916667,
+              "anchor": true,
+              "sourceMidi": 63,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M3",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 1,
+              "position": "low",
+              "midi": 60,
+              "start": 0,
+              "duration": 0.947916667,
+              "anchor": true,
+              "sourceMidi": 60,
+              "octaveFoldSemitones": 0
+            }
+          ]
+        },
+        {
+          "label": "M4",
+          "duration": 4,
+          "events": [
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 0,
+              "duration": 0.710416667,
+              "anchor": true,
+              "sourceMidi": 62,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "B",
+              "stringIndex": 1,
+              "fret": 3,
+              "position": "low",
+              "midi": 62,
+              "start": 0.75,
+              "duration": 0.235416667,
+              "anchor": true,
+              "sourceMidi": 62,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
               "fret": 3,
               "position": "low",
               "midi": 58,
-              "start": 0,
-              "duration": 2.847916667,
+              "start": 1,
+              "duration": 0.710416667,
               "anchor": true,
-              "sourceMidi": 70,
-              "octaveFoldSemitones": -12
+              "sourceMidi": 58,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 3,
+              "position": "low",
+              "midi": 58,
+              "start": 1.75,
+              "duration": 0.235416667,
+              "anchor": true,
+              "sourceMidi": 58,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 0,
+              "position": "open",
+              "midi": 55,
+              "start": 2,
+              "duration": 0.710416667,
+              "anchor": true,
+              "sourceMidi": 55,
+              "octaveFoldSemitones": 0
+            },
+            {
+              "type": "note",
+              "string": "G",
+              "stringIndex": 2,
+              "fret": 0,
+              "position": "open",
+              "midi": 55,
+              "start": 2.75,
+              "duration": 0.235416667,
+              "anchor": true,
+              "sourceMidi": 55,
+              "octaveFoldSemitones": 0
             },
             {
               "type": "note",
@@ -251,40 +373,8 @@
               "start": 3,
               "duration": 0.472916667,
               "anchor": true,
-              "sourceMidi": 74,
-              "octaveFoldSemitones": -12
-            },
-            {
-              "type": "note",
-              "string": "B",
-              "stringIndex": 1,
-              "fret": 1,
-              "position": "low",
-              "midi": 60,
-              "start": 3.5,
-              "duration": 0.472916667,
-              "anchor": true,
-              "sourceMidi": 72,
-              "octaveFoldSemitones": -12
-            }
-          ]
-        },
-        {
-          "label": "M2",
-          "duration": 4,
-          "events": [
-            {
-              "type": "note",
-              "string": "G",
-              "stringIndex": 2,
-              "fret": 3,
-              "position": "low",
-              "midi": 58,
-              "start": 0,
-              "duration": 0.947916667,
-              "anchor": true,
-              "sourceMidi": 70,
-              "octaveFoldSemitones": -12
+              "sourceMidi": 62,
+              "octaveFoldSemitones": 0
             }
           ]
         }
@@ -295,8 +385,8 @@
   "fullVersion": {
     "status": "available",
     "artifactPath": "data/ingested/mozart-requiem-rex-tremendae.full.json",
-    "label": "Rex tremendae, K.626 — complete 22-measure movement rendition",
-    "description": "Complete source-MIDI-derived Rex tremendae Full Rendition: 2,024 note events across 21 retained source tracks.",
+    "label": "Rex tremendae, K.626 — complete corrected 22-measure movement rendition",
+    "description": "Corrected source-MIDI-derived Rex tremendae Full Rendition: q932-q1020, 2,040 note events across 21 retained source tracks.",
     "fidelity": "source-midi-derived-measure-slice",
     "provenance": {
       "provider": "ScoreBase / PDMX",
