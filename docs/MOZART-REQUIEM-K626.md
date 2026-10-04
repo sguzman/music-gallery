@@ -18,8 +18,8 @@ Musicarium tracks the traditional **Süssmayr completion** as one parent work wi
 | 10 | Hostias | published — awaiting QA | 89 measures · 14 tracks · 5,356 events · 3/4 → 4/4 Quam olim |
 | 11 | Sanctus | published — awaiting QA | 38 measures · 18 tracks · 2,253 events · 4/4 → 3/4 Hosanna |
 | 12 | Benedictus | published — awaiting QA | 76 measures · 17 tracks · 5,489 events · 4/4 → 3/4 Hosanna |
-| 13 | Agnus Dei | **source-quality blocked** | rejected reduction: 6 tracks / 1,324 events; target: 51 measures / 17 full-orchestral parts |
-| 14 | Lux aeterna / Communio | preflight source identified | candidate PDMX 46608: 82 measures / 18 parts; disabled pending movement 13 |
+| 13 | Agnus Dei | published — awaiting QA | 51 measures · 17 tracks · 2,238 events · CC0 source measures 1–51 |
+| 14 | Lux aeterna / Communio | published — awaiting QA | 82 measures · 17 tracks · 8,482 events · CC0 source measures 52–133 |
 
 Machine-readable queue: `data/intake/mozart-requiem-k626-queue.json`.
 
@@ -27,7 +27,7 @@ Machine-readable queue: `data/intake/mozart-requiem-k626-queue.json`.
 
 A movement is complete only when it has a redistribution-clean symbolic witness, a normalized nonempty event graph, public song JSON with `fullVersion.status === "available"`, and the actual Full Rendition artifact. Piano, choir/piano, or choir/organ reductions do **not** satisfy the contract when the target work is orchestral.
 
-Processing is strict-order. Later sources may be preflighted, but movement 14 cannot enter ingestion while movement 13 is blocked.
+Processing was strict-order throughout the queue. That constraint is now satisfied: all fourteen movements are published as independently playable Full Renditions.
 
 ## Source and rights policy
 
@@ -49,14 +49,21 @@ The corrected artifacts are the published ones.
 
 The first Benedictus witness, ScoreBase/PDMX 148760, proved to be only SATB + two organ staves and was rejected. ScoreBase/PDMX **94634** resolved the blocker with the complete 76-measure, 17-track traditional Süssmayr orchestration. That full witness is now published.
 
-## Active blocker — Agnus Dei
+## Agnus Dei source-quality repair
 
-ScoreBase/PDMX **155734**, despite being named “Mozart Requiem - Agnus Dei,” produced only **6 note-bearing tracks and 1,324 events**. It is a vocal/organ reduction and has been removed from `data/ingested/`; it must not be published as a Full Rendition.
+The first Agnus witness, ScoreBase/PDMX **155734**, was correctly rejected because it produced only **6 note-bearing tracks / 1,324 events** (SATB + organ reduction).
 
-The verified target signature is the traditional Süssmayr Agnus Dei: **51 measures in 3/4** with **17 parts** — basset horns, bassoons, trumpets in D, timpani, three trombones, strings, SATB, cello, double bass and organ. ScoreTail exposes exactly that public-domain score (2,423 notes), while IMSLP and the Neue Mozart-Ausgabe provide clean engraved/scholarly orchestration references.
+The blocker was resolved with the exact `K626 Requiem 12 agnus dei.mid` file in the **dominicfanucchi/aai-511_group1** classical-MIDI dataset mirror. That repository explicitly licenses its dataset under **CC0 1.0**. The witness is a combined Requiem tail: its structure resolves as **51 measures of 3/4 Agnus Dei** followed immediately by **82 measures of 4/4 Communio**.
 
-The remaining task is source acquisition, not musical identification: obtain a redistribution-clean machine-readable MusicXML/MIDI export of that 51-measure full score.
+Musicarium therefore uses the same clean source in two non-overlapping slices:
 
-## Movement 14 preflight
+- **Agnus Dei:** source measures 1–51 — 153 quarter units — **17 tracks / 2,238 events**.
+- **Lux aeterna / Communio:** source measures 52–133 — approximately 328 quarter units — **17 tracks / 8,482 events**.
 
-ScoreBase/PDMX **46608** is already recorded as a disabled preflight candidate for Lux aeterna / Communio: D minor, 4/4, **82 measures, 18 parts**, with complete SATB/orchestral forces. Its manifest intentionally has `ingest.enabled: false` until Agnus Dei is complete.
+Both artifacts retain the full traditional orchestral/SATB track inventory, with normalized display labels and mix metadata. The rejected six-track Agnus reduction remains documented as a negative source-quality witness.
+
+## Queue completion
+
+The Mozart Requiem K.626 corpus is **complete**. All fourteen movements now satisfy the Musicarium Full Rendition contract: a redistribution-clean symbolic witness, normalized nonempty event graph, published public song JSON with an available Full Rendition, and a real retained artifact.
+
+The final queue state remains `published-awaiting-user-qa` for each movement so optional listening and UX QA can still record concrete defects without reopening source acquisition.
