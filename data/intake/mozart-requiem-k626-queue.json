@@ -86,8 +86,8 @@
       "order": 10,
       "slug": "mozart-requiem-hostias",
       "title": "Hostias",
-      "status": "ingestion-in-progress",
-      "note": "Processing started from PDMX score 149074: 3/4, SATB, 89 measures, 14 parts; independent Hostias sources confirm 89 measures including the Quam olim reprise."
+      "status": "publication-in-progress",
+      "note": "Verified 89-measure Hostias witness ingested: 14 tracks, 5,356 events; 3/4 opening changes to 4/4 for Quam olim at q162."
     },
     {
       "order": 11,
