@@ -76,4 +76,17 @@ const introitus=JSON.parse(readFileSync(resolve(ROOT,"data/intake/mozart-requiem
 assert.equal(introitus.approval.status,"user-approved");
 assert.ok(introitus.sourceCandidates?.length>0 || introitus.source?.sourcePage);
 
+
+const agnusArtifactPath=resolve(ROOT,"data/ingested/mozart-requiem-agnus-dei.full.json");
+if(existsSync(agnusArtifactPath)){
+  const agnus=JSON.parse(readFileSync(agnusArtifactPath,"utf8"));
+  assert.equal(agnus.measures?.length,51,"Agnus Dei: expected exactly 51 measures");
+  assert.equal(agnus.tracks?.length,17,"Agnus Dei: expected 17 note-bearing full-orchestral tracks");
+  assert.equal(agnus.durationUnits,153,"Agnus Dei: expected 153 quarter units (51 measures of 3/4)");
+  assert.equal(agnus.provenance?.segmentMeasures?.startMeasure,1,"Agnus Dei: wrong source segment start");
+  assert.equal(agnus.provenance?.segmentMeasures?.endMeasure,51,"Agnus Dei: wrong source segment end");
+  assert.ok((agnus.stats?.events||0)>2000,"Agnus Dei: event graph unexpectedly sparse");
+  console.log("Agnus Dei track inventory:",agnus.tracks.map(t=>`${t.id}=${t.name}`).join(" | "));
+}
+
 console.log("Mozart Requiem K.626 queue contract self-test: PASS");
