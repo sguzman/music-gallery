@@ -31,7 +31,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "ingestion-in-progress",
+    "status": "normalization-and-publication",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "defaultBpm": 0,
@@ -42,7 +42,121 @@
     "meterFallback": "4/4",
     "trackLevel": 0.24,
     "label": "Kyrie, K.626 — complete choral/orchestral rendition",
-    "description": "Complete source-MIDI-derived Kyrie Full Rendition from a redistribution-cleared PDMX witness, preserving all note-bearing MIDI tracks and source tempo/meter data."
+    "description": "Complete source-MIDI-derived Kyrie Full Rendition from a redistribution-cleared PDMX witness, preserving all note-bearing MIDI tracks and source tempo/meter data.",
+    "trackOverrides": {
+      "corni-di-bassetto": {
+        "name": "Basset Horns in F",
+        "instrumentLabel": "Basset Horns in F",
+        "defaultInstrument": "clarinet",
+        "level": 0.23,
+        "pan": -0.58
+      },
+      "fagotti": {
+        "name": "Bassoons",
+        "instrumentLabel": "Bassoons",
+        "defaultInstrument": "bassoon",
+        "level": 0.24,
+        "pan": -0.4
+      },
+      "trombe-in-d": {
+        "name": "Trumpets in D",
+        "instrumentLabel": "Trumpets in D",
+        "defaultInstrument": "horn",
+        "level": 0.21,
+        "pan": 0.42
+      },
+      "timpani-in-d-a": {
+        "name": "Timpani",
+        "instrumentLabel": "Timpani",
+        "defaultInstrument": "generic",
+        "level": 0.19,
+        "pan": 0.28
+      },
+      "trombone-alto": {
+        "name": "Alto Trombone",
+        "instrumentLabel": "Alto Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.14
+      },
+      "trombone-tenore": {
+        "name": "Tenor Trombone",
+        "instrumentLabel": "Tenor Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.24
+      },
+      "trombone-basso": {
+        "name": "Bass Trombone",
+        "instrumentLabel": "Bass Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.18,
+        "pan": 0.34
+      },
+      "violino-i": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.23,
+        "pan": -0.44
+      },
+      "violino-ii": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.22,
+        "pan": -0.26
+      },
+      "viola": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.21,
+        "pan": -0.08
+      },
+      "soprano": {
+        "name": "Soprano",
+        "instrumentLabel": "Soprano",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.08
+      },
+      "alto": {
+        "name": "Alto",
+        "instrumentLabel": "Alto",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.15
+      },
+      "tenore": {
+        "name": "Tenor",
+        "instrumentLabel": "Tenor",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.22
+      },
+      "basso": {
+        "name": "Bass",
+        "instrumentLabel": "Bass",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.3
+      },
+      "violoncello-basso-ed-organo": {
+        "name": "Cello / Bass Continuo",
+        "instrumentLabel": "Cello / Bass Continuo",
+        "defaultInstrument": "cello",
+        "level": 0.21,
+        "pan": 0.02
+      },
+      "organ": {
+        "name": "Organ",
+        "instrumentLabel": "Organ",
+        "defaultInstrument": "piano",
+        "level": 0.13,
+        "pan": 0.08
+      }
+    }
   },
   "sourceCrossChecks": [
     {
@@ -63,5 +177,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-kyrie.full.json",
-  "nextAction": "Fetch and normalize the complete MIDI event graph, inspect all source tracks, normalize part names/mix, create a compact Practice derivative, publish and validate."
+  "nextAction": "Reingest with normalized 16-part display/mix metadata, publish the public song JSON, run corpus/page regressions, then advance past Kyrie."
 }

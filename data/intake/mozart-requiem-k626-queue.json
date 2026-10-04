@@ -30,8 +30,8 @@
       "order": 2,
       "slug": "mozart-requiem-kyrie",
       "title": "Kyrie",
-      "status": "ingestion-in-progress",
-      "note": "Processing started from ScoreBase/PDMX score 93746: D minor, 4/4, 52 measures, 16 parts, SATB + organ + orchestra; this matches the 52-measure Kyrie double fugue."
+      "status": "publication-in-progress",
+      "note": "Source fetched and normalized: 52 measures, 16 tracks, 6,461 note events. Applying source-part display/mix normalization and publishing the public song wrapper."
     },
     {
       "order": 3,

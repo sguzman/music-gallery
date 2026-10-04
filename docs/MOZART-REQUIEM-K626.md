@@ -9,7 +9,7 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | # | Movement | Musicarium slug | Status |
 |---:|---|---|---|
 | 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **published — awaiting QA** |
-| 2 | Kyrie | `mozart-requiem-kyrie` | **ingestion in progress** |
+| 2 | Kyrie | `mozart-requiem-kyrie` | **publication in progress** |
 | 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
 | 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | queued |
 | 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | queued |
@@ -63,6 +63,6 @@ IMSLP remains the score/reference authority for the work and provides public-dom
 
 Movement 1, **Introitus — Requiem aeternam**, is published and CI-validated: **48 measures, 22 source tracks, 3,965 note events**. Source-part display names/mix metadata are normalized and a five-measure soprano Practice derivative is paired with the untouched complete Full Rendition.
 
-Movement 2, **Kyrie**, is now active. The selected ScoreBase/PDMX witness (score 93746) is D minor, 4/4, 52 measures, 16 parts, SATB + organ + orchestra. That structural signature independently matches the K.626 Kyrie double fugue, so licensed MIDI ingestion has been enabled.
+Movement 2, **Kyrie**, is now through source vendoring and first normalization. The ScoreBase/PDMX witness (score 93746) produced **52 measures, 16 source tracks, 6,461 note events**. Source-part display/mix normalization is being applied, and the opening Basso fugue subject is used as a four-measure Practice derivative without octave folding.
 
 Movement 3, **Dies irae**, remains the already-published baseline: 3,921 note events across 12 note-bearing choral/orchestral tracks.
