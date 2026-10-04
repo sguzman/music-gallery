@@ -193,11 +193,83 @@ def normalize(path: Path, manifest: dict):
         timesigs.extend(tr["timesigs"])
         if tr["notes"]:
             max_tick=max(max_tick,max(note[1] for note in tr["notes"]))
-    duration=round(max_tick/ppq,9)
-    tempo_map=[{"start":x["start"],"bpm":x["bpm"]} for x in uniq(tempos,("tick","bpm"))]
-    meter_map=[{"start":x["start"],"meter":x["meter"]} for x in uniq(timesigs,("tick","meter"))]
+    source_duration=round(max_tick/ppq,9)
+    source_tempo_map=[{"start":x["start"],"bpm":x["bpm"]} for x in uniq(tempos,("tick","bpm"))]
+    source_meter_map=[{"start":x["start"],"meter":x["meter"]} for x in uniq(timesigs,("tick","meter"))]
     cfg=manifest.get("ingest",{})
     fallback=cfg.get("meterFallback","4/4")
+
+    # Optional 1-based inclusive measure slicing for multi-movement source MIDIs.
+    # The slice is computed from the source's own time-signature map before any
+    # event normalization, then all retained events/control maps are shifted so
+    # the movement begins at quarter-unit 0.
+    segment=cfg.get("segmentMeasures")
+    segment_meta=None
+    if segment:
+        start_measure=int(segment["start"])
+        end_measure=int(segment["end"])
+        full_measures=measures_for(source_duration,source_meter_map,fallback)
+        if start_measure<1 or end_measure<start_measure or end_measure>len(full_measures):
+            raise ValueError(
+                f"{path}: invalid segmentMeasures {start_measure}-{end_measure}; "
+                f"source has {len(full_measures)} measures"
+            )
+        selected=full_measures[start_measure-1:end_measure]
+        segment_start=float(selected[0]["start"])
+        segment_end=float(selected[-1]["start"])+float(selected[-1]["duration"])
+        start_tick=round(segment_start*ppq)
+        end_tick=round(segment_end*ppq)
+
+        sliced=[]
+        for tr in parsed:
+            kept=[]
+            for st,en,key,vel,channel in tr["notes"]:
+                clip_st=max(st,start_tick)
+                clip_en=min(en,end_tick)
+                if clip_en>clip_st:
+                    kept.append((clip_st-start_tick,clip_en-start_tick,key,vel,channel))
+            copy=dict(tr)
+            copy["notes"]=kept
+            sliced.append(copy)
+        parsed=sliced
+
+        def shift_controls(items,value_key):
+            before=[x for x in items if float(x["start"])<=segment_start+TOL]
+            inside=[x for x in items if segment_start+TOL<float(x["start"])<segment_end-TOL]
+            out=[]
+            if before:
+                out.append({"start":0.0,value_key:before[-1][value_key]})
+            for item in inside:
+                out.append({
+                    "start":round(float(item["start"])-segment_start,9),
+                    value_key:item[value_key],
+                })
+            return uniq(out,("start",value_key))
+
+        tempo_map=shift_controls(source_tempo_map,"bpm")
+        meter_map=shift_controls(source_meter_map,"meter")
+        duration=round(segment_end-segment_start,9)
+        output_measures=[
+            {
+                "label":str(i+1),
+                "start":round(float(m["start"])-segment_start,9),
+                "duration":round(float(m["duration"]),9),
+            }
+            for i,m in enumerate(selected)
+        ]
+        segment_meta={
+            "startMeasure":start_measure,
+            "endMeasure":end_measure,
+            "sourceMeasureCount":len(full_measures),
+            "sourceStartUnits":round(segment_start,9),
+            "sourceEndUnits":round(segment_end,9),
+        }
+    else:
+        duration=source_duration
+        tempo_map=source_tempo_map
+        meter_map=source_meter_map
+        output_measures=measures_for(duration,meter_map,fallback)
+
     note_tracks=[tr for tr in parsed if tr["notes"]]
     used=set()
     tracks=[]
@@ -278,7 +350,7 @@ def normalize(path: Path, manifest: dict):
             "meterMap":meter_map,
             "keyMap":[],
         },
-        "measures":measures_for(duration,meter_map,fallback),
+        "measures":output_measures,
         "tracks":tracks,
         "provenance":{
             "provider":source.get("provider"),
@@ -293,7 +365,17 @@ def normalize(path: Path, manifest: dict):
             "midiFormat":fmt,
             "ticksPerQuarter":ppq,
             "sourceTrackCount":ntrks,
-            "transformation":"Parsed approved local Standard MIDI File; preserved note onset/duration, velocity, source track/channel identity, tempo events and time signatures.",
+            "sourceDurationUnits":source_duration,
+            "segmentMeasures":segment_meta,
+            "transformation":(
+                "Parsed approved local Standard MIDI File; preserved note onset/duration, velocity, "
+                "source track/channel identity, tempo events and time signatures."
+                + (
+                    f" Extracted source measures {segment_meta['startMeasure']}-{segment_meta['endMeasure']} "
+                    "and shifted the retained movement to quarter-unit 0."
+                    if segment_meta else ""
+                )
+            ),
         },
         "stats":{"tracks":len(tracks),"events":sum(len(track["events"]) for track in tracks)},
     }
