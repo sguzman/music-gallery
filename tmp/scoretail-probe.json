@@ -17,5 +17,30 @@
       "error": "<HTTPError 403: 'Forbidden'>"
     }
   ],
-  "assets": []
+  "assets": [
+    {
+      "url": "https://scoretail.com/_next/static/chunks/app/%5Blocale%5D/sheet-music/%5Bslug%5D/page-680012734fd6c586.js?dpl=dpl_DeUzUk9c5moiv2Tn61dnKhGZYJqC",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://scoretail.com/_next/static/chunks/8736-029037929767620c.js?dpl=dpl_DeUzUk9c5moiv2Tn61dnKhGZYJqC",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://scoretail.com/_next/static/chunks/b157fc76-49991b52be59f00d.js?dpl=dpl_DeUzUk9c5moiv2Tn61dnKhGZYJqC",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://scoretail.com/_next/static/chunks/webpack-27be309e695e6bb5.js?dpl=dpl_DeUzUk9c5moiv2Tn61dnKhGZYJqC",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://scoretail.com/_next/static/chunks/2222-921c9d83b52c767b.js?dpl=dpl_22JDTw4BidM58crfzr4RjUcrsj7n",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://scoretail.com/_next/static/chunks/8736-77106b9327df2765.js?dpl=dpl_22JDTw4BidM58crfzr4RjUcrsj7n",
+      "error": "<HTTPError 403: 'Forbidden'>"
+    }
+  ]
 }
