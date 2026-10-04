@@ -11,12 +11,12 @@ The user explicitly approved the entire Requiem after the successful `Dies irae`
 | 1 | Introitus — Requiem aeternam | `mozart-requiem-introitus` | **published — awaiting QA** |
 | 2 | Kyrie | `mozart-requiem-kyrie` | **published — awaiting QA** |
 | 3 | Dies irae | `mozart-dies-irae` | **published — awaiting QA** |
-| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **corrected publication in progress** |
-| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | **corrected publication in progress** |
-| 6 | Recordare | `mozart-requiem-recordare` | **publication in progress** |
-| 7 | Confutatis | `mozart-requiem-confutatis` | queued |
-| 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued |
-| 9 | Domine Jesu | `mozart-requiem-domine-jesu` | queued |
+| 4 | Tuba mirum | `mozart-requiem-tuba-mirum` | **corrected publication in progress** | **published — awaiting QA** |
+| 5 | Rex tremendae | `mozart-requiem-rex-tremendae` | **corrected publication in progress** | **published — awaiting QA** |
+| 6 | Recordare | `mozart-requiem-recordare` | **publication in progress** | **published — awaiting QA** |
+| 7 | Confutatis | `mozart-requiem-confutatis` | queued | **published — awaiting QA** |
+| 8 | Lacrimosa | `mozart-requiem-lacrimosa` | queued | **published — awaiting QA** |
+| 9 | Domine Jesu | `mozart-requiem-domine-jesu` | **source verification in progress** |
 | 10 | Hostias | `mozart-requiem-hostias` | queued |
 | 11 | Sanctus | `mozart-requiem-sanctus` | queued |
 | 12 | Benedictus | `mozart-requiem-benedictus` | queued |
@@ -96,3 +96,16 @@ The repaired boundaries regenerated cleanly:
 - **Recordare:** q1020–q1410; exactly 130 measures of 3/4; **15 tracks / 4,052 events**.
 
 The ingestion scripts now also honor `ingest.enabled: false`, so queued manifests can no longer be fetched/normalized prematurely merely because they contain an approved source URL.
+
+
+## Sequence publication completion
+
+The combined Sequence witness has now been segmented and published through **Lacrimosa** using source structural markers rather than cumulative-count guesses:
+
+- Tuba mirum: q680–q932 — 63 source measures — 16 tracks / 1,525 events.
+- Rex tremendae: q932–q1020 — 22 measures — 21 tracks / 2,040 events.
+- Recordare: q1020–q1410 — 130 measures of 3/4 — 15 tracks / 4,052 events.
+- Confutatis: q1410–q1578 — 42 measures of 4/4 — 21 tracks / 2,827 events.
+- Lacrimosa: q1578–end — 30 measures of 12/8 — 21 tracks / 2,102 events.
+
+The work cursor now advances to **Domine Jesu**.

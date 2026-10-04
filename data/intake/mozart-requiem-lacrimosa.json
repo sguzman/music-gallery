@@ -31,7 +31,7 @@
   },
   "ingest": {
     "enabled": true,
-    "status": "ingestion-in-progress",
+    "status": "published-awaiting-user-qa",
     "fidelity": "source-midi-derived",
     "fidelityTarget": "complete-score-derived",
     "segmentMeasures": {
@@ -46,7 +46,156 @@
     "meterFallback": "12/8",
     "trackLevel": 0.24,
     "label": "Lacrimosa, K.626 — complete movement rendition",
-    "description": "Complete source-MIDI-derived Lacrimosa Full Rendition extracted from the exact 12/8 structural span of the redistribution-cleared PDMX Requiem witness."
+    "description": "Complete source-MIDI-derived Lacrimosa Full Rendition extracted from the exact 12/8 structural span of the redistribution-cleared PDMX Requiem witness.",
+    "trackOverrides": {
+      "b-clarinet": {
+        "name": "B♭ Clarinet I (source alternate)",
+        "instrumentLabel": "B♭ Clarinet I",
+        "defaultInstrument": "clarinet",
+        "level": 0.1,
+        "pan": -0.7
+      },
+      "b-clarinet-2": {
+        "name": "B♭ Clarinet II (source alternate)",
+        "instrumentLabel": "B♭ Clarinet II",
+        "defaultInstrument": "clarinet",
+        "level": 0.1,
+        "pan": -0.6
+      },
+      "basset-horn": {
+        "name": "Basset Horn I",
+        "instrumentLabel": "Basset Horn I",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.5
+      },
+      "basset-horn-2": {
+        "name": "Basset Horn II",
+        "instrumentLabel": "Basset Horn II",
+        "defaultInstrument": "clarinet",
+        "level": 0.22,
+        "pan": -0.4
+      },
+      "bassoon": {
+        "name": "Bassoon I",
+        "instrumentLabel": "Bassoon I",
+        "defaultInstrument": "bassoon",
+        "level": 0.22,
+        "pan": -0.3
+      },
+      "bassoon-2": {
+        "name": "Bassoon II",
+        "instrumentLabel": "Bassoon II",
+        "defaultInstrument": "bassoon",
+        "level": 0.22,
+        "pan": -0.2
+      },
+      "d-trumpet": {
+        "name": "Trumpet in D I",
+        "instrumentLabel": "Trumpet in D I",
+        "defaultInstrument": "horn",
+        "level": 0.2,
+        "pan": 0.46
+      },
+      "d-trumpet-2": {
+        "name": "Trumpet in D II",
+        "instrumentLabel": "Trumpet in D II",
+        "defaultInstrument": "horn",
+        "level": 0.2,
+        "pan": 0.56
+      },
+      "alto-trombone": {
+        "name": "Alto Trombone",
+        "instrumentLabel": "Alto Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.14
+      },
+      "tenor-trombone": {
+        "name": "Tenor Trombone",
+        "instrumentLabel": "Tenor Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.24
+      },
+      "bass-trombone": {
+        "name": "Bass Trombone",
+        "instrumentLabel": "Bass Trombone",
+        "defaultInstrument": "horn",
+        "level": 0.19,
+        "pan": 0.34
+      },
+      "timpani": {
+        "name": "Timpani",
+        "instrumentLabel": "Timpani",
+        "defaultInstrument": "generic",
+        "level": 0.18,
+        "pan": 0.32
+      },
+      "piano": {
+        "name": "Soprano",
+        "instrumentLabel": "Soprano",
+        "defaultInstrument": "voice",
+        "level": 0.25,
+        "pan": 0.08
+      },
+      "piano-2": {
+        "name": "Alto",
+        "instrumentLabel": "Alto",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.15
+      },
+      "piano-3": {
+        "name": "Tenor",
+        "instrumentLabel": "Tenor",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.22
+      },
+      "piano-4": {
+        "name": "Bass",
+        "instrumentLabel": "Bass",
+        "defaultInstrument": "voice",
+        "level": 0.24,
+        "pan": 0.3
+      },
+      "violins": {
+        "name": "Violin I",
+        "instrumentLabel": "Violin I",
+        "defaultInstrument": "violin",
+        "level": 0.22,
+        "pan": -0.44
+      },
+      "violins-2": {
+        "name": "Violin II",
+        "instrumentLabel": "Violin II",
+        "defaultInstrument": "violin",
+        "level": 0.21,
+        "pan": -0.27
+      },
+      "violas": {
+        "name": "Viola",
+        "instrumentLabel": "Viola",
+        "defaultInstrument": "strings",
+        "level": 0.21,
+        "pan": -0.08
+      },
+      "violoncellos": {
+        "name": "Cellos",
+        "instrumentLabel": "Cellos",
+        "defaultInstrument": "cello",
+        "level": 0.21,
+        "pan": 0.08
+      },
+      "contrabasses": {
+        "name": "Double Basses",
+        "instrumentLabel": "Double Basses",
+        "defaultInstrument": "strings",
+        "level": 0.2,
+        "pan": 0.18
+      }
+    }
   },
   "sourceCrossChecks": [
     {
@@ -62,5 +211,5 @@
     }
   ],
   "output": "data/ingested/mozart-requiem-lacrimosa.full.json",
-  "nextAction": "Extract q1578-q1758, inspect SATB/orchestral track identity, normalize part labels/mix, create a compact Practice derivative, publish and validate."
+  "nextAction": "Await user listening/UX QA; preserve q1578 to source end unless QA finds a concrete source defect."
 }

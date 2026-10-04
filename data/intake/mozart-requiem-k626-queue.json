@@ -17,7 +17,7 @@
     "processingRule": "Process strictly in order. Dies Irae is already published and remains movement 3; do not reprocess it unless QA or source repair requires it.",
     "rightsRule": "Do not ingest a symbolic witness until its redistribution status is verified. PDMX witnesses must come from the no_license_conflict subset; otherwise use a clean public-domain or explicitly licensed source."
   },
-  "processingCursor": 4,
+  "processingCursor": 9,
   "queue": [
     {
       "order": 1,
@@ -44,40 +44,43 @@
       "order": 4,
       "slug": "mozart-requiem-tuba-mirum",
       "title": "Tuba mirum",
-      "status": "publication-in-progress",
-      "note": "Corrected boundary regenerated successfully: source q680-q932, 63 measures, 16 retained tracks, 1,525 events. Public wrapper metadata repaired."
+      "status": "published-awaiting-user-qa",
+      "note": "Corrected and published: q680-q932, 63 source measures, 16 retained tracks, 1,525 note events."
     },
     {
       "order": 5,
       "slug": "mozart-requiem-rex-tremendae",
       "title": "Rex tremendae",
-      "status": "publication-in-progress",
-      "note": "Corrected boundary regenerated successfully: source q932-q1020, exactly 22 measures, 21 tracks, 2,040 events. Public wrapper and Practice phrase repaired."
+      "status": "published-awaiting-user-qa",
+      "note": "Corrected and published: q932-q1020, exactly 22 measures, 21 retained tracks, 2,040 note events."
     },
     {
       "order": 6,
       "slug": "mozart-requiem-recordare",
       "title": "Recordare",
-      "status": "publication-in-progress",
-      "note": "Corrected 3/4 boundary generated successfully: source q1020-q1410, exactly 130 measures, 15 tracks, 4,052 events. Recordare wrapper published for CI."
+      "status": "published-awaiting-user-qa",
+      "note": "Published: q1020-q1410, exactly 130 measures of 3/4, 15 retained tracks, 4,052 note events."
     },
     {
       "order": 7,
       "slug": "mozart-requiem-confutatis",
       "title": "Confutatis",
-      "status": "queued"
+      "status": "published-awaiting-user-qa",
+      "note": "Published: q1410-q1578, 42 source measures of 4/4, 21 retained tracks, 2,827 note events."
     },
     {
       "order": 8,
       "slug": "mozart-requiem-lacrimosa",
       "title": "Lacrimosa",
-      "status": "queued"
+      "status": "published-awaiting-user-qa",
+      "note": "Published: q1578 to source end, 30 source measures of 12/8, 21 retained tracks, 2,102 note events."
     },
     {
       "order": 9,
       "slug": "mozart-requiem-domine-jesu",
       "title": "Domine Jesu",
-      "status": "queued"
+      "status": "source-verification-in-progress",
+      "note": "Next active movement: Domine Jesu. Source verification begins after completing the Sequence through Lacrimosa."
     },
     {
       "order": 10,
