@@ -10,7 +10,7 @@ const GM_PROGRAM={guitar:25,piano:0,celesta:8,violin:40,cello:42,strings:48,flut
 let song=null, viewMode="practice", selectedSection=-1, flat=[], cursor=0, playing=false, loop=false, audio=null, timers=[], nodes=[], runId=0;
 let trackState=new Map(), trackBuses=new Map(), masterBus=null;
 let transportUnit=0, transportStartUnit=0, transportAudioStart=0, scheduleIndex=0, schedulerTimer=null, transportFrame=null;
-const AUDIO_START_LEAD=.12,SCHEDULER_LOOKAHEAD_SEC=.9,SCHEDULER_INTERVAL_MS=40;
+const AUDIO_START_LEAD=.12,SCHEDULER_LOOKAHEAD_SEC=.9,SCHEDULER_INTERVAL_MS=40,FOLLOW_CURSOR_KEY="music-gallery:follow-cursor";
 
 function safe(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
 function fullAvailable(){return song?.fullVersion?.status==="available" && Array.isArray(song.fullVersion.tracks) && song.fullVersion.tracks.length>0;}
@@ -52,6 +52,27 @@ function transportUnitAtSeconds(seconds){
 function transportSecondsBetween(a,b){return Math.max(0,transportSecondsAtUnit(b)-transportSecondsAtUnit(a));}
 function activeSections(){return selectedSection===-1?song.sections:[song.sections[selectedSection]];}
 function trackEnabled(track){return trackState.get(track.id)!==false;}
+function followCursorEnabled(){return $("#followCursor")?.checked!==false;}
+function loadFollowCursorPreference(){
+  const input=$("#followCursor");if(!input)return;
+  try{const saved=localStorage.getItem(FOLLOW_CURSOR_KEY);input.checked=saved===null?true:saved!=="false";}catch{input.checked=true;}
+}
+function saveFollowCursorPreference(){
+  const input=$("#followCursor");if(!input)return;
+  try{localStorage.setItem(FOLLOW_CURSOR_KEY,String(input.checked));}catch{}
+}
+function followFullPlayhead(force=false){
+  if(viewMode!=="full"||!fullAvailable()||!followCursorEnabled()||(!force&&!playing))return;
+  const scroll=document.querySelector(".score-scroll"),playhead=scroll?.querySelector(".score-playhead");
+  if(!scroll||!playhead||scroll.scrollWidth<=scroll.clientWidth)return;
+  const sr=scroll.getBoundingClientRect(),pr=playhead.getBoundingClientRect();
+  const sticky=Math.min(190,scroll.clientWidth*.28),safeLeft=sr.left+sticky+18,safeRight=sr.left+scroll.clientWidth*.72;
+  if(force||pr.left<safeLeft||pr.left>safeRight){
+    const desired=scroll.clientWidth*.38;
+    const next=scroll.scrollLeft+(pr.left-sr.left)-desired;
+    scroll.scrollLeft=Math.max(0,Math.min(scroll.scrollWidth-scroll.clientWidth,next));
+  }
+}
 
 function buildFlat(){
   flat=[];
@@ -95,6 +116,7 @@ function renderControls(resetTempo=false){
   const gate=$("#gate"),gateWrap=gate.closest(".range");
   gate.value=viewMode==="full"?100:(song.playback.gatePercent||86);$("#gateOut").textContent=`${gate.value}%`;if(gateWrap)gateWrap.hidden=viewMode==="full";
   const inst=$("#instrument"),labels={guitar:"Steel-string guitar",piano:"Piano",both:"Guitar + piano",celesta:"Celesta","guitar-celesta":"Guitar + celesta","guitar-piano":"Guitar + piano"};
+  const followWrap=$("#followWrap");if(followWrap)followWrap.hidden=viewMode!=="full"||!fullAvailable();
   const pendingFull=viewMode==="full"&&!fullAvailable();
   ["play","pause","stop","loop","midi"].forEach(id=>{$("#"+id).disabled=pendingFull;});
   tempo.disabled=pendingFull;
@@ -246,7 +268,7 @@ function renderMetadata(){
 }
 function renderHelp(){
   $("#salvageWrap").hidden=viewMode==="full";
-  $("#helpText").innerHTML=viewMode==="full"?'<b>Full rendition:</b> simultaneous source-score tracks · uncheck any track to mute it · horizontal scrolling is synchronized · <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step through score events.':'<b>Practice controls:</b> <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step note-by-note · click any fret box to audition it · click a section name to isolate it. Box color is hand position; box number is fret; horizontal spacing carries attack timing.';
+  $("#helpText").innerHTML=viewMode==="full"?'<b>Full rendition:</b> simultaneous source-score tracks · <b>Track cursor</b> keeps the moving playhead in view while playback runs; turn it off for manual scrolling · uncheck any track to mute it · <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step through score events.':'<b>Practice controls:</b> <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step note-by-note · click any fret box to audition it · click a section name to isolate it. Box color is hand position; box number is fret; horizontal spacing carries attack timing.';
 }
 function renderAll(){stop(false);renderViewSwitch();renderSectionButtons();if(viewMode==="full"){fullAvailable()?renderFull():renderFullPending();}else renderPractice();buildFlat();highlight();renderMetadata();renderHelp();}
 
@@ -456,6 +478,7 @@ function updatePlayhead(unit=currentTransportUnit()){
   if(viewMode!=="full"||!fullAvailable())return;
   const p=Math.max(0,Math.min(100,unit/fullDuration()*100));
   document.querySelectorAll(".score-playhead").forEach(el=>el.style.left=p+"%");
+  if(playing&&followCursorEnabled())followFullPlayhead();
 }
 function findNoteEl(x){return x.mode==="full"?document.querySelector(`.score-note[data-track="${x.ti}"][data-event="${x.ei}"]`):document.querySelector(`.note[data-section="${CSS.escape(x.section.id)}"][data-measure="${x.mi}"][data-event="${x.ei}"]`);}
 function highlight(){document.querySelectorAll(".note.live,.note.next,.score-note.live,.score-note.next").forEach(n=>n.classList.remove("live","next"));if(!flat.length){updatePlayhead();return;}const start=flat[cursor].start;flat.forEach(x=>{if(Math.abs(x.start-start)<1e-8)findNoteEl(x)?.classList.add("live");});const next=flat.find(x=>x.start>start+1e-8);if(next){const ns=next.start;flat.forEach(x=>{if(Math.abs(x.start-ns)<1e-8)findNoteEl(x)?.classList.add("next");});}updatePlayhead();}
@@ -490,6 +513,7 @@ function exportMidi(){viewMode==="full"&&fullAvailable()?exportFullMidi():export
 function bind(){
   $("#play").onclick=()=>playing?pause():play();$("#pause").onclick=pause;$("#stop").onclick=()=>stop(true);$("#loop").onclick=()=>{loop=!loop;updateButtons();};$("#midi").onclick=exportMidi;
   $("#practiceView").onclick=()=>switchView("practice");$("#fullView").onclick=()=>switchView("full");
+  const follow=$("#followCursor");if(follow)follow.onchange=()=>{saveFollowCursorPreference();if(follow.checked)followFullPlayhead(true);};
   $("#tempo").oninput=e=>{const wasPlaying=playing;if(wasPlaying)pause();$("#tempoOut").textContent=`${e.target.value} BPM`;if(wasPlaying)play();};$("#gate").oninput=e=>{$("#gateOut").textContent=`${e.target.value}%`;};
   document.addEventListener("keydown",e=>{if(["INPUT","SELECT","TEXTAREA"].includes(e.target.tagName))return;if(e.code==="Space"){e.preventDefault();playing?pause():play();}if(e.code==="ArrowRight"||e.code==="ArrowLeft"){e.preventDefault();pause();cursor=e.code==="ArrowRight"?Math.min(flat.length-1,cursor+1):Math.max(0,cursor-1);highlight();const x=flat[cursor],el=x?findNoteEl(x):null;if(x&&el){if(x.mode==="full")auditionFull(x.ti,x.ei,el);else auditionPractice(x.section.id,x.mi,x.ei,el);}}});
 }
@@ -503,6 +527,8 @@ async function init(){
   song=await fetch(`${rootPath}/data/songs/${slug}.json`).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
   await loadFullArtifact();
   if(fullAvailable())song.fullVersion.tracks.forEach(t=>trackState.set(t.id,t.enabled!==false));
+  loadFollowCursorPreference();
+  viewMode=fullAvailable()?"full":"practice";
   renderHero();renderControls(true);bind();renderAll();
 }
 init().catch(err=>{console.error(err);$("#status").textContent="Could not load song JSON.";});

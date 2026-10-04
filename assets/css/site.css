@@ -70,8 +70,8 @@ select{
 input[type=range]{width:100%;accent-color:var(--accent)}
 .section-buttons{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
 .section-buttons button{font-size:.8rem;padding:8px 11px}
-.statusline{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--muted);font-size:.8rem;padding:2px 3px 12px}
-.progress{height:5px;background:#ffffff10;border-radius:999px;overflow:hidden;flex:1}
+.statusline{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:.8rem;padding:2px 3px 12px}
+.progress{height:5px;background:#ffffff10;border-radius:999px;overflow:hidden;flex:1;min-width:120px}
 .progress>div{height:100%;width:0;background:var(--accent);transition:width .06s linear}
 .song-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:end;padding:34px 0 18px}
 .song-hero h1{font-size:clamp(2.2rem,6vw,4.8rem);line-height:.95;letter-spacing:-.055em;margin:.25rem 0 .55rem}

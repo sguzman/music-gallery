@@ -6,6 +6,7 @@ const js=readFileSync(new URL("../assets/js/song-page.js",import.meta.url),"utf8
 const catalogJs=readFileSync(new URL("../assets/js/catalog.js",import.meta.url),"utf8");
 const buildPy=readFileSync(new URL("../scripts/build.py",import.meta.url),"utf8");
 const indexHtml=readFileSync(new URL("../index.html",import.meta.url),"utf8");
+const songTemplate=readFileSync(new URL("../templates/song.html",import.meta.url),"utf8");
 const schubert=JSON.parse(readFileSync(new URL("../data/songs/schubert-serenade.json",import.meta.url),"utf8"));
 
 assert.ok(js.includes('trackBuses=new Map()'),"full renderer must have per-track live audio buses");
@@ -41,6 +42,14 @@ assert.ok(js.includes('gate=viewMode==="full"?1:'),"full score playback must use
 assert.ok(js.includes('function voiceTone'),"vocal source parts must not be rendered with the violin oscillator path");
 assert.ok(js.includes('const voiceBody=audio.createBiquadFilter()'),"vocal synth must include a broadband body path instead of relying only on narrow formant filters");
 assert.ok(js.includes('score-playhead'),"full score must expose a visible playhead");
+assert.ok(js.includes('viewMode=fullAvailable()?"full":"practice"'),"songs with an available Full Rendition must open directly in the Full Rendition view");
+assert.ok(songTemplate.indexOf('id="fullView"')<songTemplate.indexOf('id="practiceView"'),"Full Rendition tab must be presented before Practice sections");
+assert.ok(songTemplate.includes('id="followCursor" type="checkbox" checked'),"song pages must expose a default-on Track cursor toggle");
+assert.ok(js.includes('FOLLOW_CURSOR_KEY="music-gallery:follow-cursor"'),"Track cursor preference must persist across song pages");
+assert.ok(js.includes('function followFullPlayhead(force=false)'),"full playback must have viewport-follow logic");
+assert.ok(js.includes('scroll.scrollLeft=Math.max(0,Math.min(scroll.scrollWidth-scroll.clientWidth,next))'),"cursor tracking must actually move the score viewport");
+assert.ok(js.includes('if(playing&&followCursorEnabled())followFullPlayhead();'),"playhead updates must drive viewport tracking only while enabled");
+assert.ok(js.includes('follow.onchange=()=>{saveFollowCursorPreference();if(follow.checked)followFullPlayhead(true);}'),"turning cursor tracking off must stop follow behavior and turning it on must immediately reacquire the playhead");
 assert.ok(js.includes('full.disabled=false'),"non-ingested full-rendition states must remain inspectable rather than disabled");
 assert.ok(js.includes('function renderFullPending'),"non-ingested full-rendition states need an explicit evidence/status surface");
 assert.ok(js.includes('const env=envelope(start,seconds,.14*level,.02,.36,destination)'),"voice synth must use normalized output gain rather than overpowering accompaniment");

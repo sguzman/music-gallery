@@ -46,8 +46,8 @@
 
   <section class="version-switch" aria-label="Rendition view">
     <div class="version-tabs" role="tablist">
-      <button id="practiceView" role="tab" aria-selected="true">Practice sections</button>
       <button id="fullView" role="tab" aria-selected="false">Full rendition</button>
+      <button id="practiceView" role="tab" aria-selected="true">Practice sections</button>
     </div>
     <span id="viewDescription"></span>
   </section>
@@ -56,6 +56,7 @@
 
   <div class="statusline">
     <label id="salvageWrap" class="toggle-control"><input id="salvage" type="checkbox"> ★ Salvage notes only</label>
+    <label id="followWrap" class="toggle-control" hidden><input id="followCursor" type="checkbox" checked> Track cursor</label>
     <span id="status">Loading…</span>
     <div class="progress"><div id="progress"></div></div>
     <span id="counter">0 / 0</span>
