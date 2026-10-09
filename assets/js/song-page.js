@@ -8,7 +8,7 @@ const STRING_Y={e:19,B:57,G:95,D:133,A:171,E:209};
 const GM_PROGRAM={guitar:25,piano:0,celesta:8,violin:40,cello:42,strings:48,flute:73,oboe:68,clarinet:71,bassoon:70};
 
 let song=null, viewMode="practice", selectedSection=-1, flat=[], cursor=0, playing=false, loop=false, audio=null, timers=[], nodes=[], runId=0;
-let trackState=new Map(), trackBuses=new Map(), masterBus=null;
+let trackState=new Map(), trackBuses=new Map(), masterBus=null, pendingPlay=false;
 let transportUnit=0, transportStartUnit=0, transportAudioStart=0, scheduleIndex=0, schedulerTimer=null, transportFrame=null;
 const AUDIO_START_LEAD=.12,SCHEDULER_LOOKAHEAD_SEC=.9,SCHEDULER_INTERVAL_MS=40,FOLLOW_CURSOR_KEY="music-gallery:follow-cursor";
 
@@ -274,12 +274,21 @@ function renderAll(){stop(false);renderViewSwitch();renderSectionButtons();if(vi
 
 function ensureAudio(){
   if(!audio){
+    // iOS otherwise treats Web Audio as ambient/ringer audio and can mute it in Silent Mode.
+    try{if(navigator.audioSession&&"type" in navigator.audioSession)navigator.audioSession.type="playback";}
+    catch(error){console.warn("Could not select playback audio session",error);}
     audio=new (window.AudioContext||window.webkitAudioContext)();
     const comp=audio.createDynamicsCompressor();
     comp.threshold.value=-12;comp.knee.value=18;comp.ratio.value=3;comp.attack.value=.008;comp.release.value=.18;
     const gain=audio.createGain();gain.gain.value=.9;comp.connect(gain).connect(audio.destination);masterBus={input:comp,gain};
+    audio.addEventListener("statechange",()=>{
+      if(playing&&audio.state!=="running"){
+        pause();
+        $("#status").textContent="Audio interrupted. Tap Play to resume.";
+      }
+    });
   }
-  if(audio.state==="suspended")audio.resume();
+  return audio;
 }
 function hz(midi){return 440*Math.pow(2,(midi-69)/12);}
 function trackNode(n){
@@ -420,13 +429,13 @@ function lastOnsetIndex(unit){
   const i=lowerBoundStart(unit+1e-7)-1;return Math.max(0,Math.min(flat.length-1,i));
 }
 function stop(reset=true){
-  const pos=currentTransportUnit();runId++;playing=false;clearScheduler();clearTimers();stopNodes();
+  const pos=currentTransportUnit();runId++;playing=false;pendingPlay=false;clearScheduler();clearTimers();stopNodes();
   transportUnit=reset?0:pos;if(reset)cursor=0;else if(flat.length)cursor=lastOnsetIndex(transportUnit);
   clearHighlights();updateButtons();highlight();updateStatus();
 }
 function pause(){
-  if(!playing)return;
-  const pos=currentTransportUnit();runId++;playing=false;clearScheduler();stopNodes();transportUnit=pos;if(flat.length)cursor=lastOnsetIndex(pos);updateButtons();highlight();updateStatus();
+  if(!playing&&!pendingPlay)return;
+  const pos=currentTransportUnit();runId++;playing=false;pendingPlay=false;clearScheduler();stopNodes();transportUnit=pos;if(flat.length)cursor=lastOnsetIndex(pos);updateButtons();highlight();updateStatus();
 }
 function activePlayEvents(){if(viewMode==="full")return flat.map((x,i)=>({...x,flatIndex:i}));const anchorsOnly=$("#salvage").checked;return flat.map((x,i)=>({...x,flatIndex:i})).filter(x=>!anchorsOnly||x.event.anchor);}
 function scheduleEntry(x,unitNow,horizonUnit,gate){
@@ -456,17 +465,39 @@ function visualStep(myRun){
   }
   transportFrame=requestAnimationFrame(()=>visualStep(myRun));
 }
-function play(){
-  if(!flat.length)return;
-  clearScheduler();stopNodes();ensureAudio();
+function beginPlayback(myRun){
+  if(myRun!==runId||audio.state!=="running")return;
+  pendingPlay=false;
   const end=playbackEndUnit();if(transportUnit>=end-.002)transportUnit=0;
   if(transportUnit===0&&cursor>0)transportUnit=flat[cursor]?.start??0;
-  playing=true;const myRun=++runId;
+  playing=true;
   transportStartUnit=transportUnit;transportAudioStart=audio.currentTime+AUDIO_START_LEAD;
   const candidates=activePlayEvents();scheduleIndex=0;
   while(scheduleIndex<candidates.length&&candidates[scheduleIndex].start+candidates[scheduleIndex].event.duration<=transportStartUnit+1e-8)scheduleIndex++;
   if(viewMode==="practice"&&$("#salvage").checked)document.querySelectorAll(".note:not(.anchor)").forEach(n=>n.classList.add("dimmed"));
   updateButtons();schedulerStep(myRun);visualStep(myRun);
+}
+function play(){
+  if(!flat.length)return;
+  clearScheduler();stopNodes();
+  const myRun=++runId;
+  try{ensureAudio();}
+  catch(error){console.error("Audio initialization failed",error);$("#status").textContent="Audio unavailable in this browser.";return;}
+  if(audio.state==="running"){beginPlayback(myRun);return;}
+  pendingPlay=true;updateButtons();updateStatus();
+  // resume() must be called directly from the user's tap, not from a deferred callback.
+  // Await its state transition before scheduling audio or advancing the score.
+  const onReady=()=>{
+    if(myRun!==runId)return;
+    if(audio.state==="running"){beginPlayback(myRun);return;}
+    pendingPlay=false;updateButtons();updateStatus();$("#status").textContent="Audio blocked. Tap Play to retry.";
+  };
+  const onError=error=>{
+    if(myRun!==runId)return;
+    console.warn("Audio could not resume",error);
+    pendingPlay=false;updateButtons();updateStatus();$("#status").textContent="Audio blocked. Tap Play to retry.";
+  };
+  try{Promise.resolve(audio.resume()).then(onReady,onError);}catch(error){onError(error);}
 }
 function seekFullToUnits(units){
   if(viewMode!=="full"||!flat.length)return;
@@ -482,9 +513,24 @@ function updatePlayhead(unit=currentTransportUnit()){
 }
 function findNoteEl(x){return x.mode==="full"?document.querySelector(`.score-note[data-track="${x.ti}"][data-event="${x.ei}"]`):document.querySelector(`.note[data-section="${CSS.escape(x.section.id)}"][data-measure="${x.mi}"][data-event="${x.ei}"]`);}
 function highlight(){document.querySelectorAll(".note.live,.note.next,.score-note.live,.score-note.next").forEach(n=>n.classList.remove("live","next"));if(!flat.length){updatePlayhead();return;}const start=flat[cursor].start;flat.forEach(x=>{if(Math.abs(x.start-start)<1e-8)findNoteEl(x)?.classList.add("live");});const next=flat.find(x=>x.start>start+1e-8);if(next){const ns=next.start;flat.forEach(x=>{if(Math.abs(x.start-ns)<1e-8)findNoteEl(x)?.classList.add("next");});}updatePlayhead();}
-function updateButtons(){$("#play").textContent=playing?"▶ Playing":"▶ Play";$("#loop").classList.toggle("active",loop);}
-function updateStatus(unit=currentTransportUnit()){const total=flat.length,pos=total?cursor+1:0;$("#counter").textContent=`${pos} / ${total}`;const end=playbackEndUnit(),p=end?Math.max(0,Math.min(1,unit/end)):0;$("#progress").style.width=`${p*100}%`;$("#status").textContent=playing?"Playing":(transportUnit>0?"Paused / positioned":"Ready");}
-function auditionPractice(sectionId,mi,ei,el){pause();ensureAudio();const section=song.sections.find(s=>s.id===sectionId),e=section.measures[mi].events[ei];toneFor($("#instrument").value,e.midi,audio.currentTime+.02,Math.max(.18,e.duration*tempoSecondsPerUnit()*Number($("#gate").value)/100));document.querySelectorAll(".note.live").forEach(n=>n.classList.remove("live"));el.classList.add("live");later(()=>el.classList.remove("live"),500);}
+function updateButtons(){$("#play").textContent=pendingPlay?"… Starting audio":playing?"▶ Playing":"▶ Play";$("#loop").classList.toggle("active",loop);}
+function updateStatus(unit=currentTransportUnit()){const total=flat.length,pos=total?cursor+1:0;$("#counter").textContent=`${pos} / ${total}`;const end=playbackEndUnit(),p=end?Math.max(0,Math.min(1,unit/end)):0;$("#progress").style.width=`${p*100}%`;$("#status").textContent=playing?"Playing":pendingPlay?"Starting audio…":(transportUnit>0?"Paused / positioned":"Ready");}
+function auditionPractice(sectionId,mi,ei,el){
+  pause();const myRun=++runId;
+  try{ensureAudio();}
+  catch(error){console.error("Audio initialization failed",error);$("#status").textContent="Audio unavailable in this browser.";return;}
+  const sound=()=>{
+    if(myRun!==runId||audio.state!=="running")return;
+    const section=song.sections.find(s=>s.id===sectionId),e=section.measures[mi].events[ei];
+    toneFor($("#instrument").value,e.midi,audio.currentTime+.02,Math.max(.18,e.duration*tempoSecondsPerUnit()*Number($("#gate").value)/100));
+    document.querySelectorAll(".note.live").forEach(n=>n.classList.remove("live"));el.classList.add("live");later(()=>el.classList.remove("live"),500);
+    updateStatus();
+  };
+  if(audio.state==="running"){sound();return;}
+  $("#status").textContent="Starting audio…";
+  const onError=error=>{if(myRun!==runId)return;console.warn("Note audition audio could not resume",error);$("#status").textContent="Audio blocked. Tap a note or Play to retry.";};
+  try{Promise.resolve(audio.resume()).then(()=>{if(myRun!==runId)return;if(audio.state==="running")sound();else onError(new Error(audio.state));},onError);}catch(error){onError(error);}
+}
 function auditionFull(ti,ei,el){const e=song.fullVersion.tracks[ti].events[ei];seekFullToUnits(e.start);}
 
 function vlq(n){let b=[n&127];while(n>>=7)b.unshift((n&127)|128);return b;}
