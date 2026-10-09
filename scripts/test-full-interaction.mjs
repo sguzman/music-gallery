@@ -10,6 +10,15 @@ const songTemplate=readFileSync(new URL("../templates/song.html",import.meta.url
 const schubert=JSON.parse(readFileSync(new URL("../data/songs/schubert-serenade.json",import.meta.url),"utf8"));
 
 assert.ok(js.includes('trackBuses=new Map()'),"full renderer must have per-track live audio buses");
+
+assert.ok(js.includes('navigator.audioSession.type="playback"'),"iOS Web Audio must use the playback session so Silent Mode does not mute it");
+assert.ok(js.includes('if(audio.state==="running"){beginPlayback(myRun);return;}'),"play must start immediately when an audio context is already running");
+assert.ok(js.includes('Promise.resolve(audio.resume()).then(onReady,onError)'),"play must wait for AudioContext activation before scheduling");
+assert.ok(js.includes('if(myRun!==runId||audio.state!=="running")return'),"late audio activation must not restart canceled playback");
+assert.ok(js.includes('if(!playing&&!pendingPlay)return'),"Pause must cancel a pending mobile audio activation");
+assert.ok(js.includes('audio.addEventListener("statechange"'),"interrupted mobile audio must not leave the UI pretending to play");
+assert.ok(!js.includes('if(audio.state==="suspended")audio.resume();'),"audio resume must not happen unobserved during note scheduling");
+
 assert.ok(js.includes('function setTrackGain(track,enabled)'),"live mixer gain path must exist");
 assert.ok(!js.includes('bus.gain.gain'),"live mixer must address the GainNode AudioParam correctly");
 assert.ok(!js.includes('if(!trackEnabled(track))return'),"muted tracks must remain in the full event graph");
